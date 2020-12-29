@@ -1,0 +1,23 @@
+{
+    "name": "krys-colors",
+    "displayName": "Krys Colors",
+    "description": "Krys theme for Visual Studio Code based on Monokai",
+    "version": "1.0.0",
+	"publisher": "C.Riedel",
+	"license": "MIT",
+    "engines": {
+        "vscode": "*"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Krys Colors",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Krys Colors-color-theme.json"
+            }
+        ]
+    }
+}
