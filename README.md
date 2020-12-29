@@ -24,4 +24,7 @@ Following extensions are needed for the corresponding file type:
 
 ## Install the extension
 
-* To start using this extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
+To start using this extension with Visual Studio Code copy it into the
+`<user home>/.vscode/extensions` folder and restart Code.
+
+Run: `git clone https://github.com/Cielquan/krys-colors ~/.vscode/extensions/krys-colors`
