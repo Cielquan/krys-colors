@@ -4,7 +4,7 @@
 	"type": "dark",
 	"colors": {
 		"dropdown.background": "#414339",
-		"list.activeSelectionBackground": "#75715E",
+		"list.activeSelectionBackground": "#75715e",
 		"list.focusBackground": "#414339",
 		"dropdown.listBackground": "#1e1f1c",
 		"settings.textInputBackground": "#32342d",
@@ -13,7 +13,7 @@
 		"list.hoverBackground": "#3e3d32",
 		"list.dropBackground": "#414339",
 		"list.highlightForeground": "#f8f8f2",
-		"button.background": "#75715E",
+		"button.background": "#75715e",
 		"editor.background": "#000000",
 		"editor.foreground": "#f8f8f2",
 		"selection.background": "#ccccc7",
@@ -34,18 +34,18 @@
 		"tab.border": "#1e1f1c",
 		"tab.inactiveForeground": "#ccccc7", // needs to be bright so it's readable when another editor group is focused
 		"widget.shadow": "#000000",
-		"progressBar.background": "#75715E",
-		"badge.background": "#75715E",
+		"progressBar.background": "#75715e",
+		"badge.background": "#75715e",
 		"badge.foreground": "#f8f8f2",
 		"editorLineNumber.foreground": "#90908a",
 		"panelTitle.activeForeground": "#f8f8f2",
-		"panelTitle.activeBorder": "#75715E",
-		"panelTitle.inactiveForeground": "#75715E",
+		"panelTitle.activeBorder": "#75715e",
+		"panelTitle.inactiveForeground": "#75715e",
 		"panel.border": "#414339",
 		"titleBar.activeBackground": "#1e1f1c",
 		"statusBar.background": "#414339",
 		"statusBar.noFolderBackground": "#414339",
-		"statusBar.debuggingBackground": "#75715E",
+		"statusBar.debuggingBackground": "#75715e",
 		"statusBarItem.remoteBackground": "#AC6218",
 		"activityBar.background": "#272822",
 		"activityBar.foreground": "#f8f8f2",
@@ -53,10 +53,10 @@
 		"sideBarSectionHeader.background": "#272822",
 		"menu.background": "#1e1f1c",
 		"menu.foreground": "#cccccc",
-		"pickerGroup.foreground": "#75715E",
+		"pickerGroup.foreground": "#75715e",
 		"input.background": "#414339",
-		"inputOption.activeBorder": "#75715E",
-		"focusBorder": "#75715E",
+		"inputOption.activeBorder": "#75715e",
+		"focusBorder": "#75715e",
 		"editorWidget.background": "#1e1f1c",
 		"debugToolBar.background": "#1e1f1c",
 		"diffEditor.insertedTextBackground": "#4b661680", // middle of #272822 and #a6e22e
@@ -68,17 +68,17 @@
 		"inputValidation.infoBackground": "#546190", // middle of #272822 and #819aff
 		"inputValidation.infoBorder": "#819aff",
 		"editorHoverWidget.background": "#414339",
-		"editorHoverWidget.border": "#75715E",
+		"editorHoverWidget.border": "#75715e",
 		"editorSuggestWidget.background": "#272822",
-		"editorSuggestWidget.border": "#75715E",
+		"editorSuggestWidget.border": "#75715e",
 		"editorGroup.border": "#34352f",
-		"peekView.border": "#75715E",
+		"peekView.border": "#75715e",
 		"peekViewEditor.background": "#272822",
 		"peekViewResult.background": "#1e1f1c",
 		"peekViewTitle.background": "#1e1f1c",
 		"peekViewResult.selectionBackground": "#414339",
-		"peekViewResult.matchHighlightBackground": "#75715E",
-		"peekViewEditor.matchHighlightBackground": "#75715E",
+		"peekViewResult.matchHighlightBackground": "#75715e",
+		"peekViewEditor.matchHighlightBackground": "#75715e",
 		"terminal.ansiBlack": "#333333",
 		"terminal.ansiRed": "#C4265E", // the bright color with ~75% transparent on the background
 		"terminal.ansiGreen": "#86B42B",
@@ -361,7 +361,7 @@
 				"comment.line.double-slash.rust", // //
 			],
 			"settings": {
-				"foreground": "#75715E",
+				"foreground": "#75715e",
 			}
 		},
 		////////////////////////////////////////
@@ -701,7 +701,7 @@
 				"comment.line.number-sign.python", // comment
 			],
 			"settings": {
-				"foreground": "#75715E",
+				"foreground": "#75715e",
 			}
 		},
 		////////////////////////////////////////
@@ -856,6 +856,15 @@
 			],
 			"settings": {
 				"foreground": "#e6db74"
+			}
+		},
+		{
+			"scope": [
+				"punctuation.definition.tag.begin.html", // <
+				"punctuation.definition.tag.end.html", // >
+			],
+			"settings": {
+				"foreground": "#f8f8f2"
 			}
 		},
 		////////////////////////////////////////
@@ -1414,7 +1423,7 @@
 			"name": "Comment",
 			"scope": "comment",
 			"settings": {
-				"foreground": "#75715E"
+				"foreground": "#75715e"
 			}
 		},
 		////////////////////////////////////////
@@ -1431,13 +1440,6 @@
 			],
 			"settings": {
 				"foreground": "#F8F8F2"
-			}
-		},
-		{
-			"name": "Comment",
-			"scope": "comment",
-			"settings": {
-				"foreground": "#75715e"
 			}
 		},
 		{
@@ -1614,7 +1616,7 @@
 			"name": "diff.header",
 			"scope": "meta.diff, meta.diff.header",
 			"settings": {
-				"foreground": "#75715E"
+				"foreground": "#75715e"
 			}
 		},
 		{
@@ -1706,7 +1708,7 @@
 			"scope": "markup.quote.markdown",
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#75715E"
+				"foreground": "#75715e"
 			}
 		},
 		{
