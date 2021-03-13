@@ -3,17 +3,22 @@
 This theme's colors are based on the original Monokai.
 
 Following types are specifically set:
+* CSS
+* Dockerfile
+* HTML
+* INI
+* Jinja2
+* JSON
 * Python
 * RegEx
-* HTML
-* CSS
 * ReStructuredText
-* INI 
-* TOML 
-* YAML 
-* JSON
-* Dockerfile
-* Jinja2
+* TOML
+* YAML
+
+Planned to be also specifically set:
+* Markdown
+* Rust
+* SQL
 
 Following extensions are needed for the corresponding file type:
 * ReStructuredText: reStructuredText by LeXtudio
