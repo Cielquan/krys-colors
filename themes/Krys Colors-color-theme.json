@@ -115,6 +115,256 @@
 			}
 		},
 		////////////////////////////////////////
+		//// Rust
+		////////////////////////////////////////
+		{
+			"scope": [
+				"keyword.operator.arrow.fat.rust", // =>
+				"keyword.operator.arrow.skinny.rust", // ->
+				"keyword.operator.assignment.equal.rust", // =
+				"keyword.operator.assignment.rust", // += -= *= /= &=
+				"keyword.operator.comparison.rust", // == != <= >=
+				"keyword.operator.dereference.rust", // *
+				"keyword.operator.key-value.rust", // :
+				"keyword.operator.math.rust", // + - * / %
+				"keyword.operator.namespace.rust", // ::
+				"keyword.operator.question.rust", // ?
+				"keyword.operator.range.rust", // ..
+				"punctuation.definition.lifetime.rust", // ' for lifetimes
+				
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#f92672"
+			}
+		},
+		{
+			"scope": [
+				"storage.type.rust", // extern mod const let type enum struct trait				
+			],
+			"settings": {
+				"foreground": "#66d9ef"
+			}
+		},
+		{
+			"scope": [
+				"string.quoted.byte.raw.rust", // b and r in front of string or char
+				"punctuation.definition.string.raw.rust", // # for raw strings
+				"keyword.other.rust", // use pub union impl in unsafe
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66d9ef"
+			}
+		},
+		{
+			"scope": [
+				"storage.modifier.mut.rust", // mut
+				"keyword.other.fn.rust", // fn
+				"keyword.control.rust", // for while loop if else match return
+			],
+			"settings": {
+				"fontStyle": "italic bold",
+				"foreground": "#66d9ef"
+			}
+		},
+		{
+			"scope": [
+				"keyword.operator.logical.rust", // | ! || &&
+			],
+			"settings": {
+				"foreground": "#268BD2"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.numeric.rust", // number tpyes like usize i64
+				"entity.name.type.primitive.rust", // str and which others?
+				"entity.name.type.option.rust", // Some None
+				"entity.name.type.result.rust", // Ok Err
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#268BD2"
+			}
+		},
+		{
+			"scope": [
+				"constant.language.bool.rust", // booleans
+			],
+			"settings": {
+				"fontStyle": "italic bold",
+				"foreground": "#859900"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.rust", // all remaining types
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#a6e22e"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.function.rust", // func call and def
+				"entity.name.function.macro.rust", // macro calls (also def?)
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#a6e22e"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.enum.rust", // enum NAME
+				"entity.name.type.struct.rust", // struct NAME
+				"entity.name.type.trait.rust", // trait NAME
+				"entity.name.type.declaration.rust", // type NAME
+			],
+			"settings": {
+				"fontStyle": "underline",
+				"foreground": "#a6e22e"
+			}
+		},
+		{
+			"scope": [
+				"comment.line.documentation.rust", // doc comment: ///
+			],
+			"settings": {
+				"foreground": "#629755"
+			}
+		},
+		{
+			"scope": [
+				"meta.attribute.rust", // attribute stuff
+				"punctuation.definition.attribute.rust", // # for attributes
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#aa4926"
+			}
+		},
+		{
+			"scope": [
+				"keyword.operator.borrow.and.rust", // &
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#fd971f"
+			}
+		},
+		{
+			"scope": [
+				"variable.language.self.rust", // self Self
+				"variable.language.super.rust", // super
+				"keyword.other.crate.rust", // crate
+			],
+			"settings": {
+				"foreground": "#94558d"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.lifetime.rust", // 'LIFETIMENAME
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#b200b2"
+			}
+		},
+		{
+			"scope": [
+				"punctuation.definition.string.rust", // ""
+				"string.quoted.double.rust", // string
+				"punctuation.definition.char.rust", // ''
+				"string.quoted.single.char.rust", // char
+			],
+			"settings": {
+				"foreground": "#e6db74"
+			}
+		},
+		{
+			"scope": [
+				"punctuation.separator.dot.decimal.rust", // dot for decimals
+				"constant.numeric.decimal.rust", // decimal numbers
+				"constant.numeric.hex.rust", // hex numbers
+				"constant.numeric.oct.rust", // oct numbers
+				"punctuation.definition.interpolation.rust", // {} in strings
+				"constant.character.escape.backslash.rust", // "\"
+				"constant.character.escape.bit.rust", // x20 in "\x20"
+				"constant.character.escape.rust", // u in "\u"
+				"constant.character.escape.unicode.punctuation.rust", // {} in "\u{abcdef}"
+				"constant.character.escape.unicode.rust", // u abcdef in "\u{abcdef}"
+				"meta.interpolation.rust", //
+			],
+			"settings": {
+				"foreground": "#ae81ff"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.module.rust", // mod MODULE
+				"entity.name.namespace.rust", // namespace names
+				"meta.use.rust", //
+				"meta.import.rust", //
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#a7ff95"
+			}
+		},
+		{
+			"scope": [
+				"constant.other.caps.rust", // const NAME
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#F8F8F2"
+			}
+		},
+		{
+			"scope": [
+				"meta.macro.rust", //
+				"meta.function.definition.rust", //
+				"meta.function.call.rust", //
+
+				"punctuation.brackets.angle.rust", // <>
+				"punctuation.brackets.curly.rust", // {}
+				"punctuation.brackets.round.rust", // ()
+				"punctuation.brackets.square.rust", // []
+				"punctuation.brackets.attribute.rust", // [] in #[attribute]
+				"punctuation.semi.rust", // ;
+				"punctuation.comma.rust", // ,
+				"keyword.operator.access.dot.rust", // .
+				// "variable.other.rust", // variables
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#F8F8F2",
+			}
+		},
+		{
+			"scope": [
+				
+				"a",
+			],
+			"settings": {
+				"foreground": "#ff00d4",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"scope": [
+				"comment.block.rust", // /* */
+				"comment.line.double-slash.rust", // //
+			],
+			"settings": {
+				"foreground": "#75715E",
+			}
+		},
+		////////////////////////////////////////
 		//// Python
 		////////////////////////////////////////
 		// unused scopes
