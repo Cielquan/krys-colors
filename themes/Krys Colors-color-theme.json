@@ -275,6 +275,7 @@
 				"variable.parameter.function-call.python", // parameter in func call
 			],
 			"settings": {
+				"fontStyle": "italic",
 				"foreground": "#aa4926"
 			}
 		},
