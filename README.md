@@ -21,10 +21,10 @@ Planned to be also specifically set:
 * SQL
 
 Following extensions are needed for the corresponding file type:
-* ReStructuredText: reStructuredText by LeXtudio
-* TOML: Better TOML by bungcip
 * Dockerfile: Better DockerFile Syntax by Jeff Hykin
 * Jinja2: Better Jinja by Samuel Colvin
+* ReStructuredText: reStructuredText by LeXtudio
+* TOML: Better TOML by bungcip
 
 
 ## Install the extension
