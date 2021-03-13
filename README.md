@@ -12,18 +12,19 @@ Following types are specifically set:
 * Python
 * RegEx
 * ReStructuredText
+* Rust
 * TOML
 * YAML
 
 Planned to be also specifically set:
 * Markdown
-* Rust
 * SQL
 
 Following extensions are needed for the corresponding file type:
 * Dockerfile: Better DockerFile Syntax by Jeff Hykin
 * Jinja2: Better Jinja by Samuel Colvin
 * ReStructuredText: reStructuredText by LeXtudio
+* Rust: Rust by The Rust Programming Language
 * TOML: Better TOML by bungcip
 
 
