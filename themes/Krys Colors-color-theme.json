@@ -105,6 +105,15 @@
 				"foreground": "#F8F8F2"
 			}
 		},
+		{
+			"scope": [
+				"a",
+			],
+			"settings": {
+				"foreground": "#ff00d4",
+				"fontStyle": "bold"
+			}
+		},
 		////////////////////////////////////////
 		//// Python
 		////////////////////////////////////////
@@ -120,16 +129,6 @@
 		// "variable.parameter.class.python",
 		// "storage.modifier.declaration.python",
 		// "keyword.codetag.notation.python",
-
-		{
-			"scope": [
-				"a",
-			],
-			"settings": {
-				"foreground": "#ff00d4",
-				"fontStyle": "bold"
-			}
-		},
 		{
 			"scope": [
 				"punctuation.definition.decorator.python", // decorator @
