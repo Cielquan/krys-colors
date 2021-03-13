@@ -1730,5 +1730,132 @@
 			}
 		},
 	],
-	"semanticHighlighting": true
+	"semanticHighlighting": true,
+    "semanticTokenColors": {
+		////////////////////////////////////////
+		//// Rust
+		////////////////////////////////////////
+		"*.documentation:rust": {
+			"foreground": "#629755",
+		},
+		"*.attribute:rust": {
+			"foreground": "#aa4926",
+			"fontStyle": "italic"
+		},
+		"lifetime:rust": {
+			"foreground": "#b200b2",
+		},
+		"boolean:rust": {
+			"foreground": "#859900",
+		},
+		"variable.constant:rust": {
+			"foreground": "#F8F8F2",
+			"fontStyle": "bold"
+		},
+		"keyword.controlFlow": {
+			"foreground": "#66d9ef",
+			"fontStyle": "italic bold"
+		},
+		"macro": {
+			"foreground": "#a6e22e",
+			"fontStyle": "bold"
+		},
+		"function.declaration": {
+			"foreground": "#a6e22e",
+			"fontStyle": "bold"
+		},
+		"typeParameter.declaration": {
+			"foreground": "#a6e22e",
+			"fontStyle": "underline"
+		},
+		"struct.declaration": {
+			"foreground": "#a6e22e",
+			"fontStyle": "underline"
+		},
+		"enum.declaration": {
+			"foreground": "#a6e22e",
+			"fontStyle": "underline"
+		},
+		"union.declaration": {
+			"foreground": "#a6e22e",
+			"fontStyle": "underline"
+		},
+		////////////////////////////////////////
+		//// Python
+		////////////////////////////////////////
+		// https://github.com/microsoft/pylance-release#semantic-highlighting
+		"*.typeHint:python": {
+			"foreground": "#89ffa6",
+			"fontStyle": "italic"
+		},
+		"*.typeHintComment:python": {
+			"foreground": "#75715E",
+			"fontStyle": ""
+		},
+		"class:python": {
+			"foreground": "#66d9ef",
+			"fontStyle": ""
+		},
+		"class.builtin:python": {
+			"foreground": "#268BD2",
+			"fontStyle": "italic"
+		},
+		"class.declaration:python": {
+			"foreground": "#a6e22e",
+			"fontStyle": "underline bold"
+		},
+		"class.typeHint:python": {
+			"foreground": "#89ffa6",
+			"fontStyle": "italic"
+		},
+		"selfParameter:python": {
+			"foreground": "#94558d",
+			"fontStyle": ""
+		},
+		"clsParameter:python": {
+			"foreground": "#94558d",
+			"fontStyle": ""
+		},
+		"magicFunction.declaration:python": {
+			"foreground": "#b200b2",
+			"fontStyle": "italic"
+		},
+		"method:python": {
+			"foreground": "#66d9ef",
+			"fontStyle": ""
+		},
+		"function:python": {
+			"foreground": "#66d9ef",
+			"fontStyle": ""
+		},
+		"function.builtin:python": {
+			"foreground": "#66d9ef",
+			"fontStyle": "italic"
+		},
+		"function.declaration:python": {
+			"foreground": "#a6e22e",
+			"fontStyle": "bold"
+		},
+		"function.typeHint:python": {
+			"foreground": "#89ffa6",
+			// "foreground": "#a7ff95", // old
+			"fontStyle": "italic"
+		},
+		"member:python": {
+			"foreground": "#F8F8F2",
+			"fontStyle": ""
+		},
+		"intrinsic:python": {
+			"foreground": "#66d9ef",
+			"fontStyle": "italic"
+		},
+		"module:python": {
+			"foreground": "#F8F8F2",
+			"fontStyle": ""
+		},
+		"variable.readonly:python": {
+			"foreground": "#F8F8F2",
+			"fontStyle": "bold"
+		},
+	},
 }
