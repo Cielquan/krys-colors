@@ -9,6 +9,7 @@ Following types are specifically set:
 * INI
 * Jinja2
 * JSON
+* Markdown
 * Python
 * RegEx
 * ReStructuredText
@@ -17,7 +18,6 @@ Following types are specifically set:
 * YAML
 
 Planned to be also specifically set:
-* Markdown
 * SQL
 
 Following extensions are needed for the corresponding file type:
