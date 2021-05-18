@@ -3,7 +3,7 @@
     "displayName": "Krys Colors",
     "description": "Krys theme for Visual Studio Code based on Monokai",
     "version": "1.0.0",
-	"publisher": "C.Riedel",
+	"publisher": "CRiedel",
 	"license": "MIT",
     "engines": {
         "vscode": "*"
