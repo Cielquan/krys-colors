@@ -108,13 +108,22 @@
 		{
 			"scope": [
 				"source",
-				"punctuation.separator.period",
-				"punctuation.separator.comma",
-				"punctuation.separator.arguments",
-				"punctuation.separator.parameter",
-				"punctuation.separator.parameters",
-				"punctuation.separator.element",
-				"punctuation.separator.list",
+				"punctuation.separator",
+				// "punctuation.separator.period",
+				// "punctuation.separator.comma",
+				// "punctuation.separator.arguments",
+				// "punctuation.separator.parameter",
+				// "punctuation.separator.parameters",
+				// "punctuation.separator.element",
+				// "punctuation.separator.list",
+				// "punctuation.separator.mapping", // ',' in yaml mapping
+				// "punctuation.separator.sequence", // ',' in yaml array
+				// "punctuation.separator.array", // ',' in JSON array
+				// "punctuation.separator.dictionary", // ':' ',' in JSON dict
+				// "punctuation.separator.key-value.ini", // '='
+				// "punctuation.separator.key-value.mapping.yaml", // ':'
+				
+				
 			],
 			"settings": {
 				"foreground": "#F8F8F2"
@@ -143,8 +152,6 @@
 			"name": "String",
 			"scope": [
 				"string",
-				// "punctuation.definition.string",
-				"punctuation.definition.char",
 			],
 			"settings": {
 				"foreground": "#E6DB74"
@@ -197,14 +204,26 @@
 			"scope": [
 				"keyword.operator",
 				"punctuation.section",
-				"punctuation.separator",
+				
+				"punctuation.separator.key-value.html", // '=' (was yellow new red)
+				"punctuation.separator.key-value.restructuredtext", // key value separator : (red)
+				"punctuation.separator.key-value.markdown", // red
+
+				"punctuation.separator.annotation.python", // ':' before type annotation in def
+				"punctuation.separator.annotation.result.python", // '->' before return type annotation in def
+				"punctuation.separator.colon.python", // ':' after type annotions in body
+				"punctuation.separator.dict.python", // ':' in dicts
+				"punctuation.separator.slice.python", // slice operator ':'
+
 				"constant.language.import-export-all.js", // * in import
 				"constant.language.import-export-all.ts", // * in import
-				"storage.type.function.arrow.js",
-				"storage.type.function.arrow.ts",
-				"keyword.other.unit.percentage.css",
-				"punctuation.definition.lifetime.rust",
-				"punctuation.definition.decorator.python",
+				"storage.type.function.arrow.js", // =>
+				"storage.type.function.arrow.ts", // =>
+				"keyword.other.unit.percentage.css", // %
+				"punctuation.definition.directive.begin.yaml", // %
+				"constant.language.merge.yaml", // <<
+				"punctuation.definition.lifetime.rust", // '
+				"punctuation.definition.decorator.python", // @
 			],
 			"settings": {
 				"foreground": "#F92672"
@@ -601,6 +620,89 @@
 				"foreground": "#A6E22E"
 			}
 		},
+		{
+			"name": "Config section",
+			// INI / TOML
+			"scope": [
+				"entity.name.section.group-title",
+				"entity.other.attribute-name.table",
+			],
+			"settings": {
+				"foreground": "#268BD2"
+			}
+		},
+		{
+			"name": "Config key",
+			// INI / TOML / YAML / JSON
+			"scope": [
+				"keyword.other.definition.ini",
+				"keyword.key.toml",
+				"entity.name.tag.yaml",
+				"support.type.property-name.json",
+			],
+			"settings": {
+				"foreground": "#A6E22E",
+			}
+		},
+		{
+			"name": "Config built-in constant",
+			// TOML / YAML / JSON
+			"scope": [
+				"constant.other.boolean.toml",
+				"constant.language.boolean.yaml",
+				"constant.language.json",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Config date",
+			// TOML / YAML
+			"scope": [
+				"constant.other.datetime-with-timezone.toml",
+				"constant.other.date.toml",
+				"constant.other.timestamp.yaml",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Config string",
+			// INI / TOML / YAML / JSON
+			"scope": [
+				"string.quoted.double.ini", // quoted string double
+				"string.quoted.single.ini", // quoted string single
+				"source.ini", // rest of ini // missing scope for property value in ini ???
+			
+				"string.quoted.triple.basic.block.toml", // triple "
+				"string.quoted.single.basic.line.toml", // single "
+			
+				"string.unquoted.plain.in.yaml", // unquoted string in []
+				"string.unquoted.plain.out.yaml", // unquoted string
+				"string.unquoted.block.yaml", // unquoted string block
+				"string.quoted.double.yaml", // "" string
+			
+				"string.quoted.double.json", // quoted string
+			],
+			"settings": {
+				"foreground": "#2AA198"
+			}
+		},{
+			"name": "Config string (literal)",
+			// TOML / YAML
+			"scope": [
+				"string.quoted.triple.literal.block.toml", // triple '
+				"string.quoted.single.literal.line.toml", // single '
+				"string.quoted.single.yaml", // '' string (literal)
+			],
+			"settings": {
+				"foreground": "#E6DB74"
+			}
+		},
 		////////////////////////////////////////
 		//// Special colored
 		////////////////////////////////////////
@@ -626,6 +728,9 @@
 			"scope": [
 				"constant.other.ellipsis.python",
 				"support.variable.magic.python",
+				"meta.separator.markdown", // *** --- ___
+				"entity.other.document.begin.yaml", // beginnging ---
+				"entity.other.document.end.yaml", // ending ...
 			],
 			"settings": {
 				"fontStyle": "bold",
@@ -643,6 +748,8 @@
 		{
 			"scope": [
 				"keyword.operator.borrow.and.rust", // &
+				"punctuation.definition.anchor.yaml", // &
+				"punctuation.definition.alias.yaml", // *
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -650,10 +757,20 @@
 			}
 		},
 		{
+			"name": "Yaml Anchor/Alias",
+			"scope": [
+				"entity.name.type.anchor.yaml",
+				"variable.other.alias.yaml",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#A7FF95"
+			}
+		},
+		{
 			"scope": [
 				"entity.name.type.lifetime.rust", // 'LIFETIMENAME
 				"support.function.magic.python", // magic func assignment
-				"meta.separator.markdown", // *** --- ___
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -684,7 +801,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#AA4926"
+				"foreground": "#CB4B16"
 			}
 		},
 		{
@@ -694,139 +811,6 @@
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#A6E22E"
-			}
-		},
-		////////////////////////////////////////
-		//// INI / TOML / YAML / JSON
-		////////////////////////////////////////
-		{
-			"name": "Config Section",
-			"scope": [
-				"entity.name.section.group-title.ini", // section
-				"entity.other.attribute-name.table.toml", // section
-				"entity.other.attribute-name.table.array.toml", // section array
-			],
-			"settings": {
-				"foreground": "#268BD2"
-			}
-		},
-		{
-			"name": "Config Key",
-			"scope": [
-				"keyword.other.definition.ini", // property key
-				"keyword.key.toml", // key
-				"entity.name.tag.yaml", // tags
-				"support.type.property-name.json", // property names
-			],
-			"settings": {
-				"foreground": "#A6E22E",
-			}
-		},
-		{
-			"name": "Config Text",
-			"scope": [
-				"string.quoted.double.ini", // quoted string double
-				"string.quoted.single.ini", // quoted string single
-				"source.ini", // rest of ini // missing scope for property value in ini ???
-				"string.quoted.triple.basic.block.toml", // triple "
-				"string.quoted.triple.literal.block.toml", // triple '
-				"string.quoted.single.basic.line.toml", // single "
-				"string.quoted.single.literal.line.toml", // single '
-				"string.unquoted.plain.in.yaml", // unquoted string in []
-				"string.unquoted.plain.out.yaml", // unquoted string
-				"string.unquoted.block.yaml", // unquoted string block
-				"string.quoted.double.yaml", // quoted string
-				"punctuation.definition.string.begin.yaml", // string begin quotes
-				"punctuation.definition.string.end.yaml", // string end quotes
-				"string.quoted.double.json", // quoted string
-				"punctuation.definition.string.end.json",
-				"punctuation.definition.string.begin.json",
-			],
-			"settings": {
-				"foreground": "#2AA198"
-			}
-		},
-		{
-			"name": "Config Bool/Date",
-			"scope": [
-				"constant.other.boolean.toml", // boolean
-				"constant.other.datetime-with-timezone.toml", // datetime + tz
-				"constant.other.date.toml", // date
-				"constant.language.boolean.yaml", // boolean
-				"constant.language.json", // boolean / null
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Config Number/Escape",
-			"scope": [
-				"constant.numeric.integer.toml", // int
-				"constant.numeric.float.toml", // float
-				"constant.character.escape.toml", // valid escape
-				"constant.numeric.integer.yaml", // int
-				"constant.numeric.float.yaml", // float // TODO: yaml float scope takes things like 1.1.1
-				"constant.character.escape.json", // escapes
-				"constant.numeric.json", // number
-			],
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"name": "Config Invalid Escape",
-			"scope": [
-				"invalid.illegal.toml", // error
-				"invalid.illegal.escape.toml", // illegal escape
-				"invalid.illegal.unrecognized-string-escape.json", // illegal escape
-			],
-			"settings": { // TODO: missing background customization
-				// "foreground": "#F8F8F0",
-				// "background": "#F92672",
-				"foreground": "#F92672",
-				"fontStyle": "bold",
-			}
-		},
-		{
-			"name": "Yaml Special Chars",
-			"scope": [
-				"entity.other.document.begin.yaml", // beginnging ---
-				"punctuation.definition.anchor.yaml", // &
-				"punctuation.definition.alias.yaml", // *
-				"keyword.control.flow.block-scalar.folded.yaml", // >
-				"keyword.control.flow.block-scalar.literal.yaml", // |
-				"storage.modifier.chomping-indicator.yaml", // +
-			],
-			"settings": {
-				"foreground": "#CB4B16"
-			}
-		},
-		{
-			"name": "Yaml Anchor/Alias",
-			"scope": [
-				"entity.name.type.anchor.yaml", // anchor
-				"variable.other.alias.yaml", // alias
-			],
-			"settings": {
-				"foreground": "#E8BF6A"
-			}
-		},
-		{
-			"name": "Config Punctuation",
-			"scope": [
-				"punctuation.definition.entity.ini", // section []
-				"punctuation.separator.key-value.ini", // '='
-				"punctuation.definition.keyValuePair.toml", // '='
-				"punctuation.definition.block.sequence.item.yaml", // -
-				"punctuation.separator.key-value.mapping.yaml", // ':'
-				"punctuation.separator.dictionary.key-value.json", // ':' in dict
-				"punctuation.separator.dictionary.pair.json", // ',' in dict
-				"punctuation.separator.array.json", // ',' in array
-			],
-			"settings": {
-				"foreground": "#F8F8F2"
 			}
 		},
 		////////////////////////////////////////
