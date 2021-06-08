@@ -1,3 +1,4 @@
+// https://github.com/MagicStack/MagicPython/blob/master/misc/scopes
 {
 	"$schema": "vscode://schemas/color-theme",
 	"name": "Krys Colors",
@@ -97,77 +98,181 @@
 		"terminal.ansiBrightWhite": "#F8F8F2"
 	},
 	"tokenColors": [
-		{	// TESTING SCOPE
-			"scope": [
-				"a",
-			],
-			"settings": {
-				"foreground": "#FF00D4",
-				"fontStyle": "bold"
-			}
-		},
 		////////////////////////////////////////
 		////////////////////////////////////////
 		////////////////////////////////////////
-		//// MONOKAI DEFAULTS
+		//// GLOBAL DEFAULTS
 		////////////////////////////////////////
 		////////////////////////////////////////
-		////////////////////////////////////////
+		////////////////////////////////////////		
 		{
 			"scope": [
-				"meta.embedded",
-				"source.groovy.embedded"
+				"source",
+				"punctuation.separator.period",
+				"punctuation.separator.comma",
+				"punctuation.separator.arguments",
+				"punctuation.separator.parameter",
+				"punctuation.separator.parameters",
+				"punctuation.separator.element",
+				"punctuation.separator.list",
 			],
 			"settings": {
 				"foreground": "#F8F8F2"
-			}
-		},
-		{
-			"name": "Template Definition",
-			"scope": [
-				"punctuation.definition.template-expression",
-				"punctuation.section.embedded"
-			],
-			"settings": {
-				"foreground": "#F92672"
-			}
-		},
-		{
-			"name": "Reset JavaScript string interpolation expression",
-			"scope": [
-				"meta.template.expression"
-			],
-			"settings": {
-				"foreground": "#F8F8F2"
-			}
-		},
-		{
-			"name": "Built-in constant",
-			"scope": "constant.language",
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"name": "User-defined constant",
-			"scope": "constant.character, constant.other",
-			"settings": {
-				"foreground": "#AE81FF"
 			}
 		},
 		{
 			"name": "Variable",
 			"scope": "variable",
 			"settings": {
-				"fontStyle": "",
 				"foreground": "#F8F8F2"
 			}
 		},
 		{
-			"name": "Keyword",
-			"scope": "keyword",
+			"name": "Constant",
+			"scope": [
+				"variable.other.constant",
+				"constant.other.caps",
+				"support.constant"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#F8F8F2"
+			}
+		},
+		{
+			"name": "String",
+			"scope": [
+				"string",
+				// "punctuation.definition.string",
+				"punctuation.definition.char",
+			],
+			"settings": {
+				"foreground": "#E6DB74"
+			}
+		},
+		{
+			"name": "Byte-String",
+			"scope": [
+				"string.quoted.binary",
+				"string.quoted.raw.binary",
+			],
+			"settings": {
+				"foreground": "#A5C261"
+			}
+		},
+		{
+			"name": "Escapes",
+			"scope": [
+				"constant.character.escape",
+				"constant.character.format",
+				"punctuation.definition.interpolation",
+				"meta.interpolation",
+			],
+			"settings": {
+				"foreground": "#AE81FF"
+			}
+		},
+		{
+			"name": "User-defined constant",
+			"scope": [
+				"constant.character",
+				"constant.other",
+			],
+			"settings": {
+				"foreground": "#AE81FF"
+			}
+		},
+		{
+			"name": "Number",
+			"scope": [
+				"constant.numeric",
+				"punctuation.separator.dot.decimal",
+			],
+			"settings": {
+				"foreground": "#AE81FF"
+			}
+		},
+		{
+			"name": "Operator",
+			"scope": [
+				"keyword.operator",
+				"punctuation.section",
+				"punctuation.separator",
+				"constant.language.import-export-all.js", // * in import
+				"constant.language.import-export-all.ts", // * in import
+				"storage.type.function.arrow.js",
+				"storage.type.function.arrow.ts",
+				"keyword.other.unit.percentage.css",
+				"punctuation.definition.lifetime.rust",
+				"punctuation.definition.decorator.python",
+			],
 			"settings": {
 				"foreground": "#F92672"
+			}
+		},
+		{
+			"name": "Operator (logical)",
+			"scope": [
+				"keyword.operator.logical",
+			],
+			"settings": {
+				"foreground": "#268BD2"
+			}
+		},
+		{
+			"name": "Keyword",
+			"scope": [
+				"keyword.other",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Keyword (control)",
+			"scope": [
+				"keyword.control",
+			],
+			"settings": {
+				"fontStyle": "italic bold",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Keyword (import)",
+			"scope": [
+				"keyword.control.import",
+				"keyword.control.from",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#A6E22E"
+			}
+		},
+		{
+			"name": "Keyword (special)",
+			"scope": [
+				"storage.type.format.python",
+				"storage.type.function.async.python",
+				"keyword.other.important.css",
+				"keyword.operator.new.js",
+				"keyword.operator.new.ts",
+				"meta.other.directive.restructuredtext",
+				"entity.name.role.restructuredtext",
+			],
+			"settings": {
+				"foreground": "#F92672"
+			}
+		},
+		{
+			"name": "Built-in constant",
+			"scope": [
+				"constant.language",
+			],
+			"settings": {
+				"fontStyle": "italic bold",
+				"foreground": "#859900"
 			}
 		},
 		{
@@ -180,14 +285,63 @@
 		},
 		{
 			"name": "Storage type",
-			"scope": "storage.type",
+			"scope": [
+				"storage.type",
+			],
 			"settings": {
 				"foreground": "#66D9EF"
 			}
 		},
 		{
+			"name": "Storage type (special)",
+			"scope": [
+				"storage.type.string",
+				"string.quoted.byte.raw.rust", // b and r in front of string or char
+				"punctuation.definition.string.raw.rust", // # for raw strings
+				"storage.type.number",
+				"storage.type.imaginary.number",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Storage type (class/func)",
+			"scope": [
+				"storage.type.class",
+				"storage.type.function",
+				"keyword.other.fn",
+			],
+			"settings": {
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Library class/type",
+			"scope": [
+				"support.type",
+				"support.class",
+				"entity.name.type.numeric",
+				"entity.name.type.primitive",
+				"entity.name.type.option",
+				"entity.name.type.result",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#268BD2"
+			}
+		},
+		{
 			"name": "Class name",
-			"scope": "entity.name.type, entity.name.class, entity.name.namespace, entity.name.scope-resolution",
+			"scope": [
+				"entity.name.class",
+				"entity.name.type.class",
+				"entity.name.type.enum",
+				"entity.name.type.struct",
+				"entity.name.type.trait",
+				"entity.name.type.declaration",
+			],
 			"settings": {
 				"fontStyle": "underline",
 				"foreground": "#A6E22E"
@@ -195,15 +349,38 @@
 		},
 		{
 			"name": "Inherited class",
-			"scope": "entity.other.inherited-class",
+			"scope": [
+				"entity.other.inherited-class"
+			],
 			"settings": {
-				"fontStyle": "italic underline",
+				"fontStyle": "italic",
 				"foreground": "#A6E22E"
 			}
 		},
 		{
+			"name": "Self",
+			"scope": [
+				"variable.language",
+				"variable.parameter.function.language.special",
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#94558D"
+			}
+		},
+		{
+			"name": "Library function",
+			"scope": "support.function",
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
 			"name": "Function name",
-			"scope": "entity.name.function",
+			"scope": [
+				"entity.name.function"
+		],
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#A6E22E"
@@ -211,15 +388,30 @@
 		},
 		{
 			"name": "Function argument",
-			"scope": "variable.parameter",
+			"scope": [
+				"variable.parameter"
+		],
 			"settings": {
 				"fontStyle": "italic",
 				"foreground": "#FD971F"
 			}
 		},
 		{
+			"name": "Namespace/Scope",
+			"scope": [
+				"entity.name.namespace",
+				"entity.name.scope-resolution",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#A7FF95"
+			}
+		},
+		{
 			"name": "Tag name",
-			"scope": "entity.name.tag",
+			"scope": [
+				"entity.name.tag",
+			],
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#F92672"
@@ -234,88 +426,36 @@
 			}
 		},
 		{
-			"name": "Library function",
-			"scope": "support.function",
-			"settings": {
-				"fontStyle": "",
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Library constant",
-			"scope": "support.constant",
-			"settings": {
-				"fontStyle": "",
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Library class/type",
-			"scope": "support.type, support.class",
-			"settings": {
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Library variable",
-			"scope": "support.other.variable",
-			"settings": {
-				"fontStyle": ""
-			}
-		},
-		{
-			"name": "Invalid",
-			"scope": "invalid",
-			"settings": {
-				"fontStyle": "",
-				"foreground": "#F8F8F0"
-			}
-		},
-		{
-			"name": "Invalid deprecated",
-			"scope": "invalid.deprecated",
-			"settings": {
-				"foreground": "#F8F8F0"
-			}
-		},
-		{
-			"name": "diff.header",
-			"scope": "meta.diff, meta.diff.header",
+			"name": "Comment",
+			"scope": [
+				"comment"
+			],
 			"settings": {
 				"foreground": "#75715E"
 			}
 		},
 		{
-			"name": "diff.deleted",
-			"scope": "markup.deleted",
+			"name": "Comment (documentation)",
+			"scope": [
+				"comment.block.documentation",
+				"comment.line.documentation",
+				"string.quoted.docstring",
+			],
 			"settings": {
+				"foreground": "#629755"
+			}
+		},
+		{
+			"name": "Invalid",
+			"scope": [
+				"invalid",
+				"keyword.illegal",
+			],
+			"settings": { // TODO: missing background customization
+				"fontStyle": "bold italic underline",
+				// "foreground": "#F8F8F0",
+				// "background": "#F92672"
 				"foreground": "#F92672"
-			}
-		},
-		{
-			"name": "diff.inserted",
-			"scope": "markup.inserted",
-			"settings": {
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"name": "diff.changed",
-			"scope": "markup.changed",
-			"settings": {
-				"foreground": "#E6DB74"
-			}
-		},
-		{
-			"scope": "constant.numeric.line-number.find-in-files - match",
-			"settings": {
-				"foreground": "#AE81FFA0"
-			}
-		},
-		{
-			"scope": "entity.name.filename.find-in-files",
-			"settings": {
-				"foreground": "#E6DB74"
 			}
 		},
 		{
@@ -343,51 +483,46 @@
 			}
 		},
 		{
-			"name": "this.self",
-			"scope": "variable.language",
-			"settings": {
-				"foreground": "#FD971F"
-			}
-		},
-		////////////////////////////////////////
-		////////////////////////////////////////
-		////////////////////////////////////////
-		//// GLOBAL DEFAULTS
-		////////////////////////////////////////
-		////////////////////////////////////////
-		////////////////////////////////////////		
-		{
+			"name": "diff.header",
 			"scope": [
-				"source"
+				"meta.diff",
+				"meta.diff.header"
 			],
-			"settings": {
-				"foreground": "#F8F8F2"
-			}
-		},
-		{
-			"name": "String",
-			"scope": "string",
-			"settings": {
-				"foreground": "#E6DB74"
-			}
-		},
-		{
-			"name": "Number",
-			"scope": "constant.numeric",
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"name": "Comment",
-			"scope": "comment",
 			"settings": {
 				"foreground": "#75715E"
 			}
 		},
 		{
+			"name": "diff.deleted",
+			"scope": [
+				"markup.deleted"
+			],
+			"settings": {
+				"foreground": "#F92672"
+			}
+		},
+		{
+			"name": "diff.inserted",
+			"scope": [
+				"markup.inserted"
+			],
+			"settings": {
+				"foreground": "#A6E22E"
+			}
+		},
+		{
+			"name": "diff.changed",
+			"scope": [
+				"markup.changed"
+			],
+			"settings": {
+				"foreground": "#E6DB74"
+			}
+		},
+		{
 			"scope": [
 				"string.other.link",
+				"markup.underline",
 			],
 			"settings": {
 				"foreground": "#FD971F"
@@ -422,6 +557,8 @@
 		{
 			"scope": [
 				"markup.quote",
+				"markup.other.command",
+				"string.other.interpreted",
 			],
 			"settings": {
 				"foreground": "#6D6D94"
@@ -465,196 +602,103 @@
 			}
 		},
 		////////////////////////////////////////
-		//// Merged: JS / RUST / PYTHON
+		//// Special colored
 		////////////////////////////////////////
-
-			////////////////////////////////////////
-			//// Python
-			////////////////////////////////////////
-			// unused scopes
-			// https://github.com/MagicStack/MagicPython/blob/master/misc/scopes
-			// UNSET SO OTHERS TAKE OVER
-			// punctuation.definition.string.begin.python
-			// punctuation.definition.string.end.python
-			// UNKNOWN
-			// "string.interpolated.python",
-			// "support.type.metaclass.python",
-			// "variable.legacy.builtin.python",
-			// "variable.parameter.class.python",
-			// "storage.modifier.declaration.python",
-			// "keyword.codetag.notation.python",
-
-			
-		{
+		{	// TESTING SCOPE
 			"scope": [
-				// JS
-				"storage.type.function.arrow.js", // =>
-				"keyword.operator.assignment.js", // =
-				"keyword.operator.assignment.compound.js", // += -= *= /= %=
-				"keyword.operator.comparison.js", // === !== == !=
-				"keyword.operator.relational.js", // >= <= <>
-				"keyword.operator.increment.js", // ++
-				"keyword.operator.decrement.js", // --
-				"keyword.operator.arithmetic.js", // + - * / %
-				"punctuation.separator.key-value.js", // :
-				"constant.language.import-export-all.js", // import *
-				// RUST
-				"keyword.operator.arrow.fat.rust", // =>
-				"keyword.operator.arrow.skinny.rust", // ->
-				"keyword.operator.assignment.equal.rust", // =
-				"keyword.operator.assignment.rust", // += -= *= /= &=
-				"keyword.operator.comparison.rust", // == != <= >=
-				"keyword.operator.dereference.rust", // *
-				"keyword.operator.key-value.rust", // :
-				"keyword.operator.math.rust", // + - * / %
-				"keyword.operator.namespace.rust", // ::
-				"keyword.operator.question.rust", // ?
-				"keyword.operator.range.rust", // ..
-				"punctuation.definition.lifetime.rust", // ' for lifetimes
-				// PYTHON
-				"punctuation.definition.decorator.python", // decorator @
-				"keyword.operator.arithmetic.python", // operators arithmetic
-				"keyword.operator.assignment.python", // operators assignment
-				"keyword.operator.comparison.python", // operators comparison
-				"keyword.operator.unpacking.arguments.python", // * or ** in args
-				"keyword.operator.unpacking.parameter.python", // * or ** in param
-				"keyword.operator.bitwise.python", // bitwise operators
-				"keyword.operator.python", // unknown
-				"punctuation.section.function.begin.python", // ':' after func def
-				"punctuation.section.class.begin.python", // ':' after class def
-				"punctuation.separator.annotation.python", // ':' before type annotation in def
-				"punctuation.separator.annotation.result.python", // '->' before return type annotation in def
-				"punctuation.separator.colon.python", // ':' after type annotions in body
-				"storage.type.format.python", // format specifier in f-strings
-				"punctuation.separator.dict.python", // ':' in dicts
-				"punctuation.section.function.lambda.begin.python", // ':' in lambda
-				"punctuation.separator.slice.python", // slice operator ':'
-				"storage.type.function.async.python", // async keyword
-				// HTML
-				"entity.name.tag.html", //
-				// CSS
-				"entity.name.tag.css", // tag
-				"keyword.operator.combinator.css", // tag combinator
-				"keyword.operator.pattern.css", // '='
-				"keyword.other.unit.percentage.css", // '%'
-				// RST
-				"support.directive.restructuredtext", // directive
-				"punctuation.separator.key-value.restructuredtext", // key value separator :
-				"entity.name.tag.restructuredtext", // fields
-				"entity.name.role.restructuredtext", // role
-				"punctuation.definition.directive.restructuredtext", // directive def punctuation
-				"constant.other.footnote.link.restructuredtext", // footnotes
-				// MD
-				"punctuation.definition.constant",
-				"constant.other.reference.link.markdown",
-				"punctuation.separator.key-value.markdown",
+				"a"
 			],
 			"settings": {
-				"fontStyle": "",
-				"foreground": "#F92672"
+				"fontStyle": "bold",
+				"foreground": "#FF00D4"
+				
 			}
 		},
 		{
 			"scope": [
-				//JS
-				"storage.type.js", // var let const
-				"storage.type.class.js", // 'class'
-				"keyword.control.export.js", // 'export'
-				"support.constant.math.js", // Math
-				"support.function.math.js", // Math.func
-				// RUST
-				"storage.type.rust", // extern mod const let type enum struct trait
-				// PYTHON
-				"storage.type.class.python", // 'class'
-				"support.function.builtin.python", // buildin functions
-				"meta.function-call.generic.python", // function call
-				// CSS
-				"support.function.url.css", // url function
-				"support.function.misc.css", // misc functions
+				"keyword.operator.access.dot.rust", // .
 			],
 			"settings": {
-				"foreground": "#66D9EF"
+				"foreground": "#F8F8F2"
 			}
 		},
 		{
 			"scope": [
-				//RUST
-				"string.quoted.byte.raw.rust", // b and r in front of string or char
-				"punctuation.definition.string.raw.rust", // # for raw strings
-				"keyword.other.rust", // use pub union impl in unsafe
-				// PYTHON
-				"storage.type.string.python", // string types
-				"storage.type.number.python", // prefix for numbers other than dec
-				"storage.type.imaginary.number.python", // j from imaginary numbers
-				// "support.variable.magic.python", // magic vars
-				// CSS
-				"support.type.property-name.css", // property name
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"storage.type.function.js", // 'function'
-				"keyword.control.flow.js", // 'return'
-				"keyword.control.conditional.js", // if else
-				"keyword.control.loop.js", // for while
-				"keyword.control.trycatch.js", // exception keywords
-				// RUST
-				"storage.modifier.mut.rust", // mut
-				"keyword.other.fn.rust", // fn
-				"keyword.control.rust", // for while loop if else match return
-				// PYTHON
-				"storage.type.function.python", // 'def'
-				"keyword.control.flow.python", // keywords like return
-			],
-			"settings": {
-				"fontStyle": "italic bold",
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"support.class.error.js", // error class name
-				// RUST
-				"keyword.operator.logical.rust", // | ! || &&
-				// PYTHON
-				"keyword.operator.logical.python", // operators logical
-				"support.type.exception.python", // exception
-			],
-			"settings": {
-				"foreground": "#268BD2"
-			}
-		},
-		{
-			"scope": [
-				// RUST
-				"entity.name.type.numeric.rust", // number tpyes like usize i64
-				"entity.name.type.primitive.rust", // str and which others?
-				"entity.name.type.option.rust", // Some None
-				"entity.name.type.result.rust", // Ok Err
-				// PYTHON
-				"support.type.python", // buildin types
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#268BD2"
-			}
-		},
-		{
-			"scope": [
-				// PYTHON
-				"constant.other.ellipsis.python", // ...
+				"constant.other.ellipsis.python",
+				"support.variable.magic.python",
 			],
 			"settings": {
 				"fontStyle": "bold",
 				"foreground": "#268BD2"
 			}
 		},
+		{
+			"scope": [
+				"keyword.other.crate.rust",
+			],
+			"settings": {
+				"foreground": "#94558D"
+			}
+		},
+		{
+			"scope": [
+				"keyword.operator.borrow.and.rust", // &
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#FD971F"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.lifetime.rust", // 'LIFETIMENAME
+				"support.function.magic.python", // magic func assignment
+				"meta.separator.markdown", // *** --- ___
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#B200B2"
+			}
+		},
+		{
+			"scope": [
+				"meta.function-call.generic.python",
+			],
+			"settings": {
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"scope": [
+				"storage.type.function.lambda.python",
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#A6E22E"
+			}
+		},
+		{
+			"scope": [
+				"meta.attribute.rust", // attribute stuff
+				"variable.parameter.function-call.python", // parameter in func call
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#AA4926"
+			}
+		},
+		{
+			"scope": [
+				"entity.name.type.rust", // all remaining types
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#A6E22E"
+			}
+		},
+		////////////////////////////////////////
+		//// INI / TOML / YAML / JSON
+		////////////////////////////////////////
 		{
 			"name": "Config Section",
 			"scope": [
@@ -666,602 +710,6 @@
 				"foreground": "#268BD2"
 			}
 		},
-		{
-			"scope": [
-				// CSS
-				"constant.other.color.rgb-value.hex.css", // rgb color in hex
-			],
-			"settings": {
-				"foreground": "#6897BB"
-			}
-		},
-		{
-			"scope": [
-				// RST
-				"markup.other.command.restructuredtext", // commands
-				"string.other.interpreted.restructuredtext", // interpreted strings
-			],
-			"settings": {
-				"foreground": "#6D6D94"
-			}
-		},
-		{
-			"scope": [
-				// RUST
-				"constant.language.bool.rust", // booleans
-				// PYTHON
-				"constant.language.python", // Constants like None True
-			],
-			"settings": {
-				"fontStyle": "italic bold",
-				"foreground": "#859900"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"entity.name.function.js", // func name
-				// RUST
-				"entity.name.type.rust", // all remaining types
-				// PYTHON
-				"entity.name.function.decorator.python", // decorator name
-				"entity.name.function.python", // function name
-				// CSS
-				"meta.property-value.css", // property value
-				"entity.other.attribute-name.class.css", // attr class
-				"entity.other.attribute-name.pseudo-class.css", // attr pseudo class
-				"entity.other.attribute-name.id.css", // attr id
-				"entity.other.attribute-name.pseudo-element.css", // attr pseudo element
-				"entity.other.attribute-name.css", // attr name
-				"support.constant.language-range.css", // language range
-				"constant.other.unicode-range.css", // unicode range
-			],
-			"settings": {
-				"fontStyle": "",
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"keyword.operator.new.js", // 'new'
-				// RUST
-				"entity.name.function.rust", // func call and def
-				"entity.name.function.macro.rust", // macro calls (also def?)
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"entity.name.type.class.js", // class name
-				// RUST
-				"entity.name.type.enum.rust", // enum NAME
-				"entity.name.type.struct.rust", // struct NAME
-				"entity.name.type.trait.rust", // trait NAME
-				"entity.name.type.declaration.rust", // type NAME
-				// PYTHON
-				"entity.name.type.class.python", // class name
-			],
-			"settings": {
-				"fontStyle": "underline",
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"keyword.control.import.js", // import keywords
-				"keyword.control.from.js", // import keywords
-				// PYTHON
-				"storage.type.function.lambda.python", // lambda
-				"keyword.control.import.python", // import keywords
-				"entity.other.inherited-class.python", // inherited class name
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"scope": [
-				// CSS
-				"support.constant.color.w3c-standard-color-name.css", // std color name
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#68E868"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"comment.block.documentation.js", // /** */
-				// RUST
-				"comment.line.documentation.rust", // doc comment: ///
-				// PYTHON
-				"string.quoted.docstring.multi.python", // docstring text
-				"string.quoted.docstring.raw.multi.python", // raw docstring
-			],
-			"settings": {
-				"foreground": "#629755"
-			}
-		},
-		{
-			"scope": [
-				// RUST
-				"meta.attribute.rust", // attribute stuff
-				"punctuation.definition.attribute.rust", // # for attributes
-				// PYTHON
-				"variable.parameter.function-call.python", // parameter in func call
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#AA4926"
-			}
-		},
-		{
-			"scope": [
-				// RST
-				"punctuation.definition.substitution.restructuredtext", // substitution punctuation
-				"markup.underline.substitution.restructuredtext", // substitution text
-			],
-			"settings": {
-				"foreground": "#FD971F"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"variable.parameter.js", // func parameter
-				"variable.language.arguments.js", // func args
-				// RUST
-				"keyword.operator.borrow.and.rust", // &
-				// PYTHON
-				"variable.parameter.function.language.python", // parameter func def
-				// CSS
-				"variable.parameter.url.css", // url variable
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#FD971F"
-			}
-		},
-		{
-			"scope": [
-				// CSS
-				"keyword.other.important.css", // !important
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#FD971F"
-			}
-		},
-		{
-			"scope": [
-				// CSS
-				"meta.at-rule.import.css", // @import
-				"meta.at-rule.font-face.css", // @font-face
-			],
-			"settings": {
-				"foreground": "#CC7832"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"variable.language.this.js", // this
-				// RUST
-				"variable.language.self.rust", // self Self
-				"variable.language.super.rust", // super
-				"keyword.other.crate.rust", // crate
-				// PYTHON
-				"variable.parameter.function.language.special.self.python", // self in def
-				"variable.language.special.self.python", // self in body
-				"variable.parameter.function.language.special.cls.python", // cls in def
-				"variable.language.special.cls.python", // cls in body
-			],
-			"settings": {
-				"foreground": "#94558D"
-			}
-		},
-		{
-			"scope": [
-				// RUST
-				"entity.name.type.lifetime.rust", // 'LIFETIMENAME
-				// PYTHON
-				"support.function.magic.python", // magic func assignment
-				// MD
-				"meta.separator.markdown", // *** --- ___
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#B200B2"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"punctuation.definition.string.begin.js", // " or ' at start of string
-				"punctuation.definition.string.end.js", // " or ' at end of string
-				"string.quoted.double.js", // string in double quotes
-				"string.quoted.single.js", // string in single quotes
-				// RUST
-				"punctuation.definition.string.rust", // ""
-				"string.quoted.double.rust", // string
-				"punctuation.definition.char.rust", // ''
-				"string.quoted.single.char.rust", // char
-				// PYHTON
-				"string.quoted.single.python", // string
-				"string.quoted.multi.python", // multi string
-				"string.quoted.raw.single.python", // raw string
-				"string.quoted.raw.multi.python", // raw multi string
-				"string.regexp.quoted.single.python", // regex string
-				"string.regexp.quoted.multi.python", // regex multi string
-				// HTML
-				"string.unquoted.html", // string
-				"string.quoted.double.html", // quoted string
-				"punctuation.separator.key-value.html", // '='
-				// CSS
-				"string.quoted.double.css", // quoted string
-				// MD
-				"punctuation.definition.string.begin.markdown", //
-				"punctuation.definition.string.end.markdown", //
-			],
-			"settings": {
-				"foreground": "#E6DB74"
-			}
-		},
-		{
-			"scope": [
-				"string.quoted.binary.single.python", // binary string
-				"string.quoted.raw.binary.single.python", // Raw binary string
-				"string.quoted.binary.multi.python", // binary multi string
-				"string.quoted.raw.binary.multi.python", // Raw binary multi string
-				
-			],
-			"settings": {
-				"foreground": "#A5C261"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"constant.numeric.decimal.js", // decimals
-				"constant.language.undefined.js", // undefined
-				// RUST
-				"punctuation.separator.dot.decimal.rust", // dot for decimals
-				"constant.numeric.decimal.rust", // decimal numbers
-				"constant.numeric.hex.rust", // hex numbers
-				"constant.numeric.oct.rust", // oct numbers
-				"punctuation.definition.interpolation.rust", // {} in strings
-				"constant.character.escape.backslash.rust", // "\"
-				"constant.character.escape.bit.rust", // x20 in "\x20"
-				"constant.character.escape.rust", // u in "\u"
-				"constant.character.escape.unicode.punctuation.rust", // {} in "\u{abcdef}"
-				"constant.character.escape.unicode.rust", // u abcdef in "\u{abcdef}"
-				"meta.interpolation.rust", //
-				// PYTHON
-				"constant.character.escape.python", // escape sequence
-				"constant.numeric.dec.python", // dec numbers
-				"constant.numeric.bin.python", // bin numbers
-				"constant.numeric.float.python", // float numbers
-				"constant.numeric.hex.python", // hex numbers
-				"constant.numeric.oct.python", // oct numbers
-				"constant.numeric.python", // numbers
-				"constant.character.format.placeholder.other.python", // f-string {} but also below ones
-				"meta.format.brace.python", // "".format()
-				"meta.format.percent.python", // "%s" % ""
-				// CSS
-				"constant.numeric.css", // numbers
-			],
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"scope": [
-				"constant.character.entity.numeric.hexadecimal.html", // entity numeric hexadecimal
-				"constant.character.entity.named.Alpha.html", // entity named alpha
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"scope": [
-				// PYTHON
-				// blacklisted but valid
-				"string.quoted.docstring.raw.single.python", // Raw single quoted docstring
-				"string.quoted.docstring.single.python", // single quoted docstring
-				"punctuation.separator.continuation.line.python", // line break '\'
-				// deprecated
-				"invalid.deprecated.backtick.python",
-				"invalid.deprecated.prefix.python",
-				"invalid.deprecated.semicolon.python",
-				// illegal
-				"keyword.illegal.name.python",
-				"invalid.illegal.annotation.python",
-				"invalid.illegal.brace.python",
-				"invalid.illegal.dec.python",
-				"invalid.illegal.decorator.python",
-				"invalid.illegal.line.continuation.python",
-				"invalid.illegal.name.python",
-				"invalid.illegal.newline.python",
-				"invalid.illegal.operator.python",
-				"invalid.illegal.prefix.python",
-				// "", // illegal escape TODO: missing scope: py invalid escape
-				// HTML
-				"invalid.deprecated.entity.other.attribute-name.html", // deprecated attribute
-				// CSS
-				// TODO: scope for invalid '&!'
-			],
-			"settings": { // TODO: missing background customization
-				// "foreground": "#F8F8F0",
-				// "background": "#F92672",
-				"foreground": "#F92672",
-				"fontStyle": "bold",
-			}
-		},
-		{
-			"scope": [
-				// HTML
-				"entity.other.attribute-name.html", // 
-			],
-			"settings": {
-				"foreground": "#6CF94E"
-			}
-		},
-		{
-			"scope": [
-				// RUST
-				"entity.name.module.rust", // mod MODULE
-				"entity.name.namespace.rust", // namespace names
-				"meta.use.rust", //
-				"meta.import.rust", //
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#A7FF95"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"support.constant.property.math.js", // Math.const
-				"variable.other.constant.js", // constant name
-				// RUST
-				"constant.other.caps.rust", // const NAME
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#F8F8F2"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"variable.other.readwrite.js", // variable name
-				"variable.other.readwrite.alias.js", // import name, obj destruction
-				"variable.other.object.js", // object name
-				"punctuation.terminator.statement.js", // ;
-				"punctuation.accessor.js", // .
-				"punctuation.separator.comma.js", // ,
-				"punctuation.definition.parameters.begin.js", // ( for func param
-				"punctuation.definition.parameters.end.js", // ) for func param
-				"meta.brace.round.js", // ()
-				"meta.brace.square.js", // []
-				"punctuation.definition.block.js", // {}
-				// RUST
-				"meta.macro.rust", //
-				"meta.function.definition.rust", //
-				"meta.function.call.rust", //
-
-				"punctuation.brackets.angle.rust", // <>
-				"punctuation.brackets.curly.rust", // {}
-				"punctuation.brackets.round.rust", // ()
-				"punctuation.brackets.square.rust", // []
-				"punctuation.brackets.attribute.rust", // [] in #[attribute]
-				"punctuation.semi.rust", // ;
-				"punctuation.comma.rust", // ,
-				"keyword.operator.access.dot.rust", // .
-				// "variable.other.rust", // variables
-				// PYTHON
-				// param
-				"punctuation.definition.parameters.begin.python", // '(' for parameters
-				"punctuation.separator.parameters.python", // ',' in parameters
-				"punctuation.definition.parameters.end.python", // ')' for parameters
-				"meta.function.parameters.python",
-				"meta.function.python",
-				// args
-				"punctuation.definition.arguments.begin.python", // '(' for args
-				"punctuation.separator.arguments.python", // ',' in class/func calls
-				"punctuation.definition.arguments.end.python", // ')' for args
-				"meta.function-call.python",
-				// class inheritance
-				"punctuation.definition.inheritance.begin.python", // '(' in class def
-				"punctuation.separator.inheritance.python", // unknown
-				"punctuation.definition.inheritance.end.python", // ')' in class def
-				"meta.class.inheritance.python",
-				"meta.class.python",
-				// list / dict
-				"punctuation.definition.dict.begin.python", // '[' for lists
-				"punctuation.definition.dict.end.python", // ']' for lists
-				"punctuation.definition.list.begin.python", // '{' for lists
-				"punctuation.definition.list.end.python", // '}' for lists
-				// general
-				"punctuation.parenthesis.begin.python", // '(' in general code
-				"punctuation.parenthesis.end.python", // ')' in general code
-				"punctuation.separator.element.python", // ',' in general code
-				"punctuation.separator.period.python", // '.' in general code
-				"meta.attribute.python", // attr access via dot
-				"meta.member.access.python",
-				"meta.item-access.python",
-				"meta.indexed-name.python",
-				"meta.fstring.python",
-				"meta.lambda-function.python",
-				"meta.function.decorator.python",
-				// HTML
-				"punctuation.definition.tag.begin.html", // <
-				"punctuation.definition.tag.end.html", // >
-				// CSS
-				"punctuation.terminator.rule.css", // rule punctuation
-				"punctuation.section.function.begin.bracket.round.css", // '('
-				"punctuation.section.function.end.bracket.round.css", // ')'
-				"punctuation.separator.list.comma.css", // ',' in list
-			],
-			"settings": {
-				"fontStyle": "",
-				"foreground": "#F8F8F2",
-			}
-		},
-		{
-			"scope": [
-				// TEST
-				"a",
-			],
-			"settings": {
-				"foreground": "#FF00D4",
-				"fontStyle": "bold"
-			}
-		},
-		{
-			"scope": [
-				// JS
-				"comment.block.js", // /* */
-				"comment.line.double-slash.js", // //
-				// RUST
-				"comment.block.rust", // /* */
-				"comment.line.double-slash.rust", // //
-				// PYTHON
-				"meta.typehint.comment.python", // typehint comments
-				"comment.typehint.directive.notation.python",
-				"comment.typehint.ignore.notation.python",
-				"comment.typehint.punctuation.notation.python",
-				"comment.typehint.type.notation.python",
-				"comment.typehint.variable.notation.python",
-				"punctuation.definition.comment.python", // '#' for comments
-				"comment.line.number-sign.python", // comment
-			],
-			"settings": {
-				"foreground": "#75715E",
-			}
-		},
-
-
-
-		////////////////////////////////////////
-		//// RegEx
-		////////////////////////////////////////
-		// unused scopes
-		// https://github.com/MagicStack/MagicPython/blob/master/misc/scopes
-		// constant.character.unicode.regexp",
-		// "entity.name.tag.named.backreference.regexp",
-		// "entity.name.tag.named.group.regexp",
-		// "keyword.operator.conditional.negative.regexp",
-		// "keyword.operator.conditional.regexp",
-		// "keyword.operator.lookahead.negative.regexp",
-		// "keyword.operator.lookahead.regexp",
-		// "keyword.operator.lookbehind.negative.regexp",
-		// "keyword.operator.lookbehind.regexp",
-		// "meta.backreference.named.regexp",
-		// "meta.backreference.regexp",
-		// "meta.character.set.regexp",
-		// "meta.named.regexp",
-		// "punctuation.parenthesis.begin.regexp",
-		// "punctuation.parenthesis.end.regexp",
-		// "punctuation.parenthesis.conditional.begin.regexp",
-		// "punctuation.parenthesis.conditional.end.regexp",
-		// "punctuation.parenthesis.lookahead.begin.regexp",
-		// "punctuation.parenthesis.lookahead.end.regexp",
-		// "punctuation.parenthesis.lookbehind.begin.regexp",
-		// "punctuation.parenthesis.lookbehind.end.regexp",
-		// "punctuation.parenthesis.named.begin.regexp",
-		// "punctuation.parenthesis.named.end.regexp",
-		// "punctuation.parenthesis.non-capturing.begin.regexp",
-		// "punctuation.parenthesis.non-capturing.end.regexp",
-		// "punctuation.parenthesis.backreference.named.begin.regexp",
-		// "punctuation.parenthesis.backreference.named.end.regexp",
-		// "punctuation.character.set.begin.regexp", // [
-		// "punctuation.character.set.end.regexp", // ]
-		// "punctuation.comment.begin.regexp", // '(?#' for regex comments
-		// "punctuation.comment.end.regexp", // ')' for regex comments
-		// "comment.regexp", // comment in regex: (?# comment)
-		{
-			"name": "Regex Special Chars",
-			"scope": [
-				"support.other.match.begin.regexp", // begin '^'
-				"support.other.match.end.regexp", // end '$'
-				"keyword.operator.disjunction.regexp", // '|'
-				"keyword.operator.negation.regexp", // negation '^'
-			],
-			"settings": {
-				"foreground": "#F92672"
-			}
-		},
-		{
-			"name": "Regex Special Escape",
-			"scope": [
-				"support.other.escape.special.regexp", // special escape
-			],
-			"settings": {
-				"foreground": "#268BD2"
-			}
-		},
-		{
-			"name": "Regex Escape",
-			"scope": [
-				"constant.character.escape.regexp", // escape
-			],
-			"settings": {
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Regex Flag",
-			"scope": [
-				"storage.modifier.flag.regexp", // inline flag
-			],
-			"settings": {
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"name": "Regex Quanitfier",
-			"scope": [
-				"keyword.operator.quantifier.regexp", // quantifier
-			],
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"scope": [
-				"constant.character.set.regexp", // inside []
-			],
-			"settings": {
-				"foreground": "#CC7832"
-			}
-		},
-		{
-			"scope": [
-				"constant.other.set.regexp", // []
-				"support.other.parenthesis.regexp", // ()
-				"entity.name.tag.backreference.regexp", // name
-				"support.other.match.any.regexp", // '.'
-			],
-			"settings": {
-				"foreground": "#F8F8F2"
-			}
-		},
-		////////////////////////////////////////
-		//// INI / TOML / YAML / JSON
-		////////////////////////////////////////
-		
 		{
 			"name": "Config Key",
 			"scope": [
@@ -1291,6 +739,8 @@
 				"punctuation.definition.string.begin.yaml", // string begin quotes
 				"punctuation.definition.string.end.yaml", // string end quotes
 				"string.quoted.double.json", // quoted string
+				"punctuation.definition.string.end.json",
+				"punctuation.definition.string.begin.json",
 			],
 			"settings": {
 				"foreground": "#2AA198"
@@ -1567,7 +1017,118 @@
 				"foreground": "#66D9EF"
 			}
 		},
+		////////////////////////////////////////
+		//// RegEx
+		////////////////////////////////////////
+		// unused scopes
+		// https://github.com/MagicStack/MagicPython/blob/master/misc/scopes
+		// constant.character.unicode.regexp",
+		// "entity.name.tag.named.backreference.regexp",
+		// "entity.name.tag.named.group.regexp",
+		// "keyword.operator.conditional.negative.regexp",
+		// "keyword.operator.conditional.regexp",
+		// "keyword.operator.lookahead.negative.regexp",
+		// "keyword.operator.lookahead.regexp",
+		// "keyword.operator.lookbehind.negative.regexp",
+		// "keyword.operator.lookbehind.regexp",
+		// "meta.backreference.named.regexp",
+		// "meta.backreference.regexp",
+		// "meta.character.set.regexp",
+		// "meta.named.regexp",
+		// "punctuation.parenthesis.begin.regexp",
+		// "punctuation.parenthesis.end.regexp",
+		// "punctuation.parenthesis.conditional.begin.regexp",
+		// "punctuation.parenthesis.conditional.end.regexp",
+		// "punctuation.parenthesis.lookahead.begin.regexp",
+		// "punctuation.parenthesis.lookahead.end.regexp",
+		// "punctuation.parenthesis.lookbehind.begin.regexp",
+		// "punctuation.parenthesis.lookbehind.end.regexp",
+		// "punctuation.parenthesis.named.begin.regexp",
+		// "punctuation.parenthesis.named.end.regexp",
+		// "punctuation.parenthesis.non-capturing.begin.regexp",
+		// "punctuation.parenthesis.non-capturing.end.regexp",
+		// "punctuation.parenthesis.backreference.named.begin.regexp",
+		// "punctuation.parenthesis.backreference.named.end.regexp",
+		// "punctuation.character.set.begin.regexp", // [
+		// "punctuation.character.set.end.regexp", // ]
+		// "punctuation.comment.begin.regexp", // '(?#' for regex comments
+		// "punctuation.comment.end.regexp", // ')' for regex comments
+		// "comment.regexp", // comment in regex: (?# comment)
+		{
+			"name": "Regex Special Chars",
+			"scope": [
+				"support.other.match.begin.regexp", // begin '^'
+				"support.other.match.end.regexp", // end '$'
+				"keyword.operator.disjunction.regexp", // '|'
+				"keyword.operator.negation.regexp", // negation '^'
+			],
+			"settings": {
+				"foreground": "#F92672"
+			}
+		},
+		{
+			"name": "Regex Special Escape",
+			"scope": [
+				"support.other.escape.special.regexp", // special escape
+			],
+			"settings": {
+				"foreground": "#268BD2"
+			}
+		},
+		{
+			"name": "Regex Escape",
+			"scope": [
+				"constant.character.escape.regexp", // escape
+			],
+			"settings": {
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Regex Flag",
+			"scope": [
+				"storage.modifier.flag.regexp", // inline flag
+			],
+			"settings": {
+				"foreground": "#A6E22E"
+			}
+		},
+		{
+			"name": "Regex Quanitfier",
+			"scope": [
+				"keyword.operator.quantifier.regexp", // quantifier
+			],
+			"settings": {
+				"foreground": "#AE81FF"
+			}
+		},
+		{
+			"scope": [
+				"constant.character.set.regexp", // inside []
+			],
+			"settings": {
+				"foreground": "#CC7832"
+			}
+		},
+		{
+			"scope": [
+				"constant.other.set.regexp", // []
+				"support.other.parenthesis.regexp", // ()
+				"entity.name.tag.backreference.regexp", // name
+				"support.other.match.any.regexp", // '.'
+			],
+			"settings": {
+				"foreground": "#F8F8F2"
+			}
+		},
 	],
+	////////////////////////////////////////
+	////////////////////////////////////////
+	////////////////////////////////////////
+	//// SEMANTIC HIGHLIGHTING
+	////////////////////////////////////////
+	////////////////////////////////////////
+	////////////////////////////////////////
 	"semanticHighlighting": true,
     "semanticTokenColors": {
 		////////////////////////////////////////
@@ -1575,6 +1136,10 @@
 		////////////////////////////////////////
 		"*.documentation": {
 			"foreground": "#629755",
+		},
+		"module": {
+			"foreground": "#F8F8F2",
+			"fontStyle": ""
 		},
 		"class": {
 			"foreground": "#66D9EF",
@@ -1693,9 +1258,16 @@
 			"foreground": "#B200B2",
 			"fontStyle": "italic"
 		},
+		"magicFunction.builtin:python": {
+			"foreground": "#B200B2",
+			"fontStyle": "italic"
+		},
 		"function.builtin:python": {
 			"foreground": "#66D9EF",
 			"fontStyle": "italic"
+		},
+		"*.decorator:python": {
+			"foreground": "#66D9EF"
 		},
 		"function.typeHint:python": {
 			"foreground": "#89FFA6",
@@ -1709,10 +1281,6 @@
 		"intrinsic:python": {
 			"foreground": "#66D9EF",
 			"fontStyle": "italic"
-		},
-		"module:python": {
-			"foreground": "#F8F8F2",
-			"fontStyle": ""
 		},
 	},
 }
