@@ -122,8 +122,6 @@
 				// "punctuation.separator.dictionary", // ':' ',' in JSON dict
 				// "punctuation.separator.key-value.ini", // '='
 				// "punctuation.separator.key-value.mapping.yaml", // ':'
-				
-				
 			],
 			"settings": {
 				"foreground": "#F8F8F2"
@@ -131,7 +129,9 @@
 		},
 		{
 			"name": "Variable",
-			"scope": "variable",
+			"scope": [
+				"variable",
+			],
 			"settings": {
 				"foreground": "#F8F8F2"
 			}
@@ -141,7 +141,7 @@
 			"scope": [
 				"variable.other.constant",
 				"constant.other.caps",
-				"support.constant"
+				"support.constant",
 			],
 			"settings": {
 				"fontStyle": "bold",
@@ -204,7 +204,7 @@
 			"scope": [
 				"keyword.operator",
 				"punctuation.section",
-				
+
 				"punctuation.separator.key-value.html", // '=' (was yellow new red)
 				"punctuation.separator.key-value.restructuredtext", // key value separator : (red)
 				"punctuation.separator.key-value.markdown", // red
@@ -214,6 +214,7 @@
 				"punctuation.separator.colon.python", // ':' after type annotions in body
 				"punctuation.separator.dict.python", // ':' in dicts
 				"punctuation.separator.slice.python", // slice operator ':'
+				"punctuation.separator.statement.and.shell.dockerfile", // &&
 
 				"constant.language.import-export-all.js", // * in import
 				"constant.language.import-export-all.ts", // * in import
@@ -233,7 +234,6 @@
 			"name": "Operator (logical)",
 			"scope": [
 				"keyword.operator.logical",
-				"punctuation.separator.statement.and.shell.dockerfile", // '&&' // TODO: shell?
 			],
 			"settings": {
 				"foreground": "#268BD2"
@@ -297,7 +297,9 @@
 		},
 		{
 			"name": "Storage",
-			"scope": "storage",
+			"scope": [
+				"storage",
+			],
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#F92672"
@@ -370,7 +372,7 @@
 		{
 			"name": "Inherited class",
 			"scope": [
-				"entity.other.inherited-class"
+				"entity.other.inherited-class",
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -390,7 +392,9 @@
 		},
 		{
 			"name": "Library function",
-			"scope": "support.function",
+			"scope": [
+				"support.function",
+			],
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#66D9EF"
@@ -400,7 +404,7 @@
 			"name": "Function name",
 			"scope": [
 				"entity.name.function",
-				"variable.other.jinja.filter", // Filter
+				"variable.other.jinja.filter",
 		],
 			"settings": {
 				"fontStyle": "",
@@ -410,7 +414,7 @@
 		{
 			"name": "Function argument",
 			"scope": [
-				"variable.parameter"
+				"variable.parameter",
 		],
 			"settings": {
 				"fontStyle": "italic",
@@ -440,7 +444,9 @@
 		},
 		{
 			"name": "Tag attribute",
-			"scope": "entity.other.attribute-name",
+			"scope": [
+				"entity.other.attribute-name",
+			],
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#A6E22E"
@@ -449,7 +455,7 @@
 		{
 			"name": "Comment",
 			"scope": [
-				"comment"
+				"comment",
 			],
 			"settings": {
 				"foreground": "#75715E"
@@ -472,33 +478,39 @@
 				"invalid",
 				"keyword.illegal",
 			],
-			"settings": { // TODO: missing background customization
+			"settings": {
 				"fontStyle": "bold italic underline",
-				// "foreground": "#F8F8F0",
-				// "background": "#F92672"
 				"foreground": "#F92672"
 			}
 		},
 		{
-			"scope": "token.info-token",
+			"scope": [
+				"token.info-token",
+			],
 			"settings": {
 				"foreground": "#6796E6"
 			}
 		},
 		{
-			"scope": "token.warn-token",
+			"scope": [
+				"token.warn-token",
+			],
 			"settings": {
 				"foreground": "#CD9731"
 			}
 		},
 		{
-			"scope": "token.error-token",
+			"scope": [
+				"token.error-token",
+			],
 			"settings": {
 				"foreground": "#F44747"
 			}
 		},
 		{
-			"scope": "token.debug-token",
+			"scope": [
+				"token.debug-token",
+			],
 			"settings": {
 				"foreground": "#B267E6"
 			}
@@ -507,7 +519,7 @@
 			"name": "diff.header",
 			"scope": [
 				"meta.diff",
-				"meta.diff.header"
+				"meta.diff.header",
 			],
 			"settings": {
 				"foreground": "#75715E"
@@ -516,7 +528,7 @@
 		{
 			"name": "diff.deleted",
 			"scope": [
-				"markup.deleted"
+				"markup.deleted",
 			],
 			"settings": {
 				"foreground": "#F92672"
@@ -525,7 +537,7 @@
 		{
 			"name": "diff.inserted",
 			"scope": [
-				"markup.inserted"
+				"markup.inserted",
 			],
 			"settings": {
 				"foreground": "#A6E22E"
@@ -534,7 +546,7 @@
 		{
 			"name": "diff.changed",
 			"scope": [
-				"markup.changed"
+				"markup.changed",
 			],
 			"settings": {
 				"foreground": "#E6DB74"
@@ -622,6 +634,9 @@
 				"foreground": "#A6E22E"
 			}
 		},
+		////////////////////////////////////////
+		//// Config files
+		////////////////////////////////////////
 		{
 			"name": "Config section",
 			// INI / TOML
@@ -710,7 +725,7 @@
 		////////////////////////////////////////
 		{	// TESTING SCOPE
 			"scope": [
-				"a"
+				"a",
 			],
 			"settings": {
 				"fontStyle": "bold",
