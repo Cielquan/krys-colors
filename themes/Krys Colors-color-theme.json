@@ -233,6 +233,7 @@
 			"name": "Operator (logical)",
 			"scope": [
 				"keyword.operator.logical",
+				"punctuation.separator.statement.and.shell.dockerfile", // '&&' // TODO: shell?
 			],
 			"settings": {
 				"foreground": "#268BD2"
@@ -767,14 +768,15 @@
 			}
 		},
 		{
-			"name": "Yaml Anchor/Alias",
 			"scope": [
 				"entity.name.type.anchor.yaml",
 				"variable.other.alias.yaml",
+				"variable.other.assignment.dockerfile",
+				"variable.other.dockerfile",
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#A7FF95"
+				"foreground": "#E8BF6A"
 			}
 		},
 		{
@@ -790,6 +792,7 @@
 		{
 			"scope": [
 				"meta.function-call.generic.python",
+				"entity.name.command.shell.dockerfile", // shell cmd e.g. grep
 			],
 			"settings": {
 				"foreground": "#66D9EF"
@@ -808,6 +811,8 @@
 			"scope": [
 				"meta.attribute.rust", // attribute stuff
 				"variable.parameter.function-call.python", // parameter in func call
+				"entity.name.image.dockerfile", // image
+				"entity.name.image.stage.dockerfile",
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -821,106 +826,6 @@
 			"settings": {
 				"fontStyle": "",
 				"foreground": "#A6E22E"
-			}
-		},
-		////////////////////////////////////////
-		//// Dockerfile
-		////////////////////////////////////////
-		{
-			"name": "Dockerfile Keywords",
-			"scope": [
-				"keyword.other.special-method.dockerfile", // keywords
-				"keyword.other.special-method.from.dockerfile", // keyword from 
-				"keyword.other.special-method.MAINTAINER.dockerfile", // keyword maintainer
-				"keyword.other.special-method.CMD.dockerfile", // keyword cmd
-				"keyword.other.special-method.EXPOSE.dockerfile", // keyword expose
-				"keyword.other.special-method.VOLUME.dockerfile", // keyword volume
-			],
-			"settings": {
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"name": "Dockerfile Spicial Sign",
-			"scope": [
-				"keyword.operator.assignment.dockerfile", // '='
-				"keyword.operator.redirect.shell.dockerfile", // '>'
-			],
-			"settings": {
-				"foreground": "#F92672"
-			}
-		},
-		{
-			"name": "Dockerfile Cmd Concatenation",
-			"scope": [
-				"constant.character.escape.line-continuation.shell.dockerfile", // line continuation '\'
-				"punctuation.separator.statement.and.shell.dockerfile", // '&&'
-			],
-			"settings": {
-				"foreground": "#268BD2"
-			}
-		},
-		{
-			"name": "Dockerfile Options",
-			"scope": [
-				"constant.other.option.dash.shell.dockerfile", // cmd option dash
-				"constant.other.option.shell.dockerfile", // cmd options
-				"constant.numeric.version.dockerfile", // image version
-			],
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"name": "Dockerfile Strings",
-			"scope": [
-				"string.quoted.single.dockerfile", // quoted string ''
-				"string.quoted.double.dockerfile", // quoted string ""
-				"string.unquoted.dockerfile", // unquoted string
-				"string.quoted.single.shell.dockerfile", // quoted string ''
-				"string.quoted.double.shell.dockerfile", // quoted string ""
-				"string.unquoted.argument.shell.dockerfile", // unquoted string
-			],
-			"settings": {
-				"foreground": "#2AA198"
-			}
-		},
-		{
-			"name": "Dockerfile Variables",
-			"scope": [
-				"variable.other.assignment.dockerfile", // variable assignment
-				"variable.other.dockerfile", // variables
-			],
-			"settings": {
-				"foreground": "#E8BF6A"
-			}
-		},
-		{
-			"name": "Dockerfile Img Name",
-			"scope": [
-				"entity.name.image.dockerfile", // image
-			],
-			"settings": {
-				"foreground": "#CB4B16"
-			}
-		},
-		{
-			"name": "Dockerfile Shell Cmd",
-			"scope": [
-				"entity.name.command.shell.dockerfile", // shell cmd
-			],
-			"settings": {
-				"foreground": "#66D9EF"
-			}
-		},
-		{
-			"name": "Dockerfile Shell",
-			"scope": [
-				"support.function.builtin.shell.dockerfile", // shell buildin
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#66D9EF"
 			}
 		},
 		////////////////////////////////////////
