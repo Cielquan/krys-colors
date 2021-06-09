@@ -2,31 +2,36 @@
 
 This theme's colors are based on the original Monokai.
 
-Following types are specifically set:
-* CSS
-* Dockerfile
-* HTML
-* INI
-* Jinja2
-* JSON
-* Markdown
-* Python
-* RegEx
-* ReStructuredText
-* Rust
-* TOML
-* YAML
+Following _languages_ I have tested and partially additionally configured:
 
-Planned to be also specifically set:
-* SQL
+- CSS
+- Dockerfile
+- HTML
+- INI
+- JavaScript
+- Jinja2
+- JSON
+- Markdown
+- Python
+- RegEx
+- ReStructuredText
+- Rust
+- TOML
+- TypeScript
+- YAML
+
+Planned to be also tested:
+
+- SQL
+- React
 
 Following extensions are needed for the corresponding file type:
-* Dockerfile: Better DockerFile Syntax by Jeff Hykin
-* Jinja2: Better Jinja by Samuel Colvin
-* ReStructuredText: reStructuredText by LeXtudio
-* Rust: Rust by The Rust Programming Language
-* TOML: Better TOML by bungcip
 
+- Dockerfile: jeff-hykin.better-dockerfile-syntax
+- Jinja2: samuelcolvin.jinjahtml
+- ReStructuredText: lextudio.restructuredtext
+- Rust: matklad.rust-analyzer
+- TOML: bungcip.better-toml
 
 ## Install the extension
 
