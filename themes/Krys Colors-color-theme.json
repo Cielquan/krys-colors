@@ -398,7 +398,8 @@
 		{
 			"name": "Function name",
 			"scope": [
-				"entity.name.function"
+				"entity.name.function",
+				"variable.other.jinja.filter", // Filter
 		],
 			"settings": {
 				"fontStyle": "",
@@ -726,6 +727,15 @@
 		},
 		{
 			"scope": [
+				"entity.other.jinja.delimiter", // variable and tag
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#F92672"
+			}
+		},
+		{
+			"scope": [
 				"constant.other.ellipsis.python",
 				"support.variable.magic.python",
 				"meta.separator.markdown", // *** --- ___
@@ -907,94 +917,6 @@
 			"name": "Dockerfile Shell",
 			"scope": [
 				"support.function.builtin.shell.dockerfile", // shell buildin
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#66D9EF"
-			}
-		},
-		////////////////////////////////////////
-		//// Jinja2
-		////////////////////////////////////////
-		{
-			"name": "Jinja Delimiter",
-			"scope": [
-				"entity.other.jinja.delimiter.tag", // Delimiter
-				"entity.other.jinja.delimiter.variable",  // Variable delimiter
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#268BD2",
-				// "foreground": "#66D9EF", // hellblau
-				// "foreground": "#268BD2", // dunkelblau
-				// "foreground": "#A6E22E", // hellgrün
-				// "foreground": "#2AA198", // dunkelgrün
-			}
-		},
-		{
-			"name": "Jinja Keywords",
-			"scope": [
-				"keyword.control.jinja", // keywords
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#FD971F",
-			}
-		},
-		{
-			"name": "Jinja Filter",
-			"scope": [
-				"variable.other.jinja.filter", // Filter
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#A6E22E"
-			}
-		},
-		{
-			"name": "Jinja Punctuation",
-			"scope": [
-				"keyword.operator.arithmetic.jinja", // Arithmetic operators
-				"keyword.operator.assignment.jinja", // Assignment operators
-				"keyword.operator.comparison.jinja", // Comparison operators
-				"punctuation.other.jinja", // General punctuation
-			],
-			"settings": {
-				"foreground": "#F92672"
-			}
-		},
-		{
-			"name": "Jinja String",
-			"scope": [
-				"string.quoted.single.jinja", // Strings with ''
-				"string.quoted.double.jinja", // Strings with ""
-			],
-			"settings": {
-				"foreground": "#E6DB74"
-			}
-		},
-		{
-			"name": "Jinja Escape",
-			"scope": [
-				"constant.character.escape.linefeed.jinja", // Escapes
-			],
-			"settings": {
-				"foreground": "#AE81FF"
-			}
-		},
-		{
-			"name": "Jinja Variable",
-			"scope": [
-				"variable.other.jinja", // Variables
-			],
-			"settings": {
-				"foreground": "#2AA198"
-			}
-		},
-		{
-			"name": "Jinja Variable Attr",
-			"scope": [
-				"variable.other.jinja.attribute", // Variable attr
 			],
 			"settings": {
 				"fontStyle": "italic",
