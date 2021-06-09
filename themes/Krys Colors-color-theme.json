@@ -837,6 +837,7 @@
 		{
 			"scope": [
 				"entity.name.type.rust", // all remaining types
+				"entity.name.type.ts", // all remaining types
 			],
 			"settings": {
 				"fontStyle": "",
