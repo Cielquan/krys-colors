@@ -744,14 +744,6 @@
 		},
 		{
 			"scope": [
-				"punctuation.definition.string",
-			],
-			"settings": {
-				"foreground": "#E6DB74"
-			}
-		},
-		{
-			"scope": [
 				"entity.other.jinja.delimiter", // variable and tag
 			],
 			"settings": {
