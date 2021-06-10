@@ -788,7 +788,8 @@
 			"settings": {
 				"foreground": "#FD971F"
 			}
-		},{
+		},
+		{
 			"scope": [
 				"keyword.operator.borrow.and.rust", // &
 				"punctuation.definition.anchor.yaml", // &
