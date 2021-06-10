@@ -679,6 +679,7 @@
 			// TOML / YAML
 			"scope": [
 				"constant.other.datetime-with-timezone.toml",
+				"constant.other.datetime.toml",
 				"constant.other.date.toml",
 				"constant.other.timestamp.yaml",
 			],
