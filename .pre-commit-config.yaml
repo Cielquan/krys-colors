@@ -21,6 +21,22 @@ repos:
 
   # ####################################################################################
   #
+  #       Essential
+  #
+  # ####################################################################################
+
+  - repo: local
+    hooks:
+      - id: parse-jsonc-files
+        name: Parse jsonc files
+        description: Remove // comments from jsonc file and save it as json.
+        language: system
+        entry: ./update_theme_json.py
+        require_serial: true
+        files: '.*\.jsonc'
+
+  # ####################################################################################
+  #
   #       FORMATTING
   #
   # ####################################################################################
