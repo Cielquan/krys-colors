@@ -25,15 +25,11 @@ repos:
   #
   # ####################################################################################
 
-  - repo: local
+  - repo: https://github.com/Cielquan/pre-commit-hooks
+    rev: bb87cb1fdbc8276521d2a3a52a67bd447a4414ab
     hooks:
-      - id: parse-jsonc-files
-        name: Parse jsonc files
-        description: Remove // comments from jsonc file and save it as json.
-        language: system
-        entry: ./remove_jsonc_comments.py
-        require_serial: true
-        files: '.*\.jsonc'
+      - id: remove-comments-from-jsonc
+        # files: '.*\.jsonc'
 
   # ####################################################################################
   #
