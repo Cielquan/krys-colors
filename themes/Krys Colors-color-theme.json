@@ -173,9 +173,13 @@
         "punctuation.separator.slice.python",
         "punctuation.separator.statement.and.shell.dockerfile",
         "constant.language.import-export-all.js",
+        "constant.language.import-export-all.jsx",
         "constant.language.import-export-all.ts",
+        "constant.language.import-export-all.tsx",
         "storage.type.function.arrow.js",
+        "storage.type.function.arrow.jsx",
         "storage.type.function.arrow.ts",
+        "storage.type.function.arrow.tsx",
         "keyword.other.unit.percentage.css",
         "punctuation.definition.directive.begin.yaml",
         "constant.language.merge.yaml",
@@ -224,7 +228,9 @@
         "storage.type.function.async.python",
         "keyword.other.important.css",
         "keyword.operator.new.js",
+        "keyword.operator.new.jsx",
         "keyword.operator.new.ts",
+        "keyword.operator.new.tsx",
         "meta.other.directive.restructuredtext",
         "entity.name.role.restructuredtext"
       ],
@@ -695,7 +701,7 @@
       }
     },
     {
-      "scope": ["entity.name.type.rust", "entity.name.type.ts"],
+      "scope": ["entity.name.type.rust", "entity.name.type.ts", "entity.name.type.tsx"],
       "settings": {
         "fontStyle": "",
         "foreground": "#A6E22E"
