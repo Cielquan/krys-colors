@@ -24,6 +24,7 @@ Planned to be also tested:
 
 - SQL
 - React
+- po translation files (mrorz.language-gettext)
 
 Following extensions are needed for the corresponding file type:
 
