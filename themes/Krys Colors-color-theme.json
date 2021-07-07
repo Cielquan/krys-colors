@@ -769,6 +769,9 @@
       "foreground": "#A6E22E",
       "fontStyle": "underline"
     },
+    "formatSpecifier": {
+      "foreground": "#AE81FF"
+    },
     "class.defaultLibrary:javascript": {
       "foreground": "#268BD2",
       "fontStyle": "italic"

@@ -836,6 +836,9 @@
       "foreground": "#A6E22E",
       "fontStyle": "underline"
     },
+    "formatSpecifier": {
+      "foreground": "#AE81FF"
+    },
     ////////////////////////////////////////
     //// JavaScript
     ////////////////////////////////////////
