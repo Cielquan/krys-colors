@@ -22,6 +22,7 @@
     "minimap.selectionHighlight": "#878B9180",
     "editor.wordHighlightBackground": "#4A4A7680",
     "editor.wordHighlightStrongBackground": "#6A6A9680",
+    "editorHoverWidget.highlightForeground": "#A7FF95",
     "editor.lineHighlightBackground": "#3E3D32",
     "editorLineNumber.activeForeground": "#c2c2bf",
     "editorCursor.foreground": "#F8F8F0",
