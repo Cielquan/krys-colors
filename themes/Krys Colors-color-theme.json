@@ -114,10 +114,7 @@
   },
   "tokenColors": [
     {
-      "scope": [
-        "source",
-        "punctuation.separator"
-      ],
+      "scope": ["source", "punctuation.separator"],
       "settings": {
         "foreground": "#F8F8F2"
       }
@@ -536,7 +533,12 @@
     },
     {
       "name": "Config section",
-      "scope": ["entity.name.section.group-title", "entity.other.attribute-name.table"],
+      "scope": [
+        "entity.name.section.group-title",
+        "entity.other.attribute-name.table",
+        "variable.key.array.table",
+        "variable.key.table"
+      ],
       "settings": {
         "foreground": "#268BD2"
       }
@@ -546,6 +548,7 @@
       "scope": [
         "keyword.other.definition.ini",
         "keyword.key.toml",
+        "variable.key.toml",
         "entity.name.tag.yaml",
         "support.type.property-name.json"
       ],
@@ -557,6 +560,7 @@
       "name": "Config built-in constant",
       "scope": [
         "constant.other.boolean.toml",
+        "constant.language.boolean.toml",
         "constant.language.boolean.yaml",
         "constant.language.json"
       ],
@@ -571,6 +575,10 @@
         "constant.other.datetime-with-timezone.toml",
         "constant.other.datetime.toml",
         "constant.other.date.toml",
+        "constant.other.time.datetime.offset.toml",
+        "constant.other.time.datetime.local.toml",
+        "constant.other.time.date.toml",
+        "constant.other.time.time.toml",
         "constant.other.timestamp.yaml"
       ],
       "settings": {
@@ -615,18 +623,13 @@
       }
     },
     {
-      "scope": [
-        "keyword.operator.access.dot.rust",
-        "string.regexp"
-      ],
+      "scope": ["keyword.operator.access.dot.rust", "string.regexp"],
       "settings": {
         "foreground": "#F8F8F2"
       }
     },
     {
-      "scope": [
-        "entity.other.jinja.delimiter"
-      ],
+      "scope": ["entity.other.jinja.delimiter"],
       "settings": {
         "fontStyle": "",
         "foreground": "#F92672"
@@ -653,9 +656,7 @@
       }
     },
     {
-      "scope": [
-        "constant.character.set.regexp"
-      ],
+      "scope": ["constant.character.set.regexp"],
       "settings": {
         "foreground": "#FD971F"
       }
@@ -692,10 +693,7 @@
       }
     },
     {
-      "scope": [
-        "entity.name.type.lifetime.rust",
-        "support.function.magic.python"
-      ],
+      "scope": ["entity.name.type.lifetime.rust", "support.function.magic.python"],
       "settings": {
         "fontStyle": "italic",
         "foreground": "#B200B2"
@@ -730,11 +728,7 @@
       }
     },
     {
-      "scope": [
-        "entity.name.type.rust",
-        "entity.name.type.ts",
-        "entity.name.type.tsx"
-      ],
+      "scope": ["entity.name.type.rust", "entity.name.type.ts", "entity.name.type.tsx"],
       "settings": {
         "fontStyle": "",
         "foreground": "#A6E22E"

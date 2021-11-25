@@ -564,7 +564,12 @@
     {
       "name": "Config section",
       // INI / TOML
-      "scope": ["entity.name.section.group-title", "entity.other.attribute-name.table"],
+      "scope": [
+        "entity.name.section.group-title",
+        "entity.other.attribute-name.table",
+        "variable.key.array.table",
+        "variable.key.table"
+      ],
       "settings": {
         "foreground": "#268BD2"
       }
@@ -575,6 +580,7 @@
       "scope": [
         "keyword.other.definition.ini",
         "keyword.key.toml",
+        "variable.key.toml",
         "entity.name.tag.yaml",
         "support.type.property-name.json"
       ],
@@ -587,6 +593,7 @@
       // TOML / YAML / JSON
       "scope": [
         "constant.other.boolean.toml",
+        "constant.language.boolean.toml",
         "constant.language.boolean.yaml",
         "constant.language.json"
       ],
@@ -602,6 +609,10 @@
         "constant.other.datetime-with-timezone.toml",
         "constant.other.datetime.toml",
         "constant.other.date.toml",
+        "constant.other.time.datetime.offset.toml",
+        "constant.other.time.datetime.local.toml",
+        "constant.other.time.date.toml",
+        "constant.other.time.time.toml",
         "constant.other.timestamp.yaml"
       ],
       "settings": {

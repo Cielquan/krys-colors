@@ -32,7 +32,7 @@ Following extensions are needed for the corresponding file type:
 - Jinja2: samuelcolvin.jinjahtml
 - ReStructuredText: lextudio.restructuredtext
 - Rust: matklad.rust-analyzer
-- TOML: bungcip.better-toml
+- TOML: tamasfe.even-better-toml or bungcip.better-toml
 
 ## Install the extension
 
