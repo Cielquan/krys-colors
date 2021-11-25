@@ -36,6 +36,7 @@
     "editorBracketHighlight.foreground5": "#54A857",
     "editorBracketPairGuide.background5": "#54A857",
     "editorBracketPairGuide.activeBackground5": "#54A857",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#F92672",
     "editorCursor.foreground": "#F8F8F0",
     "editorGroup.border": "#34352F",
     "editorGroup.dropBackground": "#41433980",
