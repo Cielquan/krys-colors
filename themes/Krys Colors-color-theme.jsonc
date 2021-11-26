@@ -565,14 +565,17 @@
     {
       "name": "Config section",
       // INI / TOML
-      "scope": [
-        "entity.name.section.group-title",
-        "entity.other.attribute-name.table",
-        "variable.key.array.table",
-        "variable.key.table"
-      ],
+      "scope": ["entity.name.section.group-title", "variable.key.table"],
       "settings": {
         "foreground": "#268BD2"
+      }
+    },
+    {
+      "name": "Config array",
+      // TOML
+      "scope": ["variable.key.array"],
+      "settings": {
+        "foreground": "#2FA9FF"
       }
     },
     {
@@ -954,6 +957,17 @@
     },
     "intrinsic:python": {
       "foreground": "#66D9EF",
+      "fontStyle": "italic"
+    },
+    ////////////////////////////////////////
+    //// TOML
+    ////////////////////////////////////////
+    "tomlTableKey": {
+      "foreground": "#268BD2",
+      "fontStyle": "italic"
+    },
+    "tomlArrayKey": {
+      "foreground": "#2FA9FF",
       "fontStyle": "italic"
     }
   }
