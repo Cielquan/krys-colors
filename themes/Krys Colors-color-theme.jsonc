@@ -898,10 +898,12 @@
       "foreground": "#66D9EF",
       "fontStyle": "italic bold"
     },
-
     "union.declaration:rust": {
       "foreground": "#A6E22E",
       "fontStyle": "underline"
+    },
+    "arithmetic.mutable:rust": {
+      "foreground": "#F92672"
     },
     ////////////////////////////////////////
     //// Python

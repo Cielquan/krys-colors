@@ -828,6 +828,9 @@
       "foreground": "#A6E22E",
       "fontStyle": "underline"
     },
+    "arithmetic.mutable:rust": {
+      "foreground": "#F92672"
+    },
     "*.typeHint:python": {
       "foreground": "#89FFA6",
       "fontStyle": "italic"
