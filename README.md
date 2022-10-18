@@ -31,7 +31,7 @@ Following extensions are needed for the corresponding file type:
 - Dockerfile: jeff-hykin.better-dockerfile-syntax
 - Jinja2: samuelcolvin.jinjahtml
 - ReStructuredText: lextudio.restructuredtext + trond-snekvik.simple-rst
-- Rust: matklad.rust-analyzer
+- Rust: rust-lang.rust-analyzer
 - TOML: tamasfe.even-better-toml or bungcip.better-toml
 
 ## Install the extension
