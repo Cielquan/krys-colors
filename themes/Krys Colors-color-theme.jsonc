@@ -659,6 +659,64 @@
       }
     },
     ////////////////////////////////////////
+    //// Log files
+    ////////////////////////////////////////
+    {
+      "name": "Log Trace",
+      "scope": ["log.trace"],
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#66D9EF"
+      }
+    },
+    {
+      "name": "Log Debug",
+      "scope": ["log.debug", "log.verbose"],
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#268BD2"
+      }
+    },
+    {
+      "name": "Log Info",
+      "scope": ["log.info"],
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#A6E22E"
+      }
+    },
+    {
+      "name": "Log Warning",
+      "scope": ["log.warning"],
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#FD971F"
+      }
+    },
+    {
+      "name": "Log Error",
+      "scope": ["log.error", "log.exception"],
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#F92672"
+      }
+    },
+    {
+      "name": "Log Exceptiontype",
+      "scope": ["log.exceptiontype"],
+      "settings": {
+        "foreground": "#AE81FF"
+      }
+    },
+    {
+      "name": "Log Date",
+      "scope": ["log.date"],
+      "settings": {
+        "fontStyle": "italic",
+        "foreground": "#66D9EF"
+      }
+    },
+    ////////////////////////////////////////
     //// Special colored
     ////////////////////////////////////////
     {
