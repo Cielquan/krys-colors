@@ -98,23 +98,6 @@ repos:
       - id: detect-private-key
 
   # ----------------------------------------------
-  # JavaScript
-  # ----------------------------------------------
-
-  # eslint - JS linter
-  - repo: https://github.com/eslint/eslint
-    # https://github.com/eslint/eslint
-    # Config file: .eslintrc.json
-    # Ignore file: .eslintignore (file ignore pattern)
-    rev: 8e8e9f8476d701e4e981b9b4d9957e5d4855e530 # frozen: v8.56.0
-    hooks:
-      - id: eslint
-        additional_dependencies:
-          - eslint@^8.56 # NOTE: version overwrites rev version - keep in sync
-        files: \.[jt]sx?$ # *.js, *.jsx, *.ts, *.tsx
-        types: [file]
-
-  # ----------------------------------------------
   # JSON / TOML / YAML
   # ----------------------------------------------
 
