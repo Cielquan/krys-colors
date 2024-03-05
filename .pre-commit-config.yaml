@@ -1,6 +1,8 @@
 ---
-minimum_pre_commit_version: "1.15"
+minimum_pre_commit_version: "2.16"
 default_stages: [commit]
+default_language_version:
+  python: python3.11
 
 ci:
   skip: []
@@ -43,7 +45,7 @@ repos:
 
   # code unspecific out-of-the-box hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 38b88246ccc552bffaaf54259d064beeee434539 # frozen: v4.0.1
+    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
     hooks:
       - id: end-of-file-fixer
         stages: [commit]
@@ -59,9 +61,11 @@ repos:
     # https://github.com/prettier/prettier
     # Config file: .prettierrc (JSON, YAML)
     # Ignore file: .prettierignore (file ignore pattern)
-    rev: a99a3fbe79a9d346cabd02a5e167ad0edafe616b # frozen: v2.3.0
+    rev: ffb6a759a979008c0e6dff86e39f4745a2d9eac4 # frozen: v3.1.0
     hooks:
       - id: prettier
+        additional_dependencies:
+          - prettier@^3.2.5 # NOTE: version overwrites rev version - keep in sync
 
   # ####################################################################################
   #
@@ -86,7 +90,7 @@ repos:
 
   # code unspecific out-of-the-box hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 38b88246ccc552bffaaf54259d064beeee434539 # frozen: v4.0.1
+    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
     hooks:
       - id: check-case-conflict
       - id: check-shebang-scripts-are-executable
@@ -98,13 +102,15 @@ repos:
   # ----------------------------------------------
 
   # eslint - JS linter
-  - repo: https://github.com/pre-commit/mirrors-eslint
+  - repo: https://github.com/eslint/eslint
     # https://github.com/eslint/eslint
     # Config file: .eslintrc.json
     # Ignore file: .eslintignore (file ignore pattern)
-    rev: 35fae9e419403ae42821f7ff00f360dd109bdd18 # frozen: v7.27.0
+    rev: 8e8e9f8476d701e4e981b9b4d9957e5d4855e530 # frozen: v8.56.0
     hooks:
       - id: eslint
+        additional_dependencies:
+          - eslint@^8.56 # NOTE: version overwrites rev version - keep in sync
         files: \.[jt]sx?$ # *.js, *.jsx, *.ts, *.tsx
         types: [file]
 
@@ -114,7 +120,7 @@ repos:
 
   # JSON specific out-of-the-box hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 38b88246ccc552bffaaf54259d064beeee434539 # frozen: v4.0.1
+    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
     hooks:
       - id: check-json
       - id: check-toml
@@ -122,7 +128,7 @@ repos:
 
   # yamllint - yaml linter
   - repo: https://github.com/adrienverge/yamllint
-    rev: 85ccd625a382423edd988fcb796c4dd5897886fb # frozen: v1.26.1
+    rev: 8713140e99914c0cb6e07364daedfb140847c3c5 # frozen: v1.33.0
     hooks:
       # Config file: .yamllint (yaml) [--config-file]
       # Inline skip: `# yamllint disable-line[ rule:<RULE>]`
