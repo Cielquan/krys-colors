@@ -164,6 +164,8 @@
         "constant.character.escape",
         "constant.character.format",
         "punctuation.definition.interpolation",
+        "punctuation.definition.template-expression.begin.tsx",
+        "punctuation.definition.template-expression.end.tsx",
         "meta.interpolation"
       ],
       "settings": {
