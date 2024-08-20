@@ -134,7 +134,7 @@
     {
       "scope": [
         "source",
-        "punctuation.separator"
+        "punctuation.separator",
         // "punctuation.separator.period",
         // "punctuation.separator.comma",
         // "punctuation.separator.arguments",
@@ -148,6 +148,9 @@
         // "punctuation.separator.dictionary", // ':' ',' in JSON dict
         // "punctuation.separator.key-value.ini", // '='
         // "punctuation.separator.key-value.mapping.yaml", // ':'
+        "punctuation.accessor"
+        // "punctuation.accessor.ts", // .
+        // "punctuation.accessor.optional.ts", // ?.
       ],
       "settings": {
         "foreground": "#F8F8F2"

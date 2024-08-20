@@ -124,7 +124,7 @@
   },
   "tokenColors": [
     {
-      "scope": ["source", "punctuation.separator"],
+      "scope": ["source", "punctuation.separator", "punctuation.accessor"],
       "settings": {
         "foreground": "#F8F8F2"
       }
