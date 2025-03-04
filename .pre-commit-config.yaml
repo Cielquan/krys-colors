@@ -1,6 +1,6 @@
 ---
 minimum_pre_commit_version: "2.16"
-default_stages: [commit]
+default_stages: [pre-commit]
 default_language_version:
   python: python3.11
 
@@ -48,9 +48,9 @@ repos:
     rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
     hooks:
       - id: end-of-file-fixer
-        stages: [commit]
+        stages: [pre-commit]
       - id: trailing-whitespace
-        stages: [commit]
+        stages: [pre-commit]
 
   # ----------------------------------------------
   # JS / TS / HTML / CSS / MD / JSON / YAML
