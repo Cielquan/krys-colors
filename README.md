@@ -40,3 +40,11 @@ To start using this extension with Visual Studio Code copy it into the
 `<user home>/.vscode/extensions` folder and restart Code.
 
 Run: `git clone https://github.com/Cielquan/krys-colors ~/.vscode/extensions/krys-colors`
+
+## Development (in VSCode)
+
+In VSCode press `F5` to launch a development window where you can open a file to see the theme in action.
+
+Code changes are ment to be made in the JSONC file, which supports comments. With `pre-commit run remove-comments-from-jsonc --all-files` the comments are striped and the JSON file gets overridden.
+
+`pre-commit` is a python package and can be installed via `pip install pre-commit`.
