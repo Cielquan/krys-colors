@@ -48,3 +48,7 @@ In VSCode press `F5` to launch a development window where you can open a file to
 Code changes are ment to be made in the JSONC file, which supports comments. With `pre-commit run remove-comments-from-jsonc --all-files` the comments are striped and the JSON file gets overridden.
 
 `pre-commit` is a python package and can be installed via `pip install pre-commit`.
+
+### Release
+
+See https://code.visualstudio.com/api/working-with-extensions/publishing-extension
