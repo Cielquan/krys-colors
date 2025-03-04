@@ -5,6 +5,10 @@
   "version": "1.0.0",
   "publisher": "cielquan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cielquan/krys-colors"
+  },
   "engines": {
     "vscode": "*"
   },
