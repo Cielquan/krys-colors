@@ -49,6 +49,23 @@ Code changes are ment to be made in the JSONC file, which supports comments. Wit
 
 `pre-commit` is a python package and can be installed via `pip install pre-commit`.
 
-### Release
+### Release / VSIX Builds
 
-See https://code.visualstudio.com/api/working-with-extensions/publishing-extension
+Install `pre-commit` util into a local venv
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pre-commit
+```
+
+Install `vsce` util
+`npm install -g @vscode/vsce`
+
+Run `pre-commit` for linting, formatting and output generation
+`pre-commit run --all-files`
+
+Run `vsce` to generate `vsix` file
+`vsce package`
+
+See also: https://code.visualstudio.com/api/working-with-extensions/publishing-extension
