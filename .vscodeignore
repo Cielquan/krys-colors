@@ -7,3 +7,5 @@
 .prettierignore
 .prettierrc.js
 .yamllint
+
+themes/Krys_Colors-color-theme.jsonc
