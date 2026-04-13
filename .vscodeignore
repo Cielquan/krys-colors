@@ -1,4 +1,9 @@
+.github/**
 .vscode/**
 .vscode-test/**
+.gitattributes
 .gitignore
-vsc-extension-quickstart.md
+.pre-commit-config.yaml
+.prettierignore
+.prettierrc.js
+.yamllint
