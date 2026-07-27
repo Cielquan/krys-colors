@@ -1,5 +1,8 @@
 ## VSCode color theme "krys-colors"
 
+[VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.krys-colors)
+[Open VSX Marketplace](https://open-vsx.org/extension/cielquan/krys-colors)
+
 This theme's colors are based on the original Monokai.
 
 Following _languages_ I have tested and partially additionally configured:
