@@ -1,0 +1,45 @@
+# gettext PO/POT syntax highlighting test
+
+# Translator comment
+#. Extracted comment
+#: src/main.c:42
+#, fuzzy, c-format
+msgid ""
+"Project-Id-Version: Example\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr ""
+
+# Context
+msgctxt "menu"
+msgid "File"
+msgstr "Datei"
+
+# Simple translation
+msgid "Hello, world!"
+msgstr "Hallo, Welt!"
+
+# Multiline strings
+msgid ""
+"This is a long "
+"multiline message."
+msgstr ""
+"Dies ist eine lange "
+"mehrzeilige Nachricht."
+
+# Plural form
+msgid "One file"
+msgid_plural "%d files"
+msgstr[0] "Eine Datei"
+msgstr[1] "%d Dateien"
+
+# Empty translation
+msgid "Not translated yet"
+msgstr ""
+
+# Flags
+#, no-wrap, python-brace-format
+
+# Obsolete entry
+#~ msgid "Old message"
+#~ msgstr "Alte Nachricht"

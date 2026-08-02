@@ -1,0 +1,91 @@
+{# Source: https://jinja.palletsprojects.com/en/3.0.x/templates/ #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{{ super() }}{% endblock %} - My Webpage</title>
+</head>
+<body>
+    {% block body scoped required %}{% endblock %}
+
+    {% include ['special_sidebar.html', 'sidebar.html'] ignore missing %}
+
+    <ul id="navigation">
+    {% for item in navigation %}
+        {% if loop.index is divisibleby(3) %}
+        <li><a href="{{ item.href }}">{{- item.caption|force_escape|lower }}</a></li>
+        {% endif %}
+        {% continue %}
+    {% endfor %}
+    </ul>
+
+    <h1>My Webpage</h1>  ## Line based commit since jinja2.2
+    {{ foo.bar }}{# the same as #}{{ foo['bar'] }}
+    {{ 1 + 1 }}{# = 2 #}
+    {{ 1 ~ 1 }}{# = 11 #}
+    {# note: commented-out template because we no longer use this
+    {% for user in users %}
+        ...
+    {% endfor %}
+    #}
+
+    {# Trimming #}
+    <div>
+        {%+ if something %}yay{% endif %}
+    </div>
+    <div>
+        {% if something +%}
+            yay
+        {% endif %}
+    </div>
+    {% for item in seq -%}
+        {{ item }}
+    {%- endfor %}
+
+    {# Raws #}
+    {% raw %}
+        <ul>
+        {% for item in seq %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endraw %}
+
+    {# Line statements #}
+    <ul>
+    # for item in seq
+        <li>{{ item }}</li>
+    # endfor
+    </ul>
+
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+
+    {# Macros #}
+    {% macro input(name, value='', type='text', size=20) -%}
+        <input type="{{ type }}" name="{{ name }}" value="{{
+            value|e }}" size="{{ size }}">
+    {%- endmacro %}
+    {% call render_dialog('Hello World') %}
+        This is a simple dialog rendered by using a macro and
+        a call block.
+    {% endcall %}
+
+    {# Filter #}
+    {% filter upper %}
+        This text becomes uppercase
+    {% endfilter %}
+
+    {# Setting #}
+    {% set navigation = [('index.html', 'Index'), ('about.html', 'About')] %}
+
+    {# Translations #}
+    {% trans count=list|length %}
+    There is {{ count }} {{ name }} object.
+    {% pluralize %}
+    There are {{ count }} {{ name }} objects.
+    {% endtrans %}
+</body>
+</html>

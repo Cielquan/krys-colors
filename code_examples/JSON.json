@@ -1,0 +1,17 @@
+{
+  // Line comments are not included in the standard but special parser support them.
+  /* Block comments also. */
+  "keywords/boolean": [true, false, null],
+  "numbers": [
+    42,
+    -0.0e-0,
+    6.626e-34
+  ],
+  "strings with": {
+    "no escapes": "pseudopolinomiality",
+    "valid escapes": "C-style\r\n and unicode\u0021",
+    "illegal escapes": "\0377\x",
+    "emoji": "😐",
+    "emoji-as-unicode": "\uD83D\uDE10"
+  }
+}
