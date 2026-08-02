@@ -8,4 +8,5 @@
 .prettierrc.js
 .yamllint
 
+code_examples/**
 themes/Krys_Colors-color-theme.jsonc
