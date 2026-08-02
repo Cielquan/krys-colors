@@ -9,8 +9,6 @@
 .idea/
 
 # VS Code
-!.vscode/launch.json
-.vscode/
 *.vsix
 # Local History for Visual Studio Code
 .history/
