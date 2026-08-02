@@ -1,0 +1,42 @@
+; Comment
+
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://test.gd" id="1_script"]
+
+[sub_resource type="Gradient" id="Gradient_test"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1)
+offsets = PackedFloat32Array(0, 1)
+
+[resource]
+script = ExtResource("1_script")
+
+title = "Syntax Test"
+enabled = true
+count = 42
+ratio = 3.14
+empty = null
+
+position = Vector2(10, 20)
+transform = Transform2D(1, 0, 0, 1, 5, 5)
+
+tags = Array[String]([
+"one",
+"two"
+])
+
+values = [1, 2, 3]
+dictionary = {
+"key": "value",
+"number": 123
+}
+
+gradient = SubResource("Gradient_test")
+
+packed_ints = PackedInt32Array(1, 2, 3)
+packed_strings = PackedStringArray("a", "b")
+
+node_path = NodePath("../Player")
+color = Color(0.2, 0.4, 0.8, 1)
+
+RID_value = RID(12345)

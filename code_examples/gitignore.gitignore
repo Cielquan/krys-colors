@@ -1,0 +1,34 @@
+# Files
+Dockerfile
+testfile.txt
+.TODO
+
+# Folders
+node_modules/
+
+# Root based file path
+/config/local.env
+
+# Wildcards
+*.bak
+**/*.generated.*
+src/**/coverage/
+
+# Single-character wildcard
+file?.txt
+
+# Character classes
+image[0-9].png
+data[!a].json
+
+# Spaces and escaped characters
+my\ file.txt
+\#not-a-comment.txt
+\!important.txt
+
+# Extension patterns
+*.{jpg,png,gif}
+
+# Negation (unignore)
+!important.log
+!src/**/*.test.js
