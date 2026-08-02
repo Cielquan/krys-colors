@@ -1,6 +1,6 @@
 ## VSCode color theme "krys-colors"
 
-This theme's colors are based on the original Monokai.
+This theme's colors are originally based on the original Monokai.
 
 Following _languages_ I have tested and partially additionally configured:
 
@@ -25,6 +25,12 @@ Planned to be also tested:
 - SQL
 - React
 - po translation files (mrorz.language-gettext)
+- XML
+- PS1
+- Makefile
+- Nix
+- VimScript
+
 
 Following extensions are needed for the corresponding file type:
 
@@ -42,21 +48,15 @@ The extension is available from the following marketplaces:
 
 ## Development (in VSCode)
 
-In VSCode press `F5` to launch a development window where you can open a file to see the theme in action.
+To build the theme JSON artifact from the JSONC file run `pre-commit run remove-comments-from-jsonc --all-files`.
+To automatically rebuild the artifact run: `watchexec -w themes pre-commit run remove-comments-from-jsonc --all-files`.
 
-Code changes are ment to be made in the JSONC file, which supports comments. With `pre-commit run remove-comments-from-jsonc --all-files` the comments are striped and the JSON file gets overridden.
+In VSCode press `F5` to launch a development window, where you can open the example files to see the theme in action.
 
 `pre-commit` is a python package and can be installed via `pip install pre-commit`.
+`watchexec` is a rust crate and can be installed via `cargo install --locked watchexec-cli`.
 
 ### Release / VSIX Builds
-
-Install `pre-commit` util into a local venv
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install pre-commit
-```
 
 Install `vsce` util
 `npm install -g @vscode/vsce`
