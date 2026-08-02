@@ -1,8 +1,5 @@
 ## VSCode color theme "krys-colors"
 
-[VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.krys-colors)
-[Open VSX Marketplace](https://open-vsx.org/extension/cielquan/krys-colors)
-
 This theme's colors are based on the original Monokai.
 
 Following _languages_ I have tested and partially additionally configured:
@@ -37,12 +34,11 @@ Following extensions are needed for the corresponding file type:
 - Rust: rust-lang.rust-analyzer
 - TOML: tamasfe.even-better-toml or bungcip.better-toml
 
-## Install the extension
+## Installation
 
-To start using this extension with Visual Studio Code copy it into the
-`<user home>/.vscode/extensions` folder and restart Code.
-
-Run: `git clone https://github.com/Cielquan/krys-colors ~/.vscode/extensions/krys-colors`
+The extension is available from the following marketplaces:
+- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.krys-colors)
+- [Open VSX Marketplace](https://open-vsx.org/extension/cielquan/krys-colors)
 
 ## Development (in VSCode)
 
