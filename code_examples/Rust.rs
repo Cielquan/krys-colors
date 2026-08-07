@@ -61,6 +61,7 @@ fn process<'a>(
         MAX
     );
 
+    let escape = "\u{042f} \n";
     let raw = r#"raw "string" "#;
     let bytes = b"bytes";
     let byte_char = b'A';
