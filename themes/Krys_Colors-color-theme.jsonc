@@ -242,7 +242,8 @@
         "punctuation.definition.directive.begin.yaml", // %
         "constant.language.merge.yaml", // <<
         "punctuation.definition.lifetime.rust", // '
-        "punctuation.definition.decorator.python" // @
+        "punctuation.definition.decorator.python", // @
+        "punctuation.definition.negation.ignore" // !
       ],
       "settings": {
         "foreground": "#F92672"
@@ -786,7 +787,9 @@
     },
     {
       "scope": [
-        "constant.character.set.regexp" // inside []
+        "constant.character.set.regexp", // inside []
+        "constant.other.character-class.member.ignore", // inside []
+        "constant.other.brace-expansion.member.ignore" // inside {}
       ],
       "settings": {
         "foreground": "#FD971F"
@@ -835,9 +838,16 @@
       }
     },
     {
+      "scope": ["punctuation.separator.directory.ignore"],
+      "settings": {
+        "foreground": "#268BD2"
+      }
+    },
+    {
       "scope": [
         "meta.function-call.generic.python",
-        "entity.name.command.shell.dockerfile" // shell cmd e.g. grep
+        "entity.name.command.shell.dockerfile", // shell cmd e.g. grep
+        "punctuation.separator.path.ignore"
       ],
       "settings": {
         "foreground": "#66D9EF"
