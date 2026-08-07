@@ -70,6 +70,15 @@ def loops() -> None:
         continue
 
 
+def pattern_matching() -> None:
+    match "foo":
+        case 1 | 2:
+            print("1/2")
+        case "foo":
+            print("foo")
+        case _:
+            print("catch all")
+
 def exc_handling() -> None:
     try:
         raise ValueError("error")
