@@ -335,7 +335,12 @@
     },
     {
       "name": "Storage type (class/func)",
-      "scope": ["storage.type.class", "storage.type.function", "keyword.other.fn"],
+      "scope": [
+        "storage.type.class",
+        "storage.type.function",
+        "keyword.other.fn",
+        "keyword.language.gdscript"
+      ],
       "settings": {
         "foreground": "#66D9EF"
       }
@@ -821,7 +826,8 @@
     {
       "scope": [
         "entity.name.type.lifetime.rust", // 'LIFETIMENAME
-        "support.function.magic.python" // magic func assignment
+        "support.function.magic.python", // magic func assignment
+        "meta.literal.nodepath.bare.gdscript"
       ],
       "settings": {
         "fontStyle": "italic",
