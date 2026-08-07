@@ -1,4 +1,4 @@
-## VSCode color theme "krys-colors"
+# VSCode color theme "krys-colors"
 
 This theme's colors are originally based on the original Monokai.
 
