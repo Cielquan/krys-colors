@@ -18,6 +18,8 @@ echo -e "Hello\nWorld"
 printf 'Value: %s\n' "${VERSION}"
 echo "${MAP[key]}"
 
+chmod -r foo/**/bar
+
 single='single quoted'
 double="double quoted with ${VERSION=default}"
 
