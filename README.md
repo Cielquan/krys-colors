@@ -31,7 +31,6 @@ Planned to be also tested:
 - Nix
 - VimScript
 
-
 Following extensions are needed for the corresponding file type:
 
 - Dockerfile: jeff-hykin.better-dockerfile-syntax
@@ -43,6 +42,7 @@ Following extensions are needed for the corresponding file type:
 ## Installation
 
 The extension is available from the following marketplaces:
+
 - [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.krys-colors)
 - [Open VSX Marketplace](https://open-vsx.org/extension/cielquan/krys-colors)
 
