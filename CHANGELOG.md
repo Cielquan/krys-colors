@@ -4,6 +4,7 @@
 
 - Add theme support for ignore files
 - Add theme support for GDScript
+- Add grammer overrides for Python, Rust and GDScript
 - Drop JSON version of theme file, now only gets build as artifact and not version controlled
 - Add code example files (to repo)
 - Update debug config to open `code_examples/`
