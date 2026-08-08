@@ -8,7 +8,6 @@
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
         "${workspaceFolder}/code_examples"
-        
       ]
     }
   ]
