@@ -334,12 +334,7 @@
     },
     {
       "name": "Storage type (class/func)",
-      "scope": [
-        "storage.type.class",
-        "storage.type.function",
-        "keyword.other.fn",
-        "keyword.language.gdscript"
-      ],
+      "scope": ["storage.type.class", "storage.type.function", "keyword.other.fn"],
       "settings": {
         "fontStyle": "",
         "foreground": "#66D9EF"
