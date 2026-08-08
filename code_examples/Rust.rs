@@ -40,6 +40,8 @@ fn process<'a>(
 ) -> Result<Option<&'a str>> {
     let tuple: (i32, bool) = (42, true);
 
+    let state = State.Idle
+
     let mut map = std::collections::HashMap::new();
     map.insert("key", None::<String>);
 
