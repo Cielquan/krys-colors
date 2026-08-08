@@ -2,42 +2,30 @@
 
 This theme's colors are originally based on the original Monokai.
 
-Following _languages_ I have tested and partially additionally configured:
+Following _languages_ have been tested:
 
+- Bash / Shell (*.{bash,sh})
 - CSS
 - Dockerfile
+- Gettext (*.{po,pot})
+- GDScript
 - HTML
+- Ignore (.gitignore)
 - INI
 - JavaScript
 - Jinja2
 - JSON
 - Markdown
 - Python
+- React (*.{jsx,tsx})
 - RegEx
 - ReStructuredText
 - Rust
+- SQL
 - TOML
 - TypeScript
-- YAML
-
-Planned to be also tested:
-
-- SQL
-- React
-- po translation files (mrorz.language-gettext)
 - XML
-- PS1
-- Makefile
-- Nix
-- VimScript
-
-Following extensions are needed for the corresponding file type:
-
-- Dockerfile: jeff-hykin.better-dockerfile-syntax
-- Jinja2: samuelcolvin.jinjahtml
-- ReStructuredText: lextudio.restructuredtext + trond-snekvik.simple-rst
-- Rust: rust-lang.rust-analyzer
-- TOML: tamasfe.even-better-toml or bungcip.better-toml
+- YAML
 
 ## Installation
 
