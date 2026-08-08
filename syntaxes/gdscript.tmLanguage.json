@@ -2,6 +2,8 @@
   "injectionSelector": "L:source.gdscript -string",
   "scopeName": "fix.gdscript",
   "patterns": [
+    { "include": "#documentation-comment" },
+    { "include": "#comment" },
     { "include": "#annotation" },
     { "include": "#any_property" },
     { "include": "#builtin_get_node_shorthand" },
@@ -98,6 +100,28 @@
           "name": "storage.type.class.gdscript"
         }
       }
+    },
+    "comment": {
+      "comment": "Line comments",
+      "name": "comment.line.number-sign.gdscript",
+      "begin": "\\s*(#).*",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.comment.number-sign.gdscript"
+        }
+      },
+      "end": "$"
+    },
+    "documentation-comment": {
+      "comment": "Documentation comments",
+      "name": "comment.line.documentation.gdscript",
+      "begin": "^\\s*(##)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.comment.documentation.gdscript"
+        }
+      },
+      "end": "$"
     },
     "enum": {
       "match": "\\b(enum)\\b",
