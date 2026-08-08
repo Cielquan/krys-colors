@@ -341,6 +341,7 @@
         "keyword.language.gdscript"
       ],
       "settings": {
+        "fontStyle": "",
         "foreground": "#66D9EF"
       }
     },
