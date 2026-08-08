@@ -187,7 +187,11 @@
     },
     {
       "name": "Path",
-      "scope": ["source.ignore"],
+      "scope": [
+        "source.ignore",
+        "meta.literal.nodepath.gdscript",
+        "meta.literal.nodepath.bare.gdscript"
+      ],
       "settings": {
         "fontStyle": "italic",
         "foreground": "#A5C261"
@@ -332,6 +336,11 @@
         "storage.type.string",
         "string.quoted.byte.raw.rust", // b and r in front of string or char
         "punctuation.definition.string.raw.rust", // # for raw strings
+        "punctuation.definition.string.raw.gdscript", // r prefix
+        "punctuation.definition.nodepath.gdscript", // ^ prefix
+        "punctuation.definition.string-name.gdscript", // & prefix
+        "punctuation.definition.node.gdscript", // $ prefix
+        "punctuation.definition.node.unique.gdscript", // % prefix
         "storage.type.number",
         "storage.type.imaginary.number"
       ],
@@ -811,7 +820,8 @@
         "punctuation.definition.anchor.yaml", // &
         "punctuation.definition.alias.yaml", // *
         "support.other.match.begin.regexp", // begin '^'
-        "support.other.match.end.regexp" // end '$'
+        "support.other.match.end.regexp", // end '$'
+        "storage.modifier.annotation.gdscript" // @... annotations
       ],
       "settings": {
         "fontStyle": "italic",
@@ -839,8 +849,7 @@
     {
       "scope": [
         "entity.name.type.lifetime.rust", // 'LIFETIMENAME
-        "support.function.magic.python", // magic func assignment
-        "meta.literal.nodepath.bare.gdscript"
+        "support.function.magic.python" // magic func assignment
       ],
       "settings": {
         "fontStyle": "italic",
