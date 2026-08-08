@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
--
+- Add theme support for ignore files
+- Add theme support for GDScript
+- Drop JSON version of theme file, now only gets build as artifact and not version controlled
+- Add code example files (to repo)
+- Update debug config to open `code_examples/`
 
 ## v1.0.1 (2026-04-13)
 
