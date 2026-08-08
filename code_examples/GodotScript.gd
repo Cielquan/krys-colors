@@ -40,9 +40,33 @@ var count: int:
 
 func _ready() -> void:
     var text := "Hello\nWorld"
-    var path := $"CanvasLayer/Label"
-    var node := %Label
-    if path.can_process() and node.can_process():
+    var str_raw := r"Hello\nWorld"
+    var str_name := &"String"
+
+    var node_path := ^"Label"
+    var node_path_manual := NodePath("Label")
+    var node_lu := get_node(node_path)
+    var node_lu2 := get_node(node_path_manual)
+    var node_lu3 := get_node("%Label/%Child:prop")
+    var node := $"../CanvasLayer/Label/%Child:prop"
+    var node_bare := $CanvasLayer
+    var node_bare_multi := $CanvasLayer/Label
+    var node_bare_unique := %Label
+    var node_bare_unique2 := $%Label
+    var node_bare_nested := %Label/%Child
+
+    if (
+        node_path
+        and node_lu.can_process()
+        and node_lu2.can_process()
+        and node_lu3.can_process()
+        and node.can_process()
+        and node_bare.can_process()
+        and node_bare_multi.can_process()
+        and node_bare_unique.can_process()
+        and node_bare_unique2.can_process()
+        and node_bare_nested.can_process()
+    ):
         print("Yay")
 
     var callable := func(x: int = 1) -> int:
@@ -53,6 +77,8 @@ func _ready() -> void:
 
     if true is not bool and count >= 0:
         print(text)
+        print(str_raw)
+        print(str_name)
     else:
         pass
 
