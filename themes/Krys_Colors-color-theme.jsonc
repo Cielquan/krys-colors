@@ -165,7 +165,12 @@
     },
     {
       "name": "Constant",
-      "scope": ["variable.other.constant", "constant.other.caps", "support.constant"],
+      "scope": [
+        "variable.other.constant",
+        "variable.other.enummember",
+        "constant.other.caps",
+        "support.constant"
+      ],
       "settings": {
         "fontStyle": "bold",
         "foreground": "#F8F8F2"
