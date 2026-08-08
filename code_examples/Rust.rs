@@ -1,8 +1,14 @@
 #![allow(dead_code)]
 
-/// Doc comment
-//! Doc comment
 // Normal comment
+
+/* Block comment */
+
+pub mod foo {
+    //! Inner doc comment
+}
+
+/// Outer doc comment
 #[derive(Debug, Clone)]
 #[repr(C)]
 struct User<'a, T>
@@ -28,7 +34,7 @@ trait Displayable {
     fn display(&self) -> String;
 }
 
-impl<T: std::fmt::Debug> Displayable for User<'_, T> {
+impl<T: std::fmt::Debug + std::clone::Clone + std::marker::Send> Displayable for User<'_, T> {
     fn display(&self) -> String {
         format!("{:?}", self)
     }
@@ -40,7 +46,7 @@ fn process<'a>(
 ) -> Result<Option<&'a str>> {
     let tuple: (i32, bool) = (42, true);
 
-    let state = State.Idle
+    let state = State::Idle;
 
     let mut map = std::collections::HashMap::new();
     map.insert("key", None::<String>);
@@ -69,21 +75,26 @@ fn process<'a>(
     let byte_char = b'A';
 
     if let Some(item) = map.get("key") {
-        return Ok(item.as_deref());
+        return Ok(None);
     }
 
     Ok(Some(input))
 }
 
-async fn fetch() -> Result<()> {
-    let value = async { 42 }.await;
+async unsafe extern "C" fn fetch() -> Result<()> {
+    let value = async move { (async move |x: i32, y: i32| x * y)(42, 32).await }.await;
 
     unsafe {
         COUNTER += value;
     }
+    
+    unsafe extern "C" {}
 
     Ok(())
 }
+
+#[unsafe(no_mangle)]
+fn foo() {}
 
 #[cfg(test)]
 mod tests {
