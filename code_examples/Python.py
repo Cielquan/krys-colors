@@ -65,6 +65,7 @@ def loops() -> None:
         break
 
     for idx, i in enumerate((1, 2)):
+        breakpoint()
         assert idx > 0
         print(i)
         continue
@@ -79,6 +80,7 @@ def pattern_matching() -> None:
         case _:
             print("catch all")
 
+
 def exc_handling() -> None:
     try:
         raise ValueError("error")
@@ -88,9 +90,33 @@ def exc_handling() -> None:
         pass
 
 
-async def async_main() -> None:
+class AsyncCounter:
+    def __init__(self, limit):
+        self.current = 0
+        self.limit = limit
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        if self.current >= self.limit:
+            raise StopAsyncIteration
+
+        await asyncio.sleep(0.5)
+
+        value = self.current
+        self.current += 1
+        return value
+
+
+async def async_main(
+    _foo: None,
+) -> None:
     async with asyncio.Lock():
         await asyncio.sleep(0)
+
+    async for i in AsyncCounter(1):
+        print(i)
 
 
 class Bar():
@@ -128,9 +154,9 @@ def generic_swap[T, U](a: T, b: U) -> tuple[U, T]:
 class Container[T]:
     def __init__(self, value: T) -> None:
         self.value = value
-    
+
     def get(self) -> T:
         return self.value
-    
-    def map[U: str | bytes](self, func: t.Callable[[T], U]) -> "Container[U]":
+
+    def mapping[U: str | bytes](self, func: t.Callable[[T], U]) -> "Container[U]":
         return Container(func(self.value))
