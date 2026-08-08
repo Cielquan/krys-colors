@@ -284,7 +284,6 @@
       "name": "Keyword (special)",
       "scope": [
         "storage.type.format.python",
-        "storage.type.function.async.python",
         "keyword.other.important.css",
         "keyword.operator.new.js",
         "keyword.operator.new.jsx",
@@ -306,10 +305,9 @@
       }
     },
     {
-      "name": "Storage",
-      "scope": ["storage"],
+      "name": "Storage modifier",
+      "scope": ["storage.modifier", "storage.type.function.async"],
       "settings": {
-        "fontStyle": "",
         "foreground": "#F92672"
       }
     },
