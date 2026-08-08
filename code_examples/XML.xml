@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE note [
+    <!ELEMENT note (to,from,body)>
+    <!ENTITY author "Example">
+]>
+
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<root xmlns="http://example.com/ns"
+      xmlns:x="http://example.com/custom"
+      version="1.0"
+      enabled="true">
+
+    <note id="001">
+        <to>User</to>
+        <from>&author;</from>
+
+        <body>
+            Text with &amp; escaped &lt; characters.
+            <![CDATA[
+                Raw <text> & characters
+            ]]>
+        </body>
+
+        <x:item x:value="42" />
+
+        <!-- Nested comment -->
+
+        <empty />
+
+    </note>
+
+</root>
