@@ -9,7 +9,11 @@ type ID = string | number;
 type Nullable<T> = T | null;
 type Handler = (value: ID) => Promise<void>;
 
-interface User<T = unknown> {
+interface Extendable {
+    foo?: string;
+}
+
+interface User<T = unknown> extends Extendable {
     readonly id: ID;
     name: string;
     data?: T;
@@ -30,7 +34,7 @@ class Account implements User<string> {
     }
 
     set name(value: string) {
-        console.log(value);
+        console.log(value as string);
     }
 }
 
@@ -38,6 +42,8 @@ enum Status {
     Idle,
     Running = "running",
 }
+
+const x = Status.Idle;
 
 namespace Utils {
     export function log(message: string): void {
