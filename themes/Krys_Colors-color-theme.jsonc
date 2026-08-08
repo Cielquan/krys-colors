@@ -186,6 +186,14 @@
       }
     },
     {
+      "name": "Path",
+      "scope": ["source.ignore"],
+      "settings": {
+        "fontStyle": "italic",
+        "foreground": "#A5C261"
+      }
+    },
+    {
       "name": "Escapes",
       "scope": [
         "constant.character.escape",
@@ -840,16 +848,9 @@
       }
     },
     {
-      "scope": ["punctuation.separator.directory.ignore"],
-      "settings": {
-        "foreground": "#268BD2"
-      }
-    },
-    {
       "scope": [
         "meta.function-call.generic.python",
-        "entity.name.command.shell.dockerfile", // shell cmd e.g. grep
-        "punctuation.separator.path.ignore"
+        "entity.name.command.shell.dockerfile" // shell cmd e.g. grep
       ],
       "settings": {
         "foreground": "#66D9EF"
