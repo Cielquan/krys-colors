@@ -1,0 +1,217 @@
+{
+  "injectionSelector": "L:source.gdscript -string",
+  "scopeName": "fix.gdscript",
+  "patterns": [
+    { "include": "#annotation" },
+    { "include": "#builtin_get_node_shorthand" },
+    { "include": "#class" },
+    { "include": "#enum" },
+    { "include": "#extends" },
+    { "include": "#node_path" },
+    { "include": "#nodepath_object" },
+    { "include": "#nodepath_function" },
+    { "include": "#pi" },
+    { "include": "#static" },
+    { "include": "#string_name" },
+    { "include": "#string_raw" }
+  ],
+  "repository": {
+    "annotation": {
+      "name": "storage.modifier.annotation.gdscript",
+      "match": "@(?:abstract|export|export_category|export_color_no_alpha|export_custom|export_dir|export_enum|export_exp_easing|export_file|export_file_path|export_flags|export_flags_2d_navigation|export_flags_2d_physics|export_flags_2d_render|export_flags_3d_navigation|export_flags_3d_physics|export_flags_3d_render|export_flags_avoidance|export_global_dir|export_global_file|export_group|export_multiline|export_node_path|export_placeholder|export_range|export_storage|export_subgroup|export_tool_button|icon|onready|rpc|static_unload|tool|warning_ignore|warning_ignore_restore|warning_ignore_start)\\b"
+    },
+    "builtin_get_node_shorthand": {
+      "patterns": [
+        { "include": "#builtin_get_node_shorthand_quoted" },
+        { "include": "#builtin_get_node_shorthand_bare" },
+        { "include": "#builtin_get_node_shorthand_bare_multi" }
+      ]
+    },
+    "builtin_get_node_shorthand_quoted": {
+      "name": "string.quoted.gdscript meta.literal.nodepath.gdscript",
+      "begin": "(?:(\\$)|(%))(\"|')",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.node.gdscript" },
+        "2": { "name": "punctuation.definition.node.unique.gdscript" }
+      },
+      "end": "(\\3)",
+      "patterns": [
+        {
+          "match": "%",
+          "name": "punctuation.definition.node.unique.gdscript"
+        },
+        {
+          "match": "/",
+          "name": "punctuation.separator.path.gdscript"
+        },
+        {
+          "match": ":",
+          "name": "punctuation.separator.property.gdscript"
+        }
+      ]
+    },
+    "builtin_get_node_shorthand_bare": {
+      "name": "string.unquoted.gdscript meta.literal.nodepath.bare.gdscript",
+      "match": "(?<!/\\s*)(?:(\\$\\s*)|(%)|(?:(\\$)(%)(\\s*)))(/\\s*)?([a-zA-Z_]\\w*)\\b(?!\\s*/)",
+      "captures": {
+        "1": { "name": "punctuation.definition.node.gdscript" },
+        "2": { "name": "punctuation.definition.node.unique.gdscript" },
+        "3": { "name": "punctuation.definition.node.gdscript" },
+        "4": { "name": "punctuation.definition.node.unique.gdscript" },
+        "5": { "name": "punctuation.definition.node.gdscript" }
+      }
+    },
+    "builtin_get_node_shorthand_bare_multi": {
+      "name": "string.unquoted.gdscript meta.literal.nodepath.bare.gdscript",
+      "begin": "(?:(\\$\\s*)|(%)|(?:(\\$)(%)(\\s*)))(/\\s*)?([a-zA-Z_]\\w*)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.node.gdscript" },
+        "2": { "name": "punctuation.definition.node.unique.gdscript" },
+        "3": { "name": "punctuation.definition.node.gdscript" },
+        "4": { "name": "punctuation.definition.node.unique.gdscript" },
+        "5": { "name": "punctuation.definition.node.gdscript" }
+      },
+      "end": "(?!\\s*/\\s*%?\\s*[a-zA-Z_]\\w*)",
+      "patterns": [
+        {
+          "match": "(/)\\s*(%)?\\s*([a-zA-Z_]\\w*)\\s*",
+          "captures": {
+            "1": { "name": "punctuation.separator.path.gdscript" },
+            "2": { "name": "punctuation.definition.node.unique.gdscript" }
+          }
+        }
+      ]
+    },
+    "class": {
+      "match": "\\b(class|class_name)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.type.class.gdscript"
+        }
+      }
+    },
+    "enum": {
+      "match": "\\b(enum)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.type.enum.gdscript"
+        }
+      }
+    },
+    "extends": {
+      "match": "\\b(extends)\\s+([A-Za-z_]\\w*)",
+      "captures": {
+        "1": {
+          "name": "keyword.control.inheritance.gdscript"
+        },
+        "2": {
+          "name": "entity.other.inherited-class.gdscript"
+        }
+      }
+    },
+    "node_path": {
+      "name": "string.quoted.gdscript meta.literal.nodepath.gdscript",
+      "begin": "(\\^)(\"|')",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.nodepath.gdscript" },
+        "2": { "name": "string.quoted.gdscript" }
+      },
+      "end": "(\\2)"
+    },
+    "nodepath_object": {
+      "name": "meta.literal.nodepath.gdscript",
+      "begin": "(NodePath)\\s*(?:\\()",
+      "beginCaptures": { "1": { "name": "support.type.nodepath.gdscript" } },
+      "end": "(?:\\))",
+      "patterns": [
+        {
+          "begin": "(\"|')",
+          "end": "\\1",
+          "name": "string.quoted.gdscript meta.literal.nodepath.gdscript",
+          "patterns": [
+            {
+              "match": "%",
+              "name": "punctuation.definition.node.unique.gdscript"
+            },
+            {
+              "match": "/",
+              "name": "punctuation.separator.path.gdscript"
+            },
+            {
+              "match": ":",
+              "name": "punctuation.separator.property.gdscript"
+            }
+          ]
+        }
+      ]
+    },
+    "nodepath_function": {
+      "name": "meta.function.gdscript",
+      "contentName": "meta.function.parameters.gdscript",
+      "begin": "(get_node_or_null|has_node|has_node_and_resource|find_node|get_node)\\s*(\\()",
+      "beginCaptures": {
+        "1": { "name": "entity.name.function.gdscript" },
+        "2": { "name": "punctuation.definition.parameters.begin.gdscript" }
+      },
+      "end": "(\\))",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.parameters.end.gdscript" }
+      },
+      "patterns": [
+        {
+          "begin": "(\"|')",
+          "end": "\\1",
+          "name": "string.quoted.gdscript meta.literal.nodepath.gdscript",
+          "patterns": [
+            {
+              "match": "%",
+              "name": "punctuation.definition.node.unique.gdscript"
+            },
+            {
+              "match": "/",
+              "name": "punctuation.separator.path.gdscript"
+            },
+            {
+              "match": ":",
+              "name": "punctuation.separator.property.gdscript"
+            }
+          ]
+        },
+        { "include": "#expression" }
+      ]
+    },
+    "pi": {
+      "match": "\\b(PI)\\b",
+      "captures": {
+        "1": {
+          "name": "constant.language.pi.gdscript"
+        }
+      }
+    },
+    "static": {
+      "match": "\\b(static)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.modifier.static.gdscript"
+        }
+      }
+    },
+    "string_name": {
+      "name": "string.quoted.gdscript meta.literal.string-name.gdscript",
+      "begin": "(&)(\"|')",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.string-name.gdscript" },
+        "2": { "name": "string.quoted.string-name.gdscript" }
+      },
+      "end": "(\\2)"
+    },
+    "string_raw": {
+      "name": "string.quoted.raw.gdscript",
+      "begin": "(r)(\"\"\"|'''|\"|')",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.string.raw.gdscript" }
+      },
+      "end": "\\2"
+    }
+  }
+}

@@ -22,6 +22,29 @@
         "uiTheme": "vs-dark",
         "path": "./themes/Krys_Colors-color-theme.json"
       }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/gdscript.tmLanguage.json",
+        "scopeName": "fix.gdscript",
+        "injectTo": [
+          "source.gdscript"
+        ]
+      },
+      {
+        "path": "./syntaxes/python.tmLanguage.json",
+        "scopeName": "fix.python",
+        "injectTo": [
+          "source.python"
+        ]
+      },
+      {
+        "path": "./syntaxes/rust.tmLanguage.json",
+        "scopeName": "fix.rust",
+        "injectTo": [
+          "source.rust"
+        ]
+      }
     ]
   }
 }
