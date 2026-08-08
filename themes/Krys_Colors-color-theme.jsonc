@@ -747,6 +747,14 @@
       }
     },
     {
+      // Special syntax which needs a visual warning
+      "scope": ["storage.modifier.unsafe.rust"],
+      "settings": {
+        "foreground": "#F92672",
+        "fontStyle": "bold"
+      }
+    },
+    {
       "scope": [
         "keyword.operator.access.dot.rust", // .
         "string.regexp"
