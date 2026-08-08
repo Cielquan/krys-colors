@@ -55,8 +55,9 @@ namespace Utils {
 class Service {
     async fetch<T extends object>(value: T): Promise<T> {
         await Promise.resolve();
-        return value;
+        return value as T;
     }
+
 }
 
 function process(
@@ -76,6 +77,8 @@ function process(
 
     switch (input) {
         case null:
+            break;
+        case undefined:
             break;
         default:
             return [`${input}`];
