@@ -598,67 +598,6 @@ const eslintConfig = [
       }
     : { name: "custom/prettier [inactive]" },
 
-  // TODO:#i# wait for v9 support
-  // https://github.com/vercel/next.js/issues/64114
-  // https://github.com/vercel/next.js/issues/64409
-  ...fixupConfigRules(flatCompat.extends("plugin:@next/next/core-web-vitals")).map(
-    (config, idx) => {
-      let name: string;
-      switch (idx) {
-        case 0: {
-          name = "recommended";
-          break;
-        }
-        case 1: {
-          name = "core-web-vitals";
-          break;
-        }
-        default: {
-          name = idx.toString();
-          break;
-        }
-      }
-
-      return {
-        ...config,
-        name: `plugin/next/${name}`,
-        rules: {},
-      };
-    },
-  ),
-
-  // TODO:#i# wait for v9 support
-  // https://github.com/vercel/next.js/issues/64114
-  // https://github.com/vercel/next.js/issues/64409
-  ...fixupConfigRules(flatCompat.extends("plugin:@next/next/core-web-vitals")).map(
-    (config, idx) => {
-      let name: string;
-      switch (idx) {
-        case 0: {
-          name = "recommended";
-          break;
-        }
-        case 1: {
-          name = "core-web-vitals";
-          break;
-        }
-        default: {
-          name = idx.toString();
-          break;
-        }
-      }
-
-      return RULESETS_TO_RUN.has(RULESET.NORMAL)
-        ? {
-            name: `custom/next/${name}`,
-            rules: {
-              ...(config.rules ?? {}),
-            },
-          }
-        : { name: `custom/next/${name} [inactive]` };
-    },
-  ),
-
   {
     ...importXPlugin.flatConfigs.recommended,
     name: "plugin/import-x/recommended",
