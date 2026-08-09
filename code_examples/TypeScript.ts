@@ -71,7 +71,7 @@ function process(
         ["key"]: true,
     };
 
-    if (input ?? false) {
+    if ((input ?? false) && true) {
         callback?.(input);
     }
 
