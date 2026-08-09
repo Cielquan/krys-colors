@@ -30,11 +30,6 @@
 
     "types": ["node"]
   },
-  "include": [
-    "scripts/**/*.mjs"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["scripts/**/*.mjs"],
+  "exclude": ["node_modules", "dist"]
 }
