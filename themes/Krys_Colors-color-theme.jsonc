@@ -268,7 +268,16 @@
     },
     {
       "name": "Operator (logical)",
-      "scope": ["keyword.operator.logical"],
+      "scope": [
+        "keyword.operator.logical",
+        "keyword.operator.comparison",
+        "keyword.operator.boolean",
+        "keyword.operator.membership",
+        "keyword.operator.wordlike.logical",
+        "keyword.operator.wordlike.comparison",
+        "keyword.operator.wordlike.boolean",
+        "keyword.operator.wordlike.membership"
+      ],
       "settings": {
         "foreground": "#268BD2"
       }
