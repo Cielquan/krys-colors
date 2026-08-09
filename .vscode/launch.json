@@ -7,6 +7,7 @@
       "request": "launch",
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}/extensions/krys-colors",
+        "--extensionDevelopmentPath=${workspaceFolder}/extensions/gitignore-syntax-vsx",
         "${workspaceFolder}/code_examples"
       ]
     }
