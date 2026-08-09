@@ -97,7 +97,7 @@ repos:
           - prettier@^3.6.2 # NOTE: version overwrites rev version - keep in sync
         args: ["--ignore-path", ".gitignore"]
         files: \.(html|css|json|jsonc|yaml|md)$
-        exclude: code_examples
+        exclude: code_examples|pnpm-lock.yaml
 
   # ####################################################################################
   #
@@ -142,7 +142,7 @@ repos:
       - id: check-toml
         exclude: code_examples
       - id: check-yaml
-        exclude: code_examples
+        exclude: code_examples|pnpm-lock.yaml
 
   # yamllint - yaml linter
   - repo: https://github.com/adrienverge/yamllint
