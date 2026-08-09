@@ -382,7 +382,7 @@
         "entity.name.type.result",
         "entity.name.type.void"
       ],
-      "settings": { 
+      "settings": {
         "fontStyle": "italic",
         "foreground": "#268BD2"
       }
