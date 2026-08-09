@@ -12,7 +12,7 @@ import nodePlugin from "eslint-plugin-n";
 import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
 import globals from "globals";
 import {
-  config as tsEslintConfig,
+  type ConfigArray as EslintConfigArray,
   configs as tsEslintConfigs,
   plugin as tsEslintPlugin,
 } from "typescript-eslint";
@@ -82,10 +82,7 @@ const RULESETS_TO_RUN = new Set<RULESET>();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const flatCompat = new FlatCompat();
-
 type EslintConfig = EslintConfigArray[number];
-type EslintConfigArray = ReturnType<typeof tsEslintConfig>;
 type EslintPlugin = NonNullable<EslintConfig["plugins"]>[string];
 
 const eslintConfig = [
@@ -592,13 +589,13 @@ const eslintConfig = [
     ...importXPlugin.flatConfigs.recommended,
     name: "plugin/import-x/recommended",
     rules: {},
-  },
+  } as EslintConfig,
 
   {
     ...importXPlugin.flatConfigs.typescript,
     name: "plugin/import-x/typescript",
     rules: {},
-  },
+  } as EslintConfig,
 
   RULESETS_TO_RUN.has(RULESET.NORMAL)
     ? {
