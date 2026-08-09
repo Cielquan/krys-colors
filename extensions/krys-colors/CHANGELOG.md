@@ -16,7 +16,7 @@ NOTE: please use them in this order.
 
 ## [Unreleased]
 
-[diff v1.0.1...main](https://github.com/Cielquan/krys-colors/compare/v1.0.1...main)
+[diff krys-colors/v1.0.1...main](https://github.com/Cielquan/krys-colors/compare/krys-colors/v1.0.1...main)
 
 ### New features
 
@@ -30,7 +30,7 @@ NOTE: please use them in this order.
 
 ## v1.0.1 (2026-04-13)
 
-[diff v1.0.0...v1.0.1](https://github.com/Cielquan/krys-colors/compare/v1.0.0...v1.0.1)
+[diff krys-colors/v1.0.0...krys-colors/v1.0.1](https://github.com/Cielquan/krys-colors/compare/krys-colors/v1.0.0...krys-colors/v1.0.1)
 
 ### Documentation
 
@@ -44,6 +44,6 @@ NOTE: please use them in this order.
 
 ## v1.0.0 (2025-03-04)
 
-[diff 4ceb7c8...v1.0.0](https://github.com/Cielquan/krys-colors/compare/4ceb7c8...v1.0.0)
+[diff 4ceb7c8...krys-colors/v1.0.0](https://github.com/Cielquan/krys-colors/compare/4ceb7c8...krys-colors/v1.0.0)
 
 - Initial release
