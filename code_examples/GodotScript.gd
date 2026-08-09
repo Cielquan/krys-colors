@@ -100,6 +100,8 @@ func conditions() -> void:
     var is_member := 1 in values_non_static
     if true is not bool and count >= 0 or is_member:
         print("ok")
+    elif false:
+        pass
     else:
         return
 
