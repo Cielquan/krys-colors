@@ -1,11 +1,14 @@
+/** @type {import("prettier").Config} */
 const config = {
-  printWidth: 88,
+  printWidth: 100,
   endOfLine: "auto",
+  trailingComma: "all",
+  plugins: [],
   overrides: [
     // Revert JSONC parsing:
     // https://github.com/prettier/prettier/issues/15553
     {
-      files: ["**/*.jsonc"],
+      files: ["**/.markdownlint-cli2.jsonc"],
       options: {
         parser: "json",
       },
@@ -13,4 +16,4 @@ const config = {
   ],
 };
 
-module.exports = config;
+export default config;
