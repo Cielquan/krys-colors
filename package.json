@@ -6,6 +6,7 @@
   },
   "scripts": {
     "check": "pre-commit run --all-files",
+    "package": "node scripts/package-extensions.mjs",
     "watch": "watchexec -w extensions/krys-colors/themes prek run remove-comments-from-jsonc --all-files"
   },
   "devDependencies": {
