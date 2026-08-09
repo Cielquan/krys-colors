@@ -4,8 +4,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { fixupConfigRules, includeIgnoreFile } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
+import { includeIgnoreFile } from "@eslint/compat";
 import eslintJS from "@eslint/js";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 import importXPlugin from "eslint-plugin-import-x";
@@ -29,7 +28,6 @@ type RUN_ESLINT_RULESETS__ENV_VAR_VALUE =
  *  - EXPENSIVE_ALL: run all expensive but not normal rules; import and type-checked
  *  - EXPENSIVE_IMPORT: run expensive import rules only
  *  - EXPENSIVE_TYPECHECKED: run expensive type-checked rules only
- *  - EXPENSIVE_REACT_COMPILER: run expensive react compiler rules only
  */
 const RUN_ESLINT_RULESETS__ENV_VAR_VALUE = {
   ALL: "ALL",
@@ -37,7 +35,6 @@ const RUN_ESLINT_RULESETS__ENV_VAR_VALUE = {
   EXPENSIVE_ALL: "EXPENSIVE_ALL",
   EXPENSIVE_IMPORT: "EXPENSIVE_IMPORT",
   EXPENSIVE_TYPECHECKED: "EXPENSIVE_TYPECHECKED",
-  EXPENSIVE_REACT_COMPILER: "EXPENSIVE_REACT_COMPILER",
 } as const;
 
 type RULESET = (typeof RULESET)[keyof typeof RULESET];
@@ -45,7 +42,6 @@ const RULESET = {
   NORMAL: "NORMAL",
   EXPENSIVE_IMPORT: "EXPENSIVE_IMPORT",
   EXPENSIVE_TYPECHECKED: "EXPENSIVE_TYPECHECKED",
-  EXPENSIVE_REACT_COMPILER: "EXPENSIVE_REACT_COMPILER",
 } as const;
 
 const RULESETS_TO_RUN = new Set<RULESET>();
@@ -56,7 +52,6 @@ const RULESETS_TO_RUN = new Set<RULESET>();
       RULESETS_TO_RUN.add(RULESET.NORMAL);
       RULESETS_TO_RUN.add(RULESET.EXPENSIVE_IMPORT);
       RULESETS_TO_RUN.add(RULESET.EXPENSIVE_TYPECHECKED);
-      RULESETS_TO_RUN.add(RULESET.EXPENSIVE_REACT_COMPILER);
       break;
     }
     case "NORMAL": {
@@ -66,7 +61,6 @@ const RULESETS_TO_RUN = new Set<RULESET>();
     case "EXPENSIVE_ALL": {
       RULESETS_TO_RUN.add(RULESET.EXPENSIVE_IMPORT);
       RULESETS_TO_RUN.add(RULESET.EXPENSIVE_TYPECHECKED);
-      RULESETS_TO_RUN.add(RULESET.EXPENSIVE_REACT_COMPILER);
       break;
     }
     case "EXPENSIVE_IMPORT": {
@@ -75,10 +69,6 @@ const RULESETS_TO_RUN = new Set<RULESET>();
     }
     case "EXPENSIVE_TYPECHECKED": {
       RULESETS_TO_RUN.add(RULESET.EXPENSIVE_TYPECHECKED);
-      break;
-    }
-    case "EXPENSIVE_REACT_COMPILER": {
-      RULESETS_TO_RUN.add(RULESET.EXPENSIVE_REACT_COMPILER);
       break;
     }
     default: {
@@ -601,12 +591,6 @@ const eslintConfig = [
   {
     ...importXPlugin.flatConfigs.recommended,
     name: "plugin/import-x/recommended",
-    rules: {},
-  },
-
-  {
-    ...importXPlugin.flatConfigs.react,
-    name: "plugin/import-x/react",
     rules: {},
   },
 
