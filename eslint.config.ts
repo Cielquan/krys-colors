@@ -11,11 +11,8 @@ import importXPlugin from "eslint-plugin-import-x";
 import nodePlugin from "eslint-plugin-n";
 import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
 import globals from "globals";
-import {
-  type ConfigArray as EslintConfigArray,
-  configs as tsEslintConfigs,
-  plugin as tsEslintPlugin,
-} from "typescript-eslint";
+import type { ConfigArray as EslintConfigArray } from "typescript-eslint";
+import { configs as tsEslintConfigs, plugin as tsEslintPlugin } from "typescript-eslint";
 
 type RUN_ESLINT_RULESETS__ENV_VAR_VALUE =
   (typeof RUN_ESLINT_RULESETS__ENV_VAR_VALUE)[keyof typeof RUN_ESLINT_RULESETS__ENV_VAR_VALUE];
