@@ -1,9 +1,9 @@
 # Monorepo for `Krys Colors` theme and language extentions for VSCode
 
-See the respective READMEs of the extentions for extention specifics:
+See the respective extentions for specifics:
 
-- `krys-colors`: [README.md](./extensions/krys-colors/README.md)
-- `gitignore-syntax-vsx`: [README.md](./extensions/gitignore-syntax-vsx/README.md)
+- Krys Colors: [`krys-colors`](./extensions/krys-colors)
+- GitIgnore Syntax: [`gitignore-syntax-vsx`](./extensions/gitignore-syntax-vsx)
 
 ## Development (in VSCode)
 
