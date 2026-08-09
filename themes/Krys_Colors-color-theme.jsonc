@@ -379,7 +379,8 @@
         "entity.name.type.numeric",
         "entity.name.type.primitive",
         "entity.name.type.option",
-        "entity.name.type.result"
+        "entity.name.type.result",
+        "entity.name.type.void"
       ],
       "settings": {
         "fontStyle": "italic",
