@@ -7,6 +7,9 @@ from typing import List as List
 import typing as t
 
 
+breakpoint()
+
+
 def decorator_ohne_param() -> None:
     pass
 
@@ -67,7 +70,7 @@ def loops() -> None:
     for idx, i in enumerate((1, 2)):
         breakpoint()
         assert idx > 0
-        print(i)
+        print(int(i))
         continue
 
 
