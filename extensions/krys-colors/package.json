@@ -10,7 +10,8 @@
     "url": "https://github.com/Cielquan/krys-colors"
   },
   "scripts": {
-    "build": "../../scripts/jsonc-to-json.mjs themes/Krys_Colors-color-theme.jsonc"
+    "build": "../../scripts/jsonc-to-json.mjs themes/Krys_Colors-color-theme.jsonc",
+    "watch": "watchexec -w themes/Krys_Colors-color-theme.jsonc pnpm build"
   },
   "engines": {
     "vscode": "*"
