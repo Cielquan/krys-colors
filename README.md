@@ -1,58 +1,39 @@
-# VSCode color theme "krys-colors"
+# Monorepo for `Krys Colors` theme and language extentions for VSCode
 
-This theme's colors are originally based on the original Monokai.
+See the respective READMEs of the extentions for extention specifics:
 
-Following _languages_ have been tested:
-
-- Bash / Shell (*.{bash,sh})
-- CSS
-- Dockerfile
-- Gettext (*.{po,pot})
-- GDScript
-- HTML
-- Ignore (.gitignore)
-- INI
-- JavaScript
-- Jinja2
-- JSON
-- Markdown
-- Python
-- React (*.{jsx,tsx})
-- RegEx
-- ReStructuredText
-- Rust
-- SQL
-- TOML
-- TypeScript
-- XML
-- YAML
-
-## Installation
-
-The extension is available from the following marketplaces:
-
-- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.krys-colors)
-- [Open VSX Marketplace](https://open-vsx.org/extension/cielquan/krys-colors)
+- `krys-colors`: [README.md](./extensions/krys-colors/README.md)
+- `gitignore-syntax-vsx`: [README.md](./extensions/gitignore-syntax-vsx/README.md)
 
 ## Development (in VSCode)
 
-To build the theme JSON artifact from the JSONC file run `pre-commit run remove-comments-from-jsonc --all-files`.
-To automatically rebuild the artifact run: `watchexec -w themes pre-commit run remove-comments-from-jsonc --all-files`.
+### Builds
 
-In VSCode press `F5` to launch a development window, where you can open the example files to see the theme in action.
+To build the theme JSON artifact from the JSONC file run the `build` npm script via
+`pnpm --filter krys-colors build`.
 
-`pre-commit` is a python package and can be installed via `pip install pre-commit`.
-`watchexec` is a rust crate and can be installed via `cargo install --locked watchexec-cli`.
+You can also run the `watch` npm script via `pnpm watch` which uses
+[`watchexec`](https://github.com/watchexec/watchexec) to automatically rebuild the JSON artifact.
+You can install `watchexec` with `cargo install --locked watchexec-cli`.
+
+### Testing
+
+In VSCode press `F5` to launch a development window. The windows will run off the local versions
+of all extentions from this repo. The `code_examples/` directory is available for testing.
+
+### Tooling
+
+Linter and Formatter are managed via the `pre-commit` framework. You can use `pre-commit` or `prek`
+to run them.
+
+- `pre-commit`: `pip install pre-commit`
+- `prek`: `cargo install --locked prek`
 
 ### Release / VSIX Builds
 
-Install `vsce` util
-`npm install -g @vscode/vsce`
+To create the VISX artifacts run the `package` npm script via `pnpm package`. This runs a custom
+build script which builds and packages all extentions into the `dist/` directory.
 
-Run `pre-commit` for linting, formatting and output generation
-`pre-commit run --all-files`
-
-Run `vsce` to generate `vsix` file
-`vsce package`
+The VISX artifacts can then be uploaded to the marketplaces.
 
 See also: https://code.visualstudio.com/api/working-with-extensions/publishing-extension
