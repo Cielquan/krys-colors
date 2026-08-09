@@ -396,6 +396,6 @@ blank lines before and after.)
 Roles
 =====
 
-TODO: needs more info
+needs more info
 
 :ref:`builders`
