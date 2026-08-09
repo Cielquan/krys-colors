@@ -2,7 +2,7 @@
   "name": "gitignore-syntax-vsx",
   "displayName": "GitIgnore Syntax",
   "description": "GitIgnore Syntax for Visual Studio Code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "cielquan",
   "license": "MIT",
   "repository": {
