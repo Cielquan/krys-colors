@@ -87,7 +87,7 @@ async unsafe extern "C" fn fetch() -> Result<()> {
     unsafe {
         COUNTER += value;
     }
-    
+
     unsafe extern "C" {}
 
     Ok(())

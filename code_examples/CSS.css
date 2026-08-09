@@ -10,110 +10,105 @@
 @layer base, components, utilities;
 
 @property --angle {
-    syntax: "<angle>";
-    inherits: false;
-    initial-value: 0deg;
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
 @font-face {
-    font-family: Test;
-    src: url(font.woff2) format("woff2");
-    unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300;
+  font-family: Test;
+  src: url(font.woff2) format("woff2");
+  unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300;
 }
 
 :root {
-    --color: oklch(62% 0.22 250);
-    --spacing: 1rem;
-    --font: system-ui, sans-serif;
+  --color: oklch(62% 0.22 250);
+  --spacing: 1rem;
+  --font: system-ui, sans-serif;
 }
 
 @media (width >= 40rem) and (prefers-color-scheme: dark) {
-    @layer components {
+  @layer components {
+    @scope (.card) {
+      *,
+      #demo,
+      article:is(.active, .selected):where(:not([hidden])) > p:first-child::before,
+      a[href^="https"]:hover,
+      input[type="checkbox"]:checked + label,
+      svg|rect,
+      .foo\+bar {
+        color: #639;
+        background: linear-gradient(45deg, red, transparent), url(image.svg);
 
-        @scope (.card) {
+        border: 1px solid hsl(220 20% 50% / 0.5);
 
-            *,
-            #demo,
-            article:is(.active, .selected):where(:not([hidden]))
-            > p:first-child::before,
-            a[href^="https"]:hover,
-            input[type="checkbox"]:checked + label,
-            svg|rect,
-            .foo\+bar {
-                color: #639;
-                background:
-                    linear-gradient(45deg, red, transparent),
-                    url(image.svg);
+        margin: calc(var(--spacing, 1em) * 2);
+        padding: clamp(0.5rem, 2vw, 1rem);
 
-                border: 1px solid hsl(220 20% 50% / .5);
+        font: italic small-caps 700 1rem/1.4 var(--font);
 
-                margin: calc(var(--spacing, 1em) * 2);
-                padding: clamp(.5rem, 2vw, 1rem);
+        animation: spin 2s linear infinite;
+        rotate: var(--angle);
 
-                font: italic small-caps 700 1rem/1.4 var(--font);
+        accent-color: currentColor !important;
+        padding-top: env(safe-area-inset-top);
 
-                animation: spin 2s linear infinite;
-                rotate: var(--angle);
+        outline-color: inherit;
+        cursor: initial;
+        visibility: unset;
+        display: revert;
+        color-scheme: revert-layer;
+      }
 
-                accent-color: currentColor !important;
-                padding-top: env(safe-area-inset-top);
-
-                outline-color: inherit;
-                cursor: initial;
-                visibility: unset;
-                display: revert;
-                color-scheme: revert-layer;
-            }
-
-            .card {
-                & .title {
-                    font: italic small-caps 700 1rem/1.4 var(--font);
-                }
-
-                &:has(img) {
-                    container-type: inline-size;
-                }
-            }
-
-            @starting-style {
-                .card {
-                    opacity: 0;
-                }
-            }
-
-            @container (width > 20rem) {
-                .title {
-                    font-size: 1.25rem;
-                }
-            }
-
-            @supports (display: grid) and selector(:has(*)) {
-                .grid {
-                    display: grid;
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    gap: 1ch;
-                }
-            }
+      .card {
+        & .title {
+          font: italic small-caps 700 1rem/1.4 var(--font);
         }
+
+        &:has(img) {
+          container-type: inline-size;
+        }
+      }
+
+      @starting-style {
+        .card {
+          opacity: 0;
+        }
+      }
+
+      @container (width > 20rem) {
+        .title {
+          font-size: 1.25rem;
+        }
+      }
+
+      @supports (display: grid) and selector(:has(*)) {
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1ch;
+        }
+      }
     }
+  }
 }
 
 @page {
-    margin: 2cm;
+  margin: 2cm;
 }
 
 @keyframes spin {
-    from {
-        --angle: 0deg;
-        transform: rotate(0deg);
-    }
+  from {
+    --angle: 0deg;
+    transform: rotate(0deg);
+  }
 
-    50% {
-        opacity: .5;
-    }
+  50% {
+    opacity: 0.5;
+  }
 
-    to {
-        --angle: 1turn;
-        transform: rotate(360deg);
-    }
+  to {
+    --angle: 1turn;
+    transform: rotate(360deg);
+  }
 }
