@@ -8,7 +8,6 @@ import { fixupConfigRules, includeIgnoreFile } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import eslintJS from "@eslint/js";
 import stylisticPlugin from "@stylistic/eslint-plugin";
-import ConfusingGlobals from "confusing-browser-globals";
 import importXPlugin from "eslint-plugin-import-x";
 import nodePlugin from "eslint-plugin-n";
 import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
@@ -340,12 +339,6 @@ const eslintConfig = [
               message:
                 "Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan",
             },
-            ...ConfusingGlobals.map((g) => {
-              return {
-                name: g,
-                message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
-              };
-            }),
           ],
           "no-restricted-imports": [
             "error",
