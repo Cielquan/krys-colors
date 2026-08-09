@@ -1,5 +1,9 @@
 {
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=16.6.0"
+  },
   "scripts": {
     "check": "pre-commit run --all-files",
     "watch": "watchexec -w extensions/krys-colors/themes prek run remove-comments-from-jsonc --all-files"
