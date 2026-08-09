@@ -1,0 +1,37 @@
+{
+  "name": "gitignore-syntax-vsx",
+  "displayName": "GitIgnore Syntax",
+  "description": "GitIgnore Syntax for Visual Studio Code",
+  "version": "1.0.2",
+  "publisher": "cielquan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cielquan/krys-colors"
+  },
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Programming Languages",
+    "Language Packs"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ignore",
+        "extensions": [
+          ".gitignore"
+        ],
+        "configuration": "./language-configuration/ignore.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ignore",
+        "scopeName": "source.ignore",
+        "path": "./syntaxes/ignore.tmLanguage.json"
+      }
+    ]
+  }
+}
