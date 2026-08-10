@@ -1,0 +1,54 @@
+{
+  "comments": {
+    "lineComment": { "comment": "#" }
+  },
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"]
+  ],
+  "autoClosingPairs": [
+    { "open": "{", "close": "}" },
+    { "open": "[", "close": "]" },
+    { "open": "(", "close": ")" },
+    { "open": "\"", "close": "\"", "notIn": ["string"] },
+    { "open": "r\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "&\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "^\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "$\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "%\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "'", "close": "'", "notIn": ["string"] },
+    { "open": "r'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "&'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "^'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "$'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "%'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "`", "close": "`" }
+  ],
+  "autoCloseBefore": ";:.,=}])>` \n\t",
+  "surroundingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["\"", "\""],
+    ["'", "'"],
+    ["`", "`"]
+  ],
+  "folding": {
+    "offSide": true,
+    "markers": {
+      "start": "^\\s*#\\s*region\\b",
+      "end": "^\\s*#\\s*endregion\\b"
+    }
+  },
+  "onEnterRules": [
+    {
+      "beforeText": "^\\s*(?:func|class|var|get|set|static|async|if|elif|else|for|while).*?:\\s*$",
+      "action": { "indent": "indent" }
+    },
+    {
+      "beforeText": "^\\s*(?:return|continue|break|pass).*$",
+      "action": { "indent": "outdent" }
+    }
+  ]
+}
