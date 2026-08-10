@@ -3,6 +3,11 @@ import fs from "fs/promises";
 
 import { parse } from "jsonc-parser";
 
+/**
+ * Run the script and pass as many file-paths as you want.
+ * No validation logic is build in.
+ */
+
 const main = async () => {
   const filenames = process.argv.slice(2);
 
