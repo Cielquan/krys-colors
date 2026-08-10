@@ -1,0 +1,42 @@
+{
+  "name": "better-gdscript-syntax",
+  "displayName": "Better GDScript Syntax",
+  "description": "Better GDScript Syntax for Visual Studio Code",
+  "version": "1.0.0",
+  "publisher": "cielquan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cielquan/krys-colors"
+  },
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Programming Languages",
+    "Language Packs"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "gdscript",
+        "aliases": [
+          "GDScript",
+          "gdscript"
+        ],
+        "extensions": [
+          ".gd",
+          ".gdscript"
+        ],
+        "configuration": "./language-configuration/gdscript.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gdscript",
+        "scopeName": "source.gdscript",
+        "path": "./syntaxes/gdscript.tmLanguage.json"
+      }
+    ]
+  }
+}
