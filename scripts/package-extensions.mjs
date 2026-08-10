@@ -60,13 +60,10 @@ const buildAndPackageExtension = async (extensionDir) => {
 };
 
 const main = async () => {
-  if (!(await exists(license))) {
-    throw new Error(`LICENSE not found: ${license}`);
-  }
+  if (!(await exists(license))) throw new Error(`LICENSE not found: ${license}`);
 
-  if (!(await exists(extensionsDir))) {
+  if (!(await exists(extensionsDir)))
     throw new Error(`Extensions directory not found: ${extensionsDir}`);
-  }
 
   const entries = await fs.readdir(extensionsDir, { withFileTypes: true });
   const extensions = (
@@ -79,9 +76,8 @@ const main = async () => {
     )
   ).filter((v) => v !== null);
 
-  if (extensions.length === 0) {
-    throw new Error("ERROR: No extensions found.");
-  }
+  if (extensions.length === 0) throw new Error("ERROR: No extensions found.");
+
   console.log(`Found ${extensions.length} extension(s).`);
 
   await fs.mkdir(distDir, { recursive: true });
