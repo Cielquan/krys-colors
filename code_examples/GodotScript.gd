@@ -58,7 +58,7 @@ var hp: int = 100
 var values_non_static: Array[String] = ["one", "two"]
 static var static_state := State.IDLE
 
-var count: int:
+static var count: int:
     get:
         return count
     set(v):
