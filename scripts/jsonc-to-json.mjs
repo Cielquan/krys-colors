@@ -3,10 +3,9 @@ import fs from "fs/promises";
 
 import { parse } from "jsonc-parser";
 
-/**
- * @param {string[]} filenames
- */
-const main = async (filenames) => {
+const main = async () => {
+  const filenames = process.argv.slice(2);
+
   Promise.all(
     filenames.map(async (filename) => {
       const input = await fs.readFile(filename, "utf8");
@@ -20,4 +19,4 @@ const main = async (filenames) => {
   );
 };
 
-await main(process.argv.slice(2));
+await main();
