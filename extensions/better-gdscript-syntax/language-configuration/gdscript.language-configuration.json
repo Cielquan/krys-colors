@@ -43,7 +43,7 @@
   },
   "onEnterRules": [
     {
-      "beforeText": "^\\s*(?:func|class|var|get|set|static|async|if|elif|else|for|while).*?:\\s*$",
+      "beforeText": "^\\s*(?:func|class|var|get|set|static|async|if|elif|else|match|for|while).*?:\\s*$",
       "action": { "indent": "indent" }
     },
     {
