@@ -49,6 +49,18 @@
     {
       "beforeText": "^\\s*(?:return|continue|break|pass).*$",
       "action": { "indent": "outdent" }
+    },
+    {
+      "previousLineText": "^\\s*##\\s*$",
+      "beforeText": "^\\s*##\\s*$",
+      "action": { "indent": "none" }
+    },
+    {
+      "beforeText": "^\\s*##.*$",
+      "action": {
+        "indent": "none",
+        "appendText": "## "
+      }
     }
   ]
 }
