@@ -160,12 +160,12 @@ func _formatted_strings() -> void:
 
 
 func _numbers() -> float:
-    var int_ := 1
+    var int_ := 01
     var hex := 0xDEADbeef00 + 0XdeadBEEF11
     var bin := 0b010101 + 0B010101
-    var float_ := 1.0 + 1. + .1
-    var scientific := 1.1e-10
-    var long := 1_000_000.15e-15 + 0xdead_beef_00 + 0b0101_0101
+    var float_ := 01.0 + 1. + .1
+    var scientific := 01.1e-10 + 2.2E+010
+    var long := 01_000_000.15e-15 + 0xdead_beef_00 + 0b0101_0101
 
     return int_ + hex + bin + float_ + scientific + long
 
@@ -476,4 +476,5 @@ foo.
 1e
 0x
 0b
+0b_
 # fmt:on
