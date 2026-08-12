@@ -19,7 +19,7 @@ const main = async () => {
       const newFilename = filename.replace(/(\.jsonc)$/, ".json");
       await fs.writeFile(newFilename, output);
 
-      console.log(`Converted ${filename} to ${newFilename}`);
+      console.log(`Converted '${filename}' to '${newFilename}'`);
     }),
   );
 };
