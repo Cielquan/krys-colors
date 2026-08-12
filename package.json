@@ -7,8 +7,7 @@
   "scripts": {
     "check": "pre-commit run --all-files",
     "package": "node scripts/package-extensions.mjs",
-    "release": "node scripts/release.mjs",
-    "watch": "pnpm --filter krys-colors watch"
+    "release": "node scripts/release.mjs"
   },
   "devDependencies": {
     "@eslint/compat": "1.3.2",
