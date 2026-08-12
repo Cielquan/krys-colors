@@ -1,0 +1,11 @@
+---
+name: GDScript
+
+scopeName: source.gdscript
+
+fileTypes:
+  - gd
+
+patterns: []
+
+repository: {}

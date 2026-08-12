@@ -1,0 +1,113 @@
+---
+name: Ignore
+
+scopeName: source.ignore
+
+patterns:
+  - include: "#escape-char"
+
+  - include: "#comment-line"
+
+  - include: "#negation-line"
+
+  - include: "#character-class"
+
+  - include: "#brace-expansion"
+
+  - include: "#wildcard-path"
+
+  - include: "#wildcard-name"
+
+  - include: "#wildcard-char"
+
+  - include: "#directory"
+
+  - include: "#path-separator"
+
+repository:
+  brace-expansion:
+    name: meta.brace-expansion.ignore
+    begin: "\\{"
+    beginCaptures:
+      "0":
+        name: punctuation.definition.brace-expansion.begin.ignore
+    end: "\\}"
+    endCaptures:
+      "0":
+        name: punctuation.definition.brace-expansion.end.ignore
+    patterns:
+      - name: punctuation.separator.comma.ignore
+        match: ","
+
+      - name: constant.other.brace-expansion.member.ignore
+        match: "[^,}]+"
+
+  character-class:
+    name: meta.character-class.ignore
+    match: "(\\[)([^\\]]*)(\\])"
+    captures:
+      "1":
+        name: punctuation.definition.character-class.begin.ignore
+      "2":
+        name: constant.other.character-class.member.ignore
+      "3":
+        name: punctuation.definition.character-class.end.ignore
+
+  comment-line:
+    name: comment.line.number-sign.ignore
+    begin: "^#"
+    beginCaptures:
+      "0":
+        name: punctuation.definition.comment.ignore
+    end: "$"
+
+  directory:
+    name: punctuation.separator.directory.ignore
+    comment: Trailing slash to mark a directory
+    match: "/(?=$)"
+
+  escape-char:
+    name: constant.character.escape.ignore
+    match: "(\\\\)(.{1})"
+    captures:
+      "1":
+        name: punctuation.definition.escape.ignore
+      "2":
+        name: constant.character.escape.ignore
+
+  negation-line:
+    name: meta.pattern.negated.ignore
+    begin: "^!"
+    beginCaptures:
+      "0":
+        name: punctuation.definition.negation.ignore
+    end: "$"
+    patterns:
+      - include: "#escape-char"
+      - include: "#character-class"
+      - include: "#brace-expansion"
+      - include: "#wildcard-path"
+      - include: "#wildcard-name"
+      - include: "#wildcard-char"
+      - include: "#directory"
+      - include: "#path-separator"
+
+  path-separator:
+    comment: Slashes in paths
+    name: punctuation.separator.path.ignore
+    match: "\\/"
+
+  wildcard-char:
+    comment: "Wildcard for single char: ?"
+    name: keyword.operator.wildcard.character.ignore
+    match: "\\?"
+
+  wildcard-name:
+    comment: "Wildcard for file/dir name: *"
+    name: keyword.operator.wildcard.single.ignore
+    match: "\\*"
+
+  wildcard-path:
+    comment: "Wildcard for path segment: **"
+    name: keyword.operator.globstar.ignore
+    match: "\\*\\*"
