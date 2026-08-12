@@ -16,7 +16,7 @@ import path from "path";
  * - create a tag
  */
 
-const execFile = util.promisify(childProcess.execFile);
+const execFileAsync = util.promisify(childProcess.execFile);
 
 /**
  * @typedef {"patch" | "bugfix" | "minor" | "feature" | "major" | "breaking"} ReleaseType
@@ -171,7 +171,7 @@ const main = async () => {
 
   await updateChangelog(changelogPath, tagCurrentVersion, tagNewVersion, repositoryUrl);
 
-  await execFile("git", [
+  await execFileAsync("git", [
     "commit",
     "--no-verify",
     "--message",
@@ -181,7 +181,7 @@ const main = async () => {
     changelogPath,
   ]);
 
-  await execFile("git", ["tag", "--annotate", "--message", tagNewVersion, tagNewVersion]);
+  await execFileAsync("git", ["tag", "--annotate", "--message", tagNewVersion, tagNewVersion]);
 
   console.log(`Created release ${extensionName}/${newVersion}`);
 };
