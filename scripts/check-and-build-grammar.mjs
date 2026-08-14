@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-await-in-loop */
 import fs from "fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "path";
@@ -8,7 +9,7 @@ import textmate from "vscode-textmate";
 import yaml from "yaml";
 
 /**
- * Run the script and pass the path to grammar YAML file
+ * Run the script and pass paths to one or more grammar YAML files.
  *
  * Additional arguments will be ignored.
  *
@@ -143,26 +144,31 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
 };
 
 const main = async () => {
-  const filename = process.argv[2];
-  if (!filename) throw new Error("No file given.");
-  if (!(await exists(filename))) throw new Error(`File not found: ${filename}`);
+  const filenames = process.argv.slice(2);
 
-  const yamlSource = await fs.readFile(filename, "utf8");
+  // eslint-disable-next-line no-restricted-syntax
+  for (const filename of filenames) {
+    console.log(`File: ${filename}`);
+    if (!filename) throw new Error("No file given.");
+    if (!(await exists(filename))) throw new Error(`File not found: ${filename}`);
 
-  console.log("Parsing YAML source");
-  const grammarObj = yaml.parse(yamlSource);
+    const yamlSource = await fs.readFile(filename, "utf8");
 
-  console.log("Creating JSON source");
-  const jsonSource = `${JSON.stringify(grammarObj, null, 2)}\n`;
+    console.log("Parsing YAML source");
+    const grammarObj = yaml.parse(yamlSource);
 
-  const outputFile = filename.replace(/\.yaml$/, ".json");
+    console.log("Creating JSON source");
+    const jsonSource = `${JSON.stringify(grammarObj, null, 2)}\n`;
 
-  console.log("Writing output file");
-  await fs.writeFile(outputFile, jsonSource);
+    const outputFile = filename.replace(/\.yaml$/, ".json");
 
-  await checkGrammar(jsonSource, grammarObj);
+    console.log("Writing output file");
+    await fs.writeFile(outputFile, jsonSource);
 
-  console.log(`Converted '${filename}' to '${outputFile}'`);
+    await checkGrammar(jsonSource, grammarObj);
+
+    console.log(`Converted '${filename}' to '${outputFile}'`);
+  }
 };
 
 await main();
