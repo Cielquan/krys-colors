@@ -46,8 +46,5 @@ jobs:
       - name: Install pre-commit via pipx
         run: pipx install pre-commit
 
-      - name: Install node dependencies
-        run: pnpm install
-
       - name: Run pre-commit
         run: pre-commit run --all-files --show-diff-on-failure --color always
