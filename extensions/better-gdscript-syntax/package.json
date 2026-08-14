@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "../../scripts/check-and-build-grammar.mjs syntaxes/gdscript.tmLanguage.yaml",
-    "watch": "watchexec -W syntaxes/syntaxes/gdscript.tmLanguage.yaml pnpm build"
+    "watch": "watchexec -W syntaxes/gdscript.tmLanguage.yaml pnpm build"
   },
   "engines": {
     "vscode": "*"

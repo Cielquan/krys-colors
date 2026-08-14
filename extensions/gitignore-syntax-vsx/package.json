@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "../../scripts/check-and-build-grammar.mjs syntaxes/ignore.tmLanguage.yaml",
-    "watch": "watchexec -W syntaxes/syntaxes/ignore.tmLanguage.yaml pnpm build"
+    "watch": "watchexec -W syntaxes/ignore.tmLanguage.yaml pnpm build"
   },
   "engines": {
     "vscode": "*"
