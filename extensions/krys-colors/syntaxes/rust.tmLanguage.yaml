@@ -12,7 +12,9 @@ patterns:
 repository:
   async:
     match: |-
+      (?x)
       \b(async)\b
+      # regex-end
     captures:
       "1":
         name: storage.modifier.async.rust
@@ -20,18 +22,24 @@ repository:
   inner-doc-comment:
     name: comment.line.documentation.rust
     match: |-
+      (?x)
       ^\s*//!.*
+      # regex-end
 
   pub:
     match: |-
+      (?x)
       \b(pub)\b
+      # regex-end
     captures:
       "1":
         name: storage.modifier.visibility.rust
 
   unsafe:
     match: |-
+      (?x)
       (?<!\[)\b(unsafe)\b
+      # regex-end
     captures:
       "1":
         name: storage.modifier.unsafe.rust

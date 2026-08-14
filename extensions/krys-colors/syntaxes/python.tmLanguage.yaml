@@ -9,7 +9,9 @@ patterns:
 repository:
   async:
     match: |-
+      (?x)
       \b(async)\b
+      # regex-end
     captures:
       "1":
         name: storage.modifier.async.python

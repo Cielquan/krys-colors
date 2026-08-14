@@ -19,28 +19,38 @@ repository:
   brace-expansion:
     name: meta.brace-expansion.ignore
     begin: |-
+      (?x)
       \{
+      # regex-end
     beginCaptures:
       "0":
         name: punctuation.definition.brace-expansion.begin.ignore
     end: |-
+      (?x)
       \}
+      # regex-end
     endCaptures:
       "0":
         name: punctuation.definition.brace-expansion.end.ignore
     patterns:
       - name: punctuation.separator.comma.ignore
         match: |-
+          (?x)
           ,
+          # regex-end
 
       - name: constant.other.brace-expansion.member.ignore
         match: |-
+          (?x)
           [^,}]+
+          # regex-end
 
   character-class:
     name: meta.character-class.ignore
     match: |-
+      (?x)
       (\[)([^\]]*)(\])
+      # regex-end
     captures:
       "1":
         name: punctuation.definition.character-class.begin.ignore
@@ -52,23 +62,31 @@ repository:
   comment-line:
     name: comment.line.number-sign.ignore
     begin: |-
-      ^#
+      (?x)
+      ^[#]
+      # regex-end
     beginCaptures:
       "0":
         name: punctuation.definition.comment.ignore
     end: |-
+      (?x)
       $
+      # regex-end
 
   directory:
     name: punctuation.separator.directory.ignore
     comment: Trailing slash to mark a directory
     match: |-
+      (?x)
       /(?=$)
+      # regex-end
 
   escape-char:
     name: constant.character.escape.ignore
     match: |-
+      (?x)
       (\\)(.{1})
+      # regex-end
     captures:
       "1":
         name: punctuation.definition.escape.ignore
@@ -78,12 +96,16 @@ repository:
   negation-line:
     name: meta.pattern.negated.ignore
     begin: |-
+      (?x)
       ^!
+      # regex-end
     beginCaptures:
       "0":
         name: punctuation.definition.negation.ignore
     end: |-
+      (?x)
       $
+      # regex-end
     patterns:
       - include: "#escape-char"
       - include: "#character-class"
@@ -98,22 +120,30 @@ repository:
     comment: Slashes in paths
     name: punctuation.separator.path.ignore
     match: |-
+      (?x)
       \/
+      # regex-end
 
   wildcard-char:
     comment: "Wildcard for single char: ?"
     name: keyword.operator.wildcard.character.ignore
     match: |-
+      (?x)
       \?
+      # regex-end
 
   wildcard-name:
     comment: "Wildcard for file/dir name: *"
     name: keyword.operator.wildcard.single.ignore
     match: |-
+      (?x)
       \*
+      # regex-end
 
   wildcard-path:
     comment: "Wildcard for path segment: **"
     name: keyword.operator.globstar.ignore
     match: |-
+      (?x)
       \*\*
+      # regex-end
