@@ -1,0 +1,34 @@
+{
+  "name": "yaml-regex-highlighting",
+  "displayName": "YAML RegEx Highlighting",
+  "description": "YAML RegEx Highlighting for Visual Studio Code",
+  "version": "1.0.0",
+  "publisher": "cielquan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cielquan/krys-colors"
+  },
+  "scripts": {
+    "build": "../../scripts/check-and-build-grammar.mjs syntaxes/yamlRegex.tmLanguage.yaml",
+    "watch": "watchexec -W syntaxes/syntaxes/yamlRegex.tmLanguage.yaml pnpm build"
+  },
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Programming Languages",
+    "Language Packs"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "path": "./syntaxes/yamlRegex.tmLanguage.json",
+        "scopeName": "source.yamlRegex.yaml",
+        "injectTo": [
+          "source.yaml"
+        ]
+      }
+    ]
+  }
+}
