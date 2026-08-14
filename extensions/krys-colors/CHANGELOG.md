@@ -22,7 +22,7 @@ NOTE: please use them in this order.
 
 - Add theme support for ignore files
 - Add theme support for GDScript
-- Add grammer overrides for Python, Rust and GDScript
+- Add grammer overrides for Python and Rust
 
 ### Miscellaneous
 
