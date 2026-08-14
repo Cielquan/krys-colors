@@ -1,6 +1,27 @@
 ---
-injectionSelector: L:source.yaml -string
+injectionSelector: L:string.unquoted.block.yaml
 
 scopeName: source.regexp.yaml
 
-patterns: []
+patterns:
+  - include: "#regexp-expression"
+
+repository:
+  regexp-expression:
+    name: string.regexp.unquoted.block.yaml
+    begin: |-
+      (?x)
+      (\(\?[x]\))
+    beginCaptures:
+      "1":
+        name: storage.modifier.flag.regexp
+    while: |-
+      (?x)
+      ^[ \t]+
+      (?!(?:-[ \t]+)?[A-Za-z0-9_-]+:)
+      (?=\S)
+    patterns:
+      - name: keyword.operator.negation.regexp
+        match: |-
+          (?x)
+          \^
