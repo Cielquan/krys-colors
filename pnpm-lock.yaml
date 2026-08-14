@@ -78,6 +78,8 @@ importers:
 
   extensions/krys-colors: {}
 
+  extensions/yaml-regex-highlighting: {}
+
 packages:
 
   '@emnapi/core@1.10.0':

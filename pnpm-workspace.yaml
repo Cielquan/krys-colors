@@ -1,3 +1,5 @@
 ---
 packages:
   - "extensions/*"
+allowBuilds:
+  unrs-resolver: true
