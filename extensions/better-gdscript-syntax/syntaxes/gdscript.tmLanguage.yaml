@@ -6,7 +6,9 @@ scopeName: source.gdscript
 fileTypes:
   - gd
 
-patterns: []
+patterns:
+  - include: "#comment-documentation-full-line"
+  - include: "#comment-full-line"
 
 repository:
   comment-full-line:
