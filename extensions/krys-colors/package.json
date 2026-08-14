@@ -10,7 +10,9 @@
     "url": "https://github.com/Cielquan/krys-colors"
   },
   "scripts": {
-    "build": "../../scripts/jsonc-to-json.mjs themes/KrysColors.colorTheme.jsonc",
+    "build-theme": "../../scripts/jsonc-to-json.mjs themes/KrysColors.colorTheme.jsonc",
+    "build-grammars": "../../scripts/check-and-build-grammar.mjs syntaxes/gdscript.tmLanguage.yaml syntaxes/python.tmLanguage.yaml syntaxes/rust.tmLanguage.yaml",
+    "build": "pnpm build-theme; pnpm build-grammars",
     "watch": "watchexec -w themes/KrysColors.colorTheme.jsonc pnpm build"
   },
   "engines": {
