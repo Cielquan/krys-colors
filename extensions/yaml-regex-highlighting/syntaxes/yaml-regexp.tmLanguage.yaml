@@ -3,11 +3,14 @@ injectionSelector: L:string.unquoted.block.yaml
 
 scopeName: source.regexp.yaml
 
+# RegExp grammar is copied from MagicPython's implementation used in VSCode.
+# Source: https://github.com/microsoft/vscode/blob/74f75d9ec558b76f3fc68d121ae91bc09feb67c2/extensions/python/syntaxes/MagicRegExp.tmLanguage.json
+
 patterns:
-  - include: "#regexp-expression"
+  - include: "#regexp-expression-unquoted-block"
 
 repository:
-  regexp-expression:
+  regexp-expression-unquoted-block:
     name: string.regexp.unquoted.block.yaml
     begin: |-
       (?x)
@@ -21,7 +24,363 @@ repository:
       (?!(?:-[ \t]+)?[A-Za-z0-9_-]+:)
       (?=\S)
     patterns:
-      - name: keyword.operator.negation.regexp
+      - include: "#regexp-expression"
+
+  regexp-expression:
+    patterns:
+      - include: "#regexp-base-expression"
+      - include: "#regexp-character-set"
+      - include: "#regexp-comments"
+      - include: "#regexp-flags"
+      - include: "#regexp-named-group"
+      - include: "#regexp-backreference"
+      - include: "#regexp-lookahead"
+      - include: "#regexp-lookahead-negative"
+      - include: "#regexp-lookbehind"
+      - include: "#regexp-lookbehind-negative"
+      - include: "#regexp-conditional"
+      - include: "#regexp-parentheses-non-capturing"
+      - include: "#regexp-parentheses"
+
+  regexp-base-expression:
+    patterns:
+      - include: "#regexp-quantifier"
+      - include: "#regexp-base-common"
+
+  regexp-quantifier:
+    name: keyword.operator.quantifier.regexp
+    match: |-
+      (?x)
+        \{(
+          \d+ | \d+,(\d+)? | ,\d+
+        )\}
+
+  regexp-base-common:
+    patterns:
+      - name: support.other.match.any.regexp
+        match: |-
+          (?x)
+          \.
+      - name: support.other.match.begin.regexp
         match: |-
           (?x)
           \^
+      - name: support.other.match.end.regexp
+        match: |-
+          (?x)
+          \$
+      - name: keyword.operator.quantifier.regexp
+        match: |-
+          (?x)
+          [+*?]\??
+      - name: keyword.operator.disjunction.regexp
+        match: |-
+          (?x)
+          \|
+      - include: "#regexp-escape-sequence"
+
+  regexp-escape-sequence:
+    patterns:
+      - include: "#regexp-escape-special"
+      - include: "#regexp-escape-character"
+      - include: "#regexp-escape-unicode"
+      - include: "#regexp-backreference-number"
+      - include: "#regexp-escape-catchall"
+
+  regexp-escape-special:
+    name: support.other.escape.special.regexp
+    match: |-
+          (?x)
+          \\([AbBdDsSwWZ])
+
+  regexp-escape-character:
+    name: constant.character.escape.regexp
+    match: |-
+      (?x)
+        \\ (
+              x[0-9A-Fa-f]{2}
+              | 0[0-7]{1,2}
+              | [0-7]{3}
+           )
+
+  regexp-escape-unicode:
+    name: constant.character.unicode.regexp
+    match: |-
+      (?x)
+        \\ (
+              u[0-9A-Fa-f]{4}
+              | U[0-9A-Fa-f]{8}
+           )
+
+  regexp-backreference-number:
+    name: meta.backreference.regexp
+    match: (\\[1-9]\d?)
+    captures:
+      "1":
+        name: entity.name.tag.backreference.regexp
+
+  regexp-escape-catchall:
+    name: constant.character.escape.regexp
+    match: \\(.|\n)
+
+  regexp-character-set:
+    patterns:
+      - match: |-
+          (?x)
+            \[ \^? \] (?! .*?\])
+      - name: meta.character.set.regexp
+        begin: |-
+          (?x)
+          (\[)(\^)?(\])?
+        end: |-
+          (?x)
+          (\])
+        beginCaptures:
+          "1":
+            name: punctuation.character.set.begin.regexp constant.other.set.regexp
+          "2":
+            name: keyword.operator.negation.regexp
+          "3":
+            name: constant.character.set.regexp
+        endCaptures:
+          "1":
+            name: punctuation.character.set.end.regexp constant.other.set.regexp
+          "2":
+            name: invalid.illegal.newline.regexp
+        patterns:
+          - include: "#regexp-character-set-escapes"
+          - name: constant.character.set.regexp
+            match: |-
+              (?x)
+              [^\n]
+
+  regexp-character-set-escapes:
+    patterns:
+      - name: constant.character.escape.regexp
+        match: |-
+              (?x)
+              \\[abfnrtv\\]
+      - include: "#regexp-escape-special"
+      - name: constant.character.escape.regexp
+        match: |-
+              (?x)
+              \\([0-7]{1,3})
+      - include: "#regexp-escape-character"
+      - include: "#regexp-escape-unicode"
+      - include: "#regexp-escape-catchall"
+
+  regexp-comments:
+    name: comment.regexp
+    begin: |-
+      (?x)
+      \(\?[#]
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: punctuation.comment.begin.regexp
+    endCaptures:
+      "1":
+        name: punctuation.comment.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#codetags"
+
+  codetags:
+    match: |-
+      (?x)
+      (?:\b(NOTE|XXX|HACK|FIXME|BUG|TODO)\b)
+    captures:
+      "1":
+        name: keyword.codetag.notation.regexp
+
+  regexp-flags:
+    name: storage.modifier.flag.regexp
+    match: |-
+      (?x)
+      \(\?[aiLmsux]+\)
+
+  regexp-named-group:
+    name: meta.named.regexp
+    begin: |-
+      (?x)
+        (\()
+          (\?P <\w+(?:\s+[A-Za-z0-9]+)?>)
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "1":
+        name: support.other.parenthesis.regexp
+          punctuation.parenthesis.named.begin.regexp
+      "2":
+        name: entity.name.tag.named.group.regexp
+    endCaptures:
+      "1":
+        name: support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-backreference:
+    name: meta.backreference.named.regexp
+    match: |-
+      (?x)
+        (\()
+          (\?P= \w+(?:\s+[A-Za-z0-9]+)?)
+        (\))
+    captures:
+      "1":
+        name: support.other.parenthesis.regexp
+          punctuation.parenthesis.backreference.named.begin.regexp
+      "2":
+        name: entity.name.tag.named.backreference.regexp
+      "3":
+        name: support.other.parenthesis.regexp
+          punctuation.parenthesis.backreference.named.end.regexp
+
+  regexp-lookahead:
+    begin: |-
+      (?x)
+      (\()\?=
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: keyword.operator.lookahead.regexp
+      "1":
+        name: punctuation.parenthesis.lookahead.begin.regexp
+    endCaptures:
+      "1":
+        name: keyword.operator.lookahead.regexp
+          punctuation.parenthesis.lookahead.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-lookahead-negative:
+    begin: |-
+      (?x)
+      (\()\?!
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: keyword.operator.lookahead.negative.regexp
+      "1":
+        name: punctuation.parenthesis.lookahead.begin.regexp
+    endCaptures:
+      "1":
+        name: keyword.operator.lookahead.negative.regexp
+          punctuation.parenthesis.lookahead.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-lookbehind:
+    begin: |-
+      (?x)
+      (\()\?<=
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: keyword.operator.lookbehind.regexp
+      "1":
+        name: punctuation.parenthesis.lookbehind.begin.regexp
+    endCaptures:
+      "1":
+        name: keyword.operator.lookbehind.regexp
+          punctuation.parenthesis.lookbehind.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-lookbehind-negative:
+    begin: |-
+      (?x)
+      (\()\?<!
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: keyword.operator.lookbehind.negative.regexp
+      "1":
+        name: punctuation.parenthesis.lookbehind.begin.regexp
+    endCaptures:
+      "1":
+        name: keyword.operator.lookbehind.negative.regexp
+          punctuation.parenthesis.lookbehind.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-conditional:
+    begin: |-
+      (?x)
+      (\()\?\((\w+(?:\s+[A-Za-z0-9]+)?|\d+)\)
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: keyword.operator.conditional.regexp
+      "1":
+        name: punctuation.parenthesis.conditional.begin.regexp
+    endCaptures:
+      "1":
+        name: keyword.operator.conditional.negative.regexp
+          punctuation.parenthesis.conditional.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-parentheses-non-capturing:
+    begin: |-
+      (?x)
+      \(\?:
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: support.other.parenthesis.regexp
+          punctuation.parenthesis.non-capturing.begin.regexp
+    endCaptures:
+      "1":
+        name: support.other.parenthesis.regexp
+          punctuation.parenthesis.non-capturing.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
+
+  regexp-parentheses:
+    begin: |-
+      (?x)
+      \(
+    end: |-
+      (?x)
+      (\))
+    beginCaptures:
+      "0":
+        name: support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp
+    endCaptures:
+      "1":
+        name: support.other.parenthesis.regexp punctuation.parenthesis.end.regexp
+      "2":
+        name: invalid.illegal.newline.regexp
+    patterns:
+      - include: "#regexp-expression"
