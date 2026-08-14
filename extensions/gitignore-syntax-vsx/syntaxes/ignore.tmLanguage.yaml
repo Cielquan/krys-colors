@@ -5,23 +5,14 @@ scopeName: source.ignore
 
 patterns:
   - include: "#escape-char"
-
   - include: "#comment-line"
-
   - include: "#negation-line"
-
   - include: "#character-class"
-
   - include: "#brace-expansion"
-
   - include: "#wildcard-path"
-
   - include: "#wildcard-name"
-
   - include: "#wildcard-char"
-
   - include: "#directory"
-
   - include: "#path-separator"
 
 repository:
