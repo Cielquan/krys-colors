@@ -46,7 +46,7 @@ def strings() -> str:
     + u"string" \
     + "Cyrillic Я is \u042f. Invalid escape: \u042g" \
     + R"Raw string \n ignoring escapes." \
-    + r"^Regex string [^1-9]$"
+    + rb"^Regex string [^1-9]$".decode("utf-8")
 
     byte: bytes = b"newline: \n and newline as byte: \x0a"
 
