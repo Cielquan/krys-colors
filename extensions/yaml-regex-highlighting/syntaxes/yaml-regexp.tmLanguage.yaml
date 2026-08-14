@@ -106,9 +106,9 @@ repository:
   regexp-escape-special:
     name: support.other.escape.special.regexp
     match: |-
-          (?x)
-          \\([AbBdDsSwWZ])
-          # regex-end
+      (?x)
+      \\([AbBdDsSwWZ])
+      # regex-end
 
   regexp-escape-character:
     name: constant.character.escape.regexp
@@ -144,9 +144,9 @@ repository:
   regexp-escape-catchall:
     name: constant.character.escape.regexp
     match: |-
-        (?x)
-        \\(.|\n)
-        # regex-end
+      (?x)
+      \\(.|\n)
+      # regex-end
 
   regexp-character-set:
     patterns:
@@ -187,15 +187,15 @@ repository:
     patterns:
       - name: constant.character.escape.regexp
         match: |-
-              (?x)
-              \\[abfnrtv\\]
-              # regex-end
+          (?x)
+          \\[abfnrtv\\]
+          # regex-end
       - include: "#regexp-escape-special"
       - name: constant.character.escape.regexp
         match: |-
-              (?x)
-              \\([0-7]{1,3})
-              # regex-end
+          (?x)
+          \\([0-7]{1,3})
+          # regex-end
       - include: "#regexp-escape-character"
       - include: "#regexp-escape-unicode"
       - include: "#regexp-escape-catchall"
