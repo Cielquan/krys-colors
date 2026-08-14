@@ -7,7 +7,11 @@
   "scripts": {
     "check": "pre-commit run --all-files",
     "package": "node scripts/package-extensions.mjs",
-    "release": "node scripts/release.mjs"
+    "release": "node scripts/release.mjs",
+    "watch:theme": "pnpm --filter krys-colors watch",
+    "watch:ignore": "pnpm --filter gitignore-syntax-vsx watch",
+    "watch:gd": "pnpm --filter better-gdscript-syntax watch",
+    "watch:yamlre": "pnpm --filter yaml-regex-highlighting watch"
   },
   "devDependencies": {
     "@eslint/compat": "1.3.2",
