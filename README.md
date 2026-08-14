@@ -5,6 +5,7 @@ See the respective extentions for specifics:
 - Krys Colors: [`krys-colors`](./extensions/krys-colors)
 - Better GDScript Syntax: [`better-gdscript-syntax`](./extensions/better-gdscript-syntax)
 - GitIgnore Syntax: [`gitignore-syntax-vsx`](./extensions/gitignore-syntax-vsx)
+- YAML RegEx Highlighting: [`yaml-regex-highlighting`](./extensions/yaml-regex-highlighting)
 
 ## Development (in VSCode)
 
