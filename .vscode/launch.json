@@ -9,6 +9,7 @@
         "--extensionDevelopmentPath=${workspaceFolder}/extensions/krys-colors",
         "--extensionDevelopmentPath=${workspaceFolder}/extensions/better-gdscript-syntax",
         "--extensionDevelopmentPath=${workspaceFolder}/extensions/gitignore-syntax-vsx",
+        "--extensionDevelopmentPath=${workspaceFolder}/extensions/yaml-regex-highlighting",
         "${workspaceFolder}/code_examples"
       ]
     }
