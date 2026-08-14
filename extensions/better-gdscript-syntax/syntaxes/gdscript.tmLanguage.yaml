@@ -36,3 +36,10 @@ repository:
       (?x)
       $
       # regex-end
+
+  _reserved-keywords:
+    name: invalid.illegal.word.gdscript
+    match: |-
+      (?x)
+      \b(?:namespace|trait|yield)\b
+      # regex-end
