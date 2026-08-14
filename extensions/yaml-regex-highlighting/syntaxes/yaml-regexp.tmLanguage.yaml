@@ -11,7 +11,7 @@ repository:
     name: string.regexp.unquoted.block.yaml
     begin: |-
       (?x)
-      (\(\?[x]\))
+      (\(\?[aiLmsux]+\))
     beginCaptures:
       "1":
         name: storage.modifier.flag.regexp
