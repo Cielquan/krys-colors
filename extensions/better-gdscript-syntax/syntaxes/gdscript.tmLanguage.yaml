@@ -8,4 +8,31 @@ fileTypes:
 
 patterns: []
 
-repository: {}
+repository:
+  comment-full-line:
+    name: comment.line.number-sign.gdscript
+    begin: |-
+      (?x)
+      ^\s*([#]).*
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.comment.number-sign.gdscript
+    end: |-
+      (?x)
+      $
+      # regex-end
+
+  comment-documentation-full-line:
+    name: comment.line.documentation.gdscript
+    begin: |-
+      (?x)
+      ^\s*([#]{2})
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.comment.documentation.gdscript
+    end: |-
+      (?x)
+      $
+      # regex-end
