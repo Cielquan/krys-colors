@@ -165,7 +165,7 @@ func _numbers() -> float:
     var bin := 0b010101 + 0B010101
     var float_ := 01.0 + 1. + .1
     var scientific := 01.1e-10 + 2.2E+010
-    var long := 01_000_000.1_5e-1_5 + 0xdead_beef_00 + 0b0101_0101
+    var long := 01_000_000_.1_5_e-1_5_ + 0xdead_beef_00_ + 0b0101_0101_
 
     return int_ + hex + bin + float_ + scientific + long
 
