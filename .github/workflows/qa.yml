@@ -27,6 +27,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install pnpm and Node.js
+        uses: pnpm/setup@c9883cc79df532ad1a7b81bf9ab944ceb090d65c # v2.0.0
+        with:
+          runtime: node@24
+          cache: true
+
       - name: Display Python version
         run: python --version
 
@@ -38,6 +44,9 @@ jobs:
 
       - name: Install pre-commit via pipx
         run: pipx install pre-commit
+
+      - name: Install node dependencies
+        run: pnpm install
 
       - name: Run pre-commit
         run: pre-commit run --all-files --show-diff-on-failure --color always
