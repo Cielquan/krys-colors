@@ -1,0 +1,6 @@
+---
+injectionSelector: L:source.yaml -string
+
+scopeName: source.yamlRegex.yaml
+
+patterns: []
