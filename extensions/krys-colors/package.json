@@ -30,21 +30,21 @@
     "grammars": [
       {
         "path": "./syntaxes/gdscript.tmLanguage.json",
-        "scopeName": "fix.gdscript",
+        "scopeName": "source.fix.gdscript",
         "injectTo": [
           "source.gdscript"
         ]
       },
       {
         "path": "./syntaxes/python.tmLanguage.json",
-        "scopeName": "fix.python",
+        "scopeName": "source.fix.python",
         "injectTo": [
           "source.python"
         ]
       },
       {
         "path": "./syntaxes/rust.tmLanguage.json",
-        "scopeName": "fix.rust",
+        "scopeName": "source.fix.rust",
         "injectTo": [
           "source.rust"
         ]
