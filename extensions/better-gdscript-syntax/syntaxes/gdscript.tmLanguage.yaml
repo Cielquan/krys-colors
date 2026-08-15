@@ -26,7 +26,7 @@ repository:
       # regex-end
 
   comment-documentation-full-line:
-    name: comment.line.documentation.gdscript
+    name: "comment.block.documentation.gdscript comment.line.documentation.gdscript"
     begin: |-
       (?x)
       ^\s*([#]{2})
@@ -40,7 +40,7 @@ repository:
       # regex-end
 
   _language-constants:
-    name: "constant.language.gdscript"
+    name: constant.language.gdscript
     match: |-
       (?x)
       \b(true)|(false)|(null)|(PI)|(TAU)|(INF)|(NAN)\b
