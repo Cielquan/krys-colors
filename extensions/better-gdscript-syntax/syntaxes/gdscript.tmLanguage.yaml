@@ -15,7 +15,7 @@ repository:
     name: comment.line.number-sign.gdscript
     begin: |-
       (?x)
-      ^\s*([#]).*
+      ^[ \t]*([#]).*
       # regex-end
     beginCaptures:
       "1":
@@ -29,7 +29,7 @@ repository:
     name: "comment.block.documentation.gdscript comment.line.documentation.gdscript"
     begin: |-
       (?x)
-      ^\s*([#]{2})
+      ^[ \t]*([#]{2})
       # regex-end
     beginCaptures:
       "1":
@@ -104,7 +104,7 @@ repository:
         name: invalid.illegal.name.gdscript
         match: |-
           (?x)
-          \b[0-9]+\w+
+          \b[0-9]+[A-Za-z0-9_]+
           # regex-end
 
   _reserved-keywords:
