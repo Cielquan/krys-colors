@@ -39,6 +39,56 @@ repository:
       $
       # regex-end
 
+  _numbers:
+    patterns:
+      - name: constant.numeric.hex.gdscript
+        match: |-
+          (?x)
+          (0[xX])[A-Fa-f0-9][A-Fa-f0-9_]*
+          # regex-end
+        captures:
+          "1":
+            name: storage.type.number.gdscript
+
+      - name: constant.numeric.bin.gdscript
+        match: |-
+          (?x)
+          (0[bB])[0-1][0-1_]*
+          # regex-end
+        captures:
+          "1":
+            name: storage.type.number.gdscript
+
+      - name: constant.numeric.float.gdscript
+        match: |-
+          (?x)
+          (?:
+            (?:[0-9][0-9_]*)\.(?:[0-9][0-9_]*)?
+            |
+            (?:[0-9][0-9_]*)?\.(?:[0-9][0-9_]*)
+          )
+          (?:[eE][+-]?(?:[0-9][0-9_]*))?
+          # regex-end
+        captures:
+          "1":
+            name: ""
+
+      - name: constant.numeric.dec.gdscript
+        match: |-
+          (?x)
+          [0-1][0-1_]*
+          # regex-end
+        captures:
+          "1":
+            name: storage.type.number.gdscript
+
+      - comment: fallback for malformed numbers
+        name: invalid.illegal.name.gdscript
+        match: |-
+          (?x)
+          \b[0-9]+\w+
+          # regex-end
+
   _reserved-keywords:
     name: invalid.illegal.word.gdscript
     match: |-
