@@ -39,7 +39,6 @@ repository:
       $
       # regex-end
 
-
   _language-constants:
     name: "constant.language.gdscript"
     match: |-
