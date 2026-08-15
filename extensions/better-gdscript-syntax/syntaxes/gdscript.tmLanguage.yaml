@@ -84,16 +84,13 @@ repository:
       - name: constant.numeric.float.gdscript
         match: |-
           (?x)
-          (?:
-            (?:[0-9][0-9_]*)\.(?:[0-9][0-9_]*)?
+          (
+            ([0-9][0-9_]*)\.([0-9][0-9_]*)?
             |
-            (?:[0-9][0-9_]*)?\.(?:[0-9][0-9_]*)
+            ([0-9][0-9_]*)?\.([0-9][0-9_]*)
           )
-          (?:[eE][+-]?(?:[0-9][0-9_]*))?
+          ([eE][+-]?([0-9][0-9_]*))?
           # regex-end
-        captures:
-          "1":
-            name: ""
 
       - name: constant.numeric.dec.gdscript
         match: |-
@@ -115,5 +112,5 @@ repository:
     name: invalid.illegal.word.gdscript
     match: |-
       (?x)
-      \b(?:namespace|trait|yield)\b
+      \b(namespace|trait|yield)\b
       # regex-end
