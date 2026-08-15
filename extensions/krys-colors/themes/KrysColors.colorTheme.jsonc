@@ -247,6 +247,8 @@
         "punctuation.separator.slice.python", // slice operator ':'
         "punctuation.separator.statement.and.shell.dockerfile", // &&
 
+        "punctuation.separator.continuation.line", // e.g. '\' at end of line in python
+
         "constant.language.import-export-all.js", // * in import
         "constant.language.import-export-all.jsx", // * in import
         "constant.language.import-export-all.ts", // * in import
