@@ -55,15 +55,17 @@ const parseArgs = (args) => {
    */
   const isReleaseType = (value) => value in RELEASE_TYPES;
 
-  if (!releaseType || !isReleaseType(releaseType))
+  if (!releaseType || !isReleaseType(releaseType)) {
     throw new Error(
       "Usage: release.mjs <patch|bugfix|minor|feature|major|breaking> <extension-dir>",
     );
+  }
 
-  if (!extensionDir)
+  if (!extensionDir) {
     throw new Error(
       "Usage: release.mjs <patch|bugfix|minor|feature|major|breaking> <extension-dir>",
     );
+  }
 
   const resolvedExtensionDir = path.resolve(extensionDir);
 
@@ -81,7 +83,9 @@ const parseArgs = (args) => {
 const bumpVersion = (currentVersion, releaseType) => {
   const match = /^v?(\d+)\.(\d+)\.(\d+)$/.exec(currentVersion);
 
-  if (!match) throw new Error(`Unparsable version: ${currentVersion}`);
+  if (!match) {
+    throw new Error(`Unparsable version: ${currentVersion}`);
+  }
 
   const major = Number(match[1]);
   const minor = Number(match[2]);
@@ -117,7 +121,9 @@ const updateChangelog = async (changelogPath, currentVersion, newVersion, reposi
 
   const contentAfterHeading = changelog.slice(afterHeadingIdx);
   const unreleasedDiff = /^\[diff.*?main\)/m.exec(contentAfterHeading);
-  if (unreleasedDiff === null) throw new Error("Diff link after '## Unreleased' header not found.");
+  if (unreleasedDiff === null) {
+    throw new Error("Diff link after '## Unreleased' header not found.");
+  }
   const diffEndIdx = afterHeadingIdx + unreleasedDiff.index + unreleasedDiff[0].length;
 
   const beforeUnreleased = changelog.slice(0, unreleasedIdx);

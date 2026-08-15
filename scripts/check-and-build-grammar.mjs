@@ -149,10 +149,14 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
   });
 
   const { scopeName } = grammarObj;
-  if (typeof scopeName !== "string") throw new Error("Missing grammar scope");
+  if (typeof scopeName !== "string") {
+    throw new Error("Missing grammar scope");
+  }
 
   const grammar = await registry.loadGrammar(scopeName);
-  if (!grammar) throw new Error("Missing grammar");
+  if (!grammar) {
+    throw new Error("Missing grammar");
+  }
 
   console.log("Collecting RegExes");
   const regexes = extractRegexesFromGrammarObj(grammarObj);
