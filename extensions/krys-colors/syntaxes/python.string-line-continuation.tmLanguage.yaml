@@ -1,0 +1,15 @@
+---
+injectionSelector: L:string.quoted
+
+scopeName: source.fix.string-line-continuation.python
+
+patterns:
+  - include: "#string-line-continuation-override"
+
+repository:
+  string-line-continuation-override:
+    name: punctuation.separator.continuation.line.string.python
+    match: |-
+      (?x)
+      \\$
+      # regex-end

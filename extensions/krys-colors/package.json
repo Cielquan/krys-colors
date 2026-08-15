@@ -38,6 +38,13 @@
         ]
       },
       {
+        "path": "./syntaxes/python.string-line-continuation.tmLanguage.json",
+        "scopeName": "source.fix.string-line-continuation.python",
+        "injectTo": [
+          "source.python"
+        ]
+      },
+      {
         "path": "./syntaxes/rust.tmLanguage.json",
         "scopeName": "source.fix.rust",
         "injectTo": [
