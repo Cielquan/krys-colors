@@ -10,7 +10,7 @@
     "url": "https://github.com/Cielquan/krys-colors"
   },
   "scripts": {
-    "build": "../../scripts/check-and-build-grammar.mjs syntaxes/gdscript.tmLanguage.yaml",
+    "build": "../../scripts/check-and-build-grammar.mjs syntaxes",
     "watch": "watchexec -W syntaxes/gdscript.tmLanguage.yaml pnpm build"
   },
   "engines": {

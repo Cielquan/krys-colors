@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build-theme": "../../scripts/jsonc-to-json.mjs themes/KrysColors.colorTheme.jsonc",
-    "build-grammars": "../../scripts/check-and-build-grammar.mjs syntaxes/python.tmLanguage.yaml syntaxes/rust.tmLanguage.yaml",
+    "build-grammars": "../../scripts/check-and-build-grammar.mjs syntaxes",
     "build": "pnpm build-theme; pnpm build-grammars",
     "watch": "watchexec -e jsonc,yaml -W themes/ -W syntaxes/ pnpm build"
   },
