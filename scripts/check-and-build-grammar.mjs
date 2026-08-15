@@ -9,9 +9,10 @@ import textmate from "vscode-textmate";
 import yaml from "yaml";
 
 /**
- * Run the script and pass paths to one or more grammar YAML files.
+ * Run the script and pass paths to one or more grammar YAML files or directories.
  *
- * Additional arguments will be ignored.
+ * If a directory is passed, all *.tmLanguage.yaml files in that directory
+ * and its subdirectories will be processed.
  *
  * The script will
  * - parse YAML source
@@ -35,10 +36,46 @@ const exists = async (file) => {
   }
 };
 
+/**
+ * @param {string} file
+ */
+const isDirectory = async (file) => {
+  try {
+    return (await fs.stat(file)).isDirectory();
+  } catch {
+    return false;
+  }
+};
+
+/**
+ * Recursively find all *.tmLanguage.yaml files in a directory.
+ *
+ * @param {string} directory
+ * @returns {Promise<string[]>}
+ */
+const findGrammarFiles = async (directory) => {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+
+  const foundFiles = await Promise.all(
+    entries.map(async (entry) => {
+      const filename = path.join(directory, entry.name);
+
+      if (entry.isDirectory()) {
+        return await findGrammarFiles(filename);
+      }
+      if (entry.isFile() && entry.name.endsWith(".tmLanguage.yaml")) {
+        return [filename];
+      }
+      return [null];
+    }),
+  );
+
+  return foundFiles.flat().filter((v) => v !== null);
+};
+
 const REGEX_KEYS = new Set(["match", "begin", "end", "while"]);
 
 /**
- *
  * @param {object} obj
  * @param {string} path_
  * @param {{
@@ -79,7 +116,10 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
   console.log("Starting grammar checks...");
 
   const wasmBinFile = path.join(__dirname, "../node_modules/vscode-oniguruma/release/onig.wasm");
-  if (!(await exists(wasmBinFile))) throw new Error("onig.wasm not found.");
+
+  if (!(await exists(wasmBinFile))) {
+    throw new Error("onig.wasm not found.");
+  }
 
   await oniguruma.loadWASM((await fs.readFile(wasmBinFile)).buffer);
 
@@ -107,8 +147,10 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
       return textmate.parseRawGrammar(grammarJsonStr, ".json");
     },
   });
+
   const { scopeName } = grammarObj;
   if (typeof scopeName !== "string") throw new Error("Missing grammar scope");
+
   const grammar = await registry.loadGrammar(scopeName);
   if (!grammar) throw new Error("Missing grammar");
 
@@ -143,31 +185,64 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
   console.log("...Finished grammar checks");
 };
 
+/**
+ * @param {string} filename
+ */
+const processFile = async (filename) => {
+  console.log(`\nFile: ${filename}`);
+
+  const yamlSource = await fs.readFile(filename, "utf8");
+
+  console.log("Parsing YAML source");
+  const grammarObj = yaml.parse(yamlSource);
+
+  console.log("Creating JSON source");
+  const jsonSource = `${JSON.stringify(grammarObj, null, 2)}\n`;
+
+  const outputFile = filename.replace(/\.yaml$/, ".json");
+
+  console.log("Writing output file");
+  await fs.writeFile(outputFile, jsonSource);
+
+  await checkGrammar(jsonSource, grammarObj);
+
+  console.log(`Converted '${filename}' to '${outputFile}'`);
+};
+
 const main = async () => {
-  const filenames = process.argv.slice(2);
+  const paths = process.argv.slice(2);
+
+  if (paths.length === 0) {
+    throw new Error("No files or directories given.");
+  }
+
+  const filenames = [];
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const filename of filenames) {
-    console.log(`File: ${filename}`);
-    if (!filename) throw new Error("No file given.");
-    if (!(await exists(filename))) throw new Error(`File not found: ${filename}`);
+  for (const inputPath of paths) {
+    if (!(await exists(inputPath))) {
+      throw new Error(`File or directory not found: ${inputPath}`);
+    }
 
-    const yamlSource = await fs.readFile(filename, "utf8");
+    if (await isDirectory(inputPath)) {
+      filenames.push(...(await findGrammarFiles(inputPath)));
+    } else {
+      filenames.push(inputPath);
+    }
+  }
 
-    console.log("Parsing YAML source");
-    const grammarObj = yaml.parse(yamlSource);
+  if (filenames.length === 0) {
+    console.log("No *.tmLanguage.yaml files found.");
+    return;
+  }
 
-    console.log("Creating JSON source");
-    const jsonSource = `${JSON.stringify(grammarObj, null, 2)}\n`;
+  const sortedUniqueFilenames = [...new Set(filenames)].sort();
 
-    const outputFile = filename.replace(/\.yaml$/, ".json");
+  console.log(`Found ${sortedUniqueFilenames.length} grammar file(s)`);
 
-    console.log("Writing output file");
-    await fs.writeFile(outputFile, jsonSource);
-
-    await checkGrammar(jsonSource, grammarObj);
-
-    console.log(`Converted '${filename}' to '${outputFile}'`);
+  // eslint-disable-next-line no-restricted-syntax
+  for (const filename of sortedUniqueFilenames) {
+    await processFile(filename);
   }
 };
 
