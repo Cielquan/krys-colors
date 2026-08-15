@@ -31,8 +31,8 @@
     ],
     "grammars": [
       {
-        "path": "./syntaxes/python.tmLanguage.json",
-        "scopeName": "source.fix.python",
+        "path": "./syntaxes/python.async.tmLanguage.json",
+        "scopeName": "source.fix.async.python",
         "injectTo": [
           "source.python"
         ]

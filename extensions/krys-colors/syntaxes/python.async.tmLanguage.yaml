@@ -1,0 +1,17 @@
+---
+injectionSelector: L:source.python -string -comment
+
+scopeName: source.fix.async.python
+
+patterns:
+  - include: "#async-override"
+
+repository:
+  async-override:
+    match: |-
+      (?x)
+      \b(async)\b
+      # regex-end
+    captures:
+      "1":
+        name: storage.modifier.async.python
