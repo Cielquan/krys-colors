@@ -1,5 +1,5 @@
 ---
-injectionSelector: L:source.rust -string
+injectionSelector: L:source.rust -string -comment
 
 scopeName: source.fix.rust
 
