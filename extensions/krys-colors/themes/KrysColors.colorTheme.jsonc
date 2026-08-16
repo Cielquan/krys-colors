@@ -266,6 +266,7 @@
         "punctuation.definition.negation.ignore", // !
       ],
       "settings": {
+        "fontStyle": "",
         "foreground": "#F92672",
       },
     },
