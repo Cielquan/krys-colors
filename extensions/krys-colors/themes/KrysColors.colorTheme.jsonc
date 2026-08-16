@@ -383,6 +383,7 @@
         "entity.name.type.option",
         "entity.name.type.result",
         "entity.name.type.void",
+        "entity.name.type.instance.jsdoc",
       ],
       "settings": {
         "fontStyle": "italic",
