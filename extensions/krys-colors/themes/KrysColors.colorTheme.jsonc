@@ -350,13 +350,9 @@
       "name": "Storage type (special)",
       "scope": [
         "storage.type.string",
+        "storage.modifier.string",
         "string.quoted.byte.raw.rust", // b and r in front of string or char
         "punctuation.definition.string.raw.rust", // # for raw strings
-        "punctuation.definition.string.raw.gdscript", // r prefix
-        "punctuation.definition.nodepath.gdscript", // ^ prefix
-        "punctuation.definition.string-name.gdscript", // & prefix
-        "punctuation.definition.node.gdscript", // $ prefix
-        "punctuation.definition.node.unique.gdscript", // % prefix
         "storage.type.number",
         "storage.type.imaginary.number",
       ],
