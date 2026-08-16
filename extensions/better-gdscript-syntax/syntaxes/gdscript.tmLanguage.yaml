@@ -438,3 +438,152 @@ repository:
     captures:
       "1":
         name: "constant.character.format.placeholder.other.gdscript"
+
+  _builtin_get_node_shorthand:
+    patterns:
+      - include: "#_builtin_get_node_shorthand_quoted_multi"
+      - include: "#_builtin_get_node_shorthand_quoted_single"
+      - include: "#_builtin_get_node_shorthand_unquoted"
+
+  _builtin_get_node_shorthand_quoted_multi:
+    name: "string.quoted.multi.gdscript meta.literal.node-shorthand.gdscript"
+    begin: |-
+      (?x)
+      (?:(\$)|(%)|(?:(\$)(%)))
+      ("""|''')
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "2":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "4":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "5":
+        name: punctuation.definition.string.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\3)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequence-unicode"
+      - include: "#_string-escape-sequence"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formatting"
+      - include: "#_string-brace-formatting"
+      - match: |-
+          (?x)
+          %
+          # regex-end
+        name: punctuation.definition.node-shorthand.unique.gdscript
+      - match: |-
+          (?x)
+          /
+          # regex-end
+        name: punctuation.separator.path.gdscript
+      - match: |-
+          (?x)
+          :
+          # regex-end
+        name: punctuation.separator.property.gdscript
+
+  _builtin_get_node_shorthand_quoted_single:
+    name: "string.quoted.single.gdscript meta.literal.node-shorthand.gdscript"
+    begin: |-
+      (?x)
+      (?:(\$)|(%)|(?:(\$)(%)))
+      ("|')
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "2":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "4":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "5":
+        name: punctuation.definition.string.begin.gdscript
+    end: |-
+      (?x)
+      (\5)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequence-unicode"
+      - include: "#_string-escape-sequence"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formatting"
+      - include: "#_string-brace-formatting"
+      - match: |-
+          (?x)
+          %
+          # regex-end
+        name: punctuation.definition.node-shorthand.unique.gdscript
+      - match: |-
+          (?x)
+          /
+          # regex-end
+        name: punctuation.separator.path.gdscript
+      - match: |-
+          (?x)
+          :
+          # regex-end
+        name: punctuation.separator.property.gdscript
+
+  _builtin_get_node_shorthand_unquoted:
+    name: string.unquoted.gdscript meta.literal.node-shorthand.bare.gdscript
+    begin: |-
+      (?x)
+      (?:(\$)|(%)|(?:(\$)(%)))
+      [ \t]*
+      (/)?
+      [ \t]*
+      ([A-Za-z_][A-Za-z0-9_]*)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "2":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+      "4":
+        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+      "5":
+        name: punctuation.separator.path.gdscript
+    end: |-
+      (?x)
+      (?!
+        [ \t]*
+        /
+        [ \t]*
+        %?
+        [ \t]*
+        [A-Za-z_][A-Za-z0-9_]*
+      )
+      # regex-end
+    patterns:
+      - include: "#line-continuation"
+      - match: |-
+          (?x)
+          [ \t]*
+          (/)
+          [ \t]*
+          (%)?
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.separator.path.gdscript
+          "2":
+            name: punctuation.definition.node-shorthand.unique.gdscript
