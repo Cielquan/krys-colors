@@ -11,17 +11,19 @@ repository:
     name: meta.format.percent.python
     match: |-
       (?x)
-      (%%)
-      | (?:
-          (%)
-          (\([A-Za-z0-9_ \t]*\))?
-          (
-            ([-+#0 ]*)
-            ([0-9]+|\*)? (\.([0-9]+|\*))?
-            ([Lhl])?
-            ([EFGXabcdefgiorsux])
+      (?:
+        (%%)
+        | (?:
+            (%)
+            (\([A-Za-z0-9_ \t]*\))?
+            (
+              ([-+#0 ]*)
+              ([0-9]+|\*)? (\.([0-9]+|\*))?
+              ([Lhl])?
+              ([EFGXabcdefgiorsux])
+            )
           )
-        )
+      )
       # regex-end
     captures:
       "1":
