@@ -10,6 +10,7 @@ patterns:
   - include: "#comment-documentation-full-line"
   - include: "#comment-region-full-line"
   - include: "#comment-full-line"
+  - include: "#class-name-declaration"
   - include: "#line-continuation"
 
 repository:
@@ -73,6 +74,22 @@ repository:
           (?x)
           $
           # regex-end
+
+  class-name-declaration:
+    name: meta.class.declaration.gdscript
+    match: |-
+      (?x)
+      ^
+      [ \t]*
+      (class_name)
+      [ \t]+
+      ([A-Za-z_][A-Za-z0-9_]*)
+      # regex-end
+    captures:
+      "1":
+        name: storage.type.class.gdscript
+      "2":
+        name: entity.name.type.class.gdscript
 
   line-continuation:
     patterns:
