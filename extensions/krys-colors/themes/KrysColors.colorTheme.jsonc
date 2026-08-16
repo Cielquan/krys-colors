@@ -385,6 +385,7 @@
         "entity.name.type.result",
         "entity.name.type.void",
         "entity.name.type.instance.jsdoc",
+        "fenced_code.block.language.markdown",
       ],
       "settings": {
         "fontStyle": "italic",
