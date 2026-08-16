@@ -129,6 +129,25 @@ func _this_is_called_later():
         my_file.close()
 
 
+func _numbers() -> float:
+    var int_ := 01
+    var hex := 0xDEADbeef00 + 0XdeadBEEF11
+    var bin := 0b010101 + 0B010101
+    var float_ := 01.0 + 1. + .1
+    var scientific := 01.1e-10 + 2.2E+010
+    var long := 01_000_000_.1_5_e-1_5_ + 0xdead_beef_00_ + 0b0101_0101_
+
+    return int_ + hex + bin + float_ + scientific + long
+
+
+func _special_number_const() -> float:
+    var constants := PI + TAU
+    var endless := INF
+    var no_num := NAN
+
+    return constants + endless + no_num
+
+
 @abstract func _strings() -> void:
     var single := 'Single "'
     var escapes := "Hello\nWorld \u0832 \U000832 \n \t \r \a \b \f \v \" \' \\"
@@ -151,7 +170,8 @@ string starting on first row because of \\ \n
 
 
 func _formatted_strings() -> void:
-    var formatted_percent := "Player: %s HP: %d/%d (%.1f%%)" % [name, hp, 100, 99.9]
+    var formatted_percent := "Player: \
+        %-+010d HP: %*.*d/%0*d (%.1f%%)" % [name, hp, 100, 99.9]
     var formatted_brackets_num := "Player: {0} HP: {1}/{2} ({3:.1f}%)".format([name, hp, 100, 99.9])
     var formatted_brackets_name := "Player: {name} HP: {hp}/{max_hp} ({percent:.1f}%)".format(
         { "name": name, "hp": hp, "max_hp": 100, "percent": 99.9 }
@@ -159,48 +179,33 @@ func _formatted_strings() -> void:
     print("\n".join([formatted_percent, formatted_brackets_num, formatted_brackets_name]))
 
 
-func _numbers() -> float:
-    var int_ := 01
-    var hex := 0xDEADbeef00 + 0XdeadBEEF11
-    var bin := 0b010101 + 0B010101
-    var float_ := 01.0 + 1. + .1
-    var scientific := 01.1e-10 + 2.2E+010
-    var long := 01_000_000_.1_5_e-1_5_ + 0xdead_beef_00_ + 0b0101_0101_
-
-    return int_ + hex + bin + float_ + scientific + long
-
-
-func _special_number_const() -> float:
-    var constants := PI + TAU
-    var endless := INF
-    var no_num := NAN
-
-    return constants + endless + no_num
-
-
 func _get_path_nested(val: NodePath) -> NodePath:
     return val
 
 
 func _nodes_and_node_paths() -> void:
-    var node_path := ^"Label"
+    ## asfonasf onasfo naösofn asöofn ason
+    var node_path := ^"Lab\
+        \nel"
     var node_path_manual := NodePath("Label")
 
     var node_lu := get_node(node_path)
     var node_lu2 := get_node(_get_path_nested(node_path_manual))
-    var node_lu3 := get_node("%Label/%Child:prop")
+    var node_lu3 := get_node("%Label/\
+        %Child:prop")
     if (
-         node_lu.can_process()
+        node_lu.can_process()
         and node_lu2.can_process()
         and node_lu3.can_process()
     ):
         print("Yay")
 
-    var node := $"../CanvasLayer/Label/%Child:prop"
+    var node_stringified := $"../{prefix}Canvas\nLayer/\
+        %Label\u1234/%Child%d:prop"
     var node_bare := $CanvasLayer
     var node_bare_multi := $CanvasLayer/Label
     if (
-         node.can_process()
+        node_stringified.can_process()
         and node_bare.can_process()
         and node_bare_multi.can_process()
     ):
@@ -209,10 +214,12 @@ func _nodes_and_node_paths() -> void:
     var node_unique := %"Label"
     var node_bare_unique := %Label
     var node_bare_unique2 := $%Label
-    var node_bare_unique_nested := %Label/%Child
+    var node_bare_unique_nested := %Label/\
+        %Child
     if (
-          node_unique.can_process()
-        and node_bare_unique.can_process()
+        node_unique.can_process()
+        and node_bare_unique.\
+            can_process()
         and node_bare_unique2.can_process()
         and node_bare_unique_nested.can_process()
     ):
@@ -450,7 +457,7 @@ class Foo3 extends "res://foo.gd":
     pass
 
 
-class Foo4 extends "res://foo.gd".SomeClass:
+class Foo4 extends ("res://foo.gd").SomeClass: # asfasf
     pass
 
 
