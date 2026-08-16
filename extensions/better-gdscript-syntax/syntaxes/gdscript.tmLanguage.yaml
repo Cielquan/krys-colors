@@ -7,32 +7,16 @@ fileTypes:
   - gd
 
 patterns:
-  - include: "#comment-documentation-full-line"
-  - include: "#comment-region-full-line"
-  - include: "#comment-full-line"
+  - include: "#comment-documentation"
+  - include: "#comment-region"
+  - include: "#comment"
   - include: "#class-declaration"
   - include: "#class-name-declaration"
   - include: "#extends-declaration"
   - include: "#line-continuation"
-  - include: "#comment-documentation-inline"
-  - include: "#comment-inline"
 
 repository:
-  comment-full-line:
-    name: comment.line.number-sign.gdscript
-    begin: |-
-      (?x)
-      ^[ \t]*([#])
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.comment.number-sign.gdscript
-    end: |-
-      (?x)
-      $
-      # regex-end
-
-  comment-inline:
+  comment:
     name: comment.line.number-sign.gdscript
     begin: |-
       (?x)
@@ -46,21 +30,7 @@ repository:
       $
       # regex-end
 
-  comment-documentation-full-line:
-    name: "comment.block.documentation.gdscript comment.line.documentation.gdscript"
-    begin: |-
-      (?x)
-      ^[ \t]*([#]{2})
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.comment.documentation.gdscript
-    end: |-
-      (?x)
-      $
-      # regex-end
-
-  comment-documentation-inline:
+  comment-documentation:
     name: "comment.block.documentation.gdscript comment.line.documentation.gdscript"
     begin: |-
       (?x)
