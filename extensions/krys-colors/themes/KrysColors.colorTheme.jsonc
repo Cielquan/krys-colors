@@ -337,6 +337,7 @@
       "name": "Storage modifier",
       "scope": ["storage.modifier", "storage.type.function.async", "storage.type.format"],
       "settings": {
+        "fontStyle": "",
         "foreground": "#F92672",
       },
     },
