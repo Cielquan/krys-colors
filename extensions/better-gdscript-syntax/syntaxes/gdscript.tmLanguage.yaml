@@ -8,6 +8,7 @@ fileTypes:
 
 patterns:
   - include: "#comment-documentation-full-line"
+  - include: "#comment-region-full-line"
   - include: "#comment-full-line"
 
 repository:
@@ -38,6 +39,39 @@ repository:
       (?x)
       $
       # regex-end
+
+  comment-region-full-line:
+    patterns:
+      - name: comment.block.region.gdscript
+        begin: |-
+          (?x)
+          ^[ \t]*([#])(region)[ \t](.*)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.comment.number-sign.gdscript
+          "2":
+            name: keyword.declaration.region.gdscript
+          "3":
+            name: entity.name.section.gdscript
+        end: |-
+          (?x)
+          $
+          # regex-end
+      - name: comment.block.region.gdscript
+        begin: |-
+          (?x)
+          ^[ \t]*([#])(endregion)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.comment.number-sign.gdscript
+          "2":
+            name: keyword.declaration.region.gdscript
+        end: |-
+          (?x)
+          $
+          # regex-end
 
   _language-constants:
     name: constant.language.gdscript
