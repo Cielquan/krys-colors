@@ -248,6 +248,7 @@
         "punctuation.separator.statement.and.shell.dockerfile", // &&
 
         "punctuation.separator.continuation.line", // e.g. '\' at end of line in python
+        "constant.character.escape.double-quoted.newline.yaml",
 
         "constant.language.import-export-all.js", // * in import
         "constant.language.import-export-all.jsx", // * in import
