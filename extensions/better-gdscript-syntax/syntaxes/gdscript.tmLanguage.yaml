@@ -12,6 +12,7 @@ patterns:
   - include: "#comment-full-line"
   - include: "#class-declaration"
   - include: "#class-name-declaration"
+  - include: "#extends-declaration"
   - include: "#line-continuation"
 
 repository:
@@ -122,6 +123,33 @@ repository:
     endCaptures:
       "1":
         name: punctuation.section.class.begin.gdscript
+    patterns:
+      - include: "#_string-quoted-multi-line"
+      - include: "#_string-quoted-single-line"
+      - include: "#_string-raw-quoted-multi-line"
+      - include: "#_string-raw-quoted-single-line"
+      - match: |-
+          (?x)
+          (\.)?
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
+
+  extends-declaration:
+    name: meta.class.declaration.gdscript
+    contentName: entity.other.inherited-class.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      (extends)
+      [ \t]+
+      # regex-end
+    beginCaptures:
+      "1":
+        name: keyword.control.inheritance.gdscript
+    end: |-
+      (?x)
+      $
+      # regex-end
     patterns:
       - include: "#_string-quoted-multi-line"
       - include: "#_string-quoted-single-line"
