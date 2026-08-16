@@ -7,6 +7,7 @@ fileTypes:
   - gd
 
 patterns:
+  - include: "#comment-documentation-codeblock"
   - include: "#comment-documentation"
   - include: "#comment-region"
   - include: "#comment"
@@ -278,6 +279,80 @@ repository:
             name: entity.name.tag.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
+
+  comment-documentation-codeblock:
+    patterns:
+      - name: "comment.block.documentation.gdscript comment.line.documentation.gdscript meta.comment.documentation.tag.codeblock.gdscript.gdscript"
+        begin: |-
+          (?x)
+          (?:^|\G)
+          [ \t]*
+          ([#]{2})
+          [ \t]*
+          (\[)
+          (?:
+            (codeblock)
+            (?:
+              [ \t]+
+              ([lang]{0,4})
+              (=)?
+              ([a-z0-9]*)
+            )?
+          )
+          (\])
+          [ \t]*
+          $
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.comment.documentation.gdscript
+          "2":
+            name: punctuation.definition.tag.begin.gdscript
+          "3":
+            name: entity.name.tag.codeblock.gdscript
+          "4":
+            name: entity.other.attribute-name.gdscript
+          "5":
+            name: punctuation.separator.key-value.gdscript
+          "6":
+            name: string.unquoted.gdscript
+          "7":
+            name: punctuation.definition.tag.end.gdscript
+        end: |-
+          (?x)
+          (?:^|\G)
+          [ \t]*
+          ([#]{2})
+          [ \t]*
+          (\[)
+            (/codeblock)
+          (\])
+          [ \t]*
+          $
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.comment.documentation.gdscript
+          "2":
+            name: punctuation.definition.tag.begin.gdscript
+          "3":
+            name: entity.name.tag.codeblock.gdscript
+          "4":
+            name: punctuation.definition.tag.end.gdscript
+        patterns:
+          - contentName: source.text
+            begin: |-
+              (?x)
+              (?:^|\G)
+              [ \t]*
+              ([#]{2})
+              # regex-end
+            beginCaptures:
+              "1":
+                name: punctuation.definition.comment.documentation.gdscript
+            end: |-
+              (?x)
+              $
               # regex-end
 
   comment-region-full-line:
