@@ -582,6 +582,13 @@
       },
     },
     {
+      "scope": ["markup.strikethrough"],
+      "settings": {
+        "fontStyle": "strikethrough",
+        "foreground": "#66D9EF",
+      },
+    },
+    {
       "scope": ["markup.quote", "markup.other.command", "string.other.interpreted"],
       "settings": {
         "foreground": "#6D6D94",
