@@ -20,7 +20,7 @@ repository:
     name: comment.line.number-sign.gdscript
     begin: |-
       (?x)
-      ^[ \t]*([#]).*
+      ^[ \t]*([#])
       # regex-end
     beginCaptures:
       "1":
