@@ -355,6 +355,8 @@
         "storage.modifier.string",
         "string.quoted.byte.raw.rust", // b and r in front of string or char
         "punctuation.definition.string.raw.rust", // # for raw strings
+        "punctuation.definition.node-shorthand.gdscript", // $ for node shorthand
+        "punctuation.definition.node-shorthand.unique.gdscript", // % for unique node shorthand
         "storage.type.number",
         "storage.type.imaginary.number",
       ],
