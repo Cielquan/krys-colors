@@ -49,7 +49,14 @@ repository:
       - name: comment.block.region.gdscript
         begin: |-
           (?x)
-          ^[ \t]*([#])(region)[ \t](.*)
+          (?:^|\G)
+          [ \t]*
+          ([#])
+          (region)
+          (?:
+            [ \t]+
+            (.*)
+          )?
           # regex-end
         beginCaptures:
           "1":
@@ -65,7 +72,10 @@ repository:
       - name: comment.block.region.gdscript
         begin: |-
           (?x)
-          ^[ \t]*([#])(endregion)
+          (?:^|\G)
+          [ \t]*
+          ([#])
+          (endregion)
           # regex-end
         beginCaptures:
           "1":
@@ -81,7 +91,7 @@ repository:
     name: meta.class.declaration.gdscript
     match: |-
       (?x)
-      ^
+      (?:^|\G)
       [ \t]*
       (class_name)
       [ \t]+
@@ -98,7 +108,7 @@ repository:
     contentName: entity.other.inherited-class.gdscript
     begin: |-
       (?x)
-      ^
+      (?:^|\G)
       [ \t]*
       (class)
       [ \t]+
