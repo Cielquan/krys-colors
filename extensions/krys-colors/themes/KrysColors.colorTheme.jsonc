@@ -145,9 +145,6 @@
         // "punctuation.separator.mapping", // ',' in yaml mapping
         // "punctuation.separator.sequence", // ',' in yaml array
         // "punctuation.separator.array", // ',' in JSON array
-        // "punctuation.separator.dictionary", // ':' ',' in JSON dict
-        // "punctuation.separator.key-value.ini", // '='
-        // "punctuation.separator.key-value.mapping.yaml", // ':'
         "punctuation.accessor",
         // "punctuation.accessor.ts", // .
         // "punctuation.accessor.optional.ts", // ?.
@@ -237,9 +234,8 @@
         "keyword.operator",
         "punctuation.section",
 
-        "punctuation.separator.key-value.html", // '=' (was yellow new red)
-        "punctuation.separator.key-value.restructuredtext", // key value separator : (red)
-        "punctuation.separator.key-value.markdown", // red
+        "punctuation.separator.key-value",
+        "punctuation.separator.dictionary.key-value",
 
         "punctuation.separator.annotation.python", // ':' before type annotation in def
         "punctuation.separator.annotation.result.python", // '->' before return type annotation in def
