@@ -557,6 +557,7 @@
     {
       "scope": ["string.other.link", "markup.underline"],
       "settings": {
+        "fontStyle": "underline",
         "foreground": "#FD971F",
       },
     },
@@ -587,8 +588,9 @@
       },
     },
     {
-      "scope": ["markup.underline.link", "meta.link"],
+      "scope": ["markup.underline.link"],
       "settings": {
+        "fontStyle": "underline",
         "foreground": "#E6DB74",
       },
     },
@@ -827,6 +829,16 @@
       "scope": ["keyword.other.crate.rust"],
       "settings": {
         "foreground": "#94558D",
+      },
+    },
+    {
+      "scope": [
+        "punctuation.definition.metadata.markdown",
+        "punctuation.definition.link.title.begin.markdown",
+        "punctuation.definition.link.title.end.markdown",
+      ],
+      "settings": {
+        "foreground": "#E6DB74",
       },
     },
     {
