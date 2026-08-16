@@ -10,6 +10,7 @@ patterns:
   - include: "#comment-documentation-full-line"
   - include: "#comment-region-full-line"
   - include: "#comment-full-line"
+  - include: "#class-declaration"
   - include: "#class-name-declaration"
   - include: "#line-continuation"
 
@@ -90,6 +91,47 @@ repository:
         name: storage.type.class.gdscript
       "2":
         name: entity.name.type.class.gdscript
+
+  class-declaration:
+    name: meta.class.declaration.gdscript
+    contentName: entity.other.inherited-class.gdscript
+    begin: |-
+      (?x)
+      ^
+      [ \t]*
+      (class)
+      [ \t]+
+      ([A-Za-z_][A-Za-z0-9_]*)
+      (?:
+        [ \t]+
+        (extends)
+        [ \t]+
+      )?
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.class.gdscript
+      "2":
+        name: entity.name.type.class.gdscript
+      "3":
+        name: keyword.control.inheritance.gdscript
+    end: |-
+      (?x)
+      (:)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.class.begin.gdscript
+    patterns:
+      - include: "#_string-quoted-multi-line"
+      - include: "#_string-quoted-single-line"
+      - include: "#_string-raw-quoted-multi-line"
+      - include: "#_string-raw-quoted-single-line"
+      - match: |-
+          (?x)
+          (\.)?
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
 
   line-continuation:
     patterns:
