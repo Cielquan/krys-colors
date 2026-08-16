@@ -555,13 +555,6 @@
       },
     },
     {
-      "scope": ["string.other.link", "markup.underline"],
-      "settings": {
-        "fontStyle": "underline",
-        "foreground": "#FD971F",
-      },
-    },
-    {
       "scope": ["markup.heading"],
       "settings": {
         "foreground": "#AE81FF",
@@ -578,6 +571,13 @@
       "scope": ["markup.italic"],
       "settings": {
         "fontStyle": "italic",
+        "foreground": "#66D9EF",
+      },
+    },
+    {
+      "scope": ["markup.underline"],
+      "settings": {
+        "fontStyle": "underline",
         "foreground": "#66D9EF",
       },
     },
@@ -599,6 +599,13 @@
       "settings": {
         "fontStyle": "underline",
         "foreground": "#E6DB74",
+      },
+    },
+    {
+      "scope": ["string.other.link"],
+      "settings": {
+        "fontStyle": "underline",
+        "foreground": "#FD971F",
       },
     },
     {
