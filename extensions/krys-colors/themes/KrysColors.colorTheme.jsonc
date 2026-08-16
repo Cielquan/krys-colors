@@ -194,8 +194,8 @@
       "name": "Path",
       "scope": [
         "source.ignore",
-        "meta.literal.nodepath.gdscript",
-        "meta.literal.nodepath.bare.gdscript",
+        "string.node-path.quoted.multi.gdscript",
+        "string.node-path.quoted.single.gdscript",
       ],
       "settings": {
         "fontStyle": "italic",
