@@ -38,6 +38,13 @@
         ]
       },
       {
+        "path": "./syntaxes/python.doc-comment.tmLanguage.json",
+        "scopeName": "source.fix.doc-comment.python",
+        "injectTo": [
+          "source.python"
+        ]
+      },
+      {
         "path": "./syntaxes/python.percent-format.tmLanguage.json",
         "scopeName": "source.fix.percent-format.python",
         "injectTo": [

@@ -1,0 +1,37 @@
+---
+injectionSelector: L:source.python -string -comment
+
+scopeName: source.fix.doc-comment.python
+
+patterns:
+  - include: "#comment-documentation-full-line"
+  - include: "#comment-documentation-inline"
+
+repository:
+  comment-documentation-full-line:
+    name: "comment.block.documentation.python comment.line.documentation.python"
+    begin: |-
+      (?x)
+      ^[ \t]*([#]:)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.comment.documentation.python
+    end: |-
+      (?x)
+      $
+      # regex-end
+
+  documentation-comment-inline:
+    name: comment.line.number-sign.python
+    begin: |-
+      (?x)
+      [ \t]*([#]:)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.comment.number-sign.python
+    end: |-
+      (?x)
+      $
+      # regex-end
