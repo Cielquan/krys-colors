@@ -11,6 +11,7 @@ patterns:
   - include: "#comment-documentation"
   - include: "#comment-region"
   - include: "#comment"
+  - include: "#enum-declaration"
   - include: "#class-declaration"
   - include: "#class-name-declaration"
   - include: "#extends-declaration"
@@ -482,6 +483,61 @@ repository:
           (\.)?
           ([A-Za-z_][A-Za-z0-9_]*)
           # regex-end
+
+  enum-declaration:
+    name: meta.enum.declaration.gdscript
+    begin: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      (enum)
+      (?:
+        [ \t]+
+        ([A-Za-z_][A-Za-z0-9_]*)
+      )?
+      [ \t]*
+      (\{)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.enum.gdscript
+      "2":
+        name: entity.name.type.enum.gdscript
+      "3":
+        name: punctuation.definition.block.begin.gdscript
+    end: |-
+      (?x)
+      (\})
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.block.end.gdscript
+    patterns:
+      - match: |-
+          (?x)
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (?:
+            (=)
+            [ \t]*
+            ([+-]?)
+            [ \t]*
+            ([0-9]*)
+          )?
+          (,)?
+          # regex-end
+        captures:
+          "1":
+            name: variable.other.enummember.gdscript
+          "2":
+            name: punctuation.separator.key-value.enum.gdscript
+          "3":
+            name: keyword.operator.arithmetic.gdscript
+          "4":
+            name: constant.numeric.dec.gdscript
+          "5":
+            name: punctuation.separator.comma.gdscript
 
   line-continuation:
     patterns:
