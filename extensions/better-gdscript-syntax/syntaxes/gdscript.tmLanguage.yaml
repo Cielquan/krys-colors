@@ -559,9 +559,6 @@ repository:
           (?x)
           [0-1][0-1_]*
           # regex-end
-        captures:
-          "1":
-            name: storage.type.number.gdscript
 
       - comment: fallback for malformed numbers
         name: invalid.illegal.name.gdscript
