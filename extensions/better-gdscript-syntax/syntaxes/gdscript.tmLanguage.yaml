@@ -662,6 +662,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -685,6 +687,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -756,6 +760,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -781,6 +787,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -806,6 +814,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -831,6 +841,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -867,6 +879,24 @@ repository:
       (?x)
       \\(
           [\\"']
+        )
+      # regex-end
+
+  _string-escape-sequence-unicode-named:
+    name: invalid.illegal.escape.gdscript
+    match: |-
+      (?x)
+      \\(
+          N\{.*?\}
+        )
+      # regex-end
+
+  _string-escape-sequence-byte:
+    name: invalid.illegal.escape.gdscript
+    match: |-
+      (?x)
+      \\(
+          x[A-Fa-f0-9]{2}
         )
       # regex-end
 
@@ -942,6 +972,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
@@ -989,6 +1021,8 @@ repository:
     patterns:
       - include: "#_string-escape-sequence-unicode"
       - include: "#_string-escape-sequence"
+      - include: "#_string-escape-sequence-byte"
+      - include: "#_string-escape-sequence-unicode-named"
       - include: "#_string-line-continuation"
       - include: "#_string-formatting"
       - include: "#_string-brace-formatting"
