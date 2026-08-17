@@ -848,7 +848,7 @@ repository:
       (?x)
       \\(
           u[A-Fa-f0-9]{4}
-          | U[A-Fa-f0-9]{8}
+          | U[A-Fa-f0-9]{6}
         )
       # regex-end
 
