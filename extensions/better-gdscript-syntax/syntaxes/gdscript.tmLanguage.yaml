@@ -15,6 +15,7 @@ patterns:
   - include: "#class-name-declaration"
   - include: "#extends-declaration"
   - include: "#line-continuation"
+  - include: "#semicolon"
 
 repository:
   comment:
@@ -493,6 +494,13 @@ repository:
             name: punctuation.separator.continuation.line.gdscript
           "2":
             name: invalid.illegal.line.continuation.gdscript
+
+  semicolon:
+    name: punctuation.terminator.statement.gdscript
+    match: |-
+      (?x)
+      ;
+      # regex-end
 
   _language-constants:
     name: constant.language.gdscript
