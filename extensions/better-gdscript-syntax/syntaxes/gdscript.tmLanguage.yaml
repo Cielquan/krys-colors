@@ -938,14 +938,14 @@ repository:
       "1":
         name: "constant.character.format.placeholder.other.gdscript"
 
-  _builtin_get_node_shorthand:
+  _node-reference:
     patterns:
-      - include: "#_builtin_get_node_shorthand_quoted_multi"
-      - include: "#_builtin_get_node_shorthand_quoted_single"
-      - include: "#_builtin_get_node_shorthand_unquoted"
+      - include: "#_node-reference-quoted-multi"
+      - include: "#_node-reference-quoted-single"
+      - include: "#_node-reference-unquoted"
 
-  _builtin_get_node_shorthand_quoted_multi:
-    name: "string.quoted.multi.gdscript meta.literal.node-shorthand.gdscript"
+  _node-reference-quoted-multi:
+    name: "string.quoted.multi.gdscript meta.literal.node-reference.gdscript"
     begin: |-
       (?x)
       (?:(\$)|(%)|(?:(\$)(%)))
@@ -953,13 +953,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "2":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "3":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "4":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "5":
         name: punctuation.definition.string.begin.multi.gdscript
     end: |-
@@ -981,7 +981,7 @@ repository:
           (?x)
           %
           # regex-end
-        name: punctuation.definition.node-shorthand.unique.gdscript
+        name: punctuation.definition.node-reference.unique.gdscript
       - match: |-
           (?x)
           /
@@ -993,8 +993,8 @@ repository:
           # regex-end
         name: punctuation.separator.property.gdscript
 
-  _builtin_get_node_shorthand_quoted_single:
-    name: "string.quoted.single.gdscript meta.literal.node-shorthand.gdscript"
+  _node-reference-quoted-single:
+    name: "string.quoted.single.gdscript meta.literal.node-reference.gdscript"
     begin: |-
       (?x)
       (?:(\$)|(%)|(?:(\$)(%)))
@@ -1002,13 +1002,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "2":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "3":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "4":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "5":
         name: punctuation.definition.string.begin.gdscript
     end: |-
@@ -1030,7 +1030,7 @@ repository:
           (?x)
           %
           # regex-end
-        name: punctuation.definition.node-shorthand.unique.gdscript
+        name: punctuation.definition.node-reference.unique.gdscript
       - match: |-
           (?x)
           /
@@ -1042,8 +1042,8 @@ repository:
           # regex-end
         name: punctuation.separator.property.gdscript
 
-  _builtin_get_node_shorthand_unquoted:
-    name: string.unquoted.gdscript meta.literal.node-shorthand.bare.gdscript
+  _node-reference-unquoted:
+    name: string.unquoted.gdscript meta.literal.node-reference.bare.gdscript
     begin: |-
       (?x)
       (?:(\$)|(%)|(?:(\$)(%)))
@@ -1054,13 +1054,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "2":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "3":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
       "4":
-        name: "storage.type.string.node-shorthand.gdscript punctuation.definition.node-shorthand.unique.gdscript"
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
       "5":
         name: punctuation.separator.path.gdscript
     end: |-

@@ -352,8 +352,8 @@
         "storage.modifier.string",
         "string.quoted.byte.raw.rust", // b and r in front of string or char
         "punctuation.definition.string.raw.rust", // # for raw strings
-        "punctuation.definition.node-shorthand.gdscript", // $ for node shorthand
-        "punctuation.definition.node-shorthand.unique.gdscript", // % for unique node shorthand
+        "punctuation.definition.node-reference.gdscript", // $ for node shorthand
+        "punctuation.definition.node-reference.unique.gdscript", // % for unique node shorthand
         "storage.type.number",
         "storage.type.imaginary.number",
       ],
@@ -952,8 +952,8 @@
     },
     {
       "scope": [
-        "meta.literal.node-shorthand.gdscript",
-        "meta.literal.node-shorthand.bare.gdscript",
+        "meta.literal.node-reference.gdscript",
+        "meta.literal.node-reference.bare.gdscript",
       ],
       "settings": {
         "fontStyle": "italic",
