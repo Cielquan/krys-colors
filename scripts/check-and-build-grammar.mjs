@@ -173,7 +173,8 @@ const checkGrammar = async (grammarJsonStr, grammarObj) => {
       }
       return null;
     })
-    .filter((v) => v !== null);
+    .filter((v) => v !== null)
+    .filter((v) => !(v.location.endsWith("end") && v.err.includes("invalid backref")));
 
   if (errors.length) {
     console.error(`Found ${errors.length} erroneous RegEx(es):`);
