@@ -10,8 +10,10 @@
     "url": "https://github.com/Cielquan/krys-colors"
   },
   "scripts": {
-    "build": "../../scripts/check-and-build-grammar.mjs syntaxes",
-    "watch": "watchexec -W syntaxes/gdscript.tmLanguage.yaml pnpm build"
+    "update-virtual-methods": "./scripts/update_virtual_method_list.py",
+    "build-grammar": "../../scripts/check-and-build-grammar.mjs syntaxes",
+    "build": "pnpm update-virtual-methods && pnpm build-grammar",
+    "watch": "watchexec -W syntaxes/gdscript.tmLanguage.yaml pnpm build-grammar"
   },
   "engines": {
     "vscode": "*"
