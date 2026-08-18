@@ -1969,7 +1969,6 @@ repository:
           |supports_play_area_mode
           |trigger_haptic_pulse
           |uninitialize
-          |_get_contents_minimum_size
           # VIRTUAL_METHODS_END
         )
       )
