@@ -905,6 +905,7 @@
       "scope": [
         "entity.name.type.lifetime.rust", // 'LIFETIMENAME
         "support.function.magic.python", // magic func assignment
+        "support.function.virtual.gdscript",
       ],
       "settings": {
         "fontStyle": "italic",
