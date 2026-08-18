@@ -80,20 +80,6 @@ repository:
             name: markup.other.tag.experimental.gdscript
           "3":
             name: punctuation.separator.key-value.gdscript
-      - name: FIXME
-        match: |-
-          (?x)
-          \[
-          (annotation|constant|enum|member|method|constructor|operator|signal|theme_item|param)
-          [ \t]+
-          ([^\]])
-          \]
-          # regex-end
-        captures:
-          "1":
-            name: FIXME
-          "2":
-            name: FIXME
       - name: constant.character.escape.comment.documentation.gdscript
         match: |-
           (?x)
@@ -281,6 +267,23 @@ repository:
             name: entity.name.tag.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
+      - name: meta.comment.documentation.link.class-reference.gdscript
+        # TODO: split pattern and use correct scopes for the link label
+        match: |-
+          (?x)
+          \[
+          (?:
+            (annotation|constant|enum|member|method|constructor|operator|signal|theme_item|param)
+            [ \t]+
+          )?
+          ([^\]]+)
+          \]
+          # regex-end
+        captures:
+          "1":
+            name: string.other.link.comment.documentation.gdscript
+          "2":
+            name: markup.underline.link.comment.documentation.gdscript
 
   comment-documentation-codeblock:
     patterns:
