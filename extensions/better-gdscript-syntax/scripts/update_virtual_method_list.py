@@ -8,9 +8,12 @@ import sys
 import tempfile
 import xml.etree.ElementTree as ET
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s %(message)s",
+    stream=sys.stdout,
+)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
 
 ext_dir = pathlib.Path(__file__).parent / ".."
 grammar_file = ext_dir / "syntaxes/gdscript.tmLanguage.yaml"
@@ -81,7 +84,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as temp_dir_str:
         temp_dir = pathlib.Path(temp_dir_str)
 
-        logger.info("## Clone repo")
+        logger.info("Clone repo")
         subprocess.check_call(
             [
                 "git",
@@ -96,7 +99,7 @@ def main() -> int:
         )
         repo_dir = temp_dir / "godot"
 
-        logger.info("## Sparse-checkout")
+        logger.info("Sparse-checkout")
         subprocess.check_call(
             ["git", "sparse-checkout", "set", "doc/classes"],
             cwd=repo_dir,
