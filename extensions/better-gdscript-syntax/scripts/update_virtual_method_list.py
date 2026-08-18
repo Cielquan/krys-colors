@@ -9,6 +9,7 @@ import tempfile
 import xml.etree.ElementTree as ET
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 ext_dir = pathlib.Path(__file__).parent / ".."
@@ -80,7 +81,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as temp_dir_str:
         temp_dir = pathlib.Path(temp_dir_str)
 
-        print("## Clone repo")
+        logger.info("## Clone repo")
         subprocess.check_call(
             [
                 "git",
@@ -95,16 +96,18 @@ def main() -> int:
         )
         repo_dir = temp_dir / "godot"
 
-        print("## Sparse-checkout")
+        logger.info("## Sparse-checkout")
         subprocess.check_call(
             ["git", "sparse-checkout", "set", "doc/classes"],
             cwd=repo_dir,
         )
         classes_dir = repo_dir / "doc" / "classes"
 
+        logger.info("Extracting virtual methods from XML")
         methods_dict = extract_virtual_methods_from_xml_source(classes_dir)
         regex_lines = generate_regex_lines(methods_dict)
 
+        logger.info("Update regex source")
         grammar_lines = grammar_file.read_text().splitlines()
         start_idx = grammar_lines.index(START_MARKER)
         end_idx = grammar_lines.index(END_MARKER)
@@ -115,7 +118,9 @@ def main() -> int:
             + grammar_lines[(end_idx - 1) :]
         )
 
+        logger.info("Update grammar file")
         grammar_file.write_text("\n".join(new_grammar_lines))
+        logger.info("Finished...")
 
     return 0
 
