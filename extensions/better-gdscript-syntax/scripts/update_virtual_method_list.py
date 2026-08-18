@@ -25,8 +25,10 @@ END_MARKER = "          # VIRTUAL_METHODS_END"
 
 def extract_virtual_methods_from_xml_source(
     classes_dir: pathlib.Path,
-) -> dict[str, list[str]]:
-    class_methods_dict: dict[str, list[str]] = {}
+) -> tuple[dict[str, set[str]], int]:
+    methods_class_dict: dict[str, set[str]] = {}
+
+    longest_name = 0
 
     for path in classes_dir.glob("*.xml"):
         try:
@@ -40,40 +42,37 @@ def extract_virtual_methods_from_xml_source(
             logger.error(f"Failed to extract class name from '{path}")
             continue
 
-        methods = []
-
         for method in root.findall("./methods/method"):
             if "virtual" in method.get("qualifiers", ""):
                 method_name = method.get("name")
                 if method_name is None:
                     logger.error(f"Failed to extract method name from '{path}")
                     continue
-                methods.append(method_name)
+                if method_name not in methods_class_dict:
+                    methods_class_dict[method_name] = set()
+                methods_class_dict[method_name].add(class_name)
+                longest_name = max(longest_name, len(method_name))
 
-        if not methods:
-            continue
-
-        if class_name in class_methods_dict:
-            logger.error(f"Duplicate class_name: '{class_name}'")
-            continue
-
-        class_methods_dict[class_name] = methods
-
-    return class_methods_dict
+    return methods_class_dict, longest_name
 
 
-def generate_regex_lines(data: dict[str, list[str]]) -> list[str]:
+def generate_regex_lines(data: dict[str, set[str]], longest_name: int) -> list[str]:
     regex_lines: list[str] = []
 
     is_first_method = True
-    for class_name in sorted(data):
-        regex_lines.append(f"          (?# {class_name})")
-        for method in sorted(data[class_name]):
-            if is_first_method:
-                regex_lines.append(f"          {method.removeprefix('_')}")
-                is_first_method = False
-                continue
-            regex_lines.append(f"          |{method.removeprefix('_')}")
+    for method in sorted(data):
+        class_names = sorted(data[method])
+        padding = longest_name + 2 - len(method)
+        pipe_prefix = "|"
+
+        if is_first_method:
+            padding += 1
+            pipe_prefix = ""
+            is_first_method = False
+
+        regex_lines.append(
+            f"          {pipe_prefix}{method.removeprefix('_')}{padding * ' '}(?# {' / '.join(class_names)})"
+        )
 
     return regex_lines
 
@@ -107,8 +106,10 @@ def main() -> int:
         classes_dir = repo_dir / "doc" / "classes"
 
         logger.info("Extracting virtual methods from XML")
-        methods_dict = extract_virtual_methods_from_xml_source(classes_dir)
-        regex_lines = generate_regex_lines(methods_dict)
+        methods_dict, longest_name = extract_virtual_methods_from_xml_source(
+            classes_dir
+        )
+        regex_lines = generate_regex_lines(methods_dict, longest_name)
 
         logger.info("Update regex source")
         grammar_lines = grammar_file.read_text().splitlines()
@@ -116,14 +117,14 @@ def main() -> int:
         end_idx = grammar_lines.index(END_MARKER)
 
         new_grammar_lines = (
-            grammar_lines[: (start_idx + 1)]
-            + regex_lines
-            + grammar_lines[(end_idx - 1) :]
+            grammar_lines[: (start_idx + 1)] + regex_lines + grammar_lines[end_idx:]
         )
 
         logger.info("Update grammar file")
         grammar_file.write_text("\n".join(new_grammar_lines))
         logger.info("Finished...")
+
+        pathlib.Path("foo.txt").write_text("\n".join(regex_lines))
 
     return 0
 
