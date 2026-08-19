@@ -25,8 +25,8 @@ END_MARKER = "          # VIRTUAL_METHODS_END"
 
 def extract_virtual_methods_from_xml_source(
     classes_dir: pathlib.Path,
-) -> tuple[dict[str, set[str]], int]:
-    methods_class_dict: dict[str, set[str]] = {}
+) -> tuple[dict[str, dict[str, set[str]]], int]:
+    methods_class_dict: dict[str, dict[str, set[str]]] = {"ONE_WORD": {}}
 
     longest_name = 0
 
@@ -48,21 +48,39 @@ def extract_virtual_methods_from_xml_source(
                 if method_name is None:
                     logger.error(f"Failed to extract method name from '{path}")
                     continue
-                if method_name not in methods_class_dict:
-                    methods_class_dict[method_name] = set()
-                methods_class_dict[method_name].add(class_name)
+
+                method_name = method_name.removeprefix("_")
+
+                if "_" not in method_name:
+                    if method_name not in methods_class_dict["ONE_WORD"]:
+                        methods_class_dict["ONE_WORD"][method_name] = set()
+
+                    methods_class_dict["ONE_WORD"][method_name].add(class_name)
+                    longest_name = max(longest_name, len(method_name))
+                    continue
+
+                prefix = method_name.split("_", 1)[0]
+
+                if prefix not in methods_class_dict:
+                    methods_class_dict[prefix] = {}
+                if method_name not in methods_class_dict[prefix]:
+                    methods_class_dict[prefix][method_name] = set()
+
+                methods_class_dict[prefix][method_name].add(class_name)
                 longest_name = max(longest_name, len(method_name))
 
     return methods_class_dict, longest_name
 
 
-def generate_regex_lines(data: dict[str, set[str]], longest_name: int) -> list[str]:
+def generate_regex_lines(
+    data: dict[str, dict[str, set[str]]], longest_name: int
+) -> list[str]:
     regex_lines: list[str] = []
 
     is_first_method = True
-    for method in sorted(data):
-        class_names = sorted(data[method])
-        padding = longest_name + 2 - len(method)
+    for method in sorted(data["ONE_WORD"]):
+        class_names = sorted(data["ONE_WORD"][method])
+        padding = longest_name + 4 - len(method)
         pipe_prefix = "|"
 
         if is_first_method:
@@ -71,8 +89,58 @@ def generate_regex_lines(data: dict[str, set[str]], longest_name: int) -> list[s
             is_first_method = False
 
         regex_lines.append(
-            f"          {pipe_prefix}{method.removeprefix('_')}{padding * ' '}(?# {' / '.join(class_names)})"
+            f"          {pipe_prefix}{method}{padding * ' '}(?# {' / '.join(class_names)})"
         )
+
+    for prefix in sorted(filter(lambda p: len(data[p]) <= 1, data)):
+        if prefix == "ONE_WORD":
+            continue
+
+        for method in sorted(data[prefix]):
+            class_names = sorted(data[prefix][method])
+            method_part = method
+            padding = longest_name + 4 - len(method_part)
+            pipe_prefix = "|"
+
+            if is_first_method:
+                padding += 1
+                pipe_prefix = ""
+                is_first_method = False
+
+            regex_lines.append(
+                f"          {pipe_prefix}{method_part}{padding * ' '}(?# {' / '.join(class_names)})"
+            )
+
+    is_first_prefix = True
+    for prefix in sorted(filter(lambda p: len(data[p]) > 1, data)):
+        if prefix == "ONE_WORD":
+            continue
+
+        pipe_prefix = "|"
+
+        if is_first_prefix:
+            pipe_prefix = ""
+            is_first_prefix = False
+
+        regex_lines.append(f"          {pipe_prefix}{prefix}_(?:")
+
+        is_first_method = True
+        for method in sorted(data[prefix]):
+            class_names = sorted(data[prefix][method])
+            method_part = method.split("_", 1)[1]
+            padding = longest_name + 2 - len(method_part)
+            pipe_prefix = "|"
+
+            if is_first_method:
+                padding += 1
+                pipe_prefix = ""
+                is_first_method = False
+
+            regex_lines.append(
+                f"            {pipe_prefix}{method_part}{padding * ' '}(?# {' / '.join(class_names)})"
+            )
+
+        regex_lines.append("          )")
 
     return regex_lines
 
