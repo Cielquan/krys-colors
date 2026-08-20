@@ -553,6 +553,68 @@ repository:
           "5":
             name: punctuation.separator.comma.gdscript
 
+  const-declaration:
+    name: meta.const.declaration.gdscript
+    match: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      (const)
+      [ \t]+
+      ([A-Za-z_][A-Za-z0-9_]*)
+      [ \t]*
+      (?:
+        (:=)
+        | (:)
+        | (=)
+      )
+      # regex-end
+    captures:
+      "1":
+        name: storage.type.const.gdscript
+      "2":
+        name: variable.other.constant.gdscript
+      "3":
+        name: keyword.operator.assignment.infer.gdscript
+      "4":
+        name: keyword.operator.type.annotation.gdscript
+      "5":
+        name: keyword.operator.assignment.equal.gdscript
+
+  var-declaration:
+    name: meta.const.declaration.gdscript
+    match: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      (?:
+        (static)
+        [ \t]+
+      )?
+      (var)
+      [ \t]+
+      ([A-Za-z_][A-Za-z0-9_]*)
+      [ \t]*
+      (?:
+        (:=)
+        | (:)
+        | (=)
+      )
+      # regex-end
+    captures:
+      "1":
+        name: storage.modifier.static.gdscript
+      "2":
+        name: storage.type.const.gdscript
+      "3":
+        name: variable.other.constant.gdscript
+      "4":
+        name: keyword.operator.assignment.infer.gdscript
+      "5":
+        name: keyword.operator.type.annotation.gdscript
+      "6":
+        name: keyword.operator.assignment.equal.gdscript
+
   line-continuation:
     patterns:
       - match: |-
