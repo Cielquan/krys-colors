@@ -1448,3 +1448,115 @@ repository:
         name: variable.language.special.super.gdscript
       "5":
         name: keyword.control.as.gdscript
+
+
+  builtin-type-primitive:
+    match: |-
+      (?x)
+      \b(?:
+        (int)
+        | (float)
+        | (bool)
+        | (String)
+        | (StringName)
+        | (NodePath)
+        | (void)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: support.type.primitive.int.gdscript
+      "2":
+        name: support.type.primitive.float.gdscript
+      "3":
+        name: support.type.primitive.bool.gdscript
+      "4":
+        name: support.type.primitive.string.gdscript
+      "5":
+        name: support.type.primitive.string-name.gdscript
+      "6":
+        name: support.type.primitive.node-path.gdscript
+      "7":
+        name: support.type.primitive.void.gdscript
+
+  builtin-type-container:
+    match: |-
+      (?x)
+      \b(?:
+        (Array)
+        | (Callable)
+        | (Dictionary)
+        | (Packed(?:
+            Byte
+            | Color
+            | Float(?:32|64)
+            | Int(?:32|64)
+            | String
+            | Vector[2-4]
+          )Array)
+        | (Signal)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: support.type.container.array.gdscript
+      "2":
+        name: support.type.container.callable.gdscript
+      "3":
+        name: support.type.container.dictionary.gdscript
+      "4":
+        name: support.type.container.array.packed.gdscript
+      "5":
+        name: support.type.container.signal.gdscript
+
+  builtin-type-vector:
+    match: |-
+      (?x)
+      \b(?:
+        (AABB)
+        | (Basis)
+        | (Plane)
+        | (Projection)
+        | (Quaternion)
+        | (Rect[2]i?)
+        | (Transform[2-3]D)
+        | (Vector[2-4]i?)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: support.type.builtin.vector.aabb.gdscript
+      "2":
+        name: support.type.builtin.vector.basis.gdscript
+      "3":
+        name: support.type.builtin.vector.plane.gdscript
+      "4":
+        name: support.type.builtin.vector.projection.gdscript
+      "5":
+        name: support.type.builtin.vector.quaternion.gdscript
+      "6":
+        name: support.type.builtin.vector.rect.gdscript
+      "7":
+        name: support.type.builtin.vector.transform.gdscript
+      "8":
+        name: support.type.builtin.vector.gdscript
+
+  builtin-type-variant:
+    match: |-
+      (?x)
+      \b(?:
+        (Variant)
+        | (Color)
+        | (Object)
+        | (RID)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: support.type.builtin.variant.gdscript
+      "2":
+        name: support.type.builtin.engine.color.gdscript
+      "3":
+        name: support.type.builtin.engine.object.gdscript
+      "4":
+        name: support.type.builtin.engine.rid.gdscript
