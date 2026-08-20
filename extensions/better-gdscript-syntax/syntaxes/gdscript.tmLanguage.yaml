@@ -1305,3 +1305,146 @@ repository:
             name: keyword.operator.comparison.lte.gdscript
           "6":
             name: keyword.operator.comparison.gte.gdscript
+
+  import_expression:
+    name: meta.function-call.gdscript meta.import.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      (load|preload)
+      [ \t]*
+      (\()
+      [ \t]*
+      # regex-end
+    beginCaptures:
+      "1":
+        name: support.function.builtin.gdscript keyword.control.import.gdscript
+      "2":
+        name: punctuation.definition.arguments.begin.gdscript
+    end: |-
+      (?x)
+      [ \t]*
+      (\))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.arguments.end.gdscript
+    patterns:
+      - include: "#_strings"
+
+  type-cast:
+    name: keyword.control.as.gdscript
+    match: |-
+      (?x)
+      \b(as)\b
+      # regex-end
+
+  self:
+    name: variable.language.special.self.gdscript
+    match: |-
+      (?x)
+      \b(self)\b
+      # regex-end
+
+  super-usage:
+    name: variable.language.special.super.gdscript
+    match: |-
+      (?x)
+      \b(super)\b
+      # regex-end
+
+  new-usage:
+    name: keyword.operator.wordlike.new.gdscript
+    match: |-
+      (?x)
+      \b(new)\b
+      # regex-end
+
+  await-statement:
+    name: keyword.control.flow.gdscript
+    match: |-
+      (?x)
+      \b(await)\b
+      # regex-end
+
+  assert-statement:
+    name: keyword.control.flow.gdscript
+    match: |-
+      (?x)
+      \b(assert)\b
+      # regex-end
+
+  flow-keyword:
+    match: |-
+      (?x)
+      \b(?:
+        (assert)
+        | (await)
+        | (return)
+        | (if)
+        | (elif)
+        | (else)
+        | (match)
+        | (when)
+        | (while)
+        | (for)
+        | (continue)
+        | (break)
+        | (pass)
+        | (breakpoint)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: keyword.control.flow.assert.gdscript
+      "2":
+        name: keyword.control.flow.await.gdscript
+      "3":
+        name: keyword.control.flow.return.gdscript
+      "4":
+        name: keyword.control.flow.if.gdscript
+      "5":
+        name: keyword.control.flow.elif.gdscript
+      "6":
+        name: keyword.control.flow.else.gdscript
+      "7":
+        name: keyword.control.flow.match.gdscript
+      "8":
+        name: keyword.control.conditional.when.gdscript
+      "9":
+        name: keyword.control.flow.while.gdscript
+      "10":
+        name: keyword.control.flow.for.gdscript
+      "11":
+        name: keyword.control.flow.in.gdscript
+      "12":
+        name: keyword.control.flow.continue.gdscript
+      "13":
+        name: keyword.control.flow.break.gdscript
+      "14":
+        name: keyword.control.flow.pass.gdscript
+      "15":
+        name: keyword.control.flow.debug.breakpoint.gdscript
+
+  other-keyword:
+    match: |-
+      (?x)
+      \b(?:
+        (new)
+        | (static)
+        | (self)
+        | (super)
+        | (as)
+      )\b
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.wordlike.new.gdscript
+      "2":
+        name: storage.modifier.static.gdscript
+      "3":
+        name: variable.language.special.self.gdscript
+      "4":
+        name: variable.language.special.super.gdscript
+      "5":
+        name: keyword.control.as.gdscript
