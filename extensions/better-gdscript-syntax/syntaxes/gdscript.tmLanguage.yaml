@@ -68,7 +68,7 @@ repository:
           [ \t]*
           (?:
             (@deprecated)
-            |(@experimental)
+            | (@experimental)
           )
           (?![ \t]+:)
           (:)?
@@ -130,10 +130,10 @@ repository:
           (?:
             (?:
               (color)
-              |(font)
-              |(img)
-              |(url)
-              |(center)
+              | (font)
+              | (img)
+              | (url)
+              | (center)
             )
             (?:
               (=)
@@ -182,10 +182,10 @@ repository:
           (/)
           (?:
             (color)
-            |(font)
-            |(img)
-            |(url)
-            |(center)
+            | (font)
+            | (img)
+            | (url)
+            | (center)
           )
           (\])
           # regex-end
@@ -273,7 +273,18 @@ repository:
           (?x)
           \[
           (?:
-            (annotation|constant|enum|member|method|constructor|operator|signal|theme_item|param)
+            (
+              annotation
+              | constant
+              | enum
+              | member
+              | method
+              | constructor
+              | operator
+              | signal
+              | theme_item
+              | param
+            )
             [ \t]+
           )?
           ([^\]]+)
@@ -565,7 +576,15 @@ repository:
     name: constant.language.gdscript
     match: |-
       (?x)
-      \b(?:(true)|(false)|(null)|(PI)|(TAU)|(INF)|(NAN))\b
+      \b(?:
+        (true)
+        | (false)
+        | (null)
+        | (PI)
+        | (TAU)
+        | (INF)
+        | (NAN)
+      )\b
       # regex-end
     captures:
       "1":
@@ -630,7 +649,11 @@ repository:
     name: invalid.illegal.word.gdscript
     match: |-
       (?x)
-      \b(namespace|trait|yield)\b
+      \b(
+        namespace
+        | trait
+        | yield
+      )\b
       # regex-end
 
   _strings:
@@ -951,7 +974,11 @@ repository:
     name: "string.quoted.multi.gdscript meta.literal.node-reference.gdscript"
     begin: |-
       (?x)
-      (?:(\$)|(%)|(?:(\$)(%)))
+      (?:
+        (\$)
+        | (%)
+        | (?:(\$)(%))
+      )
       ("""|''')
       # regex-end
     beginCaptures:
@@ -1000,7 +1027,11 @@ repository:
     name: "string.quoted.single.gdscript meta.literal.node-reference.gdscript"
     begin: |-
       (?x)
-      (?:(\$)|(%)|(?:(\$)(%)))
+      (?:
+        (\$)
+        | (%)
+        | (?:(\$)(%))
+      )
       ("|')
       # regex-end
     beginCaptures:
