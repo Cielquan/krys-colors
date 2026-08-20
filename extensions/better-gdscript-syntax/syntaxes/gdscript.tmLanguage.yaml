@@ -642,7 +642,7 @@ repository:
         name: invalid.illegal.name.gdscript
         match: |-
           (?x)
-          \b[0-9]+[A-Za-z0-9_]+
+          \b[0-9]+[A-Za-z_]+
           # regex-end
 
   _reserved-keywords:
