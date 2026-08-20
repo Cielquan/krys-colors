@@ -155,6 +155,30 @@
       },
     },
     {
+      "scope": [
+        "punctuation.section",
+
+        "punctuation.separator.key-value",
+        "punctuation.separator.dictionary.key-value",
+        "punctuation.separator.dict",
+
+        "punctuation.separator.annotation",
+        "punctuation.separator.colon.python", // ':' after type annotions in body
+        "punctuation.separator.annotation.result",
+        "storage.type.function.arrow",
+
+        "punctuation.separator.slice.python", // slice operator ':'
+        "punctuation.separator.statement.and.shell.dockerfile", // &&
+
+        "punctuation.separator.continuation.line", // e.g. '\' at end of line in python
+        "constant.character.escape.double-quoted.newline.yaml",
+      ],
+      "settings": {
+        "fontStyle": "",
+        "foreground": "#F92672",
+      },
+    },
+    {
       "name": "Variable",
       "scope": ["variable"],
       "settings": {
@@ -232,29 +256,8 @@
       "name": "Operator",
       "scope": [
         "keyword.operator",
-        "punctuation.section",
 
-        "punctuation.separator.key-value",
-        "punctuation.separator.dictionary.key-value",
-
-        "punctuation.separator.annotation.python", // ':' before type annotation in def
-        "punctuation.separator.annotation.result.python", // '->' before return type annotation in def
-        "punctuation.separator.colon.python", // ':' after type annotions in body
-        "punctuation.separator.dict.python", // ':' in dicts
-        "punctuation.separator.slice.python", // slice operator ':'
-        "punctuation.separator.statement.and.shell.dockerfile", // &&
-
-        "punctuation.separator.continuation.line", // e.g. '\' at end of line in python
-        "constant.character.escape.double-quoted.newline.yaml",
-
-        "constant.language.import-export-all.js", // * in import
-        "constant.language.import-export-all.jsx", // * in import
-        "constant.language.import-export-all.ts", // * in import
-        "constant.language.import-export-all.tsx", // * in import
-        "storage.type.function.arrow.js", // =>
-        "storage.type.function.arrow.jsx", // =>
-        "storage.type.function.arrow.ts", // =>
-        "storage.type.function.arrow.tsx", // =>
+        "constant.language.import-export-all", // * in import
         "keyword.other.unit.percentage.css", // %
         "punctuation.definition.directive.begin.yaml", // %
         "constant.language.merge.yaml", // <<
