@@ -1123,4 +1123,4 @@ repository:
           "1":
             name: punctuation.separator.path.gdscript
           "2":
-            name: punctuation.definition.node-shorthand.unique.gdscript
+            name: punctuation.definition.node-reference.unique.gdscript
