@@ -1524,6 +1524,7 @@ repository:
         | (NodePath)
         | (void)
       )\b
+      (?![ \t]*\()
       # regex-end
     captures:
       "1":
@@ -1558,6 +1559,7 @@ repository:
           )Array)
         | (Signal)
       )\b
+      (?![ \t]*\()
       # regex-end
     captures:
       "1":
@@ -1584,6 +1586,7 @@ repository:
         | (Transform[2-3]D)
         | (Vector[2-4]i?)
       )\b
+      (?![ \t]*\()
       # regex-end
     captures:
       "1":
@@ -1612,6 +1615,7 @@ repository:
         | (Object)
         | (RID)
       )\b
+      (?![ \t]*\()
       # regex-end
     captures:
       "1":
