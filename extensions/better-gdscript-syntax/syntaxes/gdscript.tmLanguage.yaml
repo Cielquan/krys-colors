@@ -1298,9 +1298,9 @@ repository:
       # regex-end
     captures:
       "1":
-        name: keyword.operator.assignment.equal.gdscript
-      "2":
         name: keyword.operator.assignment.infer.gdscript
+      "2":
+        name: keyword.operator.assignment.equal.gdscript
 
   _operator-logical:
     patterns:
