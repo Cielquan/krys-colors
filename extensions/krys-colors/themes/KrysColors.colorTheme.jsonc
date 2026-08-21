@@ -367,7 +367,12 @@
     },
     {
       "name": "Storage type (class/func)",
-      "scope": ["storage.type.class", "storage.type.function", "keyword.other.fn"],
+      "scope": [
+        "storage.type.class",
+        "storage.type.function",
+        "storage.type.signal",
+        "keyword.other.fn",
+      ],
       "settings": {
         "fontStyle": "",
         "foreground": "#66D9EF",
@@ -432,7 +437,11 @@
     },
     {
       "name": "Function name",
-      "scope": ["entity.name.function", "variable.other.jinja.filter"],
+      "scope": [
+        "entity.name.function",
+        "entity.name.signal.gdscript",
+        "variable.other.jinja.filter",
+      ],
       "settings": {
         "fontStyle": "",
         "foreground": "#A6E22E",
