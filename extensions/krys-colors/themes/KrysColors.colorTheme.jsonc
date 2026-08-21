@@ -934,7 +934,7 @@
     {
       "scope": [
         "meta.attribute.rust", // attribute stuff
-        "variable.parameter.function-call.python", // parameter in func call
+        "variable.parameter.function-call.python", // arguments in func call
         "entity.name.image.dockerfile", // image
         "entity.name.image.stage.dockerfile",
       ],
