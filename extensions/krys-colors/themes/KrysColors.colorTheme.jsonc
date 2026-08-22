@@ -187,15 +187,26 @@
     },
     {
       "name": "Constant",
-      "scope": [
-        "variable.other.constant",
-        "variable.other.enummember",
-        "constant.other.caps",
-        "support.constant",
-      ],
+      "scope": ["variable.other.constant", "variable.other.enummember", "constant.other.caps"],
       "settings": {
         "fontStyle": "bold",
         "foreground": "#f8f8f2",
+      },
+    },
+    {
+      "name": "Built-in constant",
+      "scope": ["constant.other.builtin", "support.constant"],
+      "settings": {
+        "fontStyle": "italic bold",
+        "foreground": "#f8f8f2",
+      },
+    },
+    {
+      "name": "Language/Numeric constant",
+      "scope": ["constant.language"],
+      "settings": {
+        "fontStyle": "italic bold",
+        "foreground": "#859900",
       },
     },
     {
@@ -323,14 +334,6 @@
       ],
       "settings": {
         "foreground": "#f92672",
-      },
-    },
-    {
-      "name": "Built-in constant",
-      "scope": ["constant.language"],
-      "settings": {
-        "fontStyle": "italic bold",
-        "foreground": "#859900",
       },
     },
     {
