@@ -666,12 +666,8 @@ repository:
           (?x)
           \b(?:
             # @GDScript - meth - START
-            Color8
-            | char
-            | convert
-            | dict_to_inst
+            char
             | get_stack
-            | inst_to_dict
             | is_instance_of
             | len
             | load
@@ -680,8 +676,20 @@ repository:
             | print_debug
             | print_stack
             | range
-            | type_exists
             # @GDScript - meth - END
+          )\b
+          # regex-end
+      - name: invalid.deprecated.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GDScript - meth-deprecated - START
+            Color8
+            | convert
+            | dict_to_inst
+            | inst_to_dict
+            | type_exists
+            # @GDScript - meth-deprecated - END
           )\b
           # regex-end
       - name: support.function.builtin.gdscript
