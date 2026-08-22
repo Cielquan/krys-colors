@@ -436,9 +436,10 @@
       },
     },
     {
-      "name": "Function name",
+      "name": "Function name (definition)",
       "scope": [
         "entity.name.function",
+        "entity.name.function.definition",
         "entity.name.signal.gdscript",
         "variable.other.jinja.filter",
       ],
@@ -453,6 +454,25 @@
       "settings": {
         "fontStyle": "italic",
         "foreground": "#fd971f",
+      },
+    },
+    {
+      "name": "Function name (call)",
+      "scope": ["entity.name.function.call", "meta.function-call.generic.python"],
+      "settings": {
+        "foreground": "#66d9ef",
+      },
+    },
+    {
+      "name": "Function argument",
+      "scope": [
+        "variable.argument",
+        "variable.parameter.function.call",
+        "variable.parameter.function-call",
+      ],
+      "settings": {
+        "fontStyle": "italic",
+        "foreground": "#cb4b16",
       },
     },
     {
@@ -926,7 +946,6 @@
     },
     {
       "scope": [
-        "meta.function-call.generic.python",
         "entity.name.command.shell.dockerfile", // shell cmd e.g. grep
       ],
       "settings": {
@@ -943,7 +962,6 @@
     {
       "scope": [
         "meta.attribute.rust", // attribute stuff
-        "variable.parameter.function-call.python", // arguments in func call
         "entity.name.image.dockerfile", // image
         "entity.name.image.stage.dockerfile",
       ],
