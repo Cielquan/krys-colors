@@ -436,14 +436,11 @@ repository:
     patterns:
       - comment: "Signal name"
         patterns:
-        # - include: "#_builtin-possible-callables"
-          # - include: "#builtin-callables"
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
           - include: "#builtin-type-variant"
-          # - include: "#magic-names"
           - name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
             match: |-
               (?x)
@@ -485,14 +482,11 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
-        # - include: "#_builtin-possible-callables"
-          # - include: "#builtin-callables"
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
           - include: "#builtin-type-variant"
-          # - include: "#magic-names"
           - name: entity.name.function.definition.gdscript
             match: |-
               (?x)
