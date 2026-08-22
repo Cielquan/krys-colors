@@ -631,14 +631,14 @@ repository:
       - include: "#builtin-type-vector"
       - include: "#builtin-type-variant"
       - comment: "Generic type parameter"
-        contentName: meta.item-access.arguments.python
+        contentName: meta.item-access.arguments.gdscript
         begin: |-
           (?x)
           (\[)
           # regex-end
         beginCaptures:
           "1":
-            name: punctuation.definition.arguments.begin.python
+            name: punctuation.definition.arguments.begin.gdscript
         end: |-
           (?x)
           (?=\])
