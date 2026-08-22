@@ -1023,6 +1023,8 @@ repository:
           "1":
             name: punctuation.definition.arguments.end.gdscript
         patterns:
+          - name: punctuation.separator.arguments.gdscript
+            match: (,)
           - include: "#expression"
           - include: "#line-continuation"
 
