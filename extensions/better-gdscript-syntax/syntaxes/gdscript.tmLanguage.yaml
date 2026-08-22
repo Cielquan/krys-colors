@@ -787,6 +787,31 @@ repository:
       )\b
       # regex-end
 
+  annotation:
+    name: meta.annotation.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      \b
+      (@[A-Za-z_][A-Za-z0-9_]*)
+      (?=
+        [ \t]*
+        \(
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.modifier.annotation.gdscript
+    end: |-
+      (?x)
+      (?=[#'"\n])
+      # regex-end
+    patterns:
+      - name: meta.annotation.parameters.gdscript
+        patterns:
+          - include: "#expression"
+      - include: "#line-continuation"
+
   class-name-declaration:
     name: meta.class.declaration.gdscript
     match: |-
