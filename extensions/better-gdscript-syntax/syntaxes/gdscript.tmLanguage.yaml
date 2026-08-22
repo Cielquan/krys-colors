@@ -459,6 +459,10 @@ repository:
     begin: |-
       (?x)
       [ \t]*
+      (?:
+        (static)
+        [ \t]+
+      )?
       \b(func)[ \t]+
       (?=
         ([A-Za-z_][A-Za-z0-9_]*)?
@@ -468,6 +472,8 @@ repository:
       # regex-end
     beginCaptures:
       "1":
+        name: storage.modifier.static.gdscript
+      "2":
         name: storage.type.function.gdscript
     end: |-
       (?x)
