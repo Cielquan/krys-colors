@@ -1116,34 +1116,44 @@ repository:
       # regex-end
 
   _language-constants:
-    name: constant.language.gdscript
-    match: |-
-      (?x)
-      \b(?:
-        (true)
-        | (false)
-        | (null)
-        | (PI)
-        | (TAU)
-        | (INF)
-        | (NAN)
-      )\b
-      # regex-end
-    captures:
-      "1":
-        name: constant.language.bool.true.gdscript
-      "2":
-        name: constant.language.bool.false.gdscript
-      "3":
-        name: constant.language.null.gdscript
-      "4":
-        name: constant.language.number.pi.gdscript
-      "5":
-        name: constant.language.number.tau.gdscript
-      "6":
-        name: constant.language.number.inf.gdscript
-      "7":
-        name: constant.language.number.nan.gdscript
+    patterns:
+      - comment: "Numeric constants"
+        match: |-
+          (?x)
+          \b(?:
+            # @GDScript - const - START
+            (PI)
+            | (TAU)
+            | (INF)
+            | (NAN)
+            # @GDScript - const - END
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: constant.language.number.pi.gdscript
+          "2":
+            name: constant.language.number.tau.gdscript
+          "3":
+            name: constant.language.number.inf.gdscript
+          "4":
+            name: constant.language.number.nan.gdscript
+      - comment: "Other constants"
+        match: |-
+          (?x)
+          \b(?:
+            (true)
+            | (false)
+            | (null)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: constant.language.bool.true.gdscript
+          "2":
+            name: constant.language.bool.false.gdscript
+          "3":
+            name: constant.language.null.gdscript
 
   _numbers:
     patterns:
