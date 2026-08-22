@@ -988,29 +988,43 @@ repository:
         name: keyword.operator.assignment.equal.gdscript
 
   annotation:
-    name: meta.annotation.gdscript
-    begin: |-
-      (?x)
-      [ \t]*
-      \b
-      (@[A-Za-z_][A-Za-z0-9_]*)
-      (?=
-        [ \t]*
-        \(
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.modifier.annotation.gdscript
-    end: |-
-      (?x)
-      (?=[#'"\n])
-      # regex-end
     patterns:
-      - name: meta.annotation.parameters.gdscript
+      - comment: "Without arguments"
+        name: meta.annotation.gdscript
+        match: |-
+          (?x)
+          \B(@[A-Za-z_][A-Za-z0-9_]*)\b
+          \s+
+          # regex-end
+        captures:
+          "1":
+            name: storage.modifier.annotation.gdscript
+      - comment: "With arguments"
+        begin: |-
+          (?x)
+          [ \t]*
+          \B
+          (@[A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (\()
+          # regex-end
+        beginCaptures:
+          "1":
+            name: storage.modifier.annotation.gdscript
+          "2":
+            name: punctuation.definition.arguments.begin.gdscript
+        end: |-
+          (?x)
+          (\))
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.arguments.end.gdscript
         patterns:
-          - include: "#expression"
-      - include: "#line-continuation"
+          - name: meta.annotation.parameters.gdscript
+            patterns:
+              - include: "#expression"
+          - include: "#line-continuation"
 
   line-continuation:
     patterns:
