@@ -1000,6 +1000,8 @@ repository:
           "1":
             name: storage.modifier.annotation.gdscript
       - comment: "With arguments"
+        name: meta.annotation.gdscript
+        contentName: meta.annotation.arguments.gdscript
         begin: |-
           (?x)
           [ \t]*
@@ -1021,9 +1023,7 @@ repository:
           "1":
             name: punctuation.definition.arguments.end.gdscript
         patterns:
-          - name: meta.annotation.arguments.gdscript
-            patterns:
-              - include: "#expression"
+          - include: "#expression"
           - include: "#line-continuation"
 
   line-continuation:
