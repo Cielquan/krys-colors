@@ -428,7 +428,7 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: storage.type.function.gdscript storage.type.signal.gdscript
+        name: "storage.type.function.gdscript storage.type.signal.gdscript"
     end: |-
       (?x)
       (?=[#'"\n])
@@ -444,12 +444,12 @@ repository:
           - include: "#builtin-type-vector"
           - include: "#builtin-type-variant"
           # - include: "#magic-names"
-          - name: entity.name.function.gdscript entity.name.signal.gdscript
+          - name: "entity.name.function.gdscript entity.name.signal.gdscript"
             match: |-
               (?x)
               \b([A-Za-z_][A-Za-z0-9_]*)\b
               # regex-end
-      - name: meta.function.parameters.gdscript meta.signal.parameters.gdscript
+      - name: "meta.function.parameters.gdscript meta.signal.parameters.gdscript"
         patterns:
           - include: "#_parameters"
       - include: "#line-continuation"
