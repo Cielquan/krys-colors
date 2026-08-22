@@ -1028,6 +1028,54 @@ repository:
           - include: "#expression"
           - include: "#line-continuation"
 
+  function-call:
+    name: meta.function.call.gdscript
+    begin: |-
+      (?x)
+      \b
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        (\()
+      )
+      # regex-end
+    end: |-
+      (?x)
+      (\))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.arguments.end.gdscript
+    patterns:
+      - comment: "Function name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.function.call.gdscript
+            match: |-
+              (?x)
+              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              # regex-end
+      - contentName: meta.function.call.arguments.gdscript
+        begin: |-
+          (?x)
+          (\()
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.arguments.begin.gdscript
+        end: |-
+          (?x)
+          (?=\))
+          # regex-end
+        patterns:
+          - include: "#expression"
+          - include: "#line-continuation"
+      - include: "#line-continuation"
+
   line-continuation:
     patterns:
       - match: |-
