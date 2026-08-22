@@ -267,34 +267,157 @@ repository:
             name: entity.name.tag.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
-      - name: meta.comment.documentation.link.class-reference.gdscript
-        # TODO: split pattern and use correct scopes for the link label
-        match: |-
-          (?x)
-          \[
-          (?:
-            (
-              annotation
-              | constant
-              | enum
-              | member
-              | method
-              | constructor
-              | operator
-              | signal
-              | theme_item
-              | param
-            )
-            [ \t]+
-          )?
-          ([^\]]+)
-          \]
-          # regex-end
-        captures:
-          "1":
-            name: string.other.link.comment.documentation.gdscript
-          "2":
-            name: markup.underline.link.comment.documentation.gdscript
+      - patterns:
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (annotation)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: storage.modifier.annotation.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (constant)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: variable.other.constant.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (enum)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: entity.name.type.enum.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (member)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: variable.other.property.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (method)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: entity.name.function.definition.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (constructor)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: entity.name.function.definition.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (operator)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: keyword.operator.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (signal)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (theme_item)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: variable.other.property.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              (param)
+              [ \t]+
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: support.type.gdscript
+              "2":
+                name: variable.parameter.function.language.gdscript
+          - name: meta.comment.documentation.link.class-reference.gdscript
+            match: |-
+              (?x)
+              \[
+              ([^\]]+)
+              \]
+              # regex-end
+            captures:
+              "1":
+                name: entity.name.type.class.gdscript
 
   comment-documentation-codeblock:
     patterns:
