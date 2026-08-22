@@ -1021,7 +1021,7 @@ repository:
           "1":
             name: punctuation.definition.arguments.end.gdscript
         patterns:
-          - name: meta.annotation.parameters.gdscript
+          - name: meta.annotation.arguments.gdscript
             patterns:
               - include: "#expression"
           - include: "#line-continuation"
