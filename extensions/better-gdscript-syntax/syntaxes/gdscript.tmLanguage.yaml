@@ -414,6 +414,239 @@ repository:
           $
           # regex-end
 
+  # TODO: change from function to signal in scope names?
+  signal-declaration:
+    name: meta.signal.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      \b(signal)[ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        \(
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.function.gdscript storage.type.signal.gdscript
+    end: |-
+      (?x)
+      (?=[#'"\n])
+      # regex-end
+    patterns:
+      - comment: "Signal name"
+        patterns:
+        # - include: "#_builtin-possible-callables"
+          # - include: "#builtin-callables"
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          # - include: "#magic-names"
+          - name: entity.name.function.gdscript entity.name.signal.gdscript
+            match: |-
+              (?x)
+              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              # regex-end
+      - name: meta.function.parameters.gdscript meta.signal.parameters.gdscript
+        patterns:
+          - include: "#_parameters"
+      - include: "#line-continuation"
+
+  function-and-lambda-declaration:
+    name: meta.function.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      \b(func)[ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)?
+        [ \t]*
+        \(
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.function.gdscript
+    end: |-
+      (?x)
+      (:|(?=[#'"\n]))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.function.begin.gdscript
+    patterns:
+      - comment: "Function name"
+        patterns:
+        # - include: "#_builtin-possible-callables"
+          # - include: "#builtin-callables"
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          # - include: "#magic-names"
+          - name: entity.name.function.gdscript
+            match: |-
+              (?x)
+              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              # regex-end
+      - name: meta.function.parameters.gdscript
+        patterns:
+          - include: "#_parameters"
+      - include: "#line-continuation"
+      - comment: "Return type annotation"
+        begin: |-
+          (?x)
+          (->)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.result.gdscript
+        end: |-
+          (?x)
+          (?=:)
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+
+  _parameters:
+    begin: |-
+      (?x)
+      (\()
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.parameters.begin.gdscript
+    end: |-
+      (?x)
+      (\))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.parameters.end.gdscript
+    patterns:
+      - name: keyword.operator.unpacking.parameter.gdscript
+        match: |-
+          (?x)
+          (\.\.\.)
+          # regex-end
+      - include: "#function-and-lambda-declaration"
+      - comment: "'self' parameter"
+        match: |-
+          (?x)
+          \b(self)\b
+          [ \t]*
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        captures:
+          "1":
+            name: variable.parameter.function.language.special.self.gdscript
+          "2":
+            name: punctuation.separator.parameters.gdscript
+      - match: |-
+          (?x)
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        captures:
+          "1":
+            name: variable.parameter.function.language.gdscript
+          "2":
+            name: punctuation.separator.parameters.gdscript
+      - include: "#comment-documentation"
+      - include: "#comment"
+      - comment: "Default value"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (?<!=)(=)(?!=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.separator.parameters.gdscript
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated parameter"
+        begin: |-
+          (?x)
+          \b
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (:)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: variable.parameter.function.language.gdscript
+          "2":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.separator.parameters.gdscript
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (?<!=)(=)(?!=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+
+  _type-annotation:
+    name: meta.type.annotation.gdscript
+    patterns:
+      - include: "#builtin-type-primitive"
+      - include: "#builtin-type-container"
+      - include: "#builtin-type-vector"
+      - include: "#builtin-type-variant"
+      - comment: "Generic type parameter"
+        contentName: meta.item-access.arguments.python
+        begin: |-
+          (?x)
+          (\[)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.arguments.begin.python
+        end: |-
+          (?x)
+          (?=\])
+          # regex-end
+        patterns:
+          - include: "#expression"
+
   class-name-declaration:
     name: meta.class.declaration.gdscript
     match: |-
