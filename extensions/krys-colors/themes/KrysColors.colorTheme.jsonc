@@ -431,7 +431,7 @@
       "name": "Library function",
       "scope": ["support.function"],
       "settings": {
-        "fontStyle": "",
+        "fontStyle": "italic",
         "foreground": "#66d9ef",
       },
     },
