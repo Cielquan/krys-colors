@@ -1127,7 +1127,7 @@ repository:
 
   _language-constants:
     patterns:
-      - comment: "Numeric constants"
+      - comment: "Number constants"
         match: |-
           (?x)
           \b(?:
