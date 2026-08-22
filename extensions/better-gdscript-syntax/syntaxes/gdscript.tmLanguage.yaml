@@ -1987,6 +1987,655 @@ repository:
       "5":
         name: keyword.control.as.gdscript
 
+  builtin-const:
+    patterns:
+      - name: constant.other.builtin.number.limit.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            UINT8_MAX
+            | UINT16_MAX
+            | UINT32_MAX
+            | INT8_MIN
+            | INT8_MAX
+            | INT16_MIN
+            | INT16_MAX
+            | INT32_MIN
+            | INT32_MAX
+            | INT64_MIN
+            | INT64_MAX
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+
+  builtin-enum:
+    patterns:
+      - name: support.enum.builtin.gdscript
+        match: |-
+          (?x)
+          \b
+          # @GlobalScope - enum - START
+          (
+            ClockDirection
+            | Corner
+            | Error
+            | EulerOrder
+            | HorizontalAlignment
+            | InlineAlignment
+            | JoyAxis
+            | JoyButton
+            | Key
+            | KeyLocation
+            | KeyModifierMask
+            | MIDIMessage
+            | MethodFlags
+            | MouseButton
+            | MouseButtonMask
+            | Orientation
+            | PropertyHint
+            | PropertyUsageFlags
+            | Side
+            | VerticalAlignment
+          )
+          | (?:
+              (?<=Variant\.)
+              (Operator|Type)
+          )
+          # @GlobalScope - enum - END
+          (?=\.|\b)
+          # regex-end
+
+  builtin-enum-const-values:
+    patterns:
+      - comment: "Builtin alignment-related enum constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            SIDE_BOTTOM                                 (?# enum Side)
+            | SIDE_LEFT                                 (?# enum Side)
+            | SIDE_RIGHT                                (?# enum Side)
+            | SIDE_TOP                                  (?# enum Side)
+            | CORNER_BOTTOM_LEFT                        (?# enum Corner)
+            | CORNER_BOTTOM_RIGHT                       (?# enum Corner)
+            | CORNER_TOP_LEFT                           (?# enum Corner)
+            | CORNER_TOP_RIGHT                          (?# enum Corner)
+            | VERTICAL                                  (?# enum Orientation)
+            | HORIZONTAL                                (?# enum Orientation)
+            | CLOCKWISE                                 (?# enum ClockDirection)
+            | COUNTERCLOCKWISE                          (?# enum ClockDirection)
+            | HORIZONTAL_ALIGNMENT_CENTER               (?# enum HorizontalAlignment)
+            | HORIZONTAL_ALIGNMENT_FILL                 (?# enum HorizontalAlignment)
+            | HORIZONTAL_ALIGNMENT_LEFT                 (?# enum HorizontalAlignment)
+            | HORIZONTAL_ALIGNMENT_RIGHT                (?# enum HorizontalAlignment)
+            | VERTICAL_ALIGNMENT_BOTTOM                 (?# enum VerticalAlignment)
+            | VERTICAL_ALIGNMENT_CENTER                 (?# enum VerticalAlignment)
+            | VERTICAL_ALIGNMENT_FILL                   (?# enum VerticalAlignment)
+            | VERTICAL_ALIGNMENT_TOP                    (?# enum VerticalAlignment)
+            | INLINE_ALIGNMENT_BASELINE_TO              (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_BOTTOM                   (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_BOTTOM_TO                (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_CENTER                   (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_CENTER_TO                (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_IMAGE_MASK               (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TEXT_MASK                (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TOP                      (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TOP_TO                   (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TO_BASELINE              (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TO_BOTTOM                (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TO_CENTER                (?# enum InlineAlignment)
+            | INLINE_ALIGNMENT_TO_TOP                   (?# enum InlineAlignment)
+            | EULER_ORDER_XYZ                           (?# enum EulerOrder)
+            | EULER_ORDER_XZY                           (?# enum EulerOrder)
+            | EULER_ORDER_YXZ                           (?# enum EulerOrder)
+            | EULER_ORDER_YZX                           (?# enum EulerOrder)
+            | EULER_ORDER_ZXY                           (?# enum EulerOrder)
+            | EULER_ORDER_ZYX                           (?# enum EulerOrder)
+            | KEY_LOCATION_LEFT                         (?# enum KeyLocation)
+            | KEY_LOCATION_RIGHT                        (?# enum KeyLocation)
+            | KEY_LOCATION_UNSPECIFIED                  (?# enum KeyLocation)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin input-related enum constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            MOUSE_BUTTON_LEFT                           (?# enum MouseButton)
+            | MOUSE_BUTTON_MIDDLE                       (?# enum MouseButton)
+            | MOUSE_BUTTON_NONE                         (?# enum MouseButton)
+            | MOUSE_BUTTON_RIGHT                        (?# enum MouseButton)
+            | MOUSE_BUTTON_WHEEL_DOWN                   (?# enum MouseButton)
+            | MOUSE_BUTTON_WHEEL_LEFT                   (?# enum MouseButton)
+            | MOUSE_BUTTON_WHEEL_RIGHT                  (?# enum MouseButton)
+            | MOUSE_BUTTON_WHEEL_UP                     (?# enum MouseButton)
+            | MOUSE_BUTTON_XBUTTON1                     (?# enum MouseButton)
+            | MOUSE_BUTTON_XBUTTON2                     (?# enum MouseButton)
+            | JOY_BUTTON_A                              (?# enum JoyButton)
+            | JOY_BUTTON_B                              (?# enum JoyButton)
+            | JOY_BUTTON_BACK                           (?# enum JoyButton)
+            | JOY_BUTTON_DPAD_DOWN                      (?# enum JoyButton)
+            | JOY_BUTTON_DPAD_LEFT                      (?# enum JoyButton)
+            | JOY_BUTTON_DPAD_RIGHT                     (?# enum JoyButton)
+            | JOY_BUTTON_DPAD_UP                        (?# enum JoyButton)
+            | JOY_BUTTON_GUIDE                          (?# enum JoyButton)
+            | JOY_BUTTON_INVALID                        (?# enum JoyButton)
+            | JOY_BUTTON_LEFT_SHOULDER                  (?# enum JoyButton)
+            | JOY_BUTTON_LEFT_STICK                     (?# enum JoyButton)
+            | JOY_BUTTON_MAX                            (?# enum JoyButton)
+            | JOY_BUTTON_MISC1                          (?# enum JoyButton)
+            | JOY_BUTTON_MISC2                          (?# enum JoyButton)
+            | JOY_BUTTON_MISC3                          (?# enum JoyButton)
+            | JOY_BUTTON_MISC4                          (?# enum JoyButton)
+            | JOY_BUTTON_MISC5                          (?# enum JoyButton)
+            | JOY_BUTTON_MISC6                          (?# enum JoyButton)
+            | JOY_BUTTON_PADDLE1                        (?# enum JoyButton)
+            | JOY_BUTTON_PADDLE2                        (?# enum JoyButton)
+            | JOY_BUTTON_PADDLE3                        (?# enum JoyButton)
+            | JOY_BUTTON_PADDLE4                        (?# enum JoyButton)
+            | JOY_BUTTON_RIGHT_SHOULDER                 (?# enum JoyButton)
+            | JOY_BUTTON_RIGHT_STICK                    (?# enum JoyButton)
+            | JOY_BUTTON_SDL_MAX                        (?# enum JoyButton)
+            | JOY_BUTTON_START                          (?# enum JoyButton)
+            | JOY_BUTTON_TOUCHPAD                       (?# enum JoyButton)
+            | JOY_BUTTON_X                              (?# enum JoyButton)
+            | JOY_BUTTON_Y                              (?# enum JoyButton)
+            | JOY_AXIS_INVALID                          (?# enum JoyAxis)
+            | JOY_AXIS_LEFT_X                           (?# enum JoyAxis)
+            | JOY_AXIS_LEFT_Y                           (?# enum JoyAxis)
+            | JOY_AXIS_MAX                              (?# enum JoyAxis)
+            | JOY_AXIS_RIGHT_X                          (?# enum JoyAxis)
+            | JOY_AXIS_RIGHT_Y                          (?# enum JoyAxis)
+            | JOY_AXIS_SDL_MAX                          (?# enum JoyAxis)
+            | JOY_AXIS_TRIGGER_LEFT                     (?# enum JoyAxis)
+            | JOY_AXIS_TRIGGER_RIGHT                    (?# enum JoyAxis)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin `Key` enum constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            KEY_0
+            | KEY_1
+            | KEY_2
+            | KEY_3
+            | KEY_4
+            | KEY_5
+            | KEY_6
+            | KEY_7
+            | KEY_8
+            | KEY_9
+            | KEY_A
+            | KEY_ALT
+            | KEY_AMPERSAND
+            | KEY_APOSTROPHE
+            | KEY_ASCIICIRCUM
+            | KEY_ASCIITILDE
+            | KEY_ASTERISK
+            | KEY_AT
+            | KEY_B
+            | KEY_BACK
+            | KEY_BACKSLASH
+            | KEY_BACKSPACE
+            | KEY_BACKTAB
+            | KEY_BAR
+            | KEY_BRACELEFT
+            | KEY_BRACERIGHT
+            | KEY_BRACKETLEFT
+            | KEY_BRACKETRIGHT
+            | KEY_C
+            | KEY_CAPSLOCK
+            | KEY_CLEAR
+            | KEY_COLON
+            | KEY_COMMA
+            | KEY_CTRL
+            | KEY_D
+            | KEY_DELETE
+            | KEY_DOLLAR
+            | KEY_DOWN
+            | KEY_E
+            | KEY_END
+            | KEY_ENTER
+            | KEY_EQUAL
+            | KEY_ESCAPE
+            | KEY_EXCLAM
+            | KEY_F
+            | KEY_F1
+            | KEY_F10
+            | KEY_F11
+            | KEY_F12
+            | KEY_F13
+            | KEY_F14
+            | KEY_F15
+            | KEY_F16
+            | KEY_F17
+            | KEY_F18
+            | KEY_F19
+            | KEY_F2
+            | KEY_F20
+            | KEY_F21
+            | KEY_F22
+            | KEY_F23
+            | KEY_F24
+            | KEY_F25
+            | KEY_F26
+            | KEY_F27
+            | KEY_F28
+            | KEY_F29
+            | KEY_F3
+            | KEY_F30
+            | KEY_F31
+            | KEY_F32
+            | KEY_F33
+            | KEY_F34
+            | KEY_F35
+            | KEY_F4
+            | KEY_F5
+            | KEY_F6
+            | KEY_F7
+            | KEY_F8
+            | KEY_F9
+            | KEY_FAVORITES
+            | KEY_FORWARD
+            | KEY_G
+            | KEY_GLOBE
+            | KEY_GREATER
+            | KEY_H
+            | KEY_HELP
+            | KEY_HOME
+            | KEY_HOMEPAGE
+            | KEY_HYPER
+            | KEY_I
+            | KEY_INSERT
+            | KEY_J
+            | KEY_JIS_EISU
+            | KEY_JIS_KANA
+            | KEY_K
+            | KEY_KEYBOARD
+            | KEY_KP_0
+            | KEY_KP_1
+            | KEY_KP_2
+            | KEY_KP_3
+            | KEY_KP_4
+            | KEY_KP_5
+            | KEY_KP_6
+            | KEY_KP_7
+            | KEY_KP_8
+            | KEY_KP_9
+            | KEY_KP_ADD
+            | KEY_KP_DIVIDE
+            | KEY_KP_ENTER
+            | KEY_KP_MULTIPLY
+            | KEY_KP_PERIOD
+            | KEY_KP_SUBTRACT
+            | KEY_L
+            | KEY_LAUNCH0
+            | KEY_LAUNCH1
+            | KEY_LAUNCH2
+            | KEY_LAUNCH3
+            | KEY_LAUNCH4
+            | KEY_LAUNCH5
+            | KEY_LAUNCH6
+            | KEY_LAUNCH7
+            | KEY_LAUNCH8
+            | KEY_LAUNCH9
+            | KEY_LAUNCHA
+            | KEY_LAUNCHB
+            | KEY_LAUNCHC
+            | KEY_LAUNCHD
+            | KEY_LAUNCHE
+            | KEY_LAUNCHF
+            | KEY_LAUNCHMAIL
+            | KEY_LAUNCHMEDIA
+            | KEY_LEFT
+            | KEY_LESS
+            | KEY_M
+            | KEY_MEDIANEXT
+            | KEY_MEDIAPLAY
+            | KEY_MEDIAPREVIOUS
+            | KEY_MEDIARECORD
+            | KEY_MEDIASTOP
+            | KEY_MENU
+            | KEY_META
+            | KEY_MINUS
+            | KEY_N
+            | KEY_NONE
+            | KEY_NUMBERSIGN
+            | KEY_NUMLOCK
+            | KEY_O
+            | KEY_OPENURL
+            | KEY_P
+            | KEY_PAGEDOWN
+            | KEY_PAGEUP
+            | KEY_PARENLEFT
+            | KEY_PARENRIGHT
+            | KEY_PAUSE
+            | KEY_PERCENT
+            | KEY_PERIOD
+            | KEY_PLUS
+            | KEY_PRINT
+            | KEY_Q
+            | KEY_QUESTION
+            | KEY_QUOTEDBL
+            | KEY_QUOTELEFT
+            | KEY_R
+            | KEY_REFRESH
+            | KEY_RIGHT
+            | KEY_S
+            | KEY_SCROLLLOCK
+            | KEY_SEARCH
+            | KEY_SECTION
+            | KEY_SEMICOLON
+            | KEY_SHIFT
+            | KEY_SLASH
+            | KEY_SPACE
+            | KEY_SPECIAL
+            | KEY_STANDBY
+            | KEY_STOP
+            | KEY_SYSREQ
+            | KEY_T
+            | KEY_TAB
+            | KEY_U
+            | KEY_UNDERSCORE
+            | KEY_UNKNOWN
+            | KEY_UP
+            | KEY_V
+            | KEY_VOLUMEDOWN
+            | KEY_VOLUMEMUTE
+            | KEY_VOLUMEUP
+            | KEY_W
+            | KEY_X
+            | KEY_Y
+            | KEY_YEN
+            | KEY_Z
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin `Error` enum constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            OK                                          (?# enum Error)
+            | FAILED                                    (?# enum Error)
+            | ERR_ALREADY_EXISTS                        (?# enum Error)
+            | ERR_ALREADY_IN_USE                        (?# enum Error)
+            | ERR_BUG                                   (?# enum Error)
+            | ERR_BUSY                                  (?# enum Error)
+            | ERR_CANT_ACQUIRE_RESOURCE                 (?# enum Error)
+            | ERR_CANT_CONNECT                          (?# enum Error)
+            | ERR_CANT_CREATE                           (?# enum Error)
+            | ERR_CANT_FORK                             (?# enum Error)
+            | ERR_CANT_OPEN                             (?# enum Error)
+            | ERR_CANT_RESOLVE                          (?# enum Error)
+            | ERR_COMPILATION_FAILED                    (?# enum Error)
+            | ERR_CONNECTION_ERROR                      (?# enum Error)
+            | ERR_CYCLIC_LINK                           (?# enum Error)
+            | ERR_DATABASE_CANT_READ                    (?# enum Error)
+            | ERR_DATABASE_CANT_WRITE                   (?# enum Error)
+            | ERR_DOES_NOT_EXIST                        (?# enum Error)
+            | ERR_DUPLICATE_SYMBOL                      (?# enum Error)
+            | ERR_FILE_ALREADY_IN_USE                   (?# enum Error)
+            | ERR_FILE_BAD_DRIVE                        (?# enum Error)
+            | ERR_FILE_BAD_PATH                         (?# enum Error)
+            | ERR_FILE_CANT_OPEN                        (?# enum Error)
+            | ERR_FILE_CANT_READ                        (?# enum Error)
+            | ERR_FILE_CANT_WRITE                       (?# enum Error)
+            | ERR_FILE_CORRUPT                          (?# enum Error)
+            | ERR_FILE_EOF                              (?# enum Error)
+            | ERR_FILE_MISSING_DEPENDENCIES             (?# enum Error)
+            | ERR_FILE_NOT_FOUND                        (?# enum Error)
+            | ERR_FILE_NO_PERMISSION                    (?# enum Error)
+            | ERR_FILE_UNRECOGNIZED                     (?# enum Error)
+            | ERR_HELP                                  (?# enum Error)
+            | ERR_INVALID_DATA                          (?# enum Error)
+            | ERR_INVALID_DECLARATION                   (?# enum Error)
+            | ERR_INVALID_PARAMETER                     (?# enum Error)
+            | ERR_LINK_FAILED                           (?# enum Error)
+            | ERR_LOCKED                                (?# enum Error)
+            | ERR_METHOD_NOT_FOUND                      (?# enum Error)
+            | ERR_OUT_OF_MEMORY                         (?# enum Error)
+            | ERR_PARAMETER_RANGE_ERROR                 (?# enum Error)
+            | ERR_PARSE_ERROR                           (?# enum Error)
+            | ERR_PRINTER_ON_FIRE                       (?# enum Error)
+            | ERR_QUERY_FAILED                          (?# enum Error)
+            | ERR_SCRIPT_FAILED                         (?# enum Error)
+            | ERR_SKIP                                  (?# enum Error)
+            | ERR_TIMEOUT                               (?# enum Error)
+            | ERR_UNAUTHORIZED                          (?# enum Error)
+            | ERR_UNAVAILABLE                           (?# enum Error)
+            | ERR_UNCONFIGURED                          (?# enum Error)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin `Variant.*` enum constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            TYPE_AABB                                   (?# enum Variant.Type)
+            | TYPE_ARRAY                                (?# enum Variant.Type)
+            | TYPE_BASIS                                (?# enum Variant.Type)
+            | TYPE_BOOL                                 (?# enum Variant.Type)
+            | TYPE_CALLABLE                             (?# enum Variant.Type)
+            | TYPE_COLOR                                (?# enum Variant.Type)
+            | TYPE_DICTIONARY                           (?# enum Variant.Type)
+            | TYPE_FLOAT                                (?# enum Variant.Type)
+            | TYPE_INT                                  (?# enum Variant.Type)
+            | TYPE_MAX                                  (?# enum Variant.Type)
+            | TYPE_NIL                                  (?# enum Variant.Type)
+            | TYPE_NODE_PATH                            (?# enum Variant.Type)
+            | TYPE_OBJECT                               (?# enum Variant.Type)
+            | TYPE_PACKED_BYTE_ARRAY                    (?# enum Variant.Type)
+            | TYPE_PACKED_COLOR_ARRAY                   (?# enum Variant.Type)
+            | TYPE_PACKED_FLOAT32_ARRAY                 (?# enum Variant.Type)
+            | TYPE_PACKED_FLOAT64_ARRAY                 (?# enum Variant.Type)
+            | TYPE_PACKED_INT32_ARRAY                   (?# enum Variant.Type)
+            | TYPE_PACKED_INT64_ARRAY                   (?# enum Variant.Type)
+            | TYPE_PACKED_STRING_ARRAY                  (?# enum Variant.Type)
+            | TYPE_PACKED_VECTOR2_ARRAY                 (?# enum Variant.Type)
+            | TYPE_PACKED_VECTOR3_ARRAY                 (?# enum Variant.Type)
+            | TYPE_PACKED_VECTOR4_ARRAY                 (?# enum Variant.Type)
+            | TYPE_PLANE                                (?# enum Variant.Type)
+            | TYPE_PROJECTION                           (?# enum Variant.Type)
+            | TYPE_QUATERNION                           (?# enum Variant.Type)
+            | TYPE_RECT2                                (?# enum Variant.Type)
+            | TYPE_RECT2I                               (?# enum Variant.Type)
+            | TYPE_RID                                  (?# enum Variant.Type)
+            | TYPE_SIGNAL                               (?# enum Variant.Type)
+            | TYPE_STRING                               (?# enum Variant.Type)
+            | TYPE_STRING_NAME                          (?# enum Variant.Type)
+            | TYPE_TRANSFORM2D                          (?# enum Variant.Type)
+            | TYPE_TRANSFORM3D                          (?# enum Variant.Type)
+            | TYPE_VECTOR2                              (?# enum Variant.Type)
+            | TYPE_VECTOR2I                             (?# enum Variant.Type)
+            | TYPE_VECTOR3                              (?# enum Variant.Type)
+            | TYPE_VECTOR3I                             (?# enum Variant.Type)
+            | TYPE_VECTOR4                              (?# enum Variant.Type)
+            | TYPE_VECTOR4I                             (?# enum Variant.Type)
+            | OP_ADD                                    (?# enum Variant.Operator)
+            | OP_AND                                    (?# enum Variant.Operator)
+            | OP_BIT_AND                                (?# enum Variant.Operator)
+            | OP_BIT_NEGATE                             (?# enum Variant.Operator)
+            | OP_BIT_OR                                 (?# enum Variant.Operator)
+            | OP_BIT_XOR                                (?# enum Variant.Operator)
+            | OP_DIVIDE                                 (?# enum Variant.Operator)
+            | OP_EQUAL                                  (?# enum Variant.Operator)
+            | OP_GREATER                                (?# enum Variant.Operator)
+            | OP_GREATER_EQUAL                          (?# enum Variant.Operator)
+            | OP_IN                                     (?# enum Variant.Operator)
+            | OP_LESS                                   (?# enum Variant.Operator)
+            | OP_LESS_EQUAL                             (?# enum Variant.Operator)
+            | OP_MAX                                    (?# enum Variant.Operator)
+            | OP_MODULE                                 (?# enum Variant.Operator)
+            | OP_MULTIPLY                               (?# enum Variant.Operator)
+            | OP_NEGATE                                 (?# enum Variant.Operator)
+            | OP_NOT                                    (?# enum Variant.Operator)
+            | OP_NOT_EQUAL                              (?# enum Variant.Operator)
+            | OP_OR                                     (?# enum Variant.Operator)
+            | OP_POSITIVE                               (?# enum Variant.Operator)
+            | OP_POWER                                  (?# enum Variant.Operator)
+            | OP_SHIFT_LEFT                             (?# enum Variant.Operator)
+            | OP_SHIFT_RIGHT                            (?# enum Variant.Operator)
+            | OP_SUBTRACT                               (?# enum Variant.Operator)
+            | OP_XOR                                    (?# enum Variant.Operator)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin enum constants (other)"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            MIDI_MESSAGE_ACTIVE_SENSING                 (?# enum MIDIMessage)
+            | MIDI_MESSAGE_AFTERTOUCH                   (?# enum MIDIMessage)
+            | MIDI_MESSAGE_CHANNEL_PRESSURE             (?# enum MIDIMessage)
+            | MIDI_MESSAGE_CONTINUE                     (?# enum MIDIMessage)
+            | MIDI_MESSAGE_CONTROL_CHANGE               (?# enum MIDIMessage)
+            | MIDI_MESSAGE_NONE                         (?# enum MIDIMessage)
+            | MIDI_MESSAGE_NOTE_OFF                     (?# enum MIDIMessage)
+            | MIDI_MESSAGE_NOTE_ON                      (?# enum MIDIMessage)
+            | MIDI_MESSAGE_PITCH_BEND                   (?# enum MIDIMessage)
+            | MIDI_MESSAGE_PROGRAM_CHANGE               (?# enum MIDIMessage)
+            | MIDI_MESSAGE_QUARTER_FRAME                (?# enum MIDIMessage)
+            | MIDI_MESSAGE_SONG_POSITION_POINTER        (?# enum MIDIMessage)
+            | MIDI_MESSAGE_SONG_SELECT                  (?# enum MIDIMessage)
+            | MIDI_MESSAGE_START                        (?# enum MIDIMessage)
+            | MIDI_MESSAGE_STOP                         (?# enum MIDIMessage)
+            | MIDI_MESSAGE_SYSTEM_EXCLUSIVE             (?# enum MIDIMessage)
+            | MIDI_MESSAGE_SYSTEM_RESET                 (?# enum MIDIMessage)
+            | MIDI_MESSAGE_TIMING_CLOCK                 (?# enum MIDIMessage)
+            | MIDI_MESSAGE_TUNE_REQUEST                 (?# enum MIDIMessage)
+            | PROPERTY_HINT_ARRAY_TYPE                  (?# enum PropertyHint)
+            | PROPERTY_HINT_COLOR_NO_ALPHA              (?# enum PropertyHint)
+            | PROPERTY_HINT_DICTIONARY_TYPE             (?# enum PropertyHint)
+            | PROPERTY_HINT_DIR                         (?# enum PropertyHint)
+            | PROPERTY_HINT_ENUM                        (?# enum PropertyHint)
+            | PROPERTY_HINT_ENUM_SUGGESTION             (?# enum PropertyHint)
+            | PROPERTY_HINT_EXPRESSION                  (?# enum PropertyHint)
+            | PROPERTY_HINT_EXP_EASING                  (?# enum PropertyHint)
+            | PROPERTY_HINT_FILE                        (?# enum PropertyHint)
+            | PROPERTY_HINT_FILE_PATH                   (?# enum PropertyHint)
+            | PROPERTY_HINT_FLAGS                       (?# enum PropertyHint)
+            | PROPERTY_HINT_GLOBAL_DIR                  (?# enum PropertyHint)
+            | PROPERTY_HINT_GLOBAL_FILE                 (?# enum PropertyHint)
+            | PROPERTY_HINT_GLOBAL_SAVE_FILE            (?# enum PropertyHint)
+            | PROPERTY_HINT_GROUP_ENABLE                (?# enum PropertyHint)
+            | PROPERTY_HINT_HIDE_QUATERNION_EDIT        (?# enum PropertyHint)
+            | PROPERTY_HINT_INPUT_NAME                  (?# enum PropertyHint)
+            | PROPERTY_HINT_INT_IS_POINTER              (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_2D_NAVIGATION        (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_2D_PHYSICS           (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_2D_RENDER            (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_3D_NAVIGATION        (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_3D_PHYSICS           (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_3D_RENDER            (?# enum PropertyHint)
+            | PROPERTY_HINT_LAYERS_AVOIDANCE            (?# enum PropertyHint)
+            | PROPERTY_HINT_LINK                        (?# enum PropertyHint)
+            | PROPERTY_HINT_LOCALE_ID                   (?# enum PropertyHint)
+            | PROPERTY_HINT_LOCALIZABLE_STRING          (?# enum PropertyHint)
+            | PROPERTY_HINT_MAX                         (?# enum PropertyHint)
+            | PROPERTY_HINT_MULTILINE_TEXT              (?# enum PropertyHint)
+            | PROPERTY_HINT_NODE_PATH_VALID_TYPES       (?# enum PropertyHint)
+            | PROPERTY_HINT_NODE_TYPE                   (?# enum PropertyHint)
+            | PROPERTY_HINT_NONE                        (?# enum PropertyHint)
+            | PROPERTY_HINT_OBJECT_ID                   (?# enum PropertyHint)
+            | PROPERTY_HINT_OBJECT_TOO_BIG              (?# enum PropertyHint)
+            | PROPERTY_HINT_ONESHOT                     (?# enum PropertyHint)
+            | PROPERTY_HINT_PASSWORD                    (?# enum PropertyHint)
+            | PROPERTY_HINT_PLACEHOLDER_TEXT            (?# enum PropertyHint)
+            | PROPERTY_HINT_RANGE                       (?# enum PropertyHint)
+            | PROPERTY_HINT_RESOURCE_TYPE               (?# enum PropertyHint)
+            | PROPERTY_HINT_SAVE_FILE                   (?# enum PropertyHint)
+            | PROPERTY_HINT_TOOL_BUTTON                 (?# enum PropertyHint)
+            | PROPERTY_HINT_TYPE_STRING                 (?# enum PropertyHint)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - comment: "Builtin 'flags' constants"
+        name: constant.other.builtin.enummember.gdscript
+        match: |-
+          (?x)
+          \b(
+            # @GlobalScope - const - START
+            KEY_CODE_MASK                               (?# flags KeyModifierMask)
+            | KEY_MASK_ALT                              (?# flags KeyModifierMask)
+            | KEY_MASK_CMD_OR_CTRL                      (?# flags KeyModifierMask)
+            | KEY_MASK_CTRL                             (?# flags KeyModifierMask)
+            | KEY_MASK_GROUP_SWITCH                     (?# flags KeyModifierMask)
+            | KEY_MASK_KPAD                             (?# flags KeyModifierMask)
+            | KEY_MASK_META                             (?# flags KeyModifierMask)
+            | KEY_MASK_SHIFT                            (?# flags KeyModifierMask)
+            | KEY_MODIFIER_MASK                         (?# flags KeyModifierMask)
+            | MOUSE_BUTTON_MASK_LEFT                    (?# flags MouseButtonMask)
+            | MOUSE_BUTTON_MASK_MB_XBUTTON1             (?# flags MouseButtonMask)
+            | MOUSE_BUTTON_MASK_MB_XBUTTON2             (?# flags MouseButtonMask)
+            | MOUSE_BUTTON_MASK_MIDDLE                  (?# flags MouseButtonMask)
+            | MOUSE_BUTTON_MASK_RIGHT                   (?# flags MouseButtonMask)
+            | PROPERTY_USAGE_ALWAYS_DUPLICATE           (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_ARRAY                      (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_CATEGORY                   (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_CHECKABLE                  (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_CHECKED                    (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_CLASS_IS_BITFIELD          (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_CLASS_IS_ENUM              (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_DEFAULT                    (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_EDITOR                     (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_EDITOR_BASIC_SETTING       (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT  (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_GROUP                      (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_HIGH_END_GFX               (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_INTERNAL                   (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_KEYING_INCREMENTS          (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NEVER_DUPLICATE            (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NIL_IS_VARIANT             (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT  (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NONE                       (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NO_EDITOR                  (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_NO_INSTANCE_STATE          (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_READ_ONLY                  (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_RESOURCE_NOT_PERSISTENT    (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_RESTART_IF_CHANGED         (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_SCRIPT_VARIABLE            (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_SECRET                     (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_STORAGE                    (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_STORE_IF_NULL              (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_SUBGROUP                   (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED     (?# flags PropertyUsageFlags)
+            | METHOD_FLAGS_DEFAULT                      (?# flags MethodFlags)
+            | METHOD_FLAG_CONST                         (?# flags MethodFlags)
+            | METHOD_FLAG_EDITOR                        (?# flags MethodFlags)
+            | METHOD_FLAG_NORMAL                        (?# flags MethodFlags)
+            | METHOD_FLAG_OBJECT_CORE                   (?# flags MethodFlags)
+            | METHOD_FLAG_STATIC                        (?# flags MethodFlags)
+            | METHOD_FLAG_VARARG                        (?# flags MethodFlags)
+            | METHOD_FLAG_VIRTUAL                       (?# flags MethodFlags)
+            | METHOD_FLAG_VIRTUAL_REQUIRED              (?# flags MethodFlags)
+            # @GlobalScope - const - END
+          )\b
+          # regex-end
+      - name: invalid.deprecated.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GlobalScope - const-deprecated - START
+            PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE      (?# enum PropertyHint)
+            | PROPERTY_HINT_INT_IS_OBJECTID             (?# enum PropertyHint)
+            | PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE       (?# flags PropertyUsageFlags)
+            | PROPERTY_USAGE_DEFERRED_SET_RESOURCE      (?# flags PropertyUsageFlags)
+            # @GlobalScope - const-deprecated - END
+          )\b
+          # regex-end
 
   builtin-type-primitive:
     match: |-
