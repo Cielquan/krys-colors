@@ -666,7 +666,7 @@ repository:
           (?x)
           \b(?:
             # @GDScript - meth - START
-            | Color8
+            Color8
             | char
             | convert
             | dict_to_inst
