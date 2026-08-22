@@ -529,7 +529,7 @@
       "scope": ["invalid", "keyword.illegal"],
       "settings": {
         "fontStyle": "bold italic underline",
-        "foreground": "#f92672",
+        "foreground": "#ff0000",
       },
     },
     {
