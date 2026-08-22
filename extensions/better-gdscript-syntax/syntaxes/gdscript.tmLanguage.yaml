@@ -712,7 +712,7 @@ repository:
             | clampi
             | cos
             | cosh
-            | cubic_interpolates
+            | cubic_interpolate
             | cubic_interpolate_angle
             | cubic_interpolate_angle_in_time
             | cubic_interpolate_in_time
