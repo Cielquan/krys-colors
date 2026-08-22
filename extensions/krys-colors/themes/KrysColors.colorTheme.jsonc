@@ -448,7 +448,7 @@
       },
     },
     {
-      "name": "Function argument",
+      "name": "Function parameter",
       "scope": ["variable.parameter"],
       "settings": {
         "fontStyle": "italic",
