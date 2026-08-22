@@ -414,7 +414,6 @@ repository:
           $
           # regex-end
 
-  # TODO: change from function to signal in scope names?
   signal-declaration:
     name: meta.signal.gdscript
     begin: |-
