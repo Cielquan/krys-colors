@@ -1108,7 +1108,7 @@ repository:
         name: keyword.operator.assignment.equal.gdscript
 
   var-declaration:
-    name: meta.const.declaration.gdscript
+    name: meta.var.declaration.gdscript
     match: |-
       (?x)
       (?:^|\G)
@@ -1131,7 +1131,7 @@ repository:
       "1":
         name: storage.modifier.static.gdscript
       "2":
-        name: storage.type.const.gdscript
+        name: storage.type.var.gdscript
       "3":
         name: variable.other.readwrite.gdscript
       "4":
