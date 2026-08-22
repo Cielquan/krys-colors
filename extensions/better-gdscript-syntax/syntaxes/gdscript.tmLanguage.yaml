@@ -774,7 +774,7 @@ repository:
         | wrapi
         # @GDScript
         | Color8
-        | assert
+        # | assert
         | char
         | convert
         | dict_to_inst
@@ -1055,6 +1055,11 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
+          - name: keyword.control.flow.gdscript
+            match: |-
+              (?x)
+              \b(assert)\b
+              # regex-end
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
@@ -1877,13 +1882,6 @@ repository:
     match: |-
       (?x)
       \b(await)\b
-      # regex-end
-
-  assert-statement:
-    name: keyword.control.flow.gdscript
-    match: |-
-      (?x)
-      \b(assert)\b
       # regex-end
 
   flow-keyword:
