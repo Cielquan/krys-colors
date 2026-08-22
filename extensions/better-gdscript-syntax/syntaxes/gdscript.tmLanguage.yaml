@@ -1377,32 +1377,6 @@ repository:
           "6":
             name: keyword.operator.comparison.gte.gdscript
 
-  import_expression:
-    name: meta.function-call.gdscript meta.import.gdscript
-    begin: |-
-      (?x)
-      [ \t]*
-      (load|preload)
-      [ \t]*
-      (\()
-      [ \t]*
-      # regex-end
-    beginCaptures:
-      "1":
-        name: support.function.builtin.gdscript keyword.control.import.gdscript
-      "2":
-        name: punctuation.definition.arguments.begin.gdscript
-    end: |-
-      (?x)
-      [ \t]*
-      (\))
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.arguments.end.gdscript
-    patterns:
-      - include: "#_strings"
-
   type-cast:
     name: keyword.control.as.gdscript
     match: |-
