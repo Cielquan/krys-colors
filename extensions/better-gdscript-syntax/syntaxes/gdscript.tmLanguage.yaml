@@ -2279,6 +2279,8 @@ repository:
         | (self)
         | (super)
         | (as)
+        | (var)
+        | (const)
       )\b
       # regex-end
     captures:
@@ -2292,6 +2294,10 @@ repository:
         name: variable.language.special.super.gdscript
       "5":
         name: keyword.control.as.gdscript
+      "6":
+        name: storage.type.var.gdscript
+      "7":
+        name: storage.type.const.gdscript
 
   builtin-const:
     patterns:
