@@ -1160,24 +1160,20 @@ repository:
           - include: "#expression"
       - include: "#line-continuation"
 
-  var-declaration:
-    name: meta.var.declaration.gdscript
-    match: |-
+  var-declaration-and-definition:
+    name: meta.var.definition.gdscript
+    begin: |-
       (?x)
-      (?:^|\G)
-      [ \t]*
       (?:
-        (static)
+        \b(static)
         [ \t]+
       )?
-      (var)
+      \b(var)
       [ \t]+
-      ([A-Za-z_][A-Za-z0-9_]*)
-      [ \t]*
-      (?:
-        (:=)
-        | (:)
-        | (=)
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        ([:=])?
       )
       # regex-end
     captures:
@@ -1185,14 +1181,71 @@ repository:
         name: storage.modifier.static.gdscript
       "2":
         name: storage.type.var.gdscript
-      "3":
-        name: variable.other.readwrite.gdscript
-      "4":
-        name: keyword.operator.assignment.infer.gdscript
-      "5":
-        name: keyword.operator.type.annotation.gdscript
-      "6":
-        name: keyword.operator.assignment.equal.gdscript
+    end: |-
+      (?x)
+      (:)?
+      (?=[;#\n])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.setter-getter.begin.gdscript
+    patterns:
+      - comment: "Var name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.readwrite.gdscript
+            match: |-
+              (?x)
+              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              # regex-end
+      - comment: "Untyped initializer"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?=[:;#\n])
+          # regex-end
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated initializer"
+        begin: |-
+          (?x)
+          \b
+          [ \t]*
+          (:)(?![=])
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?=[:;#\n])
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+      - include: "#line-continuation"
 
   var-setter-getter:
     patterns:
