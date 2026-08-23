@@ -1083,33 +1083,82 @@ repository:
           "5":
             name: punctuation.separator.comma.gdscript
 
-  const-declaration:
-    name: meta.const.declaration.gdscript
-    match: |-
+  const-definition:
+    name: meta.const.definition.gdscript
+    begin: |-
       (?x)
-      (?:^|\G)
-      [ \t]*
-      (const)
+      \b(const)
       [ \t]+
-      ([A-Za-z_][A-Za-z0-9_]*)
-      [ \t]*
-      (?:
-        (:=)
-        | (:)
-        | (=)
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        ([:=])
       )
       # regex-end
-    captures:
+    beginCaptures:
       "1":
         name: storage.type.const.gdscript
-      "2":
-        name: variable.other.constant.gdscript
-      "3":
-        name: keyword.operator.assignment.infer.gdscript
-      "4":
-        name: keyword.operator.type.annotation.gdscript
-      "5":
-        name: keyword.operator.assignment.equal.gdscript
+    end: |-
+      (?x)
+      (?=[;#\n])
+      # regex-end
+    patterns:
+      - comment: "Const name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.constant.gdscript
+            match: |-
+              (?x)
+              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              # regex-end
+      - comment: "Untyped initializer"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?=[;#\n])
+          # regex-end
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated initializer"
+        begin: |-
+          (?x)
+          \b
+          [ \t]*
+          (:)(?![=])
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?=[;#\n])
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+      - include: "#line-continuation"
 
   var-declaration:
     name: meta.var.declaration.gdscript
