@@ -764,9 +764,13 @@ repository:
             name: punctuation.definition.arguments.begin.gdscript
         end: |-
           (?x)
-          (?=\])
+          (\])
           # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.arguments.end.gdscript
         patterns:
+          - include: "#_type-annotation"
           - include: "#expression"
 
   _builtin-functions:
