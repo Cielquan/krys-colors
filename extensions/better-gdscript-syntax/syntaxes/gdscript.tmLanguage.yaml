@@ -709,7 +709,7 @@ repository:
           - name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
             match: |-
               (?x)
-              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
       - name: "meta.function.parameters.gdscript meta.signal.parameters.gdscript"
         patterns:
@@ -755,7 +755,7 @@ repository:
           - name: entity.name.function.definition.gdscript
             match: |-
               (?x)
-              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
       - name: meta.function.parameters.gdscript
         patterns:
@@ -857,7 +857,6 @@ repository:
       - comment: "Type annotated parameter"
         begin: |-
           (?x)
-          \b
           ([A-Za-z_][A-Za-z0-9_]*)
           [ \t]*
           (:)
@@ -1261,7 +1260,7 @@ repository:
           - name: variable.other.constant.gdscript
             match: |-
               (?x)
-              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
       - comment: "Untyped initializer"
         begin: |-
@@ -1348,7 +1347,7 @@ repository:
           - name: variable.other.readwrite.gdscript
             match: |-
               (?x)
-              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
       - comment: "Untyped initializer"
         begin: |-
@@ -1404,7 +1403,7 @@ repository:
           [ \t]*
           (=)
           [ \t]*
-          (?:\b([A-Za-z_][A-Za-z0-9_]*)\b)?
+          ([A-Za-z_][A-Za-z0-9_]*)?
           [ \t]*
           (,)?
           # regex-end
@@ -1434,7 +1433,7 @@ repository:
           [ \t]*
           (=)
           [ \t]*
-          (?:\b([A-Za-z_][A-Za-z0-9_]*)\b)?
+          ([A-Za-z_][A-Za-z0-9_]*)?
           [ \t]*
           (,)?
           # regex-end
@@ -1452,7 +1451,7 @@ repository:
           [ \t]*
           (\()
           [ \t]*
-          (?:\b([A-Za-z_][A-Za-z0-9_]*)\b)?
+          ([A-Za-z_][A-Za-z0-9_]*)?
           [ \t]*
           (\))
           [ \t]*
@@ -1476,7 +1475,7 @@ repository:
         name: meta.annotation.gdscript
         match: |-
           (?x)
-          \B(@[A-Za-z_][A-Za-z0-9_]*)\b
+          \B(@[A-Za-z_][A-Za-z0-9_]*)
           \s+
           # regex-end
         captures:
@@ -1540,7 +1539,7 @@ repository:
           - name: entity.name.function.call.gdscript
             match: |-
               (?x)
-              \b([A-Za-z_][A-Za-z0-9_]*)\b
+              ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
       - contentName: meta.function.call.arguments.gdscript
         begin: |-
