@@ -353,143 +353,203 @@ repository:
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (annotation)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (annotation)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: storage.modifier.annotation.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (constant)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (constant)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: variable.other.constant.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (enum)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (enum)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: entity.name.type.enum.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (member)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (member)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: variable.other.property.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (method)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (method)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: entity.name.function.definition.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (constructor)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (constructor)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: entity.name.function.definition.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (operator)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (operator)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: keyword.operator.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (signal)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (signal)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (theme_item)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (theme_item)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: variable.other.property.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
-              (param)
-              [ \t]+
-              ([^\]]+)
-              \]
+              (\[)
+              (param)\b
+              (?:
+                [ \t]+
+                ([^\]]+)?
+              )?
+              (\])
               # regex-end
             captures:
               "1":
-                name: support.type.gdscript
+                name: punctuation.definition.tag.begin.gdscript
               "2":
+                name: support.type.gdscript
+              "3":
                 name: variable.parameter.function.language.gdscript
+              "4":
+                name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
