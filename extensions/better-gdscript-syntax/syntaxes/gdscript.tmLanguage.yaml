@@ -1000,6 +1000,9 @@ repository:
           (\.)?
           ([A-Za-z_][A-Za-z0-9_]*)
           # regex-end
+        captures:
+          "1":
+            name: punctuation.accessor.gdscript
 
   extends-declaration:
     name: meta.class.declaration.gdscript
@@ -1027,6 +1030,9 @@ repository:
           (\.)?
           ([A-Za-z_][A-Za-z0-9_]*)
           # regex-end
+        captures:
+          "1":
+            name: punctuation.accessor.gdscript
 
   enum-declaration:
     name: meta.enum.declaration.gdscript
