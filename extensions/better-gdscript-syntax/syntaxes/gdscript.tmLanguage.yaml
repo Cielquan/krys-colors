@@ -2428,6 +2428,12 @@ repository:
         | (as)
         | (var)
         | (const)
+        | (class)
+        | (class_name)
+        | (extends)
+        | (enum)
+        | (func)
+        | (signal)
       )\b
       # regex-end
     captures:
@@ -2445,6 +2451,18 @@ repository:
         name: storage.type.var.gdscript
       "7":
         name: storage.type.const.gdscript
+      "8":
+        name: storage.type.class.gdscript
+      "9":
+        name: storage.type.class.gdscript
+      "10":
+        name: keyword.control.inheritance.gdscript
+      "11":
+        name: storage.type.enum.gdscript
+      "12":
+        name: storage.type.function.gdscript
+      "13":
+        name: storage.type.function.gdscript storage.type.signal.gdscript
 
   builtin-const:
     patterns:
