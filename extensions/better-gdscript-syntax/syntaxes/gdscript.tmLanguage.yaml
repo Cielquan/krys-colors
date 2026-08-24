@@ -214,7 +214,7 @@ repository:
           "1":
             name: punctuation.definition.tag.begin.gdscript
           "2":
-            name: entity.name.tag.gdscript
+            name: entity.name.tag.kbd.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
         end: |-
@@ -230,7 +230,7 @@ repository:
           "1":
             name: punctuation.definition.tag.begin.gdscript
           "2":
-            name: entity.name.tag.gdscript
+            name: entity.name.tag.kbd.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
       - name: meta.comment.documentation.tag.code.gdscript
