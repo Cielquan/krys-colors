@@ -80,11 +80,24 @@ repository:
             name: markup.other.tag.experimental.gdscript
           "3":
             name: punctuation.separator.key-value.gdscript
+      - match: |-
+          (?x)
+          (\[)
+            (br)
+          (\])
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.line-break.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
       - name: constant.character.escape.comment.documentation.gdscript
         match: |-
           (?x)
           \[
-            (lb|rb|br)
+            (lb|rb)
           \]
           # regex-end
       - name: markup.bold.comment.documentation.gdscript
@@ -261,7 +274,7 @@ repository:
           "1":
             name: punctuation.definition.tag.begin.gdscript
           "2":
-            name: entity.name.tag.gdscript
+            name: entity.name.tag.code.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
       - patterns:
