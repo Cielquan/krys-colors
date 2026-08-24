@@ -100,42 +100,114 @@ repository:
             (lb|rb)
           \]
           # regex-end
-      - name: markup.bold.comment.documentation.gdscript
+      - contentName: markup.bold.comment.documentation.gdscript
         begin: |-
           (?x)
-          \[(b)\]
+          (\[)
+            (b)
+          (\])
           # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.bold.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
         end: |-
           (?x)
-          \[/\1\] | $
+          (\[/)
+            (\2)
+          (\])
           # regex-end
-      - name: markup.italic.comment.documentation.gdscript
+        endCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.bold.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
+      - contentName: markup.italic.comment.documentation.gdscript
         begin: |-
           (?x)
-          \[(i)\]
+          (\[)
+            (i)
+          (\])
           # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.italic.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
         end: |-
           (?x)
-          \[/\1\] | $
+          (\[/)
+            (\2)
+          (\])
           # regex-end
-      - name: markup.underline.comment.documentation.gdscript
+        endCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.italic.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
+      - contentName: markup.underline.comment.documentation.gdscript
         begin: |-
           (?x)
-          \[(u)\]
+          (\[)
+            (u)
+          (\])
           # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.underline.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
         end: |-
           (?x)
-          \[/\1\] | $
+          (\[/)
+            (\2)
+          (\])
           # regex-end
-      - name: markup.strikethrough.comment.documentation.gdscript
+        endCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.underline.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
+      - contentName: markup.strikethrough.comment.documentation.gdscript
         begin: |-
           (?x)
-          \[(s)\]
+          (\[)
+            (s)
+          (\])
           # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.strikethrough.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
         end: |-
           (?x)
-          \[/\1\] | $
+          (\[/)
+            (\2)
+          (\])
           # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.tag.begin.gdscript
+          "2":
+            name: entity.name.tag.strikethrough.gdscript
+          "3":
+            name: punctuation.definition.tag.end.gdscript
       - comment: "Opening tags with optional attributes"
         match: |-
           (?x)
