@@ -69,7 +69,7 @@ repository:
           (?:
             (@deprecated)
             | (@experimental)
-          )
+          )\b
           (?![ \t]+:)
           (:)?
           # regex-end
@@ -219,7 +219,7 @@ repository:
               | (img)
               | (url)
               | (center)
-            )
+            )\b
             (?:
               (=)
               ([^\]]*)
@@ -572,7 +572,7 @@ repository:
           [ \t]*
           (\[)
           (?:
-            (codeblock)
+            (codeblock)\b
             (?:
               [ \t]+
               ([lang]{0,4})
@@ -644,7 +644,7 @@ repository:
           (?:^|\G)
           [ \t]*
           ([#])
-          (region)
+          (region)\b
           (?:
             [ \t]+
             (.*)
@@ -667,7 +667,7 @@ repository:
           (?:^|\G)
           [ \t]*
           ([#])
-          (endregion)
+          (endregion)\b
           # regex-end
         beginCaptures:
           "1":
