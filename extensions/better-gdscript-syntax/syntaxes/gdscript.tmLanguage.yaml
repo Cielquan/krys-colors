@@ -1426,6 +1426,8 @@ repository:
             name: keyword.operator.assignment.equal.gdscript
           "3":
             name: entity.name.function.definition.gdscript
+          "4":
+            name: punctuation.separator.comma.gdscript
       - comment: "Getter definition"
         match: |-
           (?x)
@@ -1456,6 +1458,8 @@ repository:
             name: keyword.operator.assignment.equal.gdscript
           "3":
             name: entity.name.function.definition.gdscript
+          "4":
+            name: punctuation.separator.comma.gdscript
       - comment: "Setter definition"
         match: |-
           (?x)
