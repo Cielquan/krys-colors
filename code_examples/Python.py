@@ -9,7 +9,7 @@ import typing as t
 
 breakpoint()
 
-
+#: Doc comment supported by sphinx
 def decorator_ohne_param() -> None:
     pass
 
