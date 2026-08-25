@@ -912,6 +912,11 @@ repository:
           "1":
             name: punctuation.definition.arguments.end.gdscript
         patterns:
+          - name: punctuation.separator.type.gdscript
+            match: |-
+              (?x)
+              (,)
+              # regex-end
           - include: "#_type-annotation"
           - include: "#expression"
       - include: "#line-continuation"
