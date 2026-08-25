@@ -711,9 +711,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - name: "meta.function.parameters.gdscript meta.signal.parameters.gdscript"
-        patterns:
-          - include: "#_parameters"
+      - include: "#_parameters"
       - include: "#line-continuation"
 
   function-and-lambda-declaration:
@@ -758,9 +756,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - name: meta.function.parameters.gdscript
-        patterns:
-          - include: "#_parameters"
+      - include: "#_parameters"
       - include: "#line-continuation"
       - comment: "Return type annotation"
         begin: |-
@@ -778,6 +774,7 @@ repository:
           - include: "#_type-annotation"
 
   _parameters:
+    name: meta.function.parameters.gdscript
     begin: |-
       (?x)
       (\()
@@ -889,7 +886,6 @@ repository:
           - include: "#expression"
 
   _type-annotation:
-    name: meta.type.annotation.gdscript
     patterns:
       - include: "#builtin-type-primitive"
       - include: "#builtin-type-container"
