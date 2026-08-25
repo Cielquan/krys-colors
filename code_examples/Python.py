@@ -42,17 +42,20 @@ def strings() -> str:
     'single quoted'[0:-1] \
     + "double quoted".upper() \
     + '''single quoted multiline''' \
-    + """double quoted multiline""" \
-    + u"string" \
+    + """double\
+        quoted multiline""" \
+    + u"string\
+        " \
     + "Cyrillic Я is \u042f. Invalid escape: \u042g" \
     + R"Raw string \n ignoring escapes." \
     + rb"^Regex string [^1-9]$".decode("utf-8")
 
-    byte: bytes = b"newline: \n and newline as byte: \x0a"
+    byte: bytes = b"newline: \n and \
+        newline as byte: \x0a"
 
-    f_string = f"Here comes the formatted part: {strings!s:{'^10'}}"
+    f_string = f"Here comes the formatted part: {strings!s:^10}"
     format_string = "{0:^10} {} {key!r}".format(byte, f_string, key=f_string)
-    print(percent_string:="%-5.10s %d" % (format_string, numbers()))
+    print(percent_string:="%(var_name)-*.10Ls%% %d" % (format_string, numbers()))
     return percent_string
 
 
