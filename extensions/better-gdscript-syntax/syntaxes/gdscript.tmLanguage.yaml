@@ -924,6 +924,16 @@ repository:
           \b(assert)\b
           # @GDScript - meth - END
           # regex-end
+      - name: variable.language.special.super.gdscript
+        match: |-
+          (?x)
+          \b(super)\b
+          # regex-end
+      - name: keyword.operator.wordlike.new.gdscript
+        match: |-
+          (?x)
+          \b(new)\b
+          # regex-end
       - name: support.function.builtin.gdscript
         match: |-
           (?x)
@@ -2336,34 +2346,6 @@ repository:
     match: |-
       (?x)
       \b(as)\b
-      # regex-end
-
-  self:
-    name: variable.language.special.self.gdscript
-    match: |-
-      (?x)
-      \b(self)\b
-      # regex-end
-
-  super-usage:
-    name: variable.language.special.super.gdscript
-    match: |-
-      (?x)
-      \b(super)\b
-      # regex-end
-
-  new-usage:
-    name: keyword.operator.wordlike.new.gdscript
-    match: |-
-      (?x)
-      \b(new)\b
-      # regex-end
-
-  await-statement:
-    name: keyword.control.flow.gdscript
-    match: |-
-      (?x)
-      \b(await)\b
       # regex-end
 
   flow-keyword:
