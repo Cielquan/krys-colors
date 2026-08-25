@@ -914,6 +914,7 @@ repository:
         patterns:
           - include: "#_type-annotation"
           - include: "#expression"
+      - include: "#line-continuation"
 
   _builtin-functions:
     patterns:
