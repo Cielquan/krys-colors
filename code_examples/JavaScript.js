@@ -7,13 +7,14 @@
 
 import defaultExport, { named as alias } from "./module.js";
 
+/** @type {string} */
 export const VERSION = "1.0";
 export default function main() {
     return VERSION;
 }
 
-const integer = 42;
-const hex = 0xff;
+var integer = NaN;
+let hex = 0xff;
 const binary = 0b1010;
 const octal = 0o755;
 const float = 3.14;
