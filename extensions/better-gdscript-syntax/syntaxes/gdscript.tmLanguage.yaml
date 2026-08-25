@@ -1336,7 +1336,7 @@ repository:
         ([:=])?
       )
       # regex-end
-    captures:
+    beginCaptures:
       "1":
         name: storage.modifier.static.gdscript
       "2":
