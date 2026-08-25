@@ -683,8 +683,8 @@ repository:
     name: meta.signal.gdscript
     begin: |-
       (?x)
-      [ \t]*
-      \b(signal)[ \t]+
+      \b(signal)
+      [ \t]+
       (?=
         ([A-Za-z_][A-Za-z0-9_]*)
         [ \t]*
@@ -722,10 +722,11 @@ repository:
       (?x)
       [ \t]*
       (?:
-        (static)
+        \b(static)
         [ \t]+
       )?
-      \b(func)[ \t]+
+      \b(func)
+      [ \t]+
       (?=
         ([A-Za-z_][A-Za-z0-9_]*)?
         [ \t]*
@@ -1091,7 +1092,7 @@ repository:
       (?x)
       (?:^|\G)
       [ \t]*
-      (class_name)
+      \b(class_name)
       [ \t]+
       ([A-Za-z_][A-Za-z0-9_]*)
       # regex-end
@@ -1108,7 +1109,7 @@ repository:
       (?x)
       (?:^|\G)
       [ \t]*
-      (class)
+      \b(class)
       [ \t]+
       ([A-Za-z_][A-Za-z0-9_]*)
       (?:
@@ -1151,7 +1152,7 @@ repository:
     begin: |-
       (?x)
       [ \t]*
-      (extends)
+      \b(extends)
       [ \t]+
       # regex-end
     beginCaptures:
@@ -1181,7 +1182,7 @@ repository:
       (?x)
       (?:^|\G)
       [ \t]*
-      (enum)
+      \b(enum)\b
       (?:
         [ \t]+
         ([A-Za-z_][A-Za-z0-9_]*)
@@ -1631,7 +1632,7 @@ repository:
       - name: constant.numeric.hex.gdscript
         match: |-
           (?x)
-          (0[Xx])[A-Fa-f0-9][A-Fa-f0-9_]*
+          \b(0[Xx])[A-Fa-f0-9][A-Fa-f0-9_]*
           # regex-end
         captures:
           "1":
@@ -1640,7 +1641,7 @@ repository:
       - name: constant.numeric.bin.gdscript
         match: |-
           (?x)
-          (0[Bb])[0-1][0-1_]*
+          \b(0[Bb])[0-1][0-1_]*
           # regex-end
         captures:
           "1":
@@ -1649,7 +1650,7 @@ repository:
       - name: constant.numeric.float.gdscript
         match: |-
           (?x)
-          (
+          \b(
             ([0-9][0-9_]*)\.([0-9][0-9_]*)?
             | ([0-9][0-9_]*)?\.([0-9][0-9_]*)
           )
@@ -1659,7 +1660,7 @@ repository:
       - name: constant.numeric.dec.gdscript
         match: |-
           (?x)
-          [0-9][0-9_]*
+          \b[0-9][0-9_]*
           # regex-end
 
       - comment: fallback for malformed numbers
