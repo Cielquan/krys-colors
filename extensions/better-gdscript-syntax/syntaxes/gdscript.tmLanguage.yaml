@@ -2492,34 +2492,36 @@ repository:
         match: |-
           (?x)
           \b
-          # @GlobalScope - enum - START
-          (
-            ClockDirection
-            | Corner
-            | Error
-            | EulerOrder
-            | HorizontalAlignment
-            | InlineAlignment
-            | JoyAxis
-            | JoyButton
-            | Key
-            | KeyLocation
-            | KeyModifierMask
-            | MIDIMessage
-            | MethodFlags
-            | MouseButton
-            | MouseButtonMask
-            | Orientation
-            | PropertyHint
-            | PropertyUsageFlags
-            | Side
-            | VerticalAlignment
+          (?:
+            # @GlobalScope - enum - START
+            (
+              ClockDirection
+              | Corner
+              | Error
+              | EulerOrder
+              | HorizontalAlignment
+              | InlineAlignment
+              | JoyAxis
+              | JoyButton
+              | Key
+              | KeyLocation
+              | KeyModifierMask
+              | MIDIMessage
+              | MethodFlags
+              | MouseButton
+              | MouseButtonMask
+              | Orientation
+              | PropertyHint
+              | PropertyUsageFlags
+              | Side
+              | VerticalAlignment
+            )
+            | (?:
+                (?<=Variant\.)
+                (Operator|Type)
+            )
+            # @GlobalScope - enum - END
           )
-          | (?:
-              (?<=Variant\.)
-              (Operator|Type)
-          )
-          # @GlobalScope - enum - END
           (?=\.|\b)
           # regex-end
 
