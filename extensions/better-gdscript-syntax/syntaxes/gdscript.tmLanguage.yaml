@@ -1486,6 +1486,93 @@ repository:
           "5":
             name: punctuation.section.function.begin.gdscript
 
+  dict-literal:
+    name: meta.literal.dict.gdscript
+    begin: |-
+      (?x)
+      ([{])
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.dict.begin.gdscript
+    end: |-
+      (?x)
+      ([}])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.dict.end.gdscript
+    patterns:
+      - name: punctuation.separator.key-value.gdscript
+        match: |-
+          (?x)
+          (:)
+          # regex-end
+      - name: punctuation.separator.comma.gdscript
+        match: |-
+          (?x)
+          (,)
+          # regex-end
+      - include: "#_match-pattern-var-declaration"
+      - include: "#expression"
+
+  array-literal:
+    name: meta.literal.array.gdscript
+    begin: |-
+      (?x)
+      (\[)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.array.begin.gdscript
+    end: |-
+      (?x)
+      (\])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.array.end.gdscript
+    patterns:
+      - name: punctuation.separator.comma.gdscript
+        match: |-
+          (?x)
+          (,)
+          # regex-end
+      - include: "#_match-pattern-var-declaration"
+      - include: "#expression"
+
+  _match-pattern-var-declaration:
+    name: meta.pattern.var.declaration.gdscript
+    begin: |-
+      (?x)
+      \b(var)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.var.gdscript
+    end: |-
+      (?x)
+      (?=[,\]}])
+      # regex-end
+    patterns:
+      - comment: "Var name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.readwrite.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+
   annotation:
     patterns:
       - comment: "Without arguments"
