@@ -892,7 +892,7 @@ repository:
       - include: "#builtin-type-vector"
       - include: "#builtin-type-variant"
       - comment: "Generic type parameter"
-        contentName: meta.item-access.arguments.gdscript
+        contentName: meta.type.parameters.gdscript
         begin: |-
           (?x)
           (\[)
