@@ -891,6 +891,19 @@ repository:
       - include: "#builtin-type-container"
       - include: "#builtin-type-vector"
       - include: "#builtin-type-variant"
+      - comment: "User-defined types"
+        patterns:
+          - comment: "Probably class (or enum)"
+            match: |-
+              (?x)
+              (\.)?
+              (_?[A-Z][A-Za-z0-9_]*)
+              # regex-end
+            captures:
+              "1":
+                name: punctuation.accessor.gdscript
+              "2":
+                name: entity.name.type.class.gdscript
       - comment: "Generic type parameter"
         contentName: meta.type.parameters.gdscript
         begin: |-
@@ -914,7 +927,6 @@ repository:
               (,)
               # regex-end
           - include: "#_type-annotation"
-          - include: "#expression"
       - include: "#line-continuation"
 
   _builtin-functions:
