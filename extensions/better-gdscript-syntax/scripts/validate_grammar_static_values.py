@@ -180,7 +180,7 @@ def extract_grammar_regexes(group_name: str) -> DataDict:
     return data
 
 
-def check_globals_source_against_grammar_regexes(
+def check_source_against_grammar_regexes(
     godot_source_data: DataDict,
     grammar_regex_sources: DataDict,
 ) -> DataDict:
@@ -259,11 +259,9 @@ def main() -> int:
     comparison_results = {}
     for source_file in GLOBALS_SOURCE_FILES:
         logger.info(f"Check missing values for '{source_file.stem}'")
-        comparison_results[source_file.stem] = (
-            check_globals_source_against_grammar_regexes(
-                godot_source_data[source_file.stem],
-                grammar_regex_sources[source_file.stem],
-            )
+        comparison_results[source_file.stem] = check_source_against_grammar_regexes(
+            godot_source_data[source_file.stem],
+            grammar_regex_sources[source_file.stem],
         )
 
     rv = (
