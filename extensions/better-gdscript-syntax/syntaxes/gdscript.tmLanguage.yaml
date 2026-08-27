@@ -894,6 +894,7 @@ repository:
       - include: "#builtin-type-vector"
       - include: "#builtin-type-variant"
       - include: "#builtin-enum"
+      - include: "#builtin-class"
       - comment: "User-defined types"
         patterns:
           - comment: "Probably class (or enum)"
