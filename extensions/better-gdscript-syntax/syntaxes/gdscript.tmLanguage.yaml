@@ -1745,11 +1745,11 @@ repository:
       ;
       # regex-end
 
-  colon:
+  section-colon:
     name: punctuation.section.begin.gdscript
     match: |-
       (?x)
-      :
+      (:|(?=[;#\n]))
       # regex-end
 
   accessor:
