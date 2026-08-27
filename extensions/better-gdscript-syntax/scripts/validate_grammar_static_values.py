@@ -41,6 +41,8 @@ type Category = t.Literal[
     "enum",
     "const-deprecated",
     "meth-deprecated",
+    "class",
+    "virtual",
 ]
 CATEGORIES: list[Category] = [
     "const",
@@ -48,6 +50,8 @@ CATEGORIES: list[Category] = [
     "enum",
     "const-deprecated",
     "meth-deprecated",
+    "class",
+    "virtual",
 ]
 
 type DataDict = dict[Category, list[str]]
@@ -99,6 +103,43 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
     data["enum"] = sorted(set(data["enum"]))
     data["meth"] = sorted(set(data["meth"]))
     data["meth-deprecated"] = sorted(set(data["meth-deprecated"]))
+
+    return data
+
+
+def extract_classes_data_from_xml_source(
+    classes_dir: pathlib.Path,
+) -> DataDict:
+    data: DataDict = {
+        "class": [],
+        "virtual": [],
+    }
+
+    for path in classes_dir.glob("*.xml"):
+        try:
+            root = ET.parse(path).getroot()
+        except ET.ParseError:
+            logger.error(f"Failed to parse '{path}")
+            continue
+
+        class_name = root.get("name")
+        if not class_name:
+            logger.error(f"Failed to extract class name from '{path}")
+            continue
+
+        data["class"].append(class_name)
+
+        for method in root.findall("./methods/method"):
+            if "virtual" in method.get("qualifiers", ""):
+                method_name = method.get("name")
+                if method_name is None:
+                    logger.error(f"Failed to extract method name from '{path}")
+                    continue
+
+                data["virtual"].append(method_name)
+
+    data["class"] = sorted(set(data["class"]))
+    data["virtual"] = sorted(set(data["virtual"]))
 
     return data
 
@@ -190,6 +231,20 @@ def main() -> int:
             godot_source_data[source_file.name] = extract_globals_data_from_xml_source(
                 repo_dir / source_file
             )
+
+        classes_source_dir = "doc/classes"
+        classes_key = "Classes"
+        logger.info(f"Sparse-checkout: {classes_source_dir}")
+        subprocess.check_call(
+            ["git", "sparse-checkout", "set", classes_source_dir],
+            cwd=repo_dir,
+        )
+        classes_dir = repo_dir / classes_source_dir
+
+        logger.info(f"Extracting data from '{classes_source_dir}'")
+        godot_source_data[classes_key] = extract_classes_data_from_xml_source(
+            classes_dir
+        )
 
     grammar_regex_sources = {}
     for source_file in GLOBALS_SOURCE_FILES:
