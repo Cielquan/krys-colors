@@ -3224,6 +3224,7 @@ repository:
     match: |-
       (?x)
       \b(?:
+        # Classes - class - START
         (int)
         | (float)
         | (bool)
@@ -3231,6 +3232,7 @@ repository:
         | (StringName)
         | (NodePath)
         | (void)
+        # Classes - class - END
       )\b
       (?![ \t]*\()
       # regex-end
@@ -3254,6 +3256,7 @@ repository:
     match: |-
       (?x)
       \b(?:
+        # Classes - class - START
         (Array)
         | (Callable)
         | (Dictionary)
@@ -3266,6 +3269,7 @@ repository:
             | Vector[2-4]
           )Array)
         | (Signal)
+        # Classes - class - END
       )\b
       (?![ \t]*\()
       # regex-end
@@ -3285,6 +3289,7 @@ repository:
     match: |-
       (?x)
       \b(?:
+        # Classes - class - START
         (AABB)
         | (Basis)
         | (Plane)
@@ -3293,6 +3298,7 @@ repository:
         | (Rect[2]i?)
         | (Transform[2-3]D)
         | (Vector[2-4]i?)
+        # Classes - class - END
       )\b
       (?![ \t]*\()
       # regex-end
@@ -3318,10 +3324,12 @@ repository:
     match: |-
       (?x)
       \b(?:
+        # Classes - class - START
         (Variant)
         | (Color)
         | (Object)
         | (RID)
+        # Classes - class - END
       )\b
       (?![ \t]*\()
       # regex-end
@@ -3334,6 +3342,962 @@ repository:
         name: support.type.builtin.engine.object.gdscript
       "4":
         name: support.type.builtin.engine.rid.gdscript
+
+  builtin-class:
+    patterns:
+      - comment: "Builtin animation-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            AnimatableBody[2-3]D
+            | AnimatedSprite[2-3]D
+            | AnimatedTexture
+            | Animation(?:
+                Library
+                | Mixer
+                | Player
+                | RootNode
+                | Tree
+              )?
+            | AnimationNode(?:
+                Animation
+                | NodeAdd[2-3]
+                | Blend[2-3]
+                | BlendSpace[1-2]D
+                | BlendTree
+                | Extension
+                | Observer
+                | ObserverBlendSpace
+                | ObserverOneShot
+                | ObserverTransition
+                | OneShot
+                | Output
+                | StateMachine
+                | StateMachinePlayback
+                | StateMachineTransition
+                | Sub2
+                | Sync
+                | TimeScale
+                | TimeSeek
+                | Transition
+              )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin audio-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Audio(?:
+              BusLayout
+              | Effect(?:
+                  Amplify
+                  | BandLimitFilter
+                  | BandPassFilter
+                  | Capture
+                  | Chorus
+                  | Compressor
+                  | Delay
+                  | Distortion
+                  | EQ(?:10|21|6)?
+                  | Filter
+                  | HardLimiter
+                  | HighPassFilter
+                  | HighShelfFilter
+                  | Instance
+                  | Limiter
+                  | LowPassFilter
+                  | LowShelfFilter
+                  | NotchFilter
+                  | Panner
+                  | Phaser
+                  | PitchShift
+                  | Record
+                  | Reverb
+                  | SpectrumAnalyzer
+                  | SpectrumAnalyzerInstance
+                  | StereoEnhance
+                )?
+              | Listener[2-3]D
+              | Sample
+              | SamplePlayback
+              | Server
+              | Stream(?:
+                  Generator
+                  | GeneratorPlayback
+                  | Microphone
+                  | Playback
+                  | PlaybackPolyphonic
+                  | PlaybackResampled
+                  | Player
+                  | Player[2-3]D
+                  | Polyphonic
+                  | Randomizer
+                  | WAV
+                )?
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin bone/skeleton-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Bone(?:
+                2D
+                | Attachment3D
+                | Map
+                | Spreader3D
+                | TwistDisperser3D
+              )
+            | ModifierBoneTarget3D
+            | PhysicalBone[2-3]D
+            | PhysicalBoneSimulator3D
+            | Skeleton(?:
+                [2-3]D
+                | IK3D
+                | Modification2D(?:
+                    CCDIK
+                    | FABRIK
+                    | Jiggle
+                    | LookAt
+                    | PhysicalBones
+                    | StackHolder
+                    | TwoBoneIK
+                  )?
+                | ModificationStack2D
+                | Modifier3D
+                | Profile
+                | ProfileHumanoid
+              )
+            | SpringBone(?:
+                Collision3D
+                | CollisionCapsule3D
+                | CollisionSphere3D
+                | Simulator3D
+              )
+            | TwoBoneIK3D
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin camera-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Camera(?:
+              [2-3]D
+              | Attributes
+              | AttributesPhysical
+              | AttributesPractical
+              | Feed
+              | Server
+              | Texture
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin canvas-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Canvas(?:
+              Group
+              | Item
+              | ItemMaterial
+              | Layer
+              | Modulate
+              | Texture
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin code/editor/script-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            CodeEdit
+            | CodeHighlighter
+            | Editor(?:
+                CommandPalette
+                | ContextMenuPlugin
+                | DebuggerPlugin
+                | DebuggerSession
+                | Dock
+                | Export(?:
+                    Platform
+                    | PlatformAppleEmbedded
+                    | PlatformExtension
+                    | PlatformPC
+                    | Plugin
+                    | Preset
+                  )
+                | FeatureProfile
+                | FileDialog
+                | FileSystem
+                | FileSystemDirectory
+                | FileSystemImportFormatSupportQuery
+                | ImportPlugin
+                | Inspector
+                | InspectorPlugin
+                | Interface
+                | Node3DGizmo
+                | Node3DGizmoPlugin
+                | Paths
+                | Plugin
+                | Property
+                | Resource(?:
+                    ConversionPlugin
+                    | Picker
+                    | Preview
+                    | PreviewGenerator
+                    | TooltipPlugin
+                  )
+                | SceneFormatImporter
+                | ScenePostImport
+                | ScenePostImportPlugin
+                | Script
+                | ScriptPicker
+                | Selection
+                | Settings
+                | SpinSlider
+                | SyntaxHighlighter
+                | Toaster
+                | TranslationParserPlugin
+                | UndoRedoManager
+                | VCSInterface
+              )
+            | JavaClass
+            | JavaClassWrapper
+            | JavaScriptBridge
+            | Script(?:
+                Backtrace
+                | CreateDialog
+                | Editor
+                | EditorBase
+                | Extension
+                | Language
+                | LanguageExtension
+              )?
+            | SyntaxHighlighter
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin particle-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            CPUParticles[2-3]D
+            | GPUParticles(?:
+                [2-3]D
+                | Attractor(?:
+                    Box
+                    | Sphere
+                    | VectorField
+                  )?3D
+                | Collision(?:
+                    Box
+                    | HeightField
+                    | SDF
+                    | Sphere
+                  )?3D
+              )
+            | ParticleProcessMaterial
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin image-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Image(?:
+              FormatLoader
+              | FormatLoaderExtension
+              | Texture
+              | Texture3D
+              | TextureLayered
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin input-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Input(?:
+              Event(?:
+                  Action
+                  | FromWindow
+                  | Gesture
+                  | JoypadButton
+                  | JoypadMotion
+                  | Key
+                  | MIDI
+                  | MagnifyGesture
+                  | Mouse
+                  | MouseButton
+                  | MouseMotion
+                  | PanGesture
+                  | ScreenDrag
+                  | ScreenTouch
+                  | Shortcut
+                  | WithModifiers
+                )?
+              | Map
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin light-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            AreaLight3D
+            | DirectionalLight[2-3]D
+            | Light(?:
+                [2-3]D
+                | Occluder2D
+                | mapGI
+                | mapGIData
+                | mapProbe
+                | mapper
+                | mapperRD
+              )
+            | OmniLight3D
+            | SpotLight3D
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin mesh-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            ImporterMesh(?:Instance3D)?
+            | Mesh(?:
+                ConvexDecompositionSettings
+                | DataTool
+                | Instance[2-3]D
+                | Library
+                | Texture
+              )?
+            | MultiMesh
+            | MultiMeshInstance[2-3]D
+            | (?:
+                Box
+                | Capsule
+                | Cylinder
+                | Immediate
+                | Primitive
+                | Prism
+                | Quad
+                | RibbonTrail
+                | Sphere
+                | Torus
+                | Triangle
+                | TubeTrail
+              )Mesh
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin navigation-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Navigation(?:
+              Agent[2-3]D
+              | Link[2-3]D
+              | Mesh
+              | MeshGenerator
+              | MeshSourceGeometryData[2-3]D
+              | Obstacle[2-3]D
+              | PathQueryParameters[2-3]D
+              | PathQueryResult[2-3]D
+              | Polygon
+              | Region[2-3]D
+              | Server[2-3]D(?:Manager)?
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin packet-peer-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            PacketPeer(?:
+              DTLS
+              | Extension
+              | Stream
+              | UDP
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin physics-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Physics(?:
+              Body[2-3]D
+              | DirectBodyState[2-3]D(?:Extension)?
+              | DirectSpaceState[2-3]D(?:Extension)?
+              | Material
+              | RayQueryParameters[2-3]D
+              | Server[2-3]D(?:Extension|Manager)?
+              | Server3DRenderingServerHandler
+              | ShapeQueryParameters[2-3]D
+              | TestMotionParameters[2-3]D
+              | TestMotionResult[2-3]D
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin placeholder-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Placeholder(?:
+                Cubemap
+                | Material
+                | Mesh
+                | Texture[2-3]D
+                | TextureLayered
+              )
+            | InstancePlaceholder
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin RD-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            RD(?:
+              AccelerationStructureGeometry
+              | AccelerationStructureInstance
+              | AttachmentFormat
+              | FramebufferPass
+              | HitGroup
+              | Pipeline(?:
+                  DepthStencilState
+                  | MultisampleState
+                  | RasterizationState
+                  | Shader
+                  | SpecializationConstant
+                )
+              | SamplerState
+              | ShaderFile
+              | ShaderSPIRV
+              | ShaderSource
+              | TextureFormat
+              | TextureView
+              | Uniform
+              | VertexAttribute
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin render-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Render(?:
+                Data
+                | DataExtension
+                | DataRD
+                | Scene(?:
+                    Buffers
+                    | BuffersConfiguration
+                    | BuffersExtension
+                    | BuffersRD
+                    | Data
+                    | DataExtension
+                    | DataRD
+                  )
+              )
+            | RenderingDevice
+            | RenderingServer
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin resource-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Resource(?:
+              FormatLoader
+              | FormatSaver
+              | Importer(?:
+                  BMFont
+                  | BitMap
+                  | CSVTranslation
+                  | DynamicFont
+                  | Image
+                  | ImageFont
+                  | LayeredTexture
+                  | OBJ
+                  | SVG
+                  | Scene
+                  | ShaderFile
+                  | Texture
+                  | TextureAtlas
+                )?
+              | ImporterWAV
+              | Loader
+              | Preloader
+              | Saver
+              | UID
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin shader-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Shader(?:
+                GlobalsOverride
+                | Include
+                | IncludeDB
+                | Material
+              )?
+            | VisualShader(?:
+                Group
+                | NodeGroup
+                | NodeGroupInput
+                | NodeGroupOutput
+              )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin stream-peer-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            StreamPeer(?:
+              Buffer
+              | Extension
+              | GZIP
+              | Socket
+              | TCP
+              | TLS
+              | UDS
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin style-box-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            StyleBox(?:
+              Empty
+              | Flat
+              | Line
+              | Texture
+            )?
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin text-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            Text(?:
+              Edit
+              | Line
+              | Mesh
+              | Paragraph
+              | Server
+              | ServerDummy
+              | ServerExtension
+              | ServerManager
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin texture-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            CompressedTexture[2-3]D
+            | CompressedTextureLayered
+            | DrawableTexture2D
+            | GradientTexture[1-2]D
+            | Texture(?:
+                [2-3]D(?:RD)?
+                | Button
+                | CubemapRD
+                | Layered
+                | LayeredRD
+                | ProgressBar
+                | Rect
+              )?
+            | (?:
+                Atlas
+                | Curve
+                | CurveXYZ
+                | DPI
+                | External
+              )Texture
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin XR-related classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            XR(?:
+              Anchor3D
+              | BodyModifier3D
+              | BodyTracker
+              | Camera3D
+              | Controller3D
+              | ControllerTracker
+              | FaceModifier3D
+              | FaceTracker
+              | HandModifier3D
+              | HandTracker
+              | Interface
+              | InterfaceExtension
+              | Node3D
+              | Origin3D
+              | Pose
+              | PositionalTracker
+              | Server
+              | Tracker
+              | VRS
+            )
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin special classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          (?:
+            # Classes - class - START
+            @GlobalScope
+            # Classes - class - END
+          )\b
+          # regex-end
+      - comment: "Builtin remaining classes"
+        name: entity.name.class.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            AESContext
+            | AStar[2-3]D
+            | AStarGrid2D
+            | AcceptDialog
+            | AccessibilityServer
+            | AimModifier3D
+            | Area[2-3]D
+            | AspectRatioContainer
+            | AwaitTweener
+            | BackBufferCopy
+            | BaseButton
+            | BaseMaterial3D
+            | BitMap
+            | BlitMaterial
+            | BoxContainer
+            | BoxOccluder3D
+            | BoxShape3D
+            | Button
+            | ButtonGroup
+            | CCDIK3D
+            | CallbackTweener
+            | CapsuleShape[2-3]D
+            | CenterContainer
+            | ChainIK3D
+            | CharFXTransform
+            | CharacterBody[2-3]D
+            | CheckBox
+            | CheckButton
+            | CircleShape2D
+            | ClassDB
+            | CollisionPolygon[2-3]D
+            | CollisionShape[2-3]D
+            | Compositor
+            | CompositorEffect
+            | CompressedCubemap
+            | ConcavePolygonShape[2-3]D
+            | ConfigFile
+            | ConfirmationDialog
+            | Container
+            | Control
+            | ConvertTransformModifier3D
+            | ConvexPolygonShape[2-3]D
+            | CopyTransformModifier3D
+            | Crypto
+            | CryptoKey
+            | Cubemap
+            | Curve
+            | Curve[2-3]D
+            | CylinderShape3D
+            | DTLSServer
+            | Decal
+            | DirAccess
+            | DisplayServer
+            | Engine
+            | EngineDebugger
+            | EngineProfiler
+            | Environment
+            | Expression
+            | FABRIK3D
+            | FileAccess
+            | FileDialog
+            | FileSystemDock
+            | FlowContainer
+            | FogMaterial
+            | FogVolume
+            | FoldableContainer
+            | FoldableGroup
+            | Font
+            | FontFile
+            | FontVariation
+            | FramebufferCacheRD
+            | FuzzySearch
+            | FuzzySearchMatch
+            | GDExtension
+            | GDExtensionManager
+            | Geometry[2-3]D
+            | GeometryInstance3D
+            | GodotInstance
+            | Gradient
+            | GraphEdit
+            | GraphElement
+            | GraphFrame
+            | GraphNode
+            | GridContainer
+            | HBoxContainer
+            | HFlowContainer
+            | HMACContext
+            | HScrollBar
+            | HSeparator
+            | HSlider
+            | HSplitContainer
+            | HTTPClient
+            | HTTPRequest
+            | HashingContext
+            | HeightMapShape3D
+            | IKModifier3D
+            | IP
+            | IntervalTweener
+            | ItemList
+            | IterateIK3D
+            | JNISingleton
+            | JSON
+            | JSONRPC
+            | JacobianIK3D
+            | KinematicCollision[2-3]D
+            | Label
+            | Label3D
+            | LabelSettings
+            | LimitAngularVelocityModifier3D
+            | Line[2-3]D
+            | LineEdit
+            | LinkButton
+            | Logger
+            | LookAtModifier3D
+            | MainLoop
+            | MarginContainer
+            | Marker[2-3]D
+            | Marshalls
+            | Material
+            | MenuBar
+            | MenuButton
+            | MethodTweener
+            | Missing(?:Node|Resource)
+            | MovieWriter
+            | MultiplayerAPI(?:Extension)?
+            | MultiplayerPeer(?:Extension)?
+            | Mutex
+            | NativeMenu
+            | NinePatchRect
+            | Node
+            | Node[2-3]D
+            | Node3DGizmo
+            | ORMMaterial3D
+            | OS
+            | Occluder3D
+            | OccluderInstance3D
+            | OccluderPolygon2D
+            | OptimizedTranslation
+            | OptionButton
+            | PCKPacker
+            | PackedDataContainer
+            | PackedDataContainerRef
+            | PackedScene
+            | Panel
+            | PanelContainer
+            | PanoramaSkyMaterial
+            | Parallax2D
+            | ParallaxBackground
+            | ParallaxLayer
+            | Path[2-3]D
+            | PathFollow[2-3]D
+            | Performance
+            | PhysicalSkyMaterial
+            | Polygon2D
+            | PolygonOccluder3D
+            | PolygonPathFinder
+            | Popup
+            | PopupMenu
+            | PopupPanel
+            | PortableCompressedTexture2D
+            | ProceduralSkyMaterial
+            | ProgressBar
+            | ProjectSettings
+            | PropertyTweener
+            | QuadOccluder3D
+            | RandomNumberGenerator
+            | Range
+            | RayCast[2-3]D
+            | RectangleShape2D
+            | RefCounted
+            | ReferenceRect
+            | ReflectionProbe
+            | RegEx
+            | RegExMatch
+            | RetargetModifier3D
+            | RichTextEffect
+            | RichTextLabel
+            | RigidBody[2-3]D
+            | RootMotionView
+            | SceneState
+            | SceneTree
+            | SceneTreeTimer
+            | ScrollBar
+            | ScrollContainer
+            | SegmentShape2D
+            | Semaphore
+            | SeparationRayShape[2-3]D
+            | Separator
+            | Shape[2-3]D
+            | ShapeCast[2-3]D
+            | Shortcut
+            | Skin
+            | SkinReference
+            | Sky
+            | Slider
+            | SocketServer
+            | SoftBody3D
+            | SphereOccluder3D
+            | SphereShape3D
+            | SpinBox
+            | SplineIK3D
+            | SplitContainer
+            | SpringArm3D
+            | Sprite[2-3]D
+            | SpriteBase3D
+            | SpriteFrames
+            | StandardMaterial3D
+            | StaticBody[2-3]D
+            | StatusIndicator
+            | SubViewport
+            | SubViewportContainer
+            | SubtweenTweener
+            | SurfaceTool
+            | SystemFont
+            | TCPServer
+            | TLSOptions
+            | TabBar
+            | TabContainer
+            | Theme
+            | ThemeDB
+            | Thread
+            | Time
+            | Timer
+            | TouchScreenButton
+            | Trail3D
+            | Translation
+            | TranslationDomain
+            | TranslationServer
+            | Tree
+            | TreeItem
+            | Tween
+            | Tweener
+            | UDPServer
+            | UDSServer
+            | UndoRedo
+            | UniformSetCacheRD
+            | VBoxContainer
+            | VFlowContainer
+            | VScrollBar
+            | VSeparator
+            | VSlider
+            | VSplitContainer
+            | VehicleBody3D
+            | VehicleWheel3D
+            | VideoStream
+            | VideoStreamPlayback
+            | VideoStreamPlayer
+            | Viewport
+            | ViewportTexture
+            | VirtualJoystick
+            | VisibleOnScreenEnabler[2-3]D
+            | VisibleOnScreenNotifier[2-3]D
+            | VisualInstance3D
+            | VoxelGI
+            | VoxelGIData
+            | WeakRef
+            | Window
+            | WorkerThreadPool
+            | World[2-3]D
+            | WorldBoundaryShape[2-3]D
+            | WorldEnvironment
+            | X509Certificate
+            | XMLParser
+            # Classes - class - END
+          )\b
+          # regex-end
 
   _virtual-methods:
     patterns:
