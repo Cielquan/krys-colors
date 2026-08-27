@@ -411,46 +411,6 @@ repository:
       - include: "#_type-annotation"
       - include: "#expression"
 
-  _language-constant:
-    patterns:
-      - comment: "Number constants"
-        match: |-
-          (?x)
-          \b(?:
-            # @GDScript - const - START
-            (PI)
-            | (TAU)
-            | (INF)
-            | (NAN)
-            # @GDScript - const - END
-          )\b
-          # regex-end
-        captures:
-          "1":
-            name: constant.language.number.pi.gdscript
-          "2":
-            name: constant.language.number.tau.gdscript
-          "3":
-            name: constant.language.number.inf.gdscript
-          "4":
-            name: constant.language.number.nan.gdscript
-      - comment: "Other constants"
-        match: |-
-          (?x)
-          \b(?:
-            (true)
-            | (false)
-            | (null)
-          )\b
-          # regex-end
-        captures:
-          "1":
-            name: constant.language.bool.true.gdscript
-          "2":
-            name: constant.language.bool.false.gdscript
-          "3":
-            name: constant.language.null.gdscript
-
   _number:
     patterns:
       - name: constant.numeric.hex.gdscript
@@ -2558,6 +2518,46 @@ repository:
   # ----------------------------------------------
   # NOTE: Built-Ins
   # ----------------------------------------------
+
+  language-constants:
+    patterns:
+      - comment: "Number constants"
+        match: |-
+          (?x)
+          \b(?:
+            # @GDScript - const - START
+            (PI)
+            | (TAU)
+            | (INF)
+            | (NAN)
+            # @GDScript - const - END
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: constant.language.number.pi.gdscript
+          "2":
+            name: constant.language.number.tau.gdscript
+          "3":
+            name: constant.language.number.inf.gdscript
+          "4":
+            name: constant.language.number.nan.gdscript
+      - comment: "Other constants"
+        match: |-
+          (?x)
+          \b(?:
+            (true)
+            | (false)
+            | (null)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: constant.language.bool.true.gdscript
+          "2":
+            name: constant.language.bool.false.gdscript
+          "3":
+            name: constant.language.null.gdscript
 
   builtin-constants:
     patterns:
