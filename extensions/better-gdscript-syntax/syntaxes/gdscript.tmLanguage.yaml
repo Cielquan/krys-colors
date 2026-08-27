@@ -900,13 +900,18 @@ repository:
           - comment: "Probably class (or enum)"
             match: |-
               (?x)
-              (\.)?
               (_?[A-Z][A-Za-z0-9_]*)
+              (?:
+                (\.)
+                (_?[A-Z][A-Za-z0-9_]*)
+              )*
               # regex-end
             captures:
               "1":
-                name: punctuation.accessor.gdscript
+                name: entity.name.type.class.gdscript
               "2":
+                name: punctuation.accessor.gdscript
+              "3":
                 name: entity.name.type.class.gdscript
       - comment: "Generic type parameter"
         contentName: meta.type.parameters.gdscript
