@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Script to extract global methods, constants, etc."""
+"""Script to validate grammar against GDScript source.
+
+Script will:
+- git clone godot source repo
+- extract global methods, constants, etc. from godot XML files
+- extract marked regexes from grammar file
+- check for missing matches in grammar regexes
+"""
 
 import json
 import logging
