@@ -1745,6 +1745,13 @@ repository:
       ;
       # regex-end
 
+  colon:
+    name: punctuation.section.begin.gdscript
+    match: |-
+      (?x)
+      :
+      # regex-end
+
   accessor:
     name: punctuation.accessor.gdscript
     match: |-
