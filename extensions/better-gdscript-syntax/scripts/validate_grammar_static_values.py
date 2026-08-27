@@ -253,6 +253,9 @@ def main() -> int:
             source_file.stem
         )
 
+    logger.info(f"Extracting grammar regexes for '{classes_key}'")
+    grammar_regex_sources[classes_key] = extract_grammar_regexes(classes_key)
+
     comparison_results = {}
     for source_file in GLOBALS_SOURCE_FILES:
         logger.info(f"Check missing values for '{source_file.stem}'")
