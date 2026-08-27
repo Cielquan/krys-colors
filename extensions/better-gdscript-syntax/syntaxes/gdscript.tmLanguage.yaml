@@ -1836,6 +1836,26 @@ repository:
     patterns:
       - include: "#expression"
 
+  while-loop:
+    name: meta.loop.while.gdscript
+    begin: |-
+      (?x)
+      \b(while)
+      [ \t]+
+      # regex-end
+    beginCaptures:
+      "1":
+        name: keyword.control.flow.while.gdscript
+    end: |-
+      (?x)
+      (:|(?=[;#\n]))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.loop.while.begin.gdscript
+    patterns:
+      - include: "#expression"
+
   _language-constants:
     patterns:
       - comment: "Number constants"
