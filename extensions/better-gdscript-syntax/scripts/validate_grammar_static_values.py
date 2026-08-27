@@ -57,8 +57,24 @@ CATEGORIES: list[Category] = [
 type DataDict = dict[Category, list[str]]
 
 
-def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
-    data: DataDict = {
+class SourceDataListValue(t.NamedTuple):
+    source: str
+    value: str
+
+
+type SourceDataDict = dict[Category, list[SourceDataListValue]]
+
+
+class ResultDataListValue(t.TypedDict):
+    source: str
+    value: str
+
+
+type ResultDataDict = dict[Category, list[ResultDataListValue]]
+
+
+def extract_globals_data_from_xml_source(path: pathlib.Path) -> SourceDataDict:
+    data: SourceDataDict = {
         "const": [],
         "const-deprecated": [],
         "enum": [],
@@ -79,13 +95,15 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
             continue
 
         if constant.get("deprecated") is None:
-            data["const"].append(constant_name)
+            data["const"].append(SourceDataListValue(path.name, constant_name))
         else:
-            data["const-deprecated"].append(constant_name)
+            data["const-deprecated"].append(
+                SourceDataListValue(path.name, constant_name)
+            )
 
         enum_name = constant.get("enum")
         if enum_name is not None:
-            data["enum"].append(enum_name)
+            data["enum"].append(SourceDataListValue(path.name, enum_name))
 
     for method in root.findall("./methods/method"):
         method_name = method.get("name")
@@ -94,9 +112,9 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
             continue
 
         if method.get("deprecated") is None:
-            data["meth"].append(method_name)
+            data["meth"].append(SourceDataListValue(path.name, method_name))
         else:
-            data["meth-deprecated"].append(method_name)
+            data["meth-deprecated"].append(SourceDataListValue(path.name, method_name))
 
     data["const"] = sorted(set(data["const"]))
     data["const-deprecated"] = sorted(set(data["const-deprecated"]))
@@ -107,10 +125,8 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
     return data
 
 
-def extract_classes_data_from_xml_source(
-    classes_dir: pathlib.Path,
-) -> DataDict:
-    data: DataDict = {
+def extract_classes_data_from_xml_source(classes_dir: pathlib.Path) -> SourceDataDict:
+    data: SourceDataDict = {
         "class": [],
         "virtual": [],
     }
@@ -127,7 +143,7 @@ def extract_classes_data_from_xml_source(
             logger.error(f"Failed to extract class name from '{path}")
             continue
 
-        data["class"].append(class_name)
+        data["class"].append(SourceDataListValue(path.name, class_name))
 
         for method in root.findall("./methods/method"):
             if "virtual" in method.get("qualifiers", ""):
@@ -136,7 +152,7 @@ def extract_classes_data_from_xml_source(
                     logger.error(f"Failed to extract method name from '{path}")
                     continue
 
-                data["virtual"].append(method_name)
+                data["virtual"].append(SourceDataListValue(path.name, method_name))
 
     data["class"] = sorted(set(data["class"]))
     data["virtual"] = sorted(set(data["virtual"]))
@@ -181,18 +197,18 @@ def extract_grammar_regexes(group_name: str) -> DataDict:
 
 
 def check_source_against_grammar_regexes(
-    godot_source_data: DataDict,
+    godot_source_data: SourceDataDict,
     grammar_regex_sources: DataDict,
-) -> DataDict:
-    results: DataDict = {}
+) -> ResultDataDict:
+    results: ResultDataDict = {}
 
     for cat in CATEGORIES:
         regexes = [re.compile(regex) for regex in grammar_regex_sources.get(cat, [])]
 
         results[cat] = [
-            source_name
-            for source_name in godot_source_data.get(cat, [])
-            if not any(regex.search(source_name) for regex in regexes)
+            {"source": source_data.source, "value": source_data.value}
+            for source_data in godot_source_data.get(cat, [])
+            if not any(regex.search(source_data.value) for regex in regexes)
         ]
 
         if len(results[cat]) == 0:
