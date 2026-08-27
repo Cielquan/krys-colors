@@ -691,8 +691,8 @@ repository:
     patterns:
       - comment: "Signal name"
         patterns:
-          - include: "#_virtual-method"
-          - include: "#_builtin-function"
+          - include: "#virtual-methods"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -737,8 +737,8 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
-          - include: "#_virtual-method"
-          - include: "#_builtin-function"
+          - include: "#virtual-methods"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -883,8 +883,8 @@ repository:
       - include: "#builtin-type-container"
       - include: "#builtin-type-vector"
       - include: "#builtin-type-variant"
-      - include: "#builtin-enum"
-      - include: "#builtin-class"
+      - include: "#builtin-enums"
+      - include: "#builtin-classes"
       - comment: "User-defined types"
         patterns:
           - comment: "Probably class (or enum)"
@@ -928,196 +928,6 @@ repository:
           - include: "#_type-annotation"
       - include: "#line-continuation"
 
-  _builtin-function:
-    patterns:
-      - name: keyword.control.flow.gdscript
-        match: |-
-          (?x)
-          # @GDScript - meth - START
-          \b(assert)\b
-          # @GDScript - meth - END
-          # regex-end
-      - name: variable.language.special.super.gdscript
-        match: |-
-          (?x)
-          \b(super)\b
-          # regex-end
-      - name: keyword.operator.wordlike.new.gdscript
-        match: |-
-          (?x)
-          \b(new)\b
-          # regex-end
-      - name: support.function.builtin.gdscript
-        match: |-
-          (?x)
-          \b(?:
-            # @GDScript - meth - START
-            char
-            | get_stack
-            | is_instance_of
-            | len
-            | load
-            | ord
-            | preload
-            | print_debug
-            | print_stack
-            | range
-            # @GDScript - meth - END
-          )\b
-          # regex-end
-      - name: invalid.deprecated.builtin.gdscript
-        match: |-
-          (?x)
-          \b(?:
-            # @GDScript - meth-deprecated - START
-            Color8
-            | convert
-            | dict_to_inst
-            | inst_to_dict
-            | type_exists
-            # @GDScript - meth-deprecated - END
-          )\b
-          # regex-end
-      - name: support.function.builtin.math.gdscript
-        match: |-
-          (?x)
-          \b(?:
-            # @GlobalScope - meth - START
-            abs
-            | absf
-            | absi
-            | acos
-            | acosh
-            | angle_difference
-            | asin
-            | asinh
-            | atan
-            | atan2
-            | atanh
-            | bezier_derivative
-            | bezier_interpolate
-            | ceil
-            | ceilf
-            | ceili
-            | clamp
-            | clampf
-            | clampi
-            | cos
-            | cosh
-            | cubic_interpolate
-            | cubic_interpolate_angle
-            | cubic_interpolate_angle_in_time
-            | cubic_interpolate_in_time
-            | db_to_linear
-            | deg_to_rad
-            | ease
-            | exp
-            | floor
-            | floorf
-            | floori
-            | fmod
-            | fposmod
-            | inverse_lerp
-            | is_equal_approx
-            | is_finite
-            | is_inf
-            | is_nan
-            | is_zero_approx
-            | lerp
-            | lerp_angle
-            | lerpf
-            | linear_to_db
-            | log
-            | max
-            | maxf
-            | maxi
-            | min
-            | minf
-            | mini
-            | move_toward
-            | nearest_po2
-            | pingpong
-            | posmod
-            | pow
-            | rad_to_deg
-            | randf
-            | randf_range
-            | randfn
-            | randi
-            | randi_range
-            | rotate_toward
-            | round
-            | roundf
-            | roundi
-            | sign
-            | signf
-            | signi
-            | sin
-            | sinh
-            | smoothstep
-            | snapped
-            | snappedf
-            | snappedi
-            | sqrt
-            | step_decimals
-            | tan
-            | tanh
-            | wrap
-            | wrapf
-            | wrapi
-            # @GlobalScope - meth - END
-          )\b
-          # regex-end
-      - name: support.function.builtin.gdscript
-        match: |-
-          (?x)
-          \b(?:
-            # @GlobalScope - meth - START
-            bytes_to_var
-            | bytes_to_var_with_objects
-            | error_string
-            | hash
-            | instance_from_id
-            | is_instance_id_valid
-            | is_instance_valid
-            | is_same
-            | print
-            | print_rich
-            | print_verbose
-            | printerr
-            | printraw
-            | prints
-            | printt
-            | push_error
-            | push_warning
-            | rand_from_seed
-            | randomize
-            | remap
-            | rid_allocate_id
-            | rid_from_int64
-            | seed
-            | str
-            | str_to_var
-            | type_convert
-            | type_string
-            | typeof
-            | var_to_bytes
-            | var_to_bytes_with_objects
-            | var_to_str
-            | weakref
-            # @GlobalScope - meth - END
-          )\b
-          # regex-end
-      - name: support.function.builtin.gdscript
-        match: |-
-          (?x)
-          \b(?:
-            int
-            | float
-            | bool
-          )\b
-          # regex-end
-
   class-name-declaration:
     name: meta.class.declaration.gdscript
     begin: |-
@@ -1137,7 +947,7 @@ repository:
     patterns:
       - comment: "Class name"
         patterns:
-          - include: "#builtin-class"
+          - include: "#builtin-classes"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1171,7 +981,7 @@ repository:
     patterns:
       - comment: "Class name"
         patterns:
-          - include: "#builtin-class"
+          - include: "#builtin-classes"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1315,7 +1125,7 @@ repository:
     patterns:
       - comment: "Const name"
         patterns:
-          - include: "#_builtin-function"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1402,7 +1212,7 @@ repository:
     patterns:
       - comment: "Var name"
         patterns:
-          - include: "#_builtin-function"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1622,7 +1432,7 @@ repository:
     patterns:
       - comment: "Var name"
         patterns:
-          - include: "#_builtin-function"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1698,7 +1508,7 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
-          - include: "#_builtin-function"
+          - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -2737,7 +2547,11 @@ repository:
       "13":
         name: storage.type.function.gdscript storage.type.signal.gdscript
 
-  builtin-constant:
+  # ----------------------------------------------
+  # NOTE: Built-Ins
+  # ----------------------------------------------
+
+  builtin-constants:
     patterns:
       - name: constant.other.builtin.number.limit.gdscript
         match: |-
@@ -2759,7 +2573,7 @@ repository:
           )\b
           # regex-end
 
-  builtin-enum:
+  builtin-enums:
     patterns:
       - name: support.enum.builtin.gdscript
         match: |-
@@ -2798,7 +2612,7 @@ repository:
           (?=\.|\b)
           # regex-end
 
-  builtin-enum-constant-value:
+  builtin-enum-constant-values:
     patterns:
       - comment: "Builtin alignment-related enum constants"
         name: constant.other.builtin.enummember.gdscript
@@ -3389,130 +3203,132 @@ repository:
           )\b
           # regex-end
 
-  builtin-type-primitive:
-    match: |-
-      (?x)
-      \b(?:
-        # Classes - class - START
-        (int)
-        | (float)
-        | (bool)
-        | (String)
-        | (StringName)
-        | (NodePath)
-        | (void)
-        # Classes - class - END
-      )\b
-      (?![ \t]*\()
-      # regex-end
-    captures:
-      "1":
-        name: support.type.primitive.int.gdscript
-      "2":
-        name: support.type.primitive.float.gdscript
-      "3":
-        name: support.type.primitive.bool.gdscript
-      "4":
-        name: support.type.primitive.string.gdscript
-      "5":
-        name: support.type.primitive.string-name.gdscript
-      "6":
-        name: support.type.primitive.node-path.gdscript
-      "7":
-        name: support.type.primitive.void.gdscript
+  builtin-types:
+    patterns:
+      - comment: "Builtin primitive types"
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            (int)
+            | (float)
+            | (bool)
+            | (String)
+            | (StringName)
+            | (NodePath)
+            | (void)
+            # Classes - class - END
+          )\b
+          (?![ \t]*\()
+          # regex-end
+        captures:
+          "1":
+            name: support.type.primitive.int.gdscript
+          "2":
+            name: support.type.primitive.float.gdscript
+          "3":
+            name: support.type.primitive.bool.gdscript
+          "4":
+            name: support.type.primitive.string.gdscript
+          "5":
+            name: support.type.primitive.string-name.gdscript
+          "6":
+            name: support.type.primitive.node-path.gdscript
+          "7":
+            name: support.type.primitive.void.gdscript
 
-  builtin-type-container:
-    match: |-
-      (?x)
-      \b(?:
-        # Classes - class - START
-        (Array)
-        | (Callable)
-        | (Dictionary)
-        | (Packed(?:
-            Byte
-            | Color
-            | Float(?:32|64)
-            | Int(?:32|64)
-            | String
-            | Vector[2-4]
-          )Array)
-        | (Signal)
-        # Classes - class - END
-      )\b
-      (?![ \t]*\()
-      # regex-end
-    captures:
-      "1":
-        name: support.type.container.array.gdscript
-      "2":
-        name: support.type.container.callable.gdscript
-      "3":
-        name: support.type.container.dictionary.gdscript
-      "4":
-        name: support.type.container.array.packed.gdscript
-      "5":
-        name: support.type.container.signal.gdscript
+      - comment: "Builtin container types"
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            (Array)
+            | (Callable)
+            | (Dictionary)
+            | (Packed(?:
+                Byte
+                | Color
+                | Float(?:32|64)
+                | Int(?:32|64)
+                | String
+                | Vector[2-4]
+              )Array)
+            | (Signal)
+            # Classes - class - END
+          )\b
+          (?![ \t]*\()
+          # regex-end
+        captures:
+          "1":
+            name: support.type.container.array.gdscript
+          "2":
+            name: support.type.container.callable.gdscript
+          "3":
+            name: support.type.container.dictionary.gdscript
+          "4":
+            name: support.type.container.array.packed.gdscript
+          "5":
+            name: support.type.container.signal.gdscript
 
-  builtin-type-vector:
-    match: |-
-      (?x)
-      \b(?:
-        # Classes - class - START
-        (AABB)
-        | (Basis)
-        | (Plane)
-        | (Projection)
-        | (Quaternion)
-        | (Rect[2]i?)
-        | (Transform[2-3]D)
-        | (Vector[2-4]i?)
-        # Classes - class - END
-      )\b
-      (?![ \t]*\()
-      # regex-end
-    captures:
-      "1":
-        name: support.type.builtin.vector.aabb.gdscript
-      "2":
-        name: support.type.builtin.vector.basis.gdscript
-      "3":
-        name: support.type.builtin.vector.plane.gdscript
-      "4":
-        name: support.type.builtin.vector.projection.gdscript
-      "5":
-        name: support.type.builtin.vector.quaternion.gdscript
-      "6":
-        name: support.type.builtin.vector.rect.gdscript
-      "7":
-        name: support.type.builtin.vector.transform.gdscript
-      "8":
-        name: support.type.builtin.vector.gdscript
+      - comment: "Builtin variant types"
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            (Variant)
+            | (Color)
+            | (Object)
+            | (RID)
+            # Classes - class - END
+          )\b
+          (?![ \t]*\()
+          # regex-end
+        captures:
+          "1":
+            name: support.type.builtin.variant.gdscript
+          "2":
+            name: support.type.builtin.engine.color.gdscript
+          "3":
+            name: support.type.builtin.engine.object.gdscript
+          "4":
+            name: support.type.builtin.engine.rid.gdscript
 
-  builtin-type-variant:
-    match: |-
-      (?x)
-      \b(?:
-        # Classes - class - START
-        (Variant)
-        | (Color)
-        | (Object)
-        | (RID)
-        # Classes - class - END
-      )\b
-      (?![ \t]*\()
-      # regex-end
-    captures:
-      "1":
-        name: support.type.builtin.variant.gdscript
-      "2":
-        name: support.type.builtin.engine.color.gdscript
-      "3":
-        name: support.type.builtin.engine.object.gdscript
-      "4":
-        name: support.type.builtin.engine.rid.gdscript
+      - comment: "Builtin vector types"
+        match: |-
+          (?x)
+          \b(?:
+            # Classes - class - START
+            (AABB)
+            | (Basis)
+            | (Plane)
+            | (Projection)
+            | (Quaternion)
+            | (Rect[2]i?)
+            | (Transform[2-3]D)
+            | (Vector[2-4]i?)
+            # Classes - class - END
+          )\b
+          (?![ \t]*\()
+          # regex-end
+        captures:
+          "1":
+            name: support.type.builtin.vector.aabb.gdscript
+          "2":
+            name: support.type.builtin.vector.basis.gdscript
+          "3":
+            name: support.type.builtin.vector.plane.gdscript
+          "4":
+            name: support.type.builtin.vector.projection.gdscript
+          "5":
+            name: support.type.builtin.vector.quaternion.gdscript
+          "6":
+            name: support.type.builtin.vector.rect.gdscript
+          "7":
+            name: support.type.builtin.vector.transform.gdscript
+          "8":
+            name: support.type.builtin.vector.gdscript
 
-  builtin-class:
+  builtin-classes:
     patterns:
       - comment: "Builtin animation-related classes"
         name: entity.name.class.builtin.gdscript
@@ -4468,7 +4284,198 @@ repository:
           )\b
           # regex-end
 
-  _virtual-method:
+
+  _builtin-functions:
+    patterns:
+      - name: keyword.control.flow.gdscript
+        match: |-
+          (?x)
+          # @GDScript - meth - START
+          \b(assert)\b
+          # @GDScript - meth - END
+          # regex-end
+      - name: variable.language.special.super.gdscript
+        match: |-
+          (?x)
+          \b(super)\b
+          # regex-end
+      - name: keyword.operator.wordlike.new.gdscript
+        match: |-
+          (?x)
+          \b(new)\b
+          # regex-end
+      - name: support.function.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GDScript - meth - START
+            char
+            | get_stack
+            | is_instance_of
+            | len
+            | load
+            | ord
+            | preload
+            | print_debug
+            | print_stack
+            | range
+            # @GDScript - meth - END
+          )\b
+          # regex-end
+      - name: invalid.deprecated.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GDScript - meth-deprecated - START
+            Color8
+            | convert
+            | dict_to_inst
+            | inst_to_dict
+            | type_exists
+            # @GDScript - meth-deprecated - END
+          )\b
+          # regex-end
+      - name: support.function.builtin.math.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GlobalScope - meth - START
+            abs
+            | absf
+            | absi
+            | acos
+            | acosh
+            | angle_difference
+            | asin
+            | asinh
+            | atan
+            | atan2
+            | atanh
+            | bezier_derivative
+            | bezier_interpolate
+            | ceil
+            | ceilf
+            | ceili
+            | clamp
+            | clampf
+            | clampi
+            | cos
+            | cosh
+            | cubic_interpolate
+            | cubic_interpolate_angle
+            | cubic_interpolate_angle_in_time
+            | cubic_interpolate_in_time
+            | db_to_linear
+            | deg_to_rad
+            | ease
+            | exp
+            | floor
+            | floorf
+            | floori
+            | fmod
+            | fposmod
+            | inverse_lerp
+            | is_equal_approx
+            | is_finite
+            | is_inf
+            | is_nan
+            | is_zero_approx
+            | lerp
+            | lerp_angle
+            | lerpf
+            | linear_to_db
+            | log
+            | max
+            | maxf
+            | maxi
+            | min
+            | minf
+            | mini
+            | move_toward
+            | nearest_po2
+            | pingpong
+            | posmod
+            | pow
+            | rad_to_deg
+            | randf
+            | randf_range
+            | randfn
+            | randi
+            | randi_range
+            | rotate_toward
+            | round
+            | roundf
+            | roundi
+            | sign
+            | signf
+            | signi
+            | sin
+            | sinh
+            | smoothstep
+            | snapped
+            | snappedf
+            | snappedi
+            | sqrt
+            | step_decimals
+            | tan
+            | tanh
+            | wrap
+            | wrapf
+            | wrapi
+            # @GlobalScope - meth - END
+          )\b
+          # regex-end
+      - name: support.function.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            # @GlobalScope - meth - START
+            bytes_to_var
+            | bytes_to_var_with_objects
+            | error_string
+            | hash
+            | instance_from_id
+            | is_instance_id_valid
+            | is_instance_valid
+            | is_same
+            | print
+            | print_rich
+            | print_verbose
+            | printerr
+            | printraw
+            | prints
+            | printt
+            | push_error
+            | push_warning
+            | rand_from_seed
+            | randomize
+            | remap
+            | rid_allocate_id
+            | rid_from_int64
+            | seed
+            | str
+            | str_to_var
+            | type_convert
+            | type_string
+            | typeof
+            | var_to_bytes
+            | var_to_bytes_with_objects
+            | var_to_str
+            | weakref
+            # @GlobalScope - meth - END
+          )\b
+          # regex-end
+      - name: support.function.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            int
+            | float
+            | bool
+          )\b
+          # regex-end
+
+  virtual-methods:
     patterns:
       - comment: "Single word or unique first word"
         name: support.function.virtual.gdscript
