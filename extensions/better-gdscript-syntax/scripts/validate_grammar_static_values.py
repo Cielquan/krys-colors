@@ -56,9 +56,13 @@ type DataDict = dict[Category, list[str]]
 def extract_data_from_globals_xml_source(
     path: pathlib.Path,
 ) -> DataDict:
-    data: DataDict = {}
-    for cat in CATEGORIES:
-        data[cat] = []
+    data: DataDict = {
+        "const": [],
+        "const-deprecated": [],
+        "enum": [],
+        "meth": [],
+        "meth-deprecated": [],
+    }
 
     try:
         root = ET.parse(path).getroot()
