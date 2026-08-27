@@ -96,6 +96,7 @@ def extract_data_from_globals_xml_source(
     data["const-deprecated"] = sorted(set(data["const-deprecated"]))
     data["enum"] = sorted(set(data["enum"]))
     data["meth"] = sorted(set(data["meth"]))
+    data["meth-deprecated"] = sorted(set(data["meth-deprecated"]))
 
     return data
 
