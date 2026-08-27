@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 ext_dir = pathlib.Path(__file__).parent / ".."
 grammar_file = ext_dir / "syntaxes/gdscript.tmLanguage.yaml"
-out_file = ext_dir / "missing-globals.bak.json"
+out_file = ext_dir / "missing-grammar-values.bak.json"
 
 
 SOURCE_FILES = (

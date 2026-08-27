@@ -12,6 +12,7 @@
     "build:ignore": "pnpm --filter gitignore-syntax-vsx build",
     "build:gd": "pnpm --filter better-gdscript-syntax build",
     "build:yamlre": "pnpm --filter yaml-regex-highlighting build",
+    "validate:gd": "pnpm --filter better-gdscript-syntax validate",
     "watch:theme": "pnpm --filter krys-colors watch",
     "watch:ignore": "pnpm --filter gitignore-syntax-vsx watch",
     "watch:gd": "pnpm --filter better-gdscript-syntax watch",
