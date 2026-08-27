@@ -54,7 +54,7 @@ CATEGORIES: list[Category] = [
     "virtual",
 ]
 
-type DataDict = dict[Category, list[str]]
+type DataDict = dict[Category, set[str]]
 
 
 class SourceDataListValue(t.NamedTuple):
@@ -62,7 +62,7 @@ class SourceDataListValue(t.NamedTuple):
     value: str
 
 
-type SourceDataDict = dict[Category, list[SourceDataListValue]]
+type SourceDataDict = dict[Category, set[SourceDataListValue]]
 
 
 class ResultDataListValue(t.TypedDict):
@@ -75,11 +75,11 @@ type ResultDataDict = dict[Category, list[ResultDataListValue]]
 
 def extract_globals_data_from_xml_source(path: pathlib.Path) -> SourceDataDict:
     data: SourceDataDict = {
-        "const": [],
-        "const-deprecated": [],
-        "enum": [],
-        "meth": [],
-        "meth-deprecated": [],
+        "const": set(),
+        "const-deprecated": set(),
+        "enum": set(),
+        "meth": set(),
+        "meth-deprecated": set(),
     }
 
     try:
@@ -95,15 +95,13 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> SourceDataDict:
             continue
 
         if constant.get("deprecated") is None:
-            data["const"].append(SourceDataListValue(path.name, constant_name))
+            data["const"].add(SourceDataListValue(path.name, constant_name))
         else:
-            data["const-deprecated"].append(
-                SourceDataListValue(path.name, constant_name)
-            )
+            data["const-deprecated"].add(SourceDataListValue(path.name, constant_name))
 
         enum_name = constant.get("enum")
         if enum_name is not None:
-            data["enum"].append(SourceDataListValue(path.name, enum_name))
+            data["enum"].add(SourceDataListValue(path.name, enum_name))
 
     for method in root.findall("./methods/method"):
         method_name = method.get("name")
@@ -112,23 +110,17 @@ def extract_globals_data_from_xml_source(path: pathlib.Path) -> SourceDataDict:
             continue
 
         if method.get("deprecated") is None:
-            data["meth"].append(SourceDataListValue(path.name, method_name))
+            data["meth"].add(SourceDataListValue(path.name, method_name))
         else:
-            data["meth-deprecated"].append(SourceDataListValue(path.name, method_name))
-
-    data["const"] = sorted(set(data["const"]))
-    data["const-deprecated"] = sorted(set(data["const-deprecated"]))
-    data["enum"] = sorted(set(data["enum"]))
-    data["meth"] = sorted(set(data["meth"]))
-    data["meth-deprecated"] = sorted(set(data["meth-deprecated"]))
+            data["meth-deprecated"].add(SourceDataListValue(path.name, method_name))
 
     return data
 
 
 def extract_classes_data_from_xml_source(classes_dir: pathlib.Path) -> SourceDataDict:
     data: SourceDataDict = {
-        "class": [],
-        "virtual": [],
+        "class": set(),
+        "virtual": set(),
     }
 
     for path in classes_dir.glob("*.xml"):
@@ -143,7 +135,7 @@ def extract_classes_data_from_xml_source(classes_dir: pathlib.Path) -> SourceDat
             logger.error(f"Failed to extract class name from '{path}")
             continue
 
-        data["class"].append(SourceDataListValue(path.name, class_name))
+        data["class"].add(SourceDataListValue(path.name, class_name))
 
         for method in root.findall("./methods/method"):
             if "virtual" in method.get("qualifiers", ""):
@@ -152,10 +144,7 @@ def extract_classes_data_from_xml_source(classes_dir: pathlib.Path) -> SourceDat
                     logger.error(f"Failed to extract method name from '{path}")
                     continue
 
-                data["virtual"].append(SourceDataListValue(path.name, method_name))
-
-    data["class"] = sorted(set(data["class"]))
-    data["virtual"] = sorted(set(data["virtual"]))
+                data["virtual"].add(SourceDataListValue(path.name, method_name))
 
     return data
 
@@ -166,7 +155,7 @@ def extract_grammar_regexes(group_name: str) -> DataDict:
     source_lines = grammar_file.read_text().splitlines()
 
     for cat in CATEGORIES:
-        data[cat] = []
+        data[cat] = set()
 
         start_marker = f"# {group_name} - {cat} - START"
         end_marker = f"# {group_name} - {cat} - END"
@@ -191,7 +180,7 @@ def extract_grammar_regexes(group_name: str) -> DataDict:
                     f"Start idx ({start_idx}) > end idx ({end_idx}): '{group_name} - {cat}'"
                 )
             regex_source = source_lines[(start_idx + 1) : end_idx]
-            data[cat].append(f"(?x){'\n'.join(regex_source)}")
+            data[cat].add(f"(?x){'\n'.join(regex_source)}")
 
     return data
 
@@ -207,7 +196,7 @@ def check_source_against_grammar_regexes(
 
         results[cat] = [
             {"source": source_data.source, "value": source_data.value}
-            for source_data in godot_source_data.get(cat, [])
+            for source_data in godot_source_data.get(cat, set())
             if not any(regex.search(source_data.value) for regex in regexes)
         ]
 
