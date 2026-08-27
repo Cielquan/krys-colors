@@ -228,7 +228,7 @@ def main() -> int:
             )
 
             logger.info(f"Extracting data from '{source_file}'")
-            godot_source_data[source_file.name] = extract_globals_data_from_xml_source(
+            godot_source_data[source_file.stem] = extract_globals_data_from_xml_source(
                 repo_dir / source_file
             )
 
@@ -249,7 +249,7 @@ def main() -> int:
     grammar_regex_sources = {}
     for source_file in GLOBALS_SOURCE_FILES:
         logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
-        grammar_regex_sources[source_file.name] = extract_grammar_regexes(
+        grammar_regex_sources[source_file.stem] = extract_grammar_regexes(
             source_file.stem
         )
 
@@ -259,10 +259,10 @@ def main() -> int:
     comparison_results = {}
     for source_file in GLOBALS_SOURCE_FILES:
         logger.info(f"Check missing values for '{source_file.stem}'")
-        comparison_results[source_file.name] = (
+        comparison_results[source_file.stem] = (
             check_globals_source_against_grammar_regexes(
-                godot_source_data[source_file.name],
-                grammar_regex_sources[source_file.name],
+                godot_source_data[source_file.stem],
+                grammar_regex_sources[source_file.stem],
             )
         )
 
