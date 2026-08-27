@@ -1116,19 +1116,33 @@ repository:
 
   class-name-declaration:
     name: meta.class.declaration.gdscript
-    match: |-
+    begin: |-
       (?x)
       (?:^|\G)
       [ \t]*
       \b(class_name)
       [ \t]+
-      ([A-Za-z_][A-Za-z0-9_]*)
       # regex-end
-    captures:
+    beginCaptures:
       "1":
         name: storage.type.class.gdscript
-      "2":
-        name: entity.name.type.class.gdscript
+    end: |-
+      (?x)
+      (?=[;#\n]|extends)
+      # regex-end
+    patterns:
+      - comment: "Class name"
+        patterns:
+          - include: "#builtin-class"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.type.class.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
 
   class-declaration:
     name: meta.class.declaration.gdscript
@@ -1139,40 +1153,56 @@ repository:
       [ \t]*
       \b(class)
       [ \t]+
-      ([A-Za-z_][A-Za-z0-9_]*)
-      (?:
-        [ \t]+
-        (extends)
-        [ \t]+
-      )?
       # regex-end
     beginCaptures:
       "1":
         name: storage.type.class.gdscript
-      "2":
-        name: entity.name.type.class.gdscript
-      "3":
-        name: keyword.control.inheritance.gdscript
     end: |-
       (?x)
-      (:)
+      (:|(?=extends))
       # regex-end
     endCaptures:
       "1":
         name: punctuation.section.class.begin.gdscript
     patterns:
-      - include: "#_string-quoted-multi-line"
-      - include: "#_string-quoted-single-line"
-      - include: "#_string-raw-quoted-multi-line"
-      - include: "#_string-raw-quoted-single-line"
-      - match: |-
+      - comment: "Class name"
+        patterns:
+          - include: "#builtin-class"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.type.class.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - begin: |-
           (?x)
-          (\.)?
-          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]+
+          (extends)
+          [ \t]+
           # regex-end
-        captures:
+        beginCaptures:
           "1":
-            name: punctuation.accessor.gdscript
+            name: keyword.control.inheritance.gdscript
+        end: |-
+          (?x)
+          (?=:)
+          # regex-end
+        patterns:
+          - include: "#_string-quoted-multi-line"
+          - include: "#_string-quoted-single-line"
+          - include: "#_string-raw-quoted-multi-line"
+          - include: "#_string-raw-quoted-single-line"
+          - match: |-
+              (?x)
+              (\.)?
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+            captures:
+              "1":
+                name: punctuation.accessor.gdscript
 
   extends-declaration:
     name: meta.class.declaration.gdscript
