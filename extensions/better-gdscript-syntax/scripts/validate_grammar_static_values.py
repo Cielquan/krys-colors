@@ -53,9 +53,7 @@ CATEGORIES: list[Category] = [
 type DataDict = dict[Category, list[str]]
 
 
-def extract_data_from_globals_xml_source(
-    path: pathlib.Path,
-) -> DataDict:
+def extract_globals_data_from_xml_source(path: pathlib.Path) -> DataDict:
     data: DataDict = {
         "const": [],
         "const-deprecated": [],
@@ -190,7 +188,7 @@ def main() -> int:
 
             logger.info(f"Extracting data from '{source_file}'")
             godot_globals_source_data[source_file.name] = (
-                extract_data_from_globals_xml_source(repo_dir / source_file)
+                extract_globals_data_from_xml_source(repo_dir / source_file)
             )
 
         globals_grammar_regex_sources = {}
