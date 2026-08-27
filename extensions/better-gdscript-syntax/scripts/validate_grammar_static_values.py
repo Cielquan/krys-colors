@@ -191,22 +191,22 @@ def main() -> int:
                 repo_dir / source_file
             )
 
-        grammar_regex_sources = {}
-        for source_file in GLOBALS_SOURCE_FILES:
-            logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
-            grammar_regex_sources[source_file.name] = extract_grammar_regexes(
-                source_file.stem
-            )
+    grammar_regex_sources = {}
+    for source_file in GLOBALS_SOURCE_FILES:
+        logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
+        grammar_regex_sources[source_file.name] = extract_grammar_regexes(
+            source_file.stem
+        )
 
-        comparison_results = {}
-        for source_file in GLOBALS_SOURCE_FILES:
-            logger.info(f"Check missing values for '{source_file.stem}'")
-            comparison_results[source_file.name] = (
-                check_globals_source_against_grammar_regexes(
-                    godot_source_data[source_file.name],
-                    grammar_regex_sources[source_file.name],
-                )
+    comparison_results = {}
+    for source_file in GLOBALS_SOURCE_FILES:
+        logger.info(f"Check missing values for '{source_file.stem}'")
+        comparison_results[source_file.name] = (
+            check_globals_source_against_grammar_regexes(
+                godot_source_data[source_file.name],
+                grammar_regex_sources[source_file.name],
             )
+        )
 
     rv = (
         1
