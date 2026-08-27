@@ -6254,6 +6254,6 @@ repository:
               | frame                                           (?# MovieWriter)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
