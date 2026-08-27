@@ -30,7 +30,7 @@ grammar_file = ext_dir / "syntaxes/gdscript.tmLanguage.yaml"
 out_file = ext_dir / "missing-grammar-values.bak.json"
 
 
-SOURCE_FILES = (
+GLOBALS_SOURCE_FILES = (
     pathlib.Path("modules/gdscript/doc_classes/@GDScript.xml"),
     pathlib.Path("doc/classes/@GlobalScope.xml"),
 )
@@ -179,7 +179,7 @@ def main() -> int:
         repo_dir = temp_dir / "godot"
 
         godot_globals_source_data = {}
-        for source_file in SOURCE_FILES:
+        for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Sparse-checkout: {source_file.parent}")
             subprocess.check_call(
                 ["git", "sparse-checkout", "set", source_file.parent],
@@ -192,14 +192,14 @@ def main() -> int:
             )
 
         globals_grammar_regex_sources = {}
-        for source_file in SOURCE_FILES:
+        for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
             globals_grammar_regex_sources[source_file.name] = extract_grammar_regexes(
                 source_file.stem
             )
 
         globals_comparison_results = {}
-        for source_file in SOURCE_FILES:
+        for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Check missing values for '{source_file.stem}'")
             globals_comparison_results[source_file.name] = (
                 check_globals_source_against_grammar_regexes(
