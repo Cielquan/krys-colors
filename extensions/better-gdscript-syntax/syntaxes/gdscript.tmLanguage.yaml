@@ -1754,6 +1754,60 @@ repository:
       (?=[A-Za-z0-9_])
       # regex-end
 
+  if-statement:
+    patterns:
+      - name: meta.statement.if.gdscript
+        begin: |-
+          (?x)
+          (?:^|\G)
+          [ \t]*
+          (if)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.control.flow.if.gdscript
+        end: |-
+          (?x)
+          (:)
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.section.if-block.begin.gdscript
+        patterns:
+          - include: "#expression"
+      - name: meta.statement.if.gdscript
+        begin: |-
+          (?x)
+          (?:^|\G)
+          [ \t]*
+          (elif)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.control.flow.elif.gdscript
+        end: |-
+          (?x)
+          (:)
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.section.if-block.begin.gdscript
+        patterns:
+          - include: "#expression"
+      - name: meta.statement.if.gdscript
+        match: |-
+          (?x)
+          (?:^|\G)
+          [ \t]*
+          (else)
+          (:)
+          # regex-end
+        captures:
+          "1":
+            name: keyword.control.flow.else.gdscript
+          "2":
+            name: punctuation.section.if-block.begin.gdscript
+
   _language-constants:
     patterns:
       - comment: "Number constants"
