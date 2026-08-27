@@ -6,17 +6,7 @@ scopeName: source.gdscript
 fileTypes:
   - gd
 
-patterns:
-  - include: "#comment-documentation-codeblock"
-  - include: "#comment-documentation"
-  - include: "#comment-region"
-  - include: "#comment"
-  - include: "#enum-declaration"
-  - include: "#class-declaration"
-  - include: "#class-name-declaration"
-  - include: "#extends-declaration"
-  - include: "#line-continuation"
-  - include: "#semicolon"
+patterns: []
 
 repository:
   comment:
