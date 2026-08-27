@@ -144,11 +144,11 @@ def check_globals_source_against_grammar_regexes(
     results: DataDict = {}
 
     for cat in CATEGORIES:
-        regexes = [re.compile(regex) for regex in grammar_regex_sources[cat]]
+        regexes = [re.compile(regex) for regex in grammar_regex_sources.get(cat, [])]
 
         results[cat] = [
             source_name
-            for source_name in godot_source_data[cat]
+            for source_name in godot_source_data.get(cat, [])
             if not any(regex.search(source_name) for regex in regexes)
         ]
 
@@ -209,7 +209,7 @@ def main() -> int:
     rv = (
         1
         if any(
-            len(r[cat])
+            len(r.get(cat, []))
             for cat in CATEGORIES
             for r in globals_comparison_results.values()
         )
