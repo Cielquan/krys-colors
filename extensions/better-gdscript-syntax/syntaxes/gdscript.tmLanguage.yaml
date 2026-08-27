@@ -9,214 +9,6 @@ fileTypes:
 patterns: []
 
 repository:
-  signal-declaration:
-    name: meta.signal.gdscript
-    begin: |-
-      (?x)
-      \b(signal)
-      [ \t]+
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)
-        [ \t]*
-        \(
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: "storage.type.function.gdscript storage.type.signal.gdscript"
-    end: |-
-      (?x)
-      (?=[#'"\n])
-      # regex-end
-    patterns:
-      - comment: "Signal name"
-        patterns:
-          - include: "#virtual-methods"
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - include: "#_parameter"
-      - include: "#line-continuation"
-
-  function-and-lambda-declaration:
-    name: meta.function.gdscript
-    begin: |-
-      (?x)
-      [ \t]*
-      (?:
-        \b(static)
-        [ \t]+
-      )?
-      \b(func)
-      [ \t]+
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)?
-        [ \t]*
-        \(
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.modifier.static.gdscript
-      "2":
-        name: storage.type.function.gdscript
-    end: |-
-      (?x)
-      (:|(?=[;#\n]))
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.section.function.begin.gdscript
-    patterns:
-      - comment: "Function name"
-        patterns:
-          - include: "#virtual-methods"
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: entity.name.function.definition.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - include: "#_parameter"
-      - include: "#line-continuation"
-      - comment: "Return type annotation"
-        begin: |-
-          (?x)
-          (->)
-          # regex-end
-        beginCaptures:
-          "1":
-            name: punctuation.separator.annotation.result.gdscript
-        end: |-
-          (?x)
-          (?=[:;#\n])
-          # regex-end
-        patterns:
-          - include: "#_type-annotation"
-
-  _parameter:
-    name: meta.function.parameters.gdscript
-    begin: |-
-      (?x)
-      (\()
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.parameters.begin.gdscript
-    end: |-
-      (?x)
-      (\))
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.parameters.end.gdscript
-    patterns:
-      - name: keyword.operator.unpacking.parameter.gdscript
-        match: |-
-          (?x)
-          (\.\.\.)
-          # regex-end
-      - include: "#function-and-lambda-declaration"
-      - comment: "'self' parameter"
-        match: |-
-          (?x)
-          \b(self)\b
-          [ \t]*
-          (?:
-            (,)
-            | (?=[)#\n=])
-          )
-          # regex-end
-        captures:
-          "1":
-            name: variable.parameter.function.language.special.self.gdscript
-          "2":
-            name: punctuation.separator.parameters.gdscript
-      - match: |-
-          (?x)
-          ([A-Za-z_][A-Za-z0-9_]*)
-          [ \t]*
-          (?:
-            (,)
-            | (?=[)#\n=])
-          )
-          # regex-end
-        captures:
-          "1":
-            name: variable.parameter.function.language.gdscript
-          "2":
-            name: punctuation.separator.parameters.gdscript
-      - include: "#comment-documentation"
-      - include: "#comment"
-      - comment: "Default value"
-        begin: |-
-          (?x)
-          (?:
-            (:=)
-            | (?<!=)(=)(?!=)
-          )
-          # regex-end
-        beginCaptures:
-          "1":
-            name: keyword.operator.assignment.infer.gdscript
-          "2":
-            name: keyword.operator.assignment.equal.gdscript
-        end: |-
-          (?x)
-          (?:
-            (,)
-            | (?=[)#\n=])
-          )
-          # regex-end
-        endCaptures:
-          "1":
-            name: punctuation.separator.parameters.gdscript
-        patterns:
-          - include: "#expression"
-      - comment: "Type annotated parameter"
-        begin: |-
-          (?x)
-          ([A-Za-z_][A-Za-z0-9_]*)
-          [ \t]*
-          (:)
-          # regex-end
-        beginCaptures:
-          "1":
-            name: variable.parameter.function.language.gdscript
-          "2":
-            name: punctuation.separator.annotation.gdscript
-        end: |-
-          (?x)
-          (?:
-            (,)
-            | (?=[)#\n=])
-          )
-          # regex-end
-        endCaptures:
-          "1":
-            name: punctuation.separator.parameters.gdscript
-        patterns:
-          - include: "#_type-annotation"
-          - match: |-
-              (?x)
-              (?<!=)(=)(?!=)
-              # regex-end
-            captures:
-              "1":
-                name: keyword.operator.assignment.equal.gdscript
-          - include: "#expression"
-
   _type-annotation:
     patterns:
       - include: "#builtin-type-primitive"
@@ -267,424 +59,6 @@ repository:
               # regex-end
           - include: "#_type-annotation"
       - include: "#line-continuation"
-
-  class-name-declaration:
-    name: meta.class.declaration.gdscript
-    begin: |-
-      (?x)
-      (?:^|\G)
-      [ \t]*
-      \b(class_name)
-      [ \t]+
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.class.gdscript
-    end: |-
-      (?x)
-      (?=[;#\n]|extends)
-      # regex-end
-    patterns:
-      - comment: "Class name"
-        patterns:
-          - include: "#builtin-classes"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: entity.name.type.class.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-
-  class-declaration:
-    name: meta.class.declaration.gdscript
-    contentName: entity.other.inherited-class.gdscript
-    begin: |-
-      (?x)
-      (?:^|\G)
-      [ \t]*
-      \b(class)
-      [ \t]+
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.class.gdscript
-    end: |-
-      (?x)
-      (:|(?=extends))
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.section.class.begin.gdscript
-    patterns:
-      - comment: "Class name"
-        patterns:
-          - include: "#builtin-classes"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: entity.name.type.class.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - begin: |-
-          (?x)
-          [ \t]+
-          (extends)
-          [ \t]+
-          # regex-end
-        beginCaptures:
-          "1":
-            name: keyword.control.inheritance.gdscript
-        end: |-
-          (?x)
-          (?=:)
-          # regex-end
-        patterns:
-          - include: "#_string-quoted-multi-line"
-          - include: "#_string-quoted-single-line"
-          - include: "#_string-raw-quoted-multi-line"
-          - include: "#_string-raw-quoted-single-line"
-          - match: |-
-              (?x)
-              (\.)?
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-            captures:
-              "1":
-                name: punctuation.accessor.gdscript
-
-  extends-declaration:
-    name: meta.class.declaration.gdscript
-    contentName: entity.other.inherited-class.gdscript
-    begin: |-
-      (?x)
-      [ \t]*
-      \b(extends)
-      [ \t]+
-      # regex-end
-    beginCaptures:
-      "1":
-        name: keyword.control.inheritance.gdscript
-    end: |-
-      (?x)
-      $
-      # regex-end
-    patterns:
-      - include: "#_string-quoted-multi-line"
-      - include: "#_string-quoted-single-line"
-      - include: "#_string-raw-quoted-multi-line"
-      - include: "#_string-raw-quoted-single-line"
-      - match: |-
-          (?x)
-          (\.)?
-          ([A-Za-z_][A-Za-z0-9_]*)
-          # regex-end
-        captures:
-          "1":
-            name: punctuation.accessor.gdscript
-
-  enum-declaration:
-    name: meta.enum.declaration.gdscript
-    begin: |-
-      (?x)
-      (?:^|\G)
-      [ \t]*
-      \b(enum)\b
-      (?:
-        [ \t]+
-        ([A-Za-z_][A-Za-z0-9_]*)
-      )?
-      [ \t]*
-      (\{)
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.enum.gdscript
-      "2":
-        name: entity.name.type.enum.gdscript
-      "3":
-        name: punctuation.definition.block.begin.gdscript
-    end: |-
-      (?x)
-      (\})
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.block.end.gdscript
-    patterns:
-      - match: |-
-          (?x)
-          [ \t]*
-          ([A-Za-z_][A-Za-z0-9_]*)
-          [ \t]*
-          (?:
-            (=)
-            [ \t]*
-            ([+-]?)
-            [ \t]*
-            ([0-9]*)
-          )?
-          (,)?
-          # regex-end
-        captures:
-          "1":
-            name: variable.other.enummember.gdscript
-          "2":
-            name: punctuation.separator.key-value.enum.gdscript
-          "3":
-            name: keyword.operator.arithmetic.gdscript
-          "4":
-            name: constant.numeric.dec.gdscript
-          "5":
-            name: punctuation.separator.comma.gdscript
-
-  const-definition:
-    name: meta.const.definition.gdscript
-    begin: |-
-      (?x)
-      \b(const)
-      [ \t]+
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)
-        [ \t]*
-        ([:=])
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.const.gdscript
-    end: |-
-      (?x)
-      (?=[;#\n])
-      # regex-end
-    patterns:
-      - comment: "Const name"
-        patterns:
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: variable.other.constant.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - comment: "Untyped initializer"
-        begin: |-
-          (?x)
-          (?:
-            (:=)
-            | (=)
-          )
-          # regex-end
-        beginCaptures:
-          "1":
-            name: keyword.operator.assignment.infer.gdscript
-          "2":
-            name: keyword.operator.assignment.equal.gdscript
-        end: |-
-          (?x)
-          (?=[;#\n])
-          # regex-end
-        patterns:
-          - include: "#expression"
-      - comment: "Type annotated initializer"
-        begin: |-
-          (?x)
-          \b
-          [ \t]*
-          (:)(?![=])
-          # regex-end
-        beginCaptures:
-          "1":
-            name: punctuation.separator.annotation.gdscript
-        end: |-
-          (?x)
-          (?=[;#\n])
-          # regex-end
-        patterns:
-          - include: "#_type-annotation"
-          - match: |-
-              (?x)
-              (=)
-              # regex-end
-            captures:
-              "1":
-                name: keyword.operator.assignment.equal.gdscript
-          - include: "#expression"
-      - include: "#line-continuation"
-
-  var-declaration-and-definition:
-    name: meta.var.definition.gdscript
-    begin: |-
-      (?x)
-      (?:
-        \b(static)
-        [ \t]+
-      )?
-      \b(var)
-      [ \t]+
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)
-        [ \t]*
-        ([:=])?
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.modifier.static.gdscript
-      "2":
-        name: storage.type.var.gdscript
-    end: |-
-      (?x)
-      (:)?
-      (?=[;#\n])
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.section.setter-getter.begin.gdscript
-    patterns:
-      - comment: "Var name"
-        patterns:
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: variable.other.readwrite.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - comment: "Untyped initializer"
-        begin: |-
-          (?x)
-          (?:
-            (:=)
-            | (=)
-          )
-          # regex-end
-        beginCaptures:
-          "1":
-            name: keyword.operator.assignment.infer.gdscript
-          "2":
-            name: keyword.operator.assignment.equal.gdscript
-        end: |-
-          (?x)
-          (?=[:;#\n])
-          # regex-end
-        patterns:
-          - include: "#expression"
-      - comment: "Type annotated initializer"
-        begin: |-
-          (?x)
-          \b
-          [ \t]*
-          (:)(?![=])
-          # regex-end
-        beginCaptures:
-          "1":
-            name: punctuation.separator.annotation.gdscript
-        end: |-
-          (?x)
-          (?=[:;#\n])
-          # regex-end
-        patterns:
-          - include: "#_type-annotation"
-          - match: |-
-              (?x)
-              (=)
-              # regex-end
-            captures:
-              "1":
-                name: keyword.operator.assignment.equal.gdscript
-          - include: "#expression"
-      - include: "#line-continuation"
-
-  var-setter-getter:
-    patterns:
-      - comment: "Getter assignment"
-        match: |-
-          (?x)
-          \b(get)\b
-          [ \t]*
-          (=)
-          [ \t]*
-          ([A-Za-z_][A-Za-z0-9_]*)?
-          [ \t]*
-          (,)?
-          # regex-end
-        captures:
-          "1":
-            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
-          "2":
-            name: keyword.operator.assignment.equal.gdscript
-          "3":
-            name: entity.name.function.definition.gdscript
-          "4":
-            name: punctuation.separator.comma.gdscript
-      - comment: "Getter definition"
-        match: |-
-          (?x)
-          \b(get)\b
-          [ \t]*
-          (:)
-          # regex-end
-        captures:
-          "1":
-            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
-          "2":
-            name: punctuation.section.function.begin.gdscript
-      - comment: "Setter assignment"
-        match: |-
-          (?x)
-          \b(set)\b
-          [ \t]*
-          (=)
-          [ \t]*
-          ([A-Za-z_][A-Za-z0-9_]*)?
-          [ \t]*
-          (,)?
-          # regex-end
-        captures:
-          "1":
-            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
-          "2":
-            name: keyword.operator.assignment.equal.gdscript
-          "3":
-            name: entity.name.function.definition.gdscript
-          "4":
-            name: punctuation.separator.comma.gdscript
-      - comment: "Setter definition"
-        match: |-
-          (?x)
-          \b(set)\b
-          [ \t]*
-          (\()
-          [ \t]*
-          ([A-Za-z_][A-Za-z0-9_]*)?
-          [ \t]*
-          (\))
-          [ \t]*
-          (:)?
-          # regex-end
-        captures:
-          "1":
-            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
-          "2":
-            name: punctuation.definition.parameters.begin.gdscript
-          "3":
-            name: variable.parameter.function.language.gdscript
-          "4":
-            name: punctuation.definition.parameters.end.gdscript
-          "5":
-            name: punctuation.section.function.begin.gdscript
 
   dict-literal:
     name: meta.literal.dict.gdscript
@@ -2550,6 +1924,636 @@ repository:
           (?x)
           $
           # regex-end
+
+  # ----------------------------------------------
+  # NOTE: Declaration & Definitions
+  # ----------------------------------------------
+
+  class-name-declaration:
+    name: meta.class.declaration.gdscript
+    begin: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      \b(class_name)
+      [ \t]+
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.class.gdscript
+    end: |-
+      (?x)
+      (?=[;#\n]|extends)
+      # regex-end
+    patterns:
+      - comment: "Class name"
+        patterns:
+          - include: "#builtin-classes"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.type.class.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+
+  extends-declaration:
+    name: meta.class.declaration.gdscript
+    contentName: entity.other.inherited-class.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      \b(extends)
+      [ \t]+
+      # regex-end
+    beginCaptures:
+      "1":
+        name: keyword.control.inheritance.gdscript
+    end: |-
+      (?x)
+      $
+      # regex-end
+    patterns:
+      - include: "#_string-quoted-multi-line"
+      - include: "#_string-quoted-single-line"
+      - include: "#_string-raw-quoted-multi-line"
+      - include: "#_string-raw-quoted-single-line"
+      - match: |-
+          (?x)
+          (\.)?
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.accessor.gdscript
+
+  class-declaration:
+    name: meta.class.declaration.gdscript
+    contentName: entity.other.inherited-class.gdscript
+    begin: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      \b(class)
+      [ \t]+
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.class.gdscript
+    end: |-
+      (?x)
+      (:|(?=extends))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.class.begin.gdscript
+    patterns:
+      - comment: "Class name"
+        patterns:
+          - include: "#builtin-classes"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.type.class.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - begin: |-
+          (?x)
+          [ \t]+
+          (extends)
+          [ \t]+
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.control.inheritance.gdscript
+        end: |-
+          (?x)
+          (?=:)
+          # regex-end
+        patterns:
+          - include: "#_string-quoted-multi-line"
+          - include: "#_string-quoted-single-line"
+          - include: "#_string-raw-quoted-multi-line"
+          - include: "#_string-raw-quoted-single-line"
+          - match: |-
+              (?x)
+              (\.)?
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+            captures:
+              "1":
+                name: punctuation.accessor.gdscript
+
+  enum-declaration:
+    name: meta.enum.declaration.gdscript
+    begin: |-
+      (?x)
+      (?:^|\G)
+      [ \t]*
+      \b(enum)\b
+      (?:
+        [ \t]+
+        ([A-Za-z_][A-Za-z0-9_]*)
+      )?
+      [ \t]*
+      (\{)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.enum.gdscript
+      "2":
+        name: entity.name.type.enum.gdscript
+      "3":
+        name: punctuation.definition.block.begin.gdscript
+    end: |-
+      (?x)
+      (\})
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.block.end.gdscript
+    patterns:
+      - match: |-
+          (?x)
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (?:
+            (=)
+            [ \t]*
+            ([+-]?)
+            [ \t]*
+            ([0-9]*)
+          )?
+          (,)?
+          # regex-end
+        captures:
+          "1":
+            name: variable.other.enummember.gdscript
+          "2":
+            name: punctuation.separator.key-value.enum.gdscript
+          "3":
+            name: keyword.operator.arithmetic.gdscript
+          "4":
+            name: constant.numeric.dec.gdscript
+          "5":
+            name: punctuation.separator.comma.gdscript
+
+  signal-declaration:
+    name: meta.signal.gdscript
+    begin: |-
+      (?x)
+      \b(signal)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        \(
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.function.gdscript storage.type.signal.gdscript"
+    end: |-
+      (?x)
+      (?=[#'"\n])
+      # regex-end
+    patterns:
+      - comment: "Signal name"
+        patterns:
+          - include: "#virtual-methods"
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - include: "#_parameters"
+      - include: "#line-continuation"
+
+  function-and-lambda-declaration:
+    name: meta.function.gdscript
+    begin: |-
+      (?x)
+      [ \t]*
+      (?:
+        \b(static)
+        [ \t]+
+      )?
+      \b(func)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)?
+        [ \t]*
+        \(
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.modifier.static.gdscript
+      "2":
+        name: storage.type.function.gdscript
+    end: |-
+      (?x)
+      (:|(?=[;#\n]))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.function.begin.gdscript
+    patterns:
+      - comment: "Function name"
+        patterns:
+          - include: "#virtual-methods"
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.function.definition.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - include: "#_parameters"
+      - include: "#line-continuation"
+      - comment: "Return type annotation"
+        begin: |-
+          (?x)
+          (->)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.result.gdscript
+        end: |-
+          (?x)
+          (?=[:;#\n])
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+
+  _parameters:
+    name: meta.function.parameters.gdscript
+    begin: |-
+      (?x)
+      (\()
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.parameters.begin.gdscript
+    end: |-
+      (?x)
+      (\))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.parameters.end.gdscript
+    patterns:
+      - name: keyword.operator.unpacking.parameter.gdscript
+        match: |-
+          (?x)
+          (\.\.\.)
+          # regex-end
+      - include: "#function-and-lambda-declaration"
+      - comment: "'self' parameter"
+        match: |-
+          (?x)
+          \b(self)\b
+          [ \t]*
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        captures:
+          "1":
+            name: variable.parameter.function.language.special.self.gdscript
+          "2":
+            name: punctuation.separator.parameters.gdscript
+      - match: |-
+          (?x)
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        captures:
+          "1":
+            name: variable.parameter.function.language.gdscript
+          "2":
+            name: punctuation.separator.parameters.gdscript
+      - include: "#comment-documentation"
+      - include: "#comment"
+      - comment: "Default value"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (?<!=)(=)(?!=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.separator.parameters.gdscript
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated parameter"
+        begin: |-
+          (?x)
+          ([A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (:)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: variable.parameter.function.language.gdscript
+          "2":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?:
+            (,)
+            | (?=[)#\n=])
+          )
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.separator.parameters.gdscript
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (?<!=)(=)(?!=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+
+  const-definition:
+    name: meta.const.definition.gdscript
+    begin: |-
+      (?x)
+      \b(const)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        ([:=])
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.const.gdscript
+    end: |-
+      (?x)
+      (?=[;#\n])
+      # regex-end
+    patterns:
+      - comment: "Const name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.constant.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - comment: "Untyped initializer"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?=[;#\n])
+          # regex-end
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated initializer"
+        begin: |-
+          (?x)
+          \b
+          [ \t]*
+          (:)(?![=])
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?=[;#\n])
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+      - include: "#line-continuation"
+
+  var-declaration-and-definition:
+    name: meta.var.definition.gdscript
+    begin: |-
+      (?x)
+      (?:
+        \b(static)
+        [ \t]+
+      )?
+      \b(var)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        ([:=])?
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.modifier.static.gdscript
+      "2":
+        name: storage.type.var.gdscript
+    end: |-
+      (?x)
+      (:)?
+      (?=[;#\n])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.setter-getter.begin.gdscript
+    patterns:
+      - comment: "Var name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.readwrite.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - comment: "Untyped initializer"
+        begin: |-
+          (?x)
+          (?:
+            (:=)
+            | (=)
+          )
+          # regex-end
+        beginCaptures:
+          "1":
+            name: keyword.operator.assignment.infer.gdscript
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+        end: |-
+          (?x)
+          (?=[:;#\n])
+          # regex-end
+        patterns:
+          - include: "#expression"
+      - comment: "Type annotated initializer"
+        begin: |-
+          (?x)
+          \b
+          [ \t]*
+          (:)(?![=])
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.separator.annotation.gdscript
+        end: |-
+          (?x)
+          (?=[:;#\n])
+          # regex-end
+        patterns:
+          - include: "#_type-annotation"
+          - match: |-
+              (?x)
+              (=)
+              # regex-end
+            captures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+          - include: "#expression"
+      - include: "#line-continuation"
+
+  var-setter-getter:
+    patterns:
+      - comment: "Getter assignment"
+        match: |-
+          (?x)
+          \b(get)\b
+          [ \t]*
+          (=)
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)?
+          [ \t]*
+          (,)?
+          # regex-end
+        captures:
+          "1":
+            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+          "3":
+            name: entity.name.function.definition.gdscript
+          "4":
+            name: punctuation.separator.comma.gdscript
+      - comment: "Getter definition"
+        match: |-
+          (?x)
+          \b(get)\b
+          [ \t]*
+          (:)
+          # regex-end
+        captures:
+          "1":
+            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
+          "2":
+            name: punctuation.section.function.begin.gdscript
+      - comment: "Setter assignment"
+        match: |-
+          (?x)
+          \b(set)\b
+          [ \t]*
+          (=)
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)?
+          [ \t]*
+          (,)?
+          # regex-end
+        captures:
+          "1":
+            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
+          "2":
+            name: keyword.operator.assignment.equal.gdscript
+          "3":
+            name: entity.name.function.definition.gdscript
+          "4":
+            name: punctuation.separator.comma.gdscript
+      - comment: "Setter definition"
+        match: |-
+          (?x)
+          \b(set)\b
+          [ \t]*
+          (\()
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)?
+          [ \t]*
+          (\))
+          [ \t]*
+          (:)?
+          # regex-end
+        captures:
+          "1":
+            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
+          "2":
+            name: punctuation.definition.parameters.begin.gdscript
+          "3":
+            name: variable.parameter.function.language.gdscript
+          "4":
+            name: punctuation.definition.parameters.end.gdscript
+          "5":
+            name: punctuation.section.function.begin.gdscript
 
   # ----------------------------------------------
   # NOTE: Built-Ins
