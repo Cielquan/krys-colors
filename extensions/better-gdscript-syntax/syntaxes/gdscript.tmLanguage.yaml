@@ -1118,6 +1118,15 @@ repository:
             # @GlobalScope - meth - END
           )\b
           # regex-end
+      - name: support.function.builtin.gdscript
+        match: |-
+          (?x)
+          \b(?:
+            int
+            | float
+            | bool
+          )\b
+          # regex-end
 
   class-name-declaration:
     name: meta.class.declaration.gdscript
