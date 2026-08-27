@@ -101,9 +101,7 @@ def extract_data_from_globals_xml_source(
     return data
 
 
-def extract_grammar_regexes_for_globals(
-    file_stem: str,
-) -> DataDict:
+def extract_grammar_regexes(group_name: str) -> DataDict:
     data: DataDict = {}
 
     source_lines = grammar_file.read_text().splitlines()
@@ -111,8 +109,8 @@ def extract_grammar_regexes_for_globals(
     for cat in CATEGORIES:
         data[cat] = []
 
-        start_marker = f"# {file_stem} - {cat} - START"
-        end_marker = f"# {file_stem} - {cat} - END"
+        start_marker = f"# {group_name} - {cat} - START"
+        end_marker = f"# {group_name} - {cat} - END"
         start_marker_indexes = []
         end_marker_indexes = []
         for idx, line in enumerate(source_lines):
@@ -123,7 +121,7 @@ def extract_grammar_regexes_for_globals(
 
         if len(start_marker_indexes) != len(end_marker_indexes):
             raise AssertionError(
-                f"Unequal amount of start and end marker comments: '{file_stem} - {cat}'"
+                f"Unequal amount of start and end marker comments: '{group_name} - {cat}'"
             )
 
         for i in range(len(start_marker_indexes)):
@@ -131,7 +129,7 @@ def extract_grammar_regexes_for_globals(
             end_idx = end_marker_indexes[i]
             if start_idx >= end_idx:
                 raise AssertionError(
-                    f"Start idx ({start_idx}) > end idx ({end_idx}): '{file_stem} - {cat}'"
+                    f"Start idx ({start_idx}) > end idx ({end_idx}): '{group_name} - {cat}'"
                 )
             regex_source = source_lines[(start_idx + 1) : end_idx]
             data[cat].append(f"(?x){'\n'.join(regex_source)}")
@@ -194,8 +192,8 @@ def main() -> int:
         globals_grammar_regex_sources = {}
         for source_file in SOURCE_FILES:
             logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
-            globals_grammar_regex_sources[source_file.name] = (
-                extract_grammar_regexes_for_globals(source_file.stem)
+            globals_grammar_regex_sources[source_file.name] = extract_grammar_regexes(
+                source_file.stem
             )
 
         globals_comparison_results = {}
