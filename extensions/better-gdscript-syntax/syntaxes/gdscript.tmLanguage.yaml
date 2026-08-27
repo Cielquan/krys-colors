@@ -4482,7 +4482,7 @@ repository:
             | value_changed                                     (?# Range)
             | world_boundary_shape_create                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'add_' prefix"
@@ -4501,7 +4501,7 @@ repository:
               | named_global_constant                           (?# ScriptLanguageExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'apply_' prefix"
@@ -4521,7 +4521,7 @@ repository:
               | torque_impulse                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'area_' prefix"
@@ -4563,7 +4563,7 @@ repository:
               | set_transform                                   (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'begin_' prefix"
@@ -4579,7 +4579,7 @@ repository:
               | handle_action                                   (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'body_' prefix"
@@ -4660,7 +4660,7 @@ repository:
               | test_motion                                     (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'can_' prefix"
@@ -4685,7 +4685,7 @@ repository:
               | use_render_priority                             (?# Material)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'commit_' prefix"
@@ -4700,7 +4700,7 @@ repository:
               | subgizmos                                       (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'cone_' prefix"
@@ -4715,7 +4715,7 @@ repository:
               | twist_joint_set_param                           (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'create_' prefix"
@@ -4736,7 +4736,7 @@ repository:
               | shaped_text                                     (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'customize_' prefix"
@@ -4752,7 +4752,7 @@ repository:
               | strings                                         (?# EditorTranslationParserPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'damped_' prefix"
@@ -4767,7 +4767,7 @@ repository:
               | spring_joint_set_param                          (?# PhysicsServer2DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'debug_' prefix"
@@ -4791,7 +4791,7 @@ repository:
               | parse_stack_level_expression                    (?# ScriptLanguageExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'draw_' prefix"
@@ -4809,7 +4809,7 @@ repository:
               | rect_region                                     (?# Texture2D)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'end_' prefix"
@@ -4827,7 +4827,7 @@ repository:
               | sync                                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'export_' prefix"
@@ -4848,7 +4848,7 @@ repository:
               | zip_patch                                       (?# EditorExportPlatformExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'filter_' prefix"
@@ -4863,7 +4863,7 @@ repository:
               | neighbor                                        (?# AStar2D / AStar3D)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'font_' prefix"
@@ -5007,7 +5007,7 @@ repository:
               | supported_variation_list                        (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'forward_' prefix"
@@ -5026,7 +5026,7 @@ repository:
               | canvas_gui_input                                (?# EditorPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'generate_' prefix"
@@ -5041,7 +5041,7 @@ repository:
               | small_preview_automatically                     (?# EditorResourcePreviewGenerator)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'generic_' prefix"
@@ -5060,7 +5060,7 @@ repository:
               | 6dof_joint_set_param                            (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'get_' prefix"
@@ -5311,7 +5311,7 @@ repository:
               | window_layout                                   (?# EditorPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'handle_' prefix"
@@ -5326,7 +5326,7 @@ repository:
               | unicode_input                                   (?# TextEdit)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'handles_' prefix"
@@ -5342,7 +5342,7 @@ repository:
               | type                                            (?# ResourceFormatLoader)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'has_' prefix"
@@ -5372,7 +5372,7 @@ repository:
               | valid_project_configuration                     (?# EditorExportPlatformExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'hinge_' prefix"
@@ -5389,7 +5389,7 @@ repository:
               | joint_set_param                                 (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'instance_' prefix"
@@ -5404,7 +5404,7 @@ repository:
               | has                                             (?# ScriptExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'intersect_' prefix"
@@ -5420,7 +5420,7 @@ repository:
               | shape                                           (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'is_' prefix"
@@ -5462,7 +5462,7 @@ repository:
               | valid_letter                                    (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'iter_' prefix"
@@ -5478,7 +5478,7 @@ repository:
               | next                                            (?# Object)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'joint_' prefix"
@@ -5508,7 +5508,7 @@ repository:
               | set_solver_priority                             (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'load_' prefix"
@@ -5524,7 +5524,7 @@ repository:
               | support_data                                    (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'log_' prefix"
@@ -5539,7 +5539,7 @@ repository:
               | message                                         (?# Logger)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'make_' prefix"
@@ -5557,7 +5557,7 @@ repository:
               | visible                                         (?# EditorPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'mouse_' prefix"
@@ -5574,7 +5574,7 @@ repository:
               | shape_exit                                      (?# CollisionObject2D)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'object_' prefix"
@@ -5589,7 +5589,7 @@ repository:
               | configuration_remove                            (?# MultiplayerAPIExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'parse_' prefix"
@@ -5610,7 +5610,7 @@ repository:
               | structured_text                                 (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'pin_' prefix"
@@ -5631,7 +5631,7 @@ repository:
               | joint_set_param                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'placeholder_' prefix"
@@ -5646,7 +5646,7 @@ repository:
               | instance_create                                 (?# ScriptExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'post_' prefix"
@@ -5663,7 +5663,7 @@ repository:
               | process_key_value                               (?# AnimationMixer)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'pre_' prefix"
@@ -5679,7 +5679,7 @@ repository:
               | render                                          (?# XRInterfaceExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'process_' prefix"
@@ -5697,7 +5697,7 @@ repository:
               | silence                                         (?# AudioEffectInstance)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'profiling_' prefix"
@@ -5715,7 +5715,7 @@ repository:
               | stop                                            (?# ScriptLanguageExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'property_' prefix"
@@ -5730,7 +5730,7 @@ repository:
               | get_revert                                      (?# Object)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'put_' prefix"
@@ -5747,7 +5747,7 @@ repository:
               | partial_data                                    (?# StreamPeerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'reload_' prefix"
@@ -5763,7 +5763,7 @@ repository:
               | tool_script                                     (?# ScriptLanguageExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'remove_' prefix"
@@ -5779,7 +5779,7 @@ repository:
               | remote                                          (?# EditorVCSInterface)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'save_' prefix"
@@ -5795,7 +5795,7 @@ repository:
               | support_data                                    (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'set_' prefix"
@@ -5846,7 +5846,7 @@ repository:
               | window_layout                                   (?# EditorPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'setup_' prefix"
@@ -5862,7 +5862,7 @@ repository:
               | session                                         (?# EditorDebuggerPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'shape_' prefix"
@@ -5883,7 +5883,7 @@ repository:
               | set_margin                                      (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'shaped_' prefix"
@@ -5978,7 +5978,7 @@ repository:
               | text_update_justification_ops                   (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'slider_' prefix"
@@ -5993,7 +5993,7 @@ repository:
               | joint_set_param                                 (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'soft_' prefix"
@@ -6046,7 +6046,7 @@ repository:
               | body_update_rendering_server                    (?# PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'space_' prefix"
@@ -6068,7 +6068,7 @@ repository:
               | set_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'string_' prefix"
@@ -6086,7 +6086,7 @@ repository:
               | to_upper                                        (?# TextServerExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'subgizmos_' prefix"
@@ -6101,7 +6101,7 @@ repository:
               | intersect_ray                                   (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'supports_' prefix"
@@ -6118,7 +6118,7 @@ repository:
               | play_area_mode                                  (?# XRInterfaceExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'surface_' prefix"
@@ -6140,7 +6140,7 @@ repository:
               | set_material                                    (?# Mesh)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'tag_' prefix"
@@ -6155,7 +6155,7 @@ repository:
               | used_streams                                    (?# AudioStreamPlayback)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'thread_' prefix"
@@ -6170,7 +6170,7 @@ repository:
               | exit                                            (?# ScriptLanguageExtension)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'unhandled_' prefix"
@@ -6185,7 +6185,7 @@ repository:
               | key_input                                       (?# Node)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'update_' prefix"
@@ -6204,7 +6204,7 @@ repository:
               | property                                        (?# EditorProperty)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'validate_' prefix"
@@ -6220,7 +6220,7 @@ repository:
               | property                                        (?# Object)
             )
           ))
-          # Classes - virtual - START
+          # Classes - virtual - END
           \b
           # regex-end
       - comment: "'write_' prefix"
