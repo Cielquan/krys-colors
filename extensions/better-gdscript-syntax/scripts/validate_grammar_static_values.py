@@ -195,6 +195,9 @@ def check_source_against_grammar_regexes(
             if not any(regex.search(source_name) for regex in regexes)
         ]
 
+        if len(results[cat]) == 0:
+            del results[cat]
+
     return results
 
 
