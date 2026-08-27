@@ -178,7 +178,7 @@ def main() -> int:
         )
         repo_dir = temp_dir / "godot"
 
-        godot_globals_source_data = {}
+        godot_source_data = {}
         for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Sparse-checkout: {source_file.parent}")
             subprocess.check_call(
@@ -187,24 +187,24 @@ def main() -> int:
             )
 
             logger.info(f"Extracting data from '{source_file}'")
-            godot_globals_source_data[source_file.name] = (
-                extract_globals_data_from_xml_source(repo_dir / source_file)
+            godot_source_data[source_file.name] = extract_globals_data_from_xml_source(
+                repo_dir / source_file
             )
 
-        globals_grammar_regex_sources = {}
+        grammar_regex_sources = {}
         for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Extracting grammar regexes for '{source_file.stem}'")
-            globals_grammar_regex_sources[source_file.name] = extract_grammar_regexes(
+            grammar_regex_sources[source_file.name] = extract_grammar_regexes(
                 source_file.stem
             )
 
-        globals_comparison_results = {}
+        comparison_results = {}
         for source_file in GLOBALS_SOURCE_FILES:
             logger.info(f"Check missing values for '{source_file.stem}'")
-            globals_comparison_results[source_file.name] = (
+            comparison_results[source_file.name] = (
                 check_globals_source_against_grammar_regexes(
-                    godot_globals_source_data[source_file.name],
-                    globals_grammar_regex_sources[source_file.name],
+                    godot_source_data[source_file.name],
+                    grammar_regex_sources[source_file.name],
                 )
             )
 
@@ -213,14 +213,14 @@ def main() -> int:
         if any(
             len(r.get(cat, []))
             for cat in CATEGORIES
-            for r in globals_comparison_results.values()
+            for r in comparison_results.values()
         )
         else 0
     )
 
     if rv:
         logger.error("Grammar file is missing values, see below.")
-        json_str = json.dumps(globals_comparison_results, indent=2)
+        json_str = json.dumps(comparison_results, indent=2)
         logger.error(json_str)
         (out_file).write_text(json_str)
 
