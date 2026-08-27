@@ -60,103 +60,6 @@ repository:
           - include: "#_type-annotation"
       - include: "#line-continuation"
 
-  dict-literal:
-    name: meta.literal.dict.gdscript
-    begin: |-
-      (?x)
-      ([{])
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.dict.begin.gdscript
-    end: |-
-      (?x)
-      ([}])
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.dict.end.gdscript
-    patterns:
-      - name: punctuation.separator.key-value.gdscript
-        match: |-
-          (?x)
-          (:)
-          # regex-end
-      - name: punctuation.separator.comma.gdscript
-        match: |-
-          (?x)
-          (,)
-          # regex-end
-      - name: keyword.operator.unpacking.pattern.gdscript
-        match: |-
-          (?x)
-          (\.\.)
-          # regex-end
-      - include: "#_match-pattern-var-declaration"
-      - include: "#expression"
-
-  array-literal:
-    name: meta.literal.array.gdscript
-    begin: |-
-      (?x)
-      (\[)
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.array.begin.gdscript
-    end: |-
-      (?x)
-      (\])
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.array.end.gdscript
-    patterns:
-      - name: punctuation.separator.comma.gdscript
-        match: |-
-          (?x)
-          (,)
-          # regex-end
-      - name: keyword.operator.unpacking.pattern.gdscript
-        match: |-
-          (?x)
-          (\.\.)
-          # regex-end
-      - include: "#_match-pattern-var-declaration"
-      - include: "#expression"
-
-  _match-pattern-var-declaration:
-    name: meta.pattern.var.declaration.gdscript
-    begin: |-
-      (?x)
-      \b(var)
-      [ \t]+
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)
-        [ \t]*
-      )
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.var.gdscript
-    end: |-
-      (?x)
-      (?=[,\]}])
-      # regex-end
-    patterns:
-      - comment: "Var name"
-        patterns:
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: variable.other.readwrite.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-
   annotation:
     patterns:
       - comment: "Without arguments"
@@ -411,49 +314,6 @@ repository:
       - include: "#_type-annotation"
       - include: "#expression"
 
-  _number:
-    patterns:
-      - name: constant.numeric.hex.gdscript
-        match: |-
-          (?x)
-          \b(0[Xx])[A-Fa-f0-9][A-Fa-f0-9_]*
-          # regex-end
-        captures:
-          "1":
-            name: storage.type.number.gdscript
-
-      - name: constant.numeric.bin.gdscript
-        match: |-
-          (?x)
-          \b(0[Bb])[0-1][0-1_]*
-          # regex-end
-        captures:
-          "1":
-            name: storage.type.number.gdscript
-
-      - name: constant.numeric.float.gdscript
-        match: |-
-          (?x)
-          \b(
-            ([0-9][0-9_]*)\.([0-9][0-9_]*)?
-            | ([0-9][0-9_]*)?\.([0-9][0-9_]*)
-          )
-          ([Ee][+-]?([0-9][0-9_]*))?
-          # regex-end
-
-      - name: constant.numeric.dec.gdscript
-        match: |-
-          (?x)
-          \b[0-9][0-9_]*
-          # regex-end
-
-      - comment: fallback for malformed numbers
-        name: invalid.illegal.name.gdscript
-        match: |-
-          (?x)
-          \b[0-9]+[A-Za-z_]+
-          # regex-end
-
   _reserved-keyword:
     name: invalid.illegal.word.gdscript
     match: |-
@@ -464,462 +324,6 @@ repository:
         | yield
       )\b
       # regex-end
-
-  _string-quoted-multi-line:
-    name: string.quoted.multi.gdscript
-    begin: |-
-      (?x)
-      ('''|""")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.string.begin.multi.gdscript
-    end: |-
-      (?x)
-      (\1)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.multi.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-quoted-single-line:
-    name: string.quoted.single.gdscript
-    begin: |-
-      (?x)
-      ('|")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: punctuation.definition.string.begin.gdscript
-    end: |-
-      (?x)
-      (\1)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-raw-quoted-multi-line:
-    name: string.quoted.raw.multi.gdscript
-    begin: |-
-      (?x)
-      (r)('''|""")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.raw.gdscript
-      "2":
-        name: punctuation.definition.string.begin.multi.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.multi.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-raw"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-raw-quoted-single-line:
-    name: string.quoted.raw.single.gdscript
-    begin: |-
-      (?x)
-      (r)('|")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.raw.gdscript
-      "2":
-        name: punctuation.definition.string.begin.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-raw"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-name-quoted-multi-line:
-    name: string.string-name.quoted.multi.gdscript
-    begin: |-
-      (?x)
-      (&)('''|""")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.string-name.gdscript
-      "2":
-        name: punctuation.definition.string.string-name.begin.multi.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.string-name.end.multi.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-name-quoted-single-line:
-    name: string.string-name.quoted.single.gdscript
-    begin: |-
-      (?x)
-      (&)('|")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.string-name.gdscript
-      "2":
-        name: punctuation.definition.string.string-name.begin.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.string-name.end.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-node-path-quoted-multi-line:
-    name: string.node-path.quoted.multi.gdscript
-    begin: |-
-      (?x)
-      (\^)('''|""")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.node-path.gdscript
-      "2":
-        name: punctuation.definition.string.node-path.begin.multi.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.node-path.end.multi.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-node-path-quoted-single-line:
-    name: string.node-path.quoted.single.gdscript
-    begin: |-
-      (?x)
-      (\^)('|")
-      # regex-end
-    beginCaptures:
-      "1":
-        name: storage.type.string.node-path.gdscript
-      "2":
-        name: punctuation.definition.string.node-path.begin.gdscript
-    end: |-
-      (?x)
-      (\2)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.node-path.end.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-
-  _string-line-continuation:
-    name: punctuation.separator.continuation.line.string.gdscript
-    match: |-
-      (?x)
-      \\$
-      # regex-end
-
-  _string-escape-sequence-unicode:
-    name: constant.character.escape.gdscript
-    match: |-
-      (?x)
-      \\(
-          u[A-Fa-f0-9]{4}
-          | U[A-Fa-f0-9]{6}
-        )
-      # regex-end
-
-  _string-escape-sequence:
-    name: constant.character.escape.gdscript
-    match: |-
-      (?x)
-      \\(
-          [\\"'abfnrtv]
-        )
-      # regex-end
-
-  _string-escape-sequence-raw:
-    name: constant.character.escape.gdscript
-    match: |-
-      (?x)
-      \\(
-          [\\"']
-        )
-      # regex-end
-
-  _string-escape-sequence-unicode-named:
-    name: invalid.illegal.escape.gdscript
-    match: |-
-      (?x)
-      \\(
-          N\{.*?\}
-        )
-      # regex-end
-
-  _string-escape-sequence-byte:
-    name: invalid.illegal.escape.gdscript
-    match: |-
-      (?x)
-      \\(
-          x[A-Fa-f0-9]{2}
-        )
-      # regex-end
-
-  _string-formatting:
-    name: meta.format.percent.gdscript
-    match: |-
-      (?x)
-      (?:
-        (%%)
-        | (?:
-            (%)
-            (
-              ([-+0 ]*)
-              ([0-9]+|\*)? (\.([0-9]+|\*))?
-              ([Xcdfosvx])
-            )
-          )
-      )
-      # regex-end
-    captures:
-      "1":
-        name: constant.character.escape.gdscript
-      "2":
-        name: constant.character.format.placeholder.other.gdscript
-      "3":
-        name: storage.type.format.gdscript
-
-  _string-brace-formatting:
-    name: "meta.format.brace.gdscript"
-    match: |-
-      (?x)
-      (
-        {
-          ([^\}"']*)
-        }
-      )
-      # regex-end
-    captures:
-      "1":
-        name: "constant.character.format.placeholder.other.gdscript"
-
-  _node-reference:
-    patterns:
-      - include: "#_node-reference-quoted-multi"
-      - include: "#_node-reference-quoted-single"
-      - include: "#_node-reference-unquoted"
-
-  _node-reference-quoted-multi:
-    name: "string.quoted.multi.gdscript meta.literal.node-reference.gdscript"
-    begin: |-
-      (?x)
-      (?:
-        (\$)
-        | (%)
-        | (?:(\$)(%))
-      )
-      ("""|''')
-      # regex-end
-    beginCaptures:
-      "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "5":
-        name: punctuation.definition.string.begin.multi.gdscript
-    end: |-
-      (?x)
-      (\3)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.multi.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-      - match: |-
-          (?x)
-          %
-          # regex-end
-        name: punctuation.definition.node-reference.unique.gdscript
-      - match: |-
-          (?x)
-          /
-          # regex-end
-        name: punctuation.separator.path.gdscript
-      - match: |-
-          (?x)
-          :
-          # regex-end
-        name: punctuation.separator.property.gdscript
-
-  _node-reference-quoted-single:
-    name: "string.quoted.single.gdscript meta.literal.node-reference.gdscript"
-    begin: |-
-      (?x)
-      (?:
-        (\$)
-        | (%)
-        | (?:(\$)(%))
-      )
-      ("|')
-      # regex-end
-    beginCaptures:
-      "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "5":
-        name: punctuation.definition.string.begin.gdscript
-    end: |-
-      (?x)
-      (\5)
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.string.end.gdscript
-    patterns:
-      - include: "#_string-escape-sequence-unicode"
-      - include: "#_string-escape-sequence"
-      - include: "#_string-escape-sequence-byte"
-      - include: "#_string-escape-sequence-unicode-named"
-      - include: "#_string-line-continuation"
-      - include: "#_string-formatting"
-      - include: "#_string-brace-formatting"
-      - match: |-
-          (?x)
-          %
-          # regex-end
-        name: punctuation.definition.node-reference.unique.gdscript
-      - match: |-
-          (?x)
-          /
-          # regex-end
-        name: punctuation.separator.path.gdscript
-      - match: |-
-          (?x)
-          :
-          # regex-end
-        name: punctuation.separator.property.gdscript
-
-  _node-reference-unquoted:
-    name: string.unquoted.gdscript meta.literal.node-reference.bare.gdscript
-    begin: |-
-      (?x)
-      (?:(\$)|(%)|(?:(\$)(%)))
-      [ \t]*
-      (/)?
-      [ \t]*
-      ([A-Za-z_][A-Za-z0-9_]*)
-      # regex-end
-    beginCaptures:
-      "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
-      "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
-      "5":
-        name: punctuation.separator.path.gdscript
-    end: |-
-      (?x)
-      (?!
-        [ \t]*
-        /
-        [ \t]*
-        %?
-        [ \t]*
-        [A-Za-z_][A-Za-z0-9_]*
-      )
-      # regex-end
-    patterns:
-      - include: "#line-continuation"
-      - match: |-
-          (?x)
-          [ \t]*
-          (/)
-          [ \t]*
-          (%)?
-          [ \t]*
-          ([A-Za-z_][A-Za-z0-9_]*)
-          # regex-end
-        captures:
-          "1":
-            name: punctuation.separator.path.gdscript
-          "2":
-            name: punctuation.definition.node-reference.unique.gdscript
 
   _operator-bitwise:
     match: |-
@@ -2514,6 +1918,571 @@ repository:
             name: punctuation.definition.parameters.end.gdscript
           "5":
             name: punctuation.section.function.begin.gdscript
+
+  # ----------------------------------------------
+  # NOTE: Literals
+  # ----------------------------------------------
+
+  numbers:
+    patterns:
+      - name: constant.numeric.hex.gdscript
+        match: |-
+          (?x)
+          \b(0[Xx])[A-Fa-f0-9][A-Fa-f0-9_]*
+          # regex-end
+        captures:
+          "1":
+            name: storage.type.number.gdscript
+
+      - name: constant.numeric.bin.gdscript
+        match: |-
+          (?x)
+          \b(0[Bb])[0-1][0-1_]*
+          # regex-end
+        captures:
+          "1":
+            name: storage.type.number.gdscript
+
+      - name: constant.numeric.float.gdscript
+        match: |-
+          (?x)
+          \b(
+            ([0-9][0-9_]*)\.([0-9][0-9_]*)?
+            | ([0-9][0-9_]*)?\.([0-9][0-9_]*)
+          )
+          ([Ee][+-]?([0-9][0-9_]*))?
+          # regex-end
+
+      - name: constant.numeric.dec.gdscript
+        match: |-
+          (?x)
+          \b[0-9][0-9_]*
+          # regex-end
+
+      - comment: fallback for malformed numbers
+        name: invalid.illegal.name.gdscript
+        match: |-
+          (?x)
+          \b[0-9]+[A-Za-z_]+
+          # regex-end
+
+  string-quoted-multi-line:
+    name: string.quoted.multi.gdscript
+    begin: |-
+      (?x)
+      ('''|""")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.string.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\1)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  string-quoted-single-line:
+    name: string.quoted.single.gdscript
+    begin: |-
+      (?x)
+      ('|")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.string.begin.gdscript
+    end: |-
+      (?x)
+      (\1)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  string-raw-quoted-multi-line:
+    name: string.quoted.raw.multi.gdscript
+    begin: |-
+      (?x)
+      (r)('''|""")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.raw.gdscript
+      "2":
+        name: punctuation.definition.string.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-raw"
+      - include: "#_string-formattings"
+
+  string-raw-quoted-single-line:
+    name: string.quoted.raw.single.gdscript
+    begin: |-
+      (?x)
+      (r)('|")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.raw.gdscript
+      "2":
+        name: punctuation.definition.string.begin.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-raw"
+      - include: "#_string-formattings"
+
+  string-name-quoted-multi-line:
+    name: string.string-name.quoted.multi.gdscript
+    begin: |-
+      (?x)
+      (&)('''|""")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.string-name.gdscript
+      "2":
+        name: punctuation.definition.string.string-name.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.string-name.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  string-name-quoted-single-line:
+    name: string.string-name.quoted.single.gdscript
+    begin: |-
+      (?x)
+      (&)('|")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.string-name.gdscript
+      "2":
+        name: punctuation.definition.string.string-name.begin.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.string-name.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  string-node-path-quoted-multi-line:
+    name: string.node-path.quoted.multi.gdscript
+    begin: |-
+      (?x)
+      (\^)('''|""")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.node-path.gdscript
+      "2":
+        name: punctuation.definition.string.node-path.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.node-path.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  string-node-path-quoted-single-line:
+    name: string.node-path.quoted.single.gdscript
+    begin: |-
+      (?x)
+      (\^)('|")
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.string.node-path.gdscript
+      "2":
+        name: punctuation.definition.string.node-path.begin.gdscript
+    end: |-
+      (?x)
+      (\2)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.node-path.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+
+  node-reference-quoted-multi:
+    name: "string.quoted.multi.gdscript meta.literal.node-reference.gdscript"
+    begin: |-
+      (?x)
+      (?:
+        (\$)
+        | (%)
+        | (?:(\$)(%))
+      )
+      ("""|''')
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "2":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "4":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "5":
+        name: punctuation.definition.string.begin.multi.gdscript
+    end: |-
+      (?x)
+      (\3)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.multi.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+      - match: |-
+          (?x)
+          %
+          # regex-end
+        name: punctuation.definition.node-reference.unique.gdscript
+      - match: |-
+          (?x)
+          /
+          # regex-end
+        name: punctuation.separator.path.gdscript
+      - match: |-
+          (?x)
+          :
+          # regex-end
+        name: punctuation.separator.property.gdscript
+
+  node-reference-quoted-single:
+    name: "string.quoted.single.gdscript meta.literal.node-reference.gdscript"
+    begin: |-
+      (?x)
+      (?:
+        (\$)
+        | (%)
+        | (?:(\$)(%))
+      )
+      ("|')
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "2":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "4":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "5":
+        name: punctuation.definition.string.begin.gdscript
+    end: |-
+      (?x)
+      (\5)
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.string.end.gdscript
+    patterns:
+      - include: "#_string-escape-sequences-normal"
+      - include: "#_string-line-continuation"
+      - include: "#_string-formattings"
+      - match: |-
+          (?x)
+          %
+          # regex-end
+        name: punctuation.definition.node-reference.unique.gdscript
+      - match: |-
+          (?x)
+          /
+          # regex-end
+        name: punctuation.separator.path.gdscript
+      - match: |-
+          (?x)
+          :
+          # regex-end
+        name: punctuation.separator.property.gdscript
+
+  node-reference-unquoted:
+    name: string.unquoted.gdscript meta.literal.node-reference.bare.gdscript
+    begin: |-
+      (?x)
+      (?:(\$)|(%)|(?:(\$)(%)))
+      [ \t]*
+      (/)?
+      [ \t]*
+      ([A-Za-z_][A-Za-z0-9_]*)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "2":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "3":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+      "4":
+        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+      "5":
+        name: punctuation.separator.path.gdscript
+    end: |-
+      (?x)
+      (?!
+        [ \t]*
+        /
+        [ \t]*
+        %?
+        [ \t]*
+        [A-Za-z_][A-Za-z0-9_]*
+      )
+      # regex-end
+    patterns:
+      - include: "#line-continuation"
+      - match: |-
+          (?x)
+          [ \t]*
+          (/)
+          [ \t]*
+          (%)?
+          [ \t]*
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.separator.path.gdscript
+          "2":
+            name: punctuation.definition.node-reference.unique.gdscript
+
+  _string-escape-sequences-normal:
+    patterns:
+      - comment: "Character string escape sequences"
+        name: constant.character.escape.gdscript
+        match: |-
+          (?x)
+          \\(
+              [\\"'abfnrtv]
+            )
+          # regex-end
+
+      - comment: "Unicode string escape sequences"
+        name: constant.character.escape.gdscript
+        match: |-
+          (?x)
+          \\(
+              u[A-Fa-f0-9]{4}
+              | U[A-Fa-f0-9]{6}
+            )
+          # regex-end
+
+      - comment: "Invalid named unicode string escape sequence"
+        name: invalid.illegal.escape.gdscript
+        match: |-
+          (?x)
+          \\(
+              N\{.*?\}
+            )
+          # regex-end
+
+      - comment: "Invalid byte sequence string escape sequence"
+        name: invalid.illegal.escape.gdscript
+        match: |-
+          (?x)
+          \\(
+              x[A-Fa-f0-9]{2}
+            )
+          # regex-end
+
+  _string-escape-sequences-raw:
+    patterns:
+      - name: constant.character.escape.gdscript
+        match: |-
+          (?x)
+          \\(
+              [\\"']
+            )
+          # regex-end
+
+  _string-line-continuation:
+    name: punctuation.separator.continuation.line.string.gdscript
+    match: |-
+      (?x)
+      \\$
+      # regex-end
+
+  _string-formattings:
+    patterns:
+      - comment: "Percent style string formatting"
+        name: meta.format.percent.gdscript
+        match: |-
+          (?x)
+          (?:
+            (%%)
+            | (?:
+                (%)
+                (
+                  ([-+0 ]*)
+                  ([0-9]+|\*)? (\.([0-9]+|\*))?
+                  ([Xcdfosvx])
+                )
+              )
+          )
+          # regex-end
+        captures:
+          "1":
+            name: constant.character.escape.gdscript
+          "2":
+            name: constant.character.format.placeholder.other.gdscript
+          "3":
+            name: storage.type.format.gdscript
+
+      - comment: "Brace style string formatting"
+        name: "meta.format.brace.gdscript"
+        match: |-
+          (?x)
+          (
+            {
+              ([^\}"']*)
+            }
+          )
+          # regex-end
+        captures:
+          "1":
+            name: "constant.character.format.placeholder.other.gdscript"
+
+  dict-literal:
+    name: meta.literal.dict.gdscript
+    begin: |-
+      (?x)
+      ([{])
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.dict.begin.gdscript
+    end: |-
+      (?x)
+      ([}])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.dict.end.gdscript
+    patterns:
+      - name: punctuation.separator.key-value.gdscript
+        match: |-
+          (?x)
+          (:)
+          # regex-end
+      - name: punctuation.separator.comma.gdscript
+        match: |-
+          (?x)
+          (,)
+          # regex-end
+      - name: keyword.operator.unpacking.pattern.gdscript
+        match: |-
+          (?x)
+          (\.\.)
+          # regex-end
+      - include: "#_match-pattern-var-declarations"
+      - include: "#expression"
+
+  array-literal:
+    name: meta.literal.array.gdscript
+    begin: |-
+      (?x)
+      (\[)
+      # regex-end
+    beginCaptures:
+      "1":
+        name: punctuation.definition.array.begin.gdscript
+    end: |-
+      (?x)
+      (\])
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.array.end.gdscript
+    patterns:
+      - name: punctuation.separator.comma.gdscript
+        match: |-
+          (?x)
+          (,)
+          # regex-end
+      - name: keyword.operator.unpacking.pattern.gdscript
+        match: |-
+          (?x)
+          (\.\.)
+          # regex-end
+      - include: "#_match-pattern-var-declarations"
+      - include: "#expression"
+
+  _match-pattern-var-declarations:
+    name: meta.pattern.var.declaration.gdscript
+    begin: |-
+      (?x)
+      \b(var)
+      [ \t]+
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+      )
+      # regex-end
+    beginCaptures:
+      "1":
+        name: storage.type.var.gdscript
+    end: |-
+      (?x)
+      (?=[,\]}])
+      # regex-end
+    patterns:
+      - comment: "Var name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: variable.other.readwrite.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
 
   # ----------------------------------------------
   # NOTE: Built-Ins
