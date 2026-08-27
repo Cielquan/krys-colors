@@ -264,6 +264,12 @@ def main() -> int:
             grammar_regex_sources[source_file.stem],
         )
 
+    logger.info(f"Check missing values for '{classes_key}'")
+    comparison_results[classes_key] = check_source_against_grammar_regexes(
+        godot_source_data[classes_key],
+        grammar_regex_sources[classes_key],
+    )
+
     rv = (
         1
         if any(
