@@ -1856,6 +1856,38 @@ repository:
     patterns:
       - include: "#expression"
 
+  for-loop:
+    name: meta.loop.for.gdscript
+    begin: |-
+      (?x)
+      \b(for)
+      [ \t]+
+      ([A-Za-z_][A-Za-z0-9_]*)
+      (:)?
+      # regex-end
+    beginCaptures:
+      "1":
+        name: keyword.control.flow.for.gdscript
+      "2":
+        name: variable.other.readwrite.gdscript
+      "3":
+        name: punctuation.separator.annotation.gdscript
+    end: |-
+      (?x)
+      (:|(?=[;#\n]))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.section.loop.for.begin.gdscript
+    patterns:
+      - name: keyword.control.flow.in.gdscript
+        match: |-
+          (?x)
+          \b(in)\b
+          # regex-end
+      - include: "#_type-annotation"
+      - include: "#expression"
+
   _language-constants:
     patterns:
       - comment: "Number constants"
