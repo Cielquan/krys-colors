@@ -691,8 +691,8 @@ repository:
     patterns:
       - comment: "Signal name"
         patterns:
-          - include: "#_virtual-methods"
-          - include: "#_builtin-functions"
+          - include: "#_virtual-method"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -702,7 +702,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - include: "#_parameters"
+      - include: "#_parameter"
       - include: "#line-continuation"
 
   function-and-lambda-declaration:
@@ -737,8 +737,8 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
-          - include: "#_virtual-methods"
-          - include: "#_builtin-functions"
+          - include: "#_virtual-method"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -748,7 +748,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - include: "#_parameters"
+      - include: "#_parameter"
       - include: "#line-continuation"
       - comment: "Return type annotation"
         begin: |-
@@ -765,7 +765,7 @@ repository:
         patterns:
           - include: "#_type-annotation"
 
-  _parameters:
+  _parameter:
     name: meta.function.parameters.gdscript
     begin: |-
       (?x)
@@ -928,7 +928,7 @@ repository:
           - include: "#_type-annotation"
       - include: "#line-continuation"
 
-  _builtin-functions:
+  _builtin-function:
     patterns:
       - name: keyword.control.flow.gdscript
         match: |-
@@ -1315,7 +1315,7 @@ repository:
     patterns:
       - comment: "Const name"
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1402,7 +1402,7 @@ repository:
     patterns:
       - comment: "Var name"
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1622,7 +1622,7 @@ repository:
     patterns:
       - comment: "Var name"
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1698,7 +1698,7 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#_builtin-function"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
@@ -1887,7 +1887,7 @@ repository:
       - include: "#_type-annotation"
       - include: "#expression"
 
-  _language-constants:
+  _language-constant:
     patterns:
       - comment: "Number constants"
         match: |-
@@ -1927,7 +1927,7 @@ repository:
           "3":
             name: constant.language.null.gdscript
 
-  _numbers:
+  _number:
     patterns:
       - name: constant.numeric.hex.gdscript
         match: |-
@@ -1970,7 +1970,7 @@ repository:
           \b[0-9]+[A-Za-z_]+
           # regex-end
 
-  _reserved-keywords:
+  _reserved-keyword:
     name: invalid.illegal.word.gdscript
     match: |-
       (?x)
@@ -1980,19 +1980,6 @@ repository:
         | yield
       )\b
       # regex-end
-
-  _strings:
-    patterns:
-      - include: "#_string-quoted-multi-line"
-      - include: "#_string-quoted-single-line"
-      - include: "#_string-raw-quoted-multi-line"
-      - include: "#_string-raw-quoted-single-line"
-
-      - include: "#_string-name-quoted-multi-line"
-      - include: "#_string-name-quoted-single-line"
-
-      - include: "#_string-node-path-quoted-multi-line"
-      - include: "#_string-node-path-quoted-single-line"
 
   _string-quoted-multi-line:
     name: string.quoted.multi.gdscript
@@ -2750,7 +2737,7 @@ repository:
       "13":
         name: storage.type.function.gdscript storage.type.signal.gdscript
 
-  builtin-const:
+  builtin-constant:
     patterns:
       - name: constant.other.builtin.number.limit.gdscript
         match: |-
@@ -2811,7 +2798,7 @@ repository:
           (?=\.|\b)
           # regex-end
 
-  builtin-enum-const-values:
+  builtin-enum-constant-value:
     patterns:
       - comment: "Builtin alignment-related enum constants"
         name: constant.other.builtin.enummember.gdscript
@@ -4481,7 +4468,7 @@ repository:
           )\b
           # regex-end
 
-  _virtual-methods:
+  _virtual-method:
     patterns:
       - comment: "Single word or unique first word"
         name: support.function.virtual.gdscript
