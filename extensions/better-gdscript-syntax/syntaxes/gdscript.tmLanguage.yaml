@@ -701,6 +701,7 @@ repository:
     patterns:
       - comment: "Signal name"
         patterns:
+          - include: "#_virtual-methods"
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
@@ -746,6 +747,7 @@ repository:
     patterns:
       - comment: "Function name"
         patterns:
+          - include: "#_virtual-methods"
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
           - include: "#builtin-type-container"
@@ -3332,3 +3334,1913 @@ repository:
         name: support.type.builtin.engine.object.gdscript
       "4":
         name: support.type.builtin.engine.rid.gdscript
+
+  _virtual-methods:
+    patterns:
+      - comment: "Single word or unique first word"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            accessibility_get_contextual_info                   (?# Control)
+            | activate_feed                                     (?# CameraFeed)
+            | allow_amends                                      (?# EditorVCSInterface)
+            | auto_indent_code                                  (?# ScriptLanguageExtension)
+            | backspace                                         (?# TextEdit)
+            | box_shape_create                                  (?# PhysicsServer3DExtension)
+            | breakpoint_set_in_tree                            (?# EditorDebuggerPlugin)
+            | breakpoints_cleared_in_tree                       (?# EditorDebuggerPlugin)
+            | build                                             (?# EditorPlugin)
+            | capsule_shape_create                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | capture                                           (?# EditorDebuggerPlugin)
+            | cast_motion                                       (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+            | checkout_branch                                   (?# EditorVCSInterface)
+            | circle_shape_create                               (?# PhysicsServer2DExtension)
+            | cleanup                                           (?# EditorExportPlatformExtension / TextServerExtension)
+            | clear                                             (?# EditorPlugin)
+            | clear_highlighting_cache                          (?# SyntaxHighlighter)
+            | close                                             (?# MultiplayerPeerExtension)
+            | collide_shape                                     (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+            | commit                                            (?# EditorVCSInterface)
+            | complete_code                                     (?# ScriptLanguageExtension)
+            | compute_cost                                      (?# AStar2D / AStar3D / AStarGrid2D)
+            | concave_polygon_shape_create                      (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | configure                                         (?# RenderSceneBuffersExtension)
+            | confirm_code_completion                           (?# CodeEdit)
+            | convert                                           (?# EditorResourceConversionPlugin)
+            | converts_to                                       (?# EditorResourceConversionPlugin)
+            | convex_polygon_shape_create                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | copy                                              (?# TextEdit)
+            | create                                            (?# EditorSyntaxHighlighter)
+            | custom_shape_create                               (?# PhysicsServer3DExtension)
+            | cut                                               (?# TextEdit)
+            | cylinder_shape_create                             (?# PhysicsServer3DExtension)
+            | deactivate_feed                                   (?# CameraFeed)
+            | disable_plugin                                    (?# EditorPlugin)
+            | discard_file                                      (?# EditorVCSInterface)
+            | disconnect_peer                                   (?# MultiplayerPeerExtension)
+            | draw                                              (?# CanvasItem / StyleBox / Texture2D)
+            | drop_data                                         (?# Control)
+            | edit                                              (?# EditorPlugin)
+            | editor_can_reload_from_file                       (?# ScriptExtension)
+            | enable_plugin                                     (?# EditorPlugin)
+            | enter_tree                                        (?# Node)
+            | estimate_cost                                     (?# AStar2D / AStar3D / AStarGrid2D)
+            | execute                                           (?# SkeletonModification2D)
+            | exists                                            (?# ResourceFormatLoader)
+            | exit_tree                                         (?# Node)
+            | fetch                                             (?# EditorVCSInterface)
+            | finalize                                          (?# MainLoop)
+            | find_function                                     (?# ScriptLanguageExtension)
+            | finish                                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension / ScriptLanguageExtension)
+            | flush_queries                                     (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | format_number                                     (?# TextServerExtension)
+            | frame                                             (?# ScriptLanguageExtension)
+            | free_rid                                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension / TextServerExtension)
+            | generate                                          (?# EditorResourcePreviewGenerator)
+            | get                                               (?# Object)
+            | goto_script_line                                  (?# EditorDebuggerPlugin)
+            | gui_input                                         (?# Control)
+            | handles                                           (?# EditorPlugin / EditorResourceConversionPlugin / EditorResourcePreviewGenerator / EditorResourceTooltipPlugin)
+            | has                                               (?# TextServerExtension)
+            | heightmap_shape_create                            (?# PhysicsServer3DExtension)
+            | import                                            (?# EditorImportPlugin)
+            | import_scene                                      (?# EditorSceneFormatImporter)
+            | inherits_script                                   (?# ScriptExtension)
+            | init                                              (?# Object / PhysicsServer2DExtension / PhysicsServer3DExtension / ScriptLanguageExtension)
+            | initialize                                        (?# EditorExportPlatformExtension / EditorVCSInterface / MainLoop / XRInterfaceExtension)
+            | input                                             (?# Node)
+            | input_event                                       (?# CollisionObject2D / CollisionObject3D)
+            | instantiate                                       (?# AudioEffect)
+            | instantiate_playback                              (?# AudioStream / VideoStream)
+            | integrate_forces                                  (?# PhysicalBone3D / PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension / RigidBody2D / RigidBody3D)
+            | internal_process                                  (?# EditorScenePostImportPlugin)
+            | load                                              (?# ResourceFormatLoader)
+            | lookup_code                                       (?# ScriptLanguageExtension)
+            | mix                                               (?# AudioStreamPlayback)
+            | mix_resampled                                     (?# AudioStreamPlaybackResampled)
+            | name_to_tag                                       (?# TextServerExtension)
+            | notification                                      (?# Object)
+            | open_in_external_editor                           (?# ScriptLanguageExtension)
+            | overrides_external_editor                         (?# ScriptLanguageExtension)
+            | paste                                             (?# TextEdit)
+            | paste_primary_clipboard                           (?# TextEdit)
+            | percent_sign                                      (?# TextServerExtension)
+            | physics_process                                   (?# MainLoop / Node)
+            | play                                              (?# VideoStreamPlayback)
+            | poll                                              (?# MultiplayerAPIExtension / MultiplayerPeerExtension)
+            | poll_export                                       (?# EditorExportPlatformExtension)
+            | popup_menu                                        (?# EditorContextMenuPlugin)
+            | preferred_file_name_casing                        (?# ScriptLanguageExtension)
+            | pressed                                           (?# BaseButton)
+            | process                                           (?# AnimationNode / AudioEffectInstance / MainLoop / Node / XRInterfaceExtension)
+            | propagate_input_event                             (?# SubViewportContainer)
+            | pull                                              (?# EditorVCSInterface)
+            | push                                              (?# EditorVCSInterface)
+            | query                                             (?# EditorFileSystemImportFormatSupportQuery)
+            | ready                                             (?# Node)
+            | recognize                                         (?# ResourceFormatSaver)
+            | recognize_path                                    (?# ResourceFormatLoader / ResourceFormatSaver)
+            | rectangle_shape_create                            (?# PhysicsServer2DExtension)
+            | redraw                                            (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+            | reference_oversampling_level                      (?# TextServerExtension)
+            | reload                                            (?# ScriptExtension)
+            | rename_dependencies                               (?# ResourceFormatLoader)
+            | render_callback                                   (?# CompositorEffect)
+            | request_code_completion                           (?# CodeEdit)
+            | reset_state                                       (?# Resource)
+            | rest_info                                         (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+            | rpc                                               (?# MultiplayerAPIExtension)
+            | run                                               (?# EditorExportPlatformExtension / EditorScript)
+            | run_scene                                         (?# EditorPlugin)
+            | save                                              (?# ResourceFormatSaver)
+            | seek                                              (?# AudioStreamPlayback / VideoStreamPlayback)
+            | segment_shape_create                              (?# PhysicsServer2DExtension)
+            | separation_ray_shape_create                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | set                                               (?# Object)
+            | shortcut_input                                    (?# Node)
+            | should_update_export_options                      (?# EditorExportPlatformExtension / EditorExportPlugin)
+            | shut_down                                         (?# EditorVCSInterface)
+            | skeleton_changed                                  (?# SkeletonModifier3D)
+            | sphere_shape_create                               (?# PhysicsServer3DExtension)
+            | spoof_check                                       (?# TextServerExtension)
+            | stage_file                                        (?# EditorVCSInterface)
+            | start                                             (?# AudioStreamPlayback)
+            | step                                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | stop                                              (?# AudioStreamPlayback / VideoStreamPlayback)
+            | strip_diacritics                                  (?# TextServerExtension)
+            | structured_text_parser                            (?# Control)
+            | sync                                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            | test_mask                                         (?# StyleBox)
+            | tick                                              (?# EngineProfiler)
+            | to_string                                         (?# Object)
+            | toggle                                            (?# EngineProfiler)
+            | toggled                                           (?# BaseButton)
+            | trigger_haptic_pulse                              (?# XRInterfaceExtension)
+            | uninitialize                                      (?# XRInterfaceExtension)
+            | unreference_oversampling_level                    (?# TextServerExtension)
+            | unstage_file                                      (?# EditorVCSInterface)
+            | update                                            (?# VideoStreamPlayback)
+            | validate                                          (?# ScriptLanguageExtension)
+            | value_changed                                     (?# Range)
+            | world_boundary_shape_create                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'add_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            add_(?:
+              constant_central_force                            (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constant_force                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constant_torque                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | frame                                           (?# EngineProfiler)
+              | global_constant                                 (?# ScriptLanguageExtension)
+              | named_global_constant                           (?# ScriptLanguageExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'apply_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            apply_(?:
+              central_force                                     (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | central_impulse                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | changes                                         (?# EditorPlugin)
+              | force                                           (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | impulse                                         (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | torque                                          (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | torque_impulse                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'area_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            area_(?:
+              add_shape                                         (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | attach_canvas_instance_id                       (?# PhysicsServer2DExtension)
+              | attach_object_instance_id                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | clear_shapes                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | create                                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_canvas_instance_id                          (?# PhysicsServer2DExtension)
+              | get_collision_layer                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_collision_mask                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_object_instance_id                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape_count                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape_transform                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_space                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_transform                                   (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | remove_shape                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_area_monitor_callback                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_collision_layer                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_collision_mask                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_monitor_callback                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_monitorable                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_pickable                                    (?# PhysicsServer2DExtension)
+              | set_ray_pickable                                (?# PhysicsServer3DExtension)
+              | set_shape                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_shape_disabled                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_shape_transform                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_space                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_transform                                   (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'begin_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            begin_(?:
+              customize_resources                               (?# EditorExportPlugin)
+              | customize_scenes                                (?# EditorExportPlugin)
+              | handle_action                                   (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'body_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            body_(?:
+              add_collision_exception                           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | add_constant_central_force                      (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | add_constant_force                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | add_constant_torque                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | add_shape                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_central_force                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_central_impulse                           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_force                                     (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_impulse                                   (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_torque                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | apply_torque_impulse                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | attach_canvas_instance_id                       (?# PhysicsServer2DExtension)
+              | attach_object_instance_id                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | clear_shapes                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | collide_shape                                   (?# PhysicsServer2DExtension)
+              | create                                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_canvas_instance_id                          (?# PhysicsServer2DExtension)
+              | get_collision_exceptions                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_collision_layer                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_collision_mask                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_collision_priority                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_constant_force                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_constant_torque                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_contacts_reported_depth_threshold           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_continuous_collision_detection_mode         (?# PhysicsServer2DExtension)
+              | get_direct_state                                (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_max_contacts_reported                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_mode                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_object_instance_id                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape_count                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_shape_transform                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_space                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_state                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_user_flags                                  (?# PhysicsServer3DExtension)
+              | is_axis_locked                                  (?# PhysicsServer3DExtension)
+              | is_continuous_collision_detection_enabled       (?# PhysicsServer3DExtension)
+              | is_omitting_force_integration                   (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | remove_collision_exception                      (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | remove_shape                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | reset_mass_properties                           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_axis_lock                                   (?# PhysicsServer3DExtension)
+              | set_axis_velocity                               (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_collision_layer                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_collision_mask                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_collision_priority                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_constant_force                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_constant_torque                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_contacts_reported_depth_threshold           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_continuous_collision_detection_mode         (?# PhysicsServer2DExtension)
+              | set_enable_continuous_collision_detection       (?# PhysicsServer3DExtension)
+              | set_force_integration_callback                  (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_max_contacts_reported                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_mode                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_omit_force_integration                      (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_pickable                                    (?# PhysicsServer2DExtension)
+              | set_ray_pickable                                (?# PhysicsServer3DExtension)
+              | set_shape                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_shape_as_one_way_collision                  (?# PhysicsServer2DExtension)
+              | set_shape_disabled                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_shape_transform                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_space                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_state                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_state_sync_callback                         (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_user_flags                                  (?# PhysicsServer3DExtension)
+              | test_motion                                     (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'can_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            can_(?:
+              be_hidden                                         (?# EditorNode3DGizmoPlugin)
+              | commit_handle_on_click                          (?# EditorNode3DGizmoPlugin)
+              | do_next_pass                                    (?# Material)
+              | drop_data                                       (?# Control)
+              | export                                          (?# EditorExportPlatformExtension)
+              | generate_small_preview                          (?# EditorResourcePreviewGenerator)
+              | handle                                          (?# EditorInspectorPlugin)
+              | import_threaded                                 (?# EditorImportPlugin)
+              | inherit_from_file                               (?# ScriptLanguageExtension)
+              | instantiate                                     (?# ScriptExtension)
+              | make_function                                   (?# ScriptLanguageExtension)
+              | use_render_priority                             (?# Material)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'commit_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            commit_(?:
+              handle                                            (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | subgizmos                                       (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'cone_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            cone_(?:
+              twist_joint_get_param                             (?# PhysicsServer3DExtension)
+              | twist_joint_set_param                           (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'create_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            create_(?:
+              branch                                            (?# EditorVCSInterface)
+              | font                                            (?# TextServerExtension)
+              | font_linked_variation                           (?# TextServerExtension)
+              | gizmo                                           (?# EditorNode3DGizmoPlugin)
+              | mesh_array                                      (?# PrimitiveMesh)
+              | remote                                          (?# EditorVCSInterface)
+              | script                                          (?# ScriptLanguageExtension)
+              | shaped_text                                     (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'customize_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            customize_(?:
+              resource                                          (?# EditorExportPlugin)
+              | scene                                           (?# EditorExportPlugin)
+              | strings                                         (?# EditorTranslationParserPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'damped_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            damped_(?:
+              spring_joint_get_param                            (?# PhysicsServer2DExtension)
+              | spring_joint_set_param                          (?# PhysicsServer2DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'debug_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            debug_(?:
+              get_current_stack_info                            (?# ScriptLanguageExtension)
+              | get_error                                       (?# ScriptLanguageExtension)
+              | get_globals                                     (?# ScriptLanguageExtension)
+              | get_stack_level_count                           (?# ScriptLanguageExtension)
+              | get_stack_level_function                        (?# ScriptLanguageExtension)
+              | get_stack_level_instance                        (?# ScriptLanguageExtension)
+              | get_stack_level_line                            (?# ScriptLanguageExtension)
+              | get_stack_level_locals                          (?# ScriptLanguageExtension)
+              | get_stack_level_members                         (?# ScriptLanguageExtension)
+              | get_stack_level_source                          (?# ScriptLanguageExtension)
+              | parse_stack_level_expression                    (?# ScriptLanguageExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'draw_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            draw_(?:
+              editor_gizmo                                      (?# SkeletonModification2D)
+              | hex_code_box                                    (?# TextServerExtension)
+              | port                                            (?# GraphNode)
+              | rect                                            (?# Texture2D)
+              | rect_region                                     (?# Texture2D)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'end_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            end_(?:
+              customize_resources                               (?# EditorExportPlugin)
+              | customize_scenes                                (?# EditorExportPlugin)
+              | frame                                           (?# XRInterfaceExtension)
+              | generate_apple_embedded_project                 (?# EditorExportPlugin)
+              | sync                                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'export_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            export_(?:
+              begin                                             (?# EditorExportPlugin)
+              | end                                             (?# EditorExportPlugin)
+              | file                                            (?# EditorExportPlugin)
+              | pack                                            (?# EditorExportPlatformExtension)
+              | pack_patch                                      (?# EditorExportPlatformExtension)
+              | project                                         (?# EditorExportPlatformExtension)
+              | zip                                             (?# EditorExportPlatformExtension)
+              | zip_patch                                       (?# EditorExportPlatformExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'filter_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            filter_(?:
+              code_completion_candidates                        (?# CodeEdit)
+              | neighbor                                        (?# AStar2D / AStar3D)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'font_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            font_(?:
+              clear_glyphs                                      (?# TextServerExtension)
+              | clear_kerning_map                               (?# TextServerExtension)
+              | clear_size_cache                                (?# TextServerExtension)
+              | clear_system_fallback_cache                     (?# TextServerExtension)
+              | clear_textures                                  (?# TextServerExtension)
+              | draw_glyph                                      (?# TextServerExtension)
+              | draw_glyph_outline                              (?# TextServerExtension)
+              | get_antialiasing                                (?# TextServerExtension)
+              | get_ascent                                      (?# TextServerExtension)
+              | get_baseline_offset                             (?# TextServerExtension)
+              | get_char_from_glyph_index                       (?# TextServerExtension)
+              | get_descent                                     (?# TextServerExtension)
+              | get_disable_embedded_bitmaps                    (?# TextServerExtension)
+              | get_embolden                                    (?# TextServerExtension)
+              | get_face_count                                  (?# TextServerExtension)
+              | get_face_index                                  (?# TextServerExtension)
+              | get_fixed_size                                  (?# TextServerExtension)
+              | get_fixed_size_scale_mode                       (?# TextServerExtension)
+              | get_generate_mipmaps                            (?# TextServerExtension)
+              | get_global_oversampling                         (?# TextServerExtension)
+              | get_glyph_advance                               (?# TextServerExtension)
+              | get_glyph_contours                              (?# TextServerExtension)
+              | get_glyph_index                                 (?# TextServerExtension)
+              | get_glyph_list                                  (?# TextServerExtension)
+              | get_glyph_offset                                (?# TextServerExtension)
+              | get_glyph_size                                  (?# TextServerExtension)
+              | get_glyph_texture_idx                           (?# TextServerExtension)
+              | get_glyph_texture_rid                           (?# TextServerExtension)
+              | get_glyph_texture_size                          (?# TextServerExtension)
+              | get_glyph_uv_rect                               (?# TextServerExtension)
+              | get_hinting                                     (?# TextServerExtension)
+              | get_keep_rounding_remainders                    (?# TextServerExtension)
+              | get_kerning                                     (?# TextServerExtension)
+              | get_kerning_list                                (?# TextServerExtension)
+              | get_language_support_override                   (?# TextServerExtension)
+              | get_language_support_overrides                  (?# TextServerExtension)
+              | get_msdf_pixel_range                            (?# TextServerExtension)
+              | get_msdf_size                                   (?# TextServerExtension)
+              | get_name                                        (?# TextServerExtension)
+              | get_opentype_feature_overrides                  (?# TextServerExtension)
+              | get_ot_name_strings                             (?# TextServerExtension)
+              | get_oversampling                                (?# TextServerExtension)
+              | get_palette_colors                              (?# TextServerExtension)
+              | get_palette_count                               (?# TextServerExtension)
+              | get_palette_custom_colors                       (?# TextServerExtension)
+              | get_palette_name                                (?# TextServerExtension)
+              | get_scale                                       (?# TextServerExtension)
+              | get_script_support_override                     (?# TextServerExtension)
+              | get_script_support_overrides                    (?# TextServerExtension)
+              | get_size_cache_info                             (?# TextServerExtension)
+              | get_size_cache_list                             (?# TextServerExtension)
+              | get_spacing                                     (?# TextServerExtension)
+              | get_stretch                                     (?# TextServerExtension)
+              | get_style                                       (?# TextServerExtension)
+              | get_style_name                                  (?# TextServerExtension)
+              | get_subpixel_positioning                        (?# TextServerExtension)
+              | get_supported_chars                             (?# TextServerExtension)
+              | get_supported_glyphs                            (?# TextServerExtension)
+              | get_texture_count                               (?# TextServerExtension)
+              | get_texture_image                               (?# TextServerExtension)
+              | get_texture_offsets                             (?# TextServerExtension)
+              | get_transform                                   (?# TextServerExtension)
+              | get_underline_position                          (?# TextServerExtension)
+              | get_underline_thickness                         (?# TextServerExtension)
+              | get_used_palette                                (?# TextServerExtension)
+              | get_variation_coordinates                       (?# TextServerExtension)
+              | get_weight                                      (?# TextServerExtension)
+              | has_char                                        (?# TextServerExtension)
+              | is_allow_system_fallback                        (?# TextServerExtension)
+              | is_force_autohinter                             (?# TextServerExtension)
+              | is_language_supported                           (?# TextServerExtension)
+              | is_modulate_color_glyphs                        (?# TextServerExtension)
+              | is_multichannel_signed_distance_field           (?# TextServerExtension)
+              | is_script_supported                             (?# TextServerExtension)
+              | remove_glyph                                    (?# TextServerExtension)
+              | remove_kerning                                  (?# TextServerExtension)
+              | remove_language_support_override                (?# TextServerExtension)
+              | remove_script_support_override                  (?# TextServerExtension)
+              | remove_size_cache                               (?# TextServerExtension)
+              | remove_texture                                  (?# TextServerExtension)
+              | render_glyph                                    (?# TextServerExtension)
+              | render_range                                    (?# TextServerExtension)
+              | set_allow_system_fallback                       (?# TextServerExtension)
+              | set_antialiasing                                (?# TextServerExtension)
+              | set_ascent                                      (?# TextServerExtension)
+              | set_baseline_offset                             (?# TextServerExtension)
+              | set_data                                        (?# TextServerExtension)
+              | set_data_ptr                                    (?# TextServerExtension)
+              | set_descent                                     (?# TextServerExtension)
+              | set_disable_embedded_bitmaps                    (?# TextServerExtension)
+              | set_embolden                                    (?# TextServerExtension)
+              | set_face_index                                  (?# TextServerExtension)
+              | set_fixed_size                                  (?# TextServerExtension)
+              | set_fixed_size_scale_mode                       (?# TextServerExtension)
+              | set_force_autohinter                            (?# TextServerExtension)
+              | set_generate_mipmaps                            (?# TextServerExtension)
+              | set_global_oversampling                         (?# TextServerExtension)
+              | set_glyph_advance                               (?# TextServerExtension)
+              | set_glyph_offset                                (?# TextServerExtension)
+              | set_glyph_size                                  (?# TextServerExtension)
+              | set_glyph_texture_idx                           (?# TextServerExtension)
+              | set_glyph_uv_rect                               (?# TextServerExtension)
+              | set_hinting                                     (?# TextServerExtension)
+              | set_keep_rounding_remainders                    (?# TextServerExtension)
+              | set_kerning                                     (?# TextServerExtension)
+              | set_language_support_override                   (?# TextServerExtension)
+              | set_modulate_color_glyphs                       (?# TextServerExtension)
+              | set_msdf_pixel_range                            (?# TextServerExtension)
+              | set_msdf_size                                   (?# TextServerExtension)
+              | set_multichannel_signed_distance_field          (?# TextServerExtension)
+              | set_name                                        (?# TextServerExtension)
+              | set_opentype_feature_overrides                  (?# TextServerExtension)
+              | set_oversampling                                (?# TextServerExtension)
+              | set_palette_custom_colors                       (?# TextServerExtension)
+              | set_scale                                       (?# TextServerExtension)
+              | set_script_support_override                     (?# TextServerExtension)
+              | set_spacing                                     (?# TextServerExtension)
+              | set_stretch                                     (?# TextServerExtension)
+              | set_style                                       (?# TextServerExtension)
+              | set_style_name                                  (?# TextServerExtension)
+              | set_subpixel_positioning                        (?# TextServerExtension)
+              | set_texture_image                               (?# TextServerExtension)
+              | set_texture_offsets                             (?# TextServerExtension)
+              | set_transform                                   (?# TextServerExtension)
+              | set_underline_position                          (?# TextServerExtension)
+              | set_underline_thickness                         (?# TextServerExtension)
+              | set_used_palette                                (?# TextServerExtension)
+              | set_variation_coordinates                       (?# TextServerExtension)
+              | set_weight                                      (?# TextServerExtension)
+              | supported_feature_list                          (?# TextServerExtension)
+              | supported_variation_list                        (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'forward_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            forward_(?:
+              3d_draw_over_viewport                             (?# EditorPlugin)
+              | 3d_force_draw_over_viewport                     (?# EditorPlugin)
+              | 3d_gui_input                                    (?# EditorPlugin)
+              | canvas_draw_over_viewport                       (?# EditorPlugin)
+              | canvas_force_draw_over_viewport                 (?# EditorPlugin)
+              | canvas_gui_input                                (?# EditorPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'generate_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            generate_(?:
+              from_path                                         (?# EditorResourcePreviewGenerator)
+              | small_preview_automatically                     (?# EditorResourcePreviewGenerator)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'generic_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            generic_(?:
+              6dof_joint_get_angular_target_rotation            (?# PhysicsServer3DExtension)
+              | 6dof_joint_get_flag                             (?# PhysicsServer3DExtension)
+              | 6dof_joint_get_param                            (?# PhysicsServer3DExtension)
+              | 6dof_joint_set_angular_target_rotation          (?# PhysicsServer3DExtension)
+              | 6dof_joint_set_flag                             (?# PhysicsServer3DExtension)
+              | 6dof_joint_set_param                            (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'get_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            get_(?:
+              aabb                                              (?# Mesh / VisualInstance3D)
+              | accessibility_configuration_warnings            (?# Node)
+              | accessibility_container_name                    (?# Control)
+              | allowed_size_flags_horizontal                   (?# Container)
+              | allowed_size_flags_vertical                     (?# Container)
+              | anchor_detection_is_enabled                     (?# XRInterfaceExtension)
+              | android_dependencies                            (?# EditorExportPlugin)
+              | android_dependencies_maven_repos                (?# EditorExportPlugin)
+              | android_libraries                               (?# EditorExportPlugin)
+              | android_manifest_activity_element_contents      (?# EditorExportPlugin)
+              | android_manifest_application_element_contents   (?# EditorExportPlugin)
+              | android_manifest_element_contents               (?# EditorExportPlugin)
+              | angular_velocity                                (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | audio_mix_rate                                  (?# MovieWriter)
+              | audio_speaker_mode                              (?# MovieWriter)
+              | available_bytes                                 (?# StreamPeerExtension)
+              | available_packet_count                          (?# MultiplayerPeerExtension / PacketPeerExtension)
+              | bar_beats                                       (?# AudioStream)
+              | base_script                                     (?# ScriptExtension)
+              | beat_count                                      (?# AudioStream)
+              | binary_extensions                               (?# EditorExportPlatformExtension)
+              | blend_shape_count                               (?# Mesh)
+              | blend_shape_name                                (?# Mesh)
+              | bpm                                             (?# AudioStream)
+              | branch_list                                     (?# EditorVCSInterface)
+              | breakpoints                                     (?# EditorPlugin)
+              | build_dependencies                              (?# ResourceImporter)
+              | built_in_templates                              (?# ScriptLanguageExtension)
+              | cam_projection                                  (?# RenderSceneDataExtension)
+              | cam_transform                                   (?# RenderSceneDataExtension)
+              | camera_attributes                               (?# RenderDataExtension)
+              | camera_feed_id                                  (?# XRInterfaceExtension)
+              | camera_transform                                (?# XRInterfaceExtension)
+              | capabilities                                    (?# XRInterfaceExtension)
+              | caption                                         (?# AnimationNode)
+              | center_of_mass                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | center_of_mass_local                            (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | channels                                        (?# VideoStreamPlayback)
+              | child_by_name                                   (?# AnimationNode)
+              | child_nodes                                     (?# AnimationNode)
+              | class_icon_path                                 (?# ScriptExtension)
+              | classes_used                                    (?# ResourceFormatLoader)
+              | closest_point_to_object_volume                  (?# PhysicsDirectSpaceState3DExtension)
+              | collision_layer                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | collision_mask                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | color_texture                                   (?# XRInterfaceExtension)
+              | comment_delimiters                              (?# ScriptLanguageExtension)
+              | configuration_warnings                          (?# Node)
+              | connection_line                                 (?# GraphEdit)
+              | connection_status                               (?# MultiplayerPeerExtension)
+              | constant_force                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constant_torque                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constants                                       (?# ScriptExtension)
+              | contact_collider                                (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_collider_id                             (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_collider_object                         (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_collider_position                       (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_collider_shape                          (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_collider_velocity_at_position           (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_count                                   (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_impulse                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_local_normal                            (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_local_position                          (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_local_shape                             (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contact_local_velocity_at_position              (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | contents_minimum_size                           (?# Window)
+              | current_branch_name                             (?# EditorVCSInterface)
+              | cursor_shape                                    (?# Control)
+              | customization_configuration_hash                (?# EditorExportPlugin)
+              | data                                            (?# StreamPeerExtension / Texture3D)
+              | debug_protocol                                  (?# EditorExportPlatformExtension)
+              | dependencies                                    (?# ResourceFormatLoader)
+              | depth                                           (?# Texture3D)
+              | depth_texture                                   (?# XRInterfaceExtension)
+              | device_architecture                             (?# EditorExportPlatformExtension)
+              | diff                                            (?# EditorVCSInterface)
+              | doc_class_name                                  (?# ScriptExtension)
+              | doc_comment_delimiters                          (?# ScriptLanguageExtension)
+              | documentation                                   (?# ScriptExtension)
+              | drag_data                                       (?# Control)
+              | draw_rect                                       (?# StyleBox)
+              | environment                                     (?# RenderDataExtension)
+              | export_features                                 (?# EditorExportPlugin)
+              | export_option_visibility                        (?# EditorExportPlatformExtension / EditorExportPlugin)
+              | export_option_warning                           (?# EditorExportPlatformExtension / EditorExportPlugin)
+              | export_options                                  (?# EditorExportPlatformExtension / EditorExportPlugin)
+              | export_options_overrides                        (?# EditorExportPlugin)
+              | extension                                       (?# ScriptLanguageExtension)
+              | extensions                                      (?# EditorSceneFormatImporter)
+              | features                                        (?# TextServerExtension)
+              | file_extensions                                 (?# EditorFileSystemImportFormatSupportQuery)
+              | focused_accessibility_element                   (?# Node)
+              | format                                          (?# Texture2D / Texture3D / TextureLayered)
+              | format_version                                  (?# EditorImportPlugin)
+              | formats                                         (?# CameraFeed)
+              | gizmo_name                                      (?# EditorNode3DGizmoPlugin)
+              | global_class_name                               (?# ScriptLanguageExtension)
+              | global_name                                     (?# ScriptExtension)
+              | handle_name                                     (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | handle_value                                    (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | height                                          (?# Texture2D / Texture3D / TextureLayered)
+              | hex_code_box_size                               (?# TextServerExtension)
+              | image                                           (?# Texture2D)
+              | import_options                                  (?# EditorImportPlugin / EditorSceneFormatImporter / EditorScenePostImportPlugin)
+              | import_order                                    (?# EditorImportPlugin)
+              | importer_name                                   (?# EditorImportPlugin)
+              | instance_base_type                              (?# ScriptExtension)
+              | internal_import_options                         (?# EditorScenePostImportPlugin)
+              | internal_option_update_view_required            (?# EditorScenePostImportPlugin)
+              | internal_option_visibility                      (?# EditorScenePostImportPlugin)
+              | inverse_inertia                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | inverse_inertia_tensor                          (?# PhysicsDirectBodyState3DExtension)
+              | inverse_mass                                    (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | language                                        (?# ScriptExtension)
+              | layer_data                                      (?# TextureLayered)
+              | layered_type                                    (?# TextureLayered)
+              | layers                                          (?# TextureLayered)
+              | length                                          (?# AudioStream / VideoStreamPlayback)
+              | line_diff                                       (?# EditorVCSInterface)
+              | line_syntax_highlighting                        (?# SyntaxHighlighter)
+              | linear_velocity                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | logo                                            (?# EditorExportPlatformExtension)
+              | loop_count                                      (?# AudioStreamPlayback)
+              | max_packet_size                                 (?# MultiplayerPeerExtension / PacketPeerExtension)
+              | maximum_size                                    (?# Control)
+              | member_line                                     (?# ScriptExtension)
+              | members                                         (?# ScriptExtension)
+              | menu_options                                    (?# EditorContextMenuPlugin)
+              | message                                         (?# Translation)
+              | method_info                                     (?# ScriptExtension)
+              | minimum_size                                    (?# Control / StyleBox)
+              | mipmap_count                                    (?# Texture2D)
+              | mix_rate                                        (?# VideoStreamPlayback)
+              | modified_files_data                             (?# EditorVCSInterface)
+              | multiplayer_peer                                (?# MultiplayerAPIExtension)
+              | name                                            (?# EditorExportPlatformExtension / EditorExportPlugin / EditorSyntaxHighlighter / ScriptLanguageExtension / TextServerExtension / XRInterfaceExtension)
+              | option_icon                                     (?# EditorExportPlatformExtension)
+              | option_label                                    (?# EditorExportPlatformExtension)
+              | option_tooltip                                  (?# EditorExportPlatformExtension)
+              | option_visibility                               (?# EditorImportPlugin / EditorSceneFormatImporter / EditorScenePostImportPlugin)
+              | options_count                                   (?# EditorExportPlatformExtension)
+              | options_tooltip                                 (?# EditorExportPlatformExtension)
+              | os_name                                         (?# EditorExportPlatformExtension)
+              | packet                                          (?# MultiplayerPeerExtension / PacketPeerExtension)
+              | packet_channel                                  (?# MultiplayerPeerExtension)
+              | packet_mode                                     (?# MultiplayerPeerExtension)
+              | packet_peer                                     (?# MultiplayerPeerExtension)
+              | packet_script                                   (?# MultiplayerPeerExtension)
+              | parameter                                       (?# AudioStreamPlayback)
+              | parameter_default_value                         (?# AnimationNode)
+              | parameter_list                                  (?# AnimationNode / AudioStream)
+              | partial_data                                    (?# StreamPeerExtension)
+              | peer_ids                                        (?# MultiplayerAPIExtension)
+              | platform_features                               (?# EditorExportPlatformExtension)
+              | play_area                                       (?# XRInterfaceExtension)
+              | play_area_mode                                  (?# XRInterfaceExtension)
+              | playback_position                               (?# AudioStreamPlayback / VideoStreamPlayback)
+              | plugin_icon                                     (?# EditorPlugin)
+              | plugin_name                                     (?# EditorPlugin)
+              | plural_message                                  (?# Translation)
+              | preset_count                                    (?# EditorImportPlugin)
+              | preset_features                                 (?# EditorExportPlatformExtension)
+              | preset_name                                     (?# EditorImportPlugin)
+              | previous_commits                                (?# EditorVCSInterface)
+              | principal_inertia_axes                          (?# PhysicsDirectBodyState3DExtension)
+              | priority                                        (?# EditorImportPlugin / EditorNode3DGizmoPlugin)
+              | process_info                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | projection_for_view                             (?# XRInterfaceExtension)
+              | property_default_value                          (?# ScriptExtension)
+              | property_list                                   (?# Object)
+              | public_annotations                              (?# ScriptLanguageExtension)
+              | public_constants                                (?# ScriptLanguageExtension)
+              | public_functions                                (?# ScriptLanguageExtension)
+              | recognized_extensions                           (?# EditorImportPlugin / EditorTranslationParserPlugin / ImageFormatLoaderExtension / ResourceFormatLoader / ResourceFormatSaver / ScriptLanguageExtension)
+              | remote_sender_id                                (?# MultiplayerAPIExtension)
+              | remotes                                         (?# EditorVCSInterface)
+              | render_scene_buffers                            (?# RenderDataExtension)
+              | render_scene_data                               (?# RenderDataExtension)
+              | render_target_size                              (?# XRInterfaceExtension)
+              | reserved_words                                  (?# ScriptLanguageExtension)
+              | resource_script_class                           (?# ResourceFormatLoader)
+              | resource_type                                   (?# EditorImportPlugin / ResourceFormatLoader)
+              | resource_uid                                    (?# ResourceFormatLoader)
+              | rid                                             (?# Resource)
+              | rpc_config                                      (?# ScriptExtension)
+              | run_icon                                        (?# EditorExportPlatformExtension)
+              | save_extension                                  (?# EditorImportPlugin)
+              | script_method_argument_count                    (?# ScriptExtension)
+              | script_method_list                              (?# ScriptExtension)
+              | script_property_list                            (?# ScriptExtension)
+              | script_signal_list                              (?# ScriptExtension)
+              | shader_mode                                     (?# Material)
+              | shader_rid                                      (?# Material)
+              | short_name                                      (?# TextServerExtension)
+              | source_code                                     (?# ScriptExtension)
+              | space_state                                     (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | state                                           (?# EditorPlugin)
+              | step                                            (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | stream_name                                     (?# AudioStream)
+              | stream_sampling_rate                            (?# AudioStreamPlaybackResampled)
+              | string_delimiters                               (?# ScriptLanguageExtension)
+              | subgizmo_transform                              (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | suggested_pose_names                            (?# XRInterfaceExtension)
+              | suggested_tracker_names                         (?# XRInterfaceExtension)
+              | support_data                                    (?# TextServerExtension)
+              | support_data_filename                           (?# TextServerExtension)
+              | support_data_info                               (?# TextServerExtension)
+              | supported_extensions                            (?# MovieWriter)
+              | supported_languages                             (?# EditorSyntaxHighlighter)
+              | surface_count                                   (?# Mesh)
+              | system_info                                     (?# XRInterfaceExtension)
+              | tags                                            (?# AudioStream)
+              | texture                                         (?# VideoStreamPlayback)
+              | tooltip                                         (?# Control)
+              | tooltip_auto_translate_mode_at                  (?# Control)
+              | total_angular_damp                              (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | total_gravity                                   (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | total_linear_damp                               (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | tracking_status                                 (?# XRInterfaceExtension)
+              | transfer_channel                                (?# MultiplayerPeerExtension)
+              | transfer_mode                                   (?# MultiplayerPeerExtension)
+              | transform                                       (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | transform_for_view                              (?# XRInterfaceExtension)
+              | type                                            (?# ScriptLanguageExtension)
+              | uniform_buffer                                  (?# RenderSceneDataExtension)
+              | unique_id                                       (?# MultiplayerAPIExtension / MultiplayerPeerExtension)
+              | unsaved_status                                  (?# EditorPlugin)
+              | vcs_name                                        (?# EditorVCSInterface)
+              | velocity_at_local_position                      (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | velocity_texture                                (?# XRInterfaceExtension)
+              | view_count                                      (?# RenderSceneDataExtension / XRInterfaceExtension)
+              | view_eye_offset                                 (?# RenderSceneDataExtension)
+              | view_projection                                 (?# RenderSceneDataExtension)
+              | visible_name                                    (?# EditorImportPlugin)
+              | vrs_texture                                     (?# XRInterfaceExtension)
+              | vrs_texture_format                              (?# XRInterfaceExtension)
+              | width                                           (?# Texture2D / Texture3D / TextureLayered)
+              | window_layout                                   (?# EditorPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'handle_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            handle_(?:
+              menu_selected                                     (?# EditorResourcePicker)
+              | unicode_input                                   (?# TextEdit)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'handles_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            handles_(?:
+              file                                              (?# MovieWriter)
+              | global_class_type                               (?# ScriptLanguageExtension)
+              | type                                            (?# ResourceFormatLoader)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'has_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            has_(?:
+              alpha                                             (?# Texture2D)
+              | capture                                         (?# EditorDebuggerPlugin)
+              | feature                                         (?# TextServerExtension)
+              | filter                                          (?# AnimationNode)
+              | gizmo                                           (?# EditorNode3DGizmoPlugin)
+              | loop                                            (?# AudioStream)
+              | main_screen                                     (?# EditorPlugin)
+              | method                                          (?# ScriptExtension)
+              | mipmaps                                         (?# Texture2D / Texture3D / TextureLayered)
+              | named_classes                                   (?# ScriptLanguageExtension)
+              | point                                           (?# Control)
+              | property_default_value                          (?# ScriptExtension)
+              | script_signal                                   (?# ScriptExtension)
+              | source_code                                     (?# ScriptExtension)
+              | static_method                                   (?# ScriptExtension)
+              | valid_export_configuration                      (?# EditorExportPlatformExtension)
+              | valid_project_configuration                     (?# EditorExportPlatformExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'hinge_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            hinge_(?:
+              joint_get_flag                                    (?# PhysicsServer3DExtension)
+              | joint_get_param                                 (?# PhysicsServer3DExtension)
+              | joint_set_flag                                  (?# PhysicsServer3DExtension)
+              | joint_set_param                                 (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'instance_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            instance_(?:
+              create                                            (?# ScriptExtension)
+              | has                                             (?# ScriptExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'intersect_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            intersect_(?:
+              point                                             (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+              | ray                                             (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+              | shape                                           (?# PhysicsDirectSpaceState2DExtension / PhysicsDirectSpaceState3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'is_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            is_(?:
+              abstract                                          (?# ScriptExtension)
+              | active                                          (?# EditorFileSystemImportFormatSupportQuery)
+              | confusable                                      (?# TextServerExtension)
+              | control_flow_keyword                            (?# ScriptLanguageExtension)
+              | executable                                      (?# EditorExportPlatformExtension)
+              | flushing_queries                                (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | handle_highlighted                              (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | in_input_hotzone                                (?# GraphEdit)
+              | in_output_hotzone                               (?# GraphEdit)
+              | initialized                                     (?# XRInterfaceExtension)
+              | locale_right_to_left                            (?# TextServerExtension)
+              | locale_using_support_data                       (?# TextServerExtension)
+              | monophonic                                      (?# AudioStream)
+              | node_hover_valid                                (?# GraphEdit)
+              | parameter_read_only                             (?# AnimationNode)
+              | paused                                          (?# VideoStreamPlayback)
+              | pixel_opaque                                    (?# Texture2D)
+              | placeholder_fallback_enabled                    (?# ScriptExtension)
+              | playing                                         (?# AudioStreamPlayback / VideoStreamPlayback)
+              | refusing_new_connections                        (?# MultiplayerPeerExtension)
+              | selectable_when_hidden                          (?# EditorNode3DGizmoPlugin)
+              | server                                          (?# MultiplayerPeerExtension)
+              | server_relay_supported                          (?# MultiplayerPeerExtension)
+              | sleeping                                        (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | tool                                            (?# ScriptExtension)
+              | using_templates                                 (?# ScriptLanguageExtension)
+              | valid                                           (?# ScriptExtension)
+              | valid_identifier                                (?# TextServerExtension)
+              | valid_letter                                    (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'iter_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            iter_(?:
+              get                                               (?# Object)
+              | init                                            (?# Object)
+              | next                                            (?# Object)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'joint_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            joint_(?:
+              clear                                             (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | create                                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | disable_collisions_between_bodies               (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_param                                       (?# PhysicsServer2DExtension)
+              | get_solver_priority                             (?# PhysicsServer3DExtension)
+              | get_type                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | is_disabled_collisions_between_bodies           (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | make_cone_twist                                 (?# PhysicsServer3DExtension)
+              | make_damped_spring                              (?# PhysicsServer2DExtension)
+              | make_generic_6dof                               (?# PhysicsServer3DExtension)
+              | make_groove                                     (?# PhysicsServer2DExtension)
+              | make_hinge                                      (?# PhysicsServer3DExtension)
+              | make_hinge_simple                               (?# PhysicsServer3DExtension)
+              | make_pin                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | make_slider                                     (?# PhysicsServer3DExtension)
+              | set_param                                       (?# PhysicsServer2DExtension)
+              | set_solver_priority                             (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'load_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            load_(?:
+              image                                             (?# ImageFormatLoaderExtension)
+              | layout_from_config                              (?# EditorDock)
+              | support_data                                    (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'log_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            log_(?:
+              error                                             (?# Logger)
+              | message                                         (?# Logger)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'make_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            make_(?:
+              custom_tooltip                                    (?# Control)
+              | function                                        (?# ScriptLanguageExtension)
+              | template                                        (?# ScriptLanguageExtension)
+              | tooltip_for_path                                (?# EditorResourceTooltipPlugin)
+              | visible                                         (?# EditorPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'mouse_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            mouse_(?:
+              enter                                             (?# CollisionObject2D / CollisionObject3D)
+              | exit                                            (?# CollisionObject2D / CollisionObject3D)
+              | shape_enter                                     (?# CollisionObject2D)
+              | shape_exit                                      (?# CollisionObject2D)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'object_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            object_(?:
+              configuration_add                                 (?# MultiplayerAPIExtension)
+              | configuration_remove                            (?# MultiplayerAPIExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'parse_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            parse_(?:
+              begin                                             (?# EditorInspectorPlugin)
+              | category                                        (?# EditorInspectorPlugin)
+              | end                                             (?# EditorInspectorPlugin)
+              | file                                            (?# EditorTranslationParserPlugin)
+              | group                                           (?# EditorInspectorPlugin)
+              | number                                          (?# TextServerExtension)
+              | property                                        (?# EditorInspectorPlugin)
+              | structured_text                                 (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'pin_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            pin_(?:
+              joint_get_flag                                    (?# PhysicsServer2DExtension)
+              | joint_get_local_a                               (?# PhysicsServer3DExtension)
+              | joint_get_local_b                               (?# PhysicsServer3DExtension)
+              | joint_get_param                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | joint_set_flag                                  (?# PhysicsServer2DExtension)
+              | joint_set_local_a                               (?# PhysicsServer3DExtension)
+              | joint_set_local_b                               (?# PhysicsServer3DExtension)
+              | joint_set_param                                 (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'placeholder_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            placeholder_(?:
+              erased                                            (?# ScriptExtension)
+              | instance_create                                 (?# ScriptExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'post_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            post_(?:
+              draw_viewport                                     (?# XRInterfaceExtension)
+              | import                                          (?# EditorScenePostImport)
+              | process                                         (?# EditorScenePostImportPlugin)
+              | process_key_value                               (?# AnimationMixer)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'pre_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            pre_(?:
+              draw_viewport                                     (?# XRInterfaceExtension)
+              | process                                         (?# EditorScenePostImportPlugin)
+              | render                                          (?# XRInterfaceExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'process_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            process_(?:
+              animation_node                                    (?# AnimationNodeExtension)
+              | custom_fx                                       (?# RichTextEffect)
+              | modification                                    (?# SkeletonModifier3D)
+              | modification_with_delta                         (?# SkeletonModifier3D)
+              | silence                                         (?# AudioEffectInstance)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'profiling_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            profiling_(?:
+              get_accumulated_data                              (?# ScriptLanguageExtension)
+              | get_frame_data                                  (?# ScriptLanguageExtension)
+              | set_save_native_calls                           (?# ScriptLanguageExtension)
+              | start                                           (?# ScriptLanguageExtension)
+              | stop                                            (?# ScriptLanguageExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'property_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            property_(?:
+              can_revert                                        (?# Object)
+              | get_revert                                      (?# Object)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'put_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            put_(?:
+              data                                              (?# StreamPeerExtension)
+              | packet                                          (?# MultiplayerPeerExtension / PacketPeerExtension)
+              | packet_script                                   (?# MultiplayerPeerExtension)
+              | partial_data                                    (?# StreamPeerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'reload_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            reload_(?:
+              all_scripts                                       (?# ScriptLanguageExtension)
+              | scripts                                         (?# ScriptLanguageExtension)
+              | tool_script                                     (?# ScriptLanguageExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'remove_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            remove_(?:
+              branch                                            (?# EditorVCSInterface)
+              | named_global_constant                           (?# ScriptLanguageExtension)
+              | remote                                          (?# EditorVCSInterface)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'save_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            save_(?:
+              external_data                                     (?# EditorPlugin)
+              | layout_to_config                                (?# EditorDock)
+              | support_data                                    (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'set_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            set_(?:
+              aabb                                              (?# PhysicsServer3DRenderingServerHandler)
+              | active                                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | anchor_detection_is_enabled                     (?# XRInterfaceExtension)
+              | angular_velocity                                (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | anisotropic_filtering_level                     (?# RenderSceneBuffersExtension)
+              | audio_track                                     (?# VideoStreamPlayback)
+              | blend_shape_name                                (?# Mesh)
+              | collision_layer                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | collision_mask                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constant_force                                  (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | constant_torque                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | create_options                                  (?# EditorResourcePicker)
+              | credentials                                     (?# EditorVCSInterface)
+              | format                                          (?# CameraFeed)
+              | fsr_sharpness                                   (?# RenderSceneBuffersExtension)
+              | handle                                          (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | linear_velocity                                 (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | multiplayer_peer                                (?# MultiplayerAPIExtension)
+              | normal                                          (?# PhysicsServer3DRenderingServerHandler)
+              | parameter                                       (?# AudioStreamPlayback)
+              | path_cache                                      (?# Resource)
+              | paused                                          (?# VideoStreamPlayback)
+              | play_area_mode                                  (?# XRInterfaceExtension)
+              | read_only                                       (?# EditorProperty)
+              | refuse_new_connections                          (?# MultiplayerPeerExtension)
+              | sleep_state                                     (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | source_code                                     (?# ScriptExtension)
+              | state                                           (?# EditorPlugin)
+              | subgizmo_transform                              (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | target_peer                                     (?# MultiplayerPeerExtension)
+              | texture_mipmap_bias                             (?# RenderSceneBuffersExtension)
+              | transfer_channel                                (?# MultiplayerPeerExtension)
+              | transfer_mode                                   (?# MultiplayerPeerExtension)
+              | transform                                       (?# PhysicsDirectBodyState2DExtension / PhysicsDirectBodyState3DExtension)
+              | uid                                             (?# ResourceFormatSaver)
+              | use_debanding                                   (?# RenderSceneBuffersExtension)
+              | vertex                                          (?# PhysicsServer3DRenderingServerHandler)
+              | window_layout                                   (?# EditorPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'setup_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            setup_(?:
+              local_to_scene                                    (?# Resource)
+              | modification                                    (?# SkeletonModification2D)
+              | session                                         (?# EditorDebuggerPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'shape_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            shape_(?:
+              collide                                           (?# PhysicsServer2DExtension)
+              | get_custom_solver_bias                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_data                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_margin                                      (?# PhysicsServer3DExtension)
+              | get_type                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_custom_solver_bias                          (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_data                                        (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_margin                                      (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'shaped_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            shaped_(?:
+              get_run_count                                     (?# TextServerExtension)
+              | get_run_direction                               (?# TextServerExtension)
+              | get_run_font_rid                                (?# TextServerExtension)
+              | get_run_font_size                               (?# TextServerExtension)
+              | get_run_glyph_range                             (?# TextServerExtension)
+              | get_run_language                                (?# TextServerExtension)
+              | get_run_object                                  (?# TextServerExtension)
+              | get_run_range                                   (?# TextServerExtension)
+              | get_run_text                                    (?# TextServerExtension)
+              | get_span_count                                  (?# TextServerExtension)
+              | get_span_embedded_object                        (?# TextServerExtension)
+              | get_span_meta                                   (?# TextServerExtension)
+              | get_span_object                                 (?# TextServerExtension)
+              | get_span_text                                   (?# TextServerExtension)
+              | get_text                                        (?# TextServerExtension)
+              | set_span_update_font                            (?# TextServerExtension)
+              | text_add_object                                 (?# TextServerExtension)
+              | text_add_string                                 (?# TextServerExtension)
+              | text_clear                                      (?# TextServerExtension)
+              | text_closest_character_pos                      (?# TextServerExtension)
+              | text_draw                                       (?# TextServerExtension)
+              | text_draw_outline                               (?# TextServerExtension)
+              | text_duplicate                                  (?# TextServerExtension)
+              | text_fit_to_width                               (?# TextServerExtension)
+              | text_get_ascent                                 (?# TextServerExtension)
+              | text_get_carets                                 (?# TextServerExtension)
+              | text_get_character_breaks                       (?# TextServerExtension)
+              | text_get_custom_ellipsis                        (?# TextServerExtension)
+              | text_get_custom_punctuation                     (?# TextServerExtension)
+              | text_get_descent                                (?# TextServerExtension)
+              | text_get_direction                              (?# TextServerExtension)
+              | text_get_dominant_direction_in_range            (?# TextServerExtension)
+              | text_get_ellipsis_glyph_count                   (?# TextServerExtension)
+              | text_get_ellipsis_glyphs                        (?# TextServerExtension)
+              | text_get_ellipsis_pos                           (?# TextServerExtension)
+              | text_get_glyph_count                            (?# TextServerExtension)
+              | text_get_glyphs                                 (?# TextServerExtension)
+              | text_get_grapheme_bounds                        (?# TextServerExtension)
+              | text_get_inferred_direction                     (?# TextServerExtension)
+              | text_get_line_breaks                            (?# TextServerExtension)
+              | text_get_line_breaks_adv                        (?# TextServerExtension)
+              | text_get_object_glyph                           (?# TextServerExtension)
+              | text_get_object_range                           (?# TextServerExtension)
+              | text_get_object_rect                            (?# TextServerExtension)
+              | text_get_objects                                (?# TextServerExtension)
+              | text_get_orientation                            (?# TextServerExtension)
+              | text_get_parent                                 (?# TextServerExtension)
+              | text_get_preserve_control                       (?# TextServerExtension)
+              | text_get_preserve_invalid                       (?# TextServerExtension)
+              | text_get_range                                  (?# TextServerExtension)
+              | text_get_selection                              (?# TextServerExtension)
+              | text_get_size                                   (?# TextServerExtension)
+              | text_get_spacing                                (?# TextServerExtension)
+              | text_get_trim_pos                               (?# TextServerExtension)
+              | text_get_underline_position                     (?# TextServerExtension)
+              | text_get_underline_thickness                    (?# TextServerExtension)
+              | text_get_width                                  (?# TextServerExtension)
+              | text_get_word_breaks                            (?# TextServerExtension)
+              | text_has_object                                 (?# TextServerExtension)
+              | text_hit_test_grapheme                          (?# TextServerExtension)
+              | text_hit_test_position                          (?# TextServerExtension)
+              | text_is_ready                                   (?# TextServerExtension)
+              | text_next_character_pos                         (?# TextServerExtension)
+              | text_next_grapheme_pos                          (?# TextServerExtension)
+              | text_overrun_trim_to_width                      (?# TextServerExtension)
+              | text_prev_character_pos                         (?# TextServerExtension)
+              | text_prev_grapheme_pos                          (?# TextServerExtension)
+              | text_resize_object                              (?# TextServerExtension)
+              | text_set_bidi_override                          (?# TextServerExtension)
+              | text_set_custom_ellipsis                        (?# TextServerExtension)
+              | text_set_custom_punctuation                     (?# TextServerExtension)
+              | text_set_direction                              (?# TextServerExtension)
+              | text_set_orientation                            (?# TextServerExtension)
+              | text_set_preserve_control                       (?# TextServerExtension)
+              | text_set_preserve_invalid                       (?# TextServerExtension)
+              | text_set_spacing                                (?# TextServerExtension)
+              | text_shape                                      (?# TextServerExtension)
+              | text_sort_logical                               (?# TextServerExtension)
+              | text_substr                                     (?# TextServerExtension)
+              | text_tab_align                                  (?# TextServerExtension)
+              | text_update_breaks                              (?# TextServerExtension)
+              | text_update_justification_ops                   (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'slider_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            slider_(?:
+              joint_get_param                                   (?# PhysicsServer3DExtension)
+              | joint_set_param                                 (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'soft_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            soft_(?:
+              body_add_collision_exception                      (?# PhysicsServer3DExtension)
+              | body_apply_central_force                        (?# PhysicsServer3DExtension)
+              | body_apply_central_impulse                      (?# PhysicsServer3DExtension)
+              | body_apply_point_force                          (?# PhysicsServer3DExtension)
+              | body_apply_point_impulse                        (?# PhysicsServer3DExtension)
+              | body_create                                     (?# PhysicsServer3DExtension)
+              | body_get_bounds                                 (?# PhysicsServer3DExtension)
+              | body_get_collision_exceptions                   (?# PhysicsServer3DExtension)
+              | body_get_collision_layer                        (?# PhysicsServer3DExtension)
+              | body_get_collision_mask                         (?# PhysicsServer3DExtension)
+              | body_get_damping_coefficient                    (?# PhysicsServer3DExtension)
+              | body_get_drag_coefficient                       (?# PhysicsServer3DExtension)
+              | body_get_linear_stiffness                       (?# PhysicsServer3DExtension)
+              | body_get_point_global_position                  (?# PhysicsServer3DExtension)
+              | body_get_pressure_coefficient                   (?# PhysicsServer3DExtension)
+              | body_get_shrinking_factor                       (?# PhysicsServer3DExtension)
+              | body_get_simulation_precision                   (?# PhysicsServer3DExtension)
+              | body_get_space                                  (?# PhysicsServer3DExtension)
+              | body_get_state                                  (?# PhysicsServer3DExtension)
+              | body_get_total_mass                             (?# PhysicsServer3DExtension)
+              | body_is_point_pinned                            (?# PhysicsServer3DExtension)
+              | body_move_point                                 (?# PhysicsServer3DExtension)
+              | body_pin_point                                  (?# PhysicsServer3DExtension)
+              | body_remove_all_pinned_points                   (?# PhysicsServer3DExtension)
+              | body_remove_collision_exception                 (?# PhysicsServer3DExtension)
+              | body_set_collision_layer                        (?# PhysicsServer3DExtension)
+              | body_set_collision_mask                         (?# PhysicsServer3DExtension)
+              | body_set_damping_coefficient                    (?# PhysicsServer3DExtension)
+              | body_set_drag_coefficient                       (?# PhysicsServer3DExtension)
+              | body_set_linear_stiffness                       (?# PhysicsServer3DExtension)
+              | body_set_mesh                                   (?# PhysicsServer3DExtension)
+              | body_set_pressure_coefficient                   (?# PhysicsServer3DExtension)
+              | body_set_ray_pickable                           (?# PhysicsServer3DExtension)
+              | body_set_shrinking_factor                       (?# PhysicsServer3DExtension)
+              | body_set_simulation_precision                   (?# PhysicsServer3DExtension)
+              | body_set_space                                  (?# PhysicsServer3DExtension)
+              | body_set_state                                  (?# PhysicsServer3DExtension)
+              | body_set_total_mass                             (?# PhysicsServer3DExtension)
+              | body_set_transform                              (?# PhysicsServer3DExtension)
+              | body_update_rendering_server                    (?# PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'space_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            space_(?:
+              create                                            (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_contact_count                               (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_contacts                                    (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_direct_state                                (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | get_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | is_active                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_active                                      (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_debug_contacts                              (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+              | set_param                                       (?# PhysicsServer2DExtension / PhysicsServer3DExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'string_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            string_(?:
+              get_character_breaks                              (?# TextServerExtension)
+              | get_word_breaks                                 (?# TextServerExtension)
+              | to_lower                                        (?# TextServerExtension)
+              | to_title                                        (?# TextServerExtension)
+              | to_upper                                        (?# TextServerExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'subgizmos_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            subgizmos_(?:
+              intersect_frustum                                 (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+              | intersect_ray                                   (?# EditorNode3DGizmo / EditorNode3DGizmoPlugin)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'supports_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            supports_(?:
+              builtin_mode                                      (?# ScriptLanguageExtension)
+              | documentation                                   (?# ScriptLanguageExtension)
+              | platform                                        (?# EditorExportPlugin)
+              | play_area_mode                                  (?# XRInterfaceExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'surface_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            surface_(?:
+              get_array_index_len                               (?# Mesh)
+              | get_array_len                                   (?# Mesh)
+              | get_arrays                                      (?# Mesh)
+              | get_blend_shape_arrays                          (?# Mesh)
+              | get_format                                      (?# Mesh)
+              | get_lods                                        (?# Mesh)
+              | get_material                                    (?# Mesh)
+              | get_primitive_type                              (?# Mesh)
+              | set_material                                    (?# Mesh)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'tag_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            tag_(?:
+              to_name                                           (?# TextServerExtension)
+              | used_streams                                    (?# AudioStreamPlayback)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'thread_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            thread_(?:
+              enter                                             (?# ScriptLanguageExtension)
+              | exit                                            (?# ScriptLanguageExtension)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'unhandled_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            unhandled_(?:
+              input                                             (?# Node)
+              | key_input                                       (?# Node)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'update_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            update_(?:
+              android_prebuilt_manifest                         (?# EditorExportPlugin)
+              | cache                                           (?# SyntaxHighlighter)
+              | exports                                         (?# ScriptExtension)
+              | layout                                          (?# EditorDock)
+              | layout_and_slot                                 (?# EditorDock)
+              | property                                        (?# EditorProperty)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'validate_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            validate_(?:
+              bone_names                                        (?# SkeletonModifier3D)
+              | path                                            (?# ScriptLanguageExtension)
+              | property                                        (?# Object)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
+      - comment: "'write_' prefix"
+        name: support.function.virtual.gdscript
+        match: |-
+          (?x)
+          \b
+          # Classes - virtual - START
+          (_(?:
+            write_(?:
+              begin                                             (?# MovieWriter)
+              | end                                             (?# MovieWriter)
+              | frame                                           (?# MovieWriter)
+            )
+          ))
+          # Classes - virtual - START
+          \b
+          # regex-end
