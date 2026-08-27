@@ -2499,11 +2499,24 @@ repository:
             name: keyword.operator.comparison.gt.gdscript
 
   type-cast:
-    name: keyword.control.as.gdscript
-    match: |-
+    name: meta.type.cast.gdscript
+    begin: |-
       (?x)
       \b(as)\b
+      [ \t]+
       # regex-end
+    beginCaptures:
+      "1":
+        name: keyword.control.as.gdscript
+    end: |-
+      (?x)
+      (?=
+        [^A-Za-z0-9_,.\[\]]
+        | $
+      )
+      # regex-end
+    patterns:
+      - include: "#_type-annotation"
 
   flow-keyword:
     match: |-
