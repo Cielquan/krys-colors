@@ -9,56 +9,6 @@ fileTypes:
 patterns: []
 
 repository:
-  _type-annotation:
-    patterns:
-      - include: "#builtin-type-primitive"
-      - include: "#builtin-type-container"
-      - include: "#builtin-type-vector"
-      - include: "#builtin-type-variant"
-      - include: "#builtin-enums"
-      - include: "#builtin-classes"
-      - comment: "User-defined types"
-        patterns:
-          - comment: "Probably class (or enum)"
-            match: |-
-              (?x)
-              (_?[A-Z][A-Za-z0-9_]*)
-              (?:
-                (\.)
-                (_?[A-Z][A-Za-z0-9_]*)
-              )*
-              # regex-end
-            captures:
-              "1":
-                name: entity.name.type.class.gdscript
-              "2":
-                name: punctuation.accessor.gdscript
-              "3":
-                name: entity.name.type.class.gdscript
-      - comment: "Generic type parameter"
-        contentName: meta.type.parameters.gdscript
-        begin: |-
-          (?x)
-          (\[)
-          # regex-end
-        beginCaptures:
-          "1":
-            name: punctuation.definition.arguments.begin.gdscript
-        end: |-
-          (?x)
-          (\])
-          # regex-end
-        endCaptures:
-          "1":
-            name: punctuation.definition.arguments.end.gdscript
-        patterns:
-          - name: punctuation.separator.type.gdscript
-            match: |-
-              (?x)
-              (,)
-              # regex-end
-          - include: "#_type-annotation"
-      - include: "#line-continuation"
 
   annotation:
     patterns:
@@ -181,7 +131,7 @@ repository:
       )
       # regex-end
     patterns:
-      - include: "#_type-annotation"
+      - include: "#_type-annotations"
 
   flow-keyword:
     match: |-
@@ -1219,7 +1169,7 @@ repository:
           (?=[:;#\n])
           # regex-end
         patterns:
-          - include: "#_type-annotation"
+          - include: "#_type-annotations"
 
   _parameters:
     name: meta.function.parameters.gdscript
@@ -1323,7 +1273,7 @@ repository:
           "1":
             name: punctuation.separator.parameters.gdscript
         patterns:
-          - include: "#_type-annotation"
+          - include: "#_type-annotations"
           - match: |-
               (?x)
               (?<!=)(=)(?!=)
@@ -1399,7 +1349,7 @@ repository:
           (?=[;#\n])
           # regex-end
         patterns:
-          - include: "#_type-annotation"
+          - include: "#_type-annotations"
           - match: |-
               (?x)
               (=)
@@ -1486,7 +1436,7 @@ repository:
           (?=[:;#\n])
           # regex-end
         patterns:
-          - include: "#_type-annotation"
+          - include: "#_type-annotations"
           - match: |-
               (?x)
               (=)
@@ -1704,7 +1654,7 @@ repository:
           (?x)
           \b(in)\b
           # regex-end
-      - include: "#_type-annotation"
+      - include: "#_type-annotations"
       - include: "#expression"
 
   # ----------------------------------------------
@@ -2495,6 +2445,61 @@ repository:
       (\.)
       (?=[A-Za-z0-9_])
       # regex-end
+
+  # ----------------------------------------------
+  # NOTE: Helpers
+  # ----------------------------------------------
+
+  _type-annotations:
+    patterns:
+      - include: "#builtin-type-primitive"
+      - include: "#builtin-type-container"
+      - include: "#builtin-type-vector"
+      - include: "#builtin-type-variant"
+      - include: "#builtin-enums"
+      - include: "#builtin-classes"
+      - comment: "User-defined types"
+        patterns:
+          - comment: "Probably class (or enum)"
+            match: |-
+              (?x)
+              (_?[A-Z][A-Za-z0-9_]*)
+              (?:
+                (\.)
+                (_?[A-Z][A-Za-z0-9_]*)
+              )*
+              # regex-end
+            captures:
+              "1":
+                name: entity.name.type.class.gdscript
+              "2":
+                name: punctuation.accessor.gdscript
+              "3":
+                name: entity.name.type.class.gdscript
+      - comment: "Generic type parameter"
+        contentName: meta.type.parameters.gdscript
+        begin: |-
+          (?x)
+          (\[)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.arguments.begin.gdscript
+        end: |-
+          (?x)
+          (\])
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.arguments.end.gdscript
+        patterns:
+          - name: punctuation.separator.type.gdscript
+            match: |-
+              (?x)
+              (,)
+              # regex-end
+          - include: "#_type-annotations"
+      - include: "#line-continuation"
 
   # ----------------------------------------------
   # NOTE: Built-Ins
