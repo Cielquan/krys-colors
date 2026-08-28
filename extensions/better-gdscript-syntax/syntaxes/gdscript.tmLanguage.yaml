@@ -29,7 +29,7 @@ repository:
       # regex-end
 
   comment-documentation:
-    name: "comment.block.documentation.gdscript comment.line.documentation.gdscript"
+    name: comment.block.documentation.gdscript comment.line.documentation.gdscript
     begin: |-
       (?x)
       [ \t]*([#]{2})
@@ -203,7 +203,7 @@ repository:
             name: entity.name.tag.strikethrough.gdscript
           "3":
             name: punctuation.definition.tag.end.gdscript
-      - comment: "Opening tags with optional attributes"
+      - comment: Opening tags with optional attributes
         match: |-
           (?x)
           (\[)
@@ -255,7 +255,7 @@ repository:
             name: string.unquoted.gdscript
           "12":
             name: punctuation.definition.tag.end.gdscript
-      - comment: "Closing tags"
+      - comment: Closing tags
         match: |-
           (?x)
           (\[/)
@@ -502,7 +502,7 @@ repository:
               "2":
                 name: support.type.gdscript
               "3":
-                name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
+                name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
               "4":
                 name: punctuation.definition.tag.end.gdscript
           - name: meta.comment.documentation.link.class-reference.gdscript
@@ -558,7 +558,7 @@ repository:
 
   comment-documentation-codeblock:
     patterns:
-      - name: "comment.block.documentation.gdscript comment.line.documentation.gdscript meta.comment.documentation.tag.codeblock.gdscript.gdscript"
+      - name: comment.block.documentation.gdscript comment.line.documentation.gdscript meta.comment.documentation.tag.codeblock.gdscript.gdscript
         begin: |-
           (?x)
           (?:^|\G)
@@ -695,7 +695,7 @@ repository:
       (?=[;#\n]|extends)
       # regex-end
     patterns:
-      - comment: "Class name"
+      - comment: Class name
         patterns:
           - include: "#builtin-classes"
           - include: "#builtin-type-primitive"
@@ -759,7 +759,7 @@ repository:
       "1":
         name: punctuation.section.class.begin.gdscript
     patterns:
-      - comment: "Class name"
+      - comment: Class name
         patterns:
           - include: "#builtin-classes"
           - include: "#builtin-type-primitive"
@@ -867,13 +867,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.function.gdscript storage.type.signal.gdscript"
+        name: storage.type.function.gdscript storage.type.signal.gdscript
     end: |-
       (?x)
       (?=[#'"\n])
       # regex-end
     patterns:
-      - comment: "Signal name"
+      - comment: Signal name
         patterns:
           - include: "#virtual-methods"
           - include: "#_builtin-functions"
@@ -881,7 +881,7 @@ repository:
           - include: "#builtin-type-container"
           - include: "#builtin-type-vector"
           - include: "#builtin-type-variant"
-          - name: "entity.name.function.definition.gdscript entity.name.signal.definition.gdscript"
+          - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
@@ -919,7 +919,7 @@ repository:
       "1":
         name: punctuation.section.function.begin.gdscript
     patterns:
-      - comment: "Function name"
+      - comment: Function name
         patterns:
           - include: "#virtual-methods"
           - include: "#_builtin-functions"
@@ -934,7 +934,7 @@ repository:
               # regex-end
       - include: "#_parameters"
       - include: "#line-continuation"
-      - comment: "Return type annotation"
+      - comment: Return type annotation
         begin: |-
           (?x)
           (->)
@@ -972,7 +972,7 @@ repository:
           (\.\.\.)
           # regex-end
       - include: "#function-and-lambda-declaration"
-      - comment: "'self' parameter"
+      - comment: "`self` parameter"
         match: |-
           (?x)
           \b(self)\b
@@ -1003,7 +1003,7 @@ repository:
             name: punctuation.separator.parameters.gdscript
       - include: "#comment-documentation"
       - include: "#comment"
-      - comment: "Default value"
+      - comment: Default value
         begin: |-
           (?x)
           (?:
@@ -1028,7 +1028,7 @@ repository:
             name: punctuation.separator.parameters.gdscript
         patterns:
           - include: "#expression"
-      - comment: "Type annotated parameter"
+      - comment: Type annotated parameter
         begin: |-
           (?x)
           ([A-Za-z_][A-Za-z0-9_]*)
@@ -1081,7 +1081,7 @@ repository:
       (?=[;#\n])
       # regex-end
     patterns:
-      - comment: "Const name"
+      - comment: Const name
         patterns:
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
@@ -1093,7 +1093,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - comment: "Untyped initializer"
+      - comment: Untyped initializer
         begin: |-
           (?x)
           (?:
@@ -1112,7 +1112,7 @@ repository:
           # regex-end
         patterns:
           - include: "#expression"
-      - comment: "Type annotated initializer"
+      - comment: Type annotated initializer
         begin: |-
           (?x)
           \b
@@ -1168,7 +1168,7 @@ repository:
       "1":
         name: punctuation.section.setter-getter.begin.gdscript
     patterns:
-      - comment: "Var name"
+      - comment: Var name
         patterns:
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
@@ -1180,7 +1180,7 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - comment: "Untyped initializer"
+      - comment: Untyped initializer
         begin: |-
           (?x)
           (?:
@@ -1199,7 +1199,7 @@ repository:
           # regex-end
         patterns:
           - include: "#expression"
-      - comment: "Type annotated initializer"
+      - comment: Type annotated initializer
         begin: |-
           (?x)
           \b
@@ -1227,7 +1227,7 @@ repository:
 
   var-setter-getter:
     patterns:
-      - comment: "Getter assignment"
+      - comment: Getter assignment
         match: |-
           (?x)
           \b(get)\b
@@ -1240,14 +1240,14 @@ repository:
           # regex-end
         captures:
           "1":
-            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
+            name: entity.name.function.definition.gdscript support.function.getter.gdscript
           "2":
             name: keyword.operator.assignment.equal.gdscript
           "3":
             name: entity.name.function.definition.gdscript
           "4":
             name: punctuation.separator.comma.gdscript
-      - comment: "Getter definition"
+      - comment: Getter definition
         match: |-
           (?x)
           \b(get)\b
@@ -1256,10 +1256,10 @@ repository:
           # regex-end
         captures:
           "1":
-            name: "entity.name.function.definition.gdscript support.function.getter.gdscript"
+            name: entity.name.function.definition.gdscript support.function.getter.gdscript
           "2":
             name: punctuation.section.function.begin.gdscript
-      - comment: "Setter assignment"
+      - comment: Setter assignment
         match: |-
           (?x)
           \b(set)\b
@@ -1272,14 +1272,14 @@ repository:
           # regex-end
         captures:
           "1":
-            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
+            name: entity.name.function.definition.gdscript support.function.setter.gdscript
           "2":
             name: keyword.operator.assignment.equal.gdscript
           "3":
             name: entity.name.function.definition.gdscript
           "4":
             name: punctuation.separator.comma.gdscript
-      - comment: "Setter definition"
+      - comment: Setter definition
         match: |-
           (?x)
           \b(set)\b
@@ -1294,7 +1294,7 @@ repository:
           # regex-end
         captures:
           "1":
-            name: "entity.name.function.definition.gdscript support.function.setter.gdscript"
+            name: entity.name.function.definition.gdscript support.function.setter.gdscript
           "2":
             name: punctuation.definition.parameters.begin.gdscript
           "3":
@@ -1441,7 +1441,7 @@ repository:
 
   annotation:
     patterns:
-      - comment: "Without arguments"
+      - comment: Without arguments
         name: meta.annotation.gdscript
         match: |-
           (?x)
@@ -1451,7 +1451,7 @@ repository:
         captures:
           "1":
             name: storage.modifier.annotation.gdscript
-      - comment: "With arguments"
+      - comment: With arguments
         name: meta.annotation.gdscript
         contentName: meta.annotation.arguments.gdscript
         begin: |-
@@ -1502,7 +1502,7 @@ repository:
       "1":
         name: punctuation.definition.arguments.end.gdscript
     patterns:
-      - comment: "Function name"
+      - comment: Function name
         patterns:
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
@@ -1757,7 +1757,7 @@ repository:
       - include: "#_string-formattings"
 
   node-reference-quoted-multi:
-    name: "string.quoted.multi.gdscript meta.literal.node-reference.gdscript"
+    name: string.quoted.multi.gdscript meta.literal.node-reference.gdscript
     begin: |-
       (?x)
       (?:
@@ -1769,13 +1769,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "5":
         name: punctuation.definition.string.begin.multi.gdscript
     end: |-
@@ -1806,7 +1806,7 @@ repository:
         name: punctuation.separator.property.gdscript
 
   node-reference-quoted-single:
-    name: "string.quoted.single.gdscript meta.literal.node-reference.gdscript"
+    name: string.quoted.single.gdscript meta.literal.node-reference.gdscript
     begin: |-
       (?x)
       (?:
@@ -1818,13 +1818,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "5":
         name: punctuation.definition.string.begin.gdscript
     end: |-
@@ -1866,13 +1866,13 @@ repository:
       # regex-end
     beginCaptures:
       "1":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "2":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "3":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
       "4":
-        name: "storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript"
+        name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
       "5":
         name: punctuation.separator.path.gdscript
     end: |-
@@ -1905,7 +1905,7 @@ repository:
 
   _string-escape-sequences-normal:
     patterns:
-      - comment: "Character string escape sequences"
+      - comment: Character string escape sequences
         name: constant.character.escape.gdscript
         match: |-
           (?x)
@@ -1914,7 +1914,7 @@ repository:
             )
           # regex-end
 
-      - comment: "Unicode string escape sequences"
+      - comment: Unicode string escape sequences
         name: constant.character.escape.gdscript
         match: |-
           (?x)
@@ -1924,7 +1924,7 @@ repository:
             )
           # regex-end
 
-      - comment: "Invalid named unicode string escape sequence"
+      - comment: Invalid named unicode string escape sequence
         name: invalid.illegal.escape.gdscript
         match: |-
           (?x)
@@ -1933,7 +1933,7 @@ repository:
             )
           # regex-end
 
-      - comment: "Invalid byte sequence string escape sequence"
+      - comment: Invalid byte sequence string escape sequence
         name: invalid.illegal.escape.gdscript
         match: |-
           (?x)
@@ -1961,7 +1961,7 @@ repository:
 
   _string-formattings:
     patterns:
-      - comment: "Percent style string formatting"
+      - comment: Percent style string formatting
         name: meta.format.percent.gdscript
         match: |-
           (?x)
@@ -1985,8 +1985,8 @@ repository:
           "3":
             name: storage.type.format.gdscript
 
-      - comment: "Brace style string formatting"
-        name: "meta.format.brace.gdscript"
+      - comment: Brace style string formatting
+        name: meta.format.brace.gdscript
         match: |-
           (?x)
           (
@@ -1997,7 +1997,7 @@ repository:
           # regex-end
         captures:
           "1":
-            name: "constant.character.format.placeholder.other.gdscript"
+            name: constant.character.format.placeholder.other.gdscript
 
   dict-literal:
     name: meta.literal.dict.gdscript
@@ -2083,7 +2083,7 @@ repository:
       (?=[,\]}])
       # regex-end
     patterns:
-      - comment: "Var name"
+      - comment: Var name
         patterns:
           - include: "#_builtin-functions"
           - include: "#builtin-type-primitive"
@@ -2462,9 +2462,9 @@ repository:
       - include: "#builtin-type-variant"
       - include: "#builtin-enums"
       - include: "#builtin-classes"
-      - comment: "User-defined types"
+      - comment: User-defined types
         patterns:
-          - comment: "Probably class (or enum)"
+          - comment: Probably class (or enum)
             match: |-
               (?x)
               (_?[A-Z][A-Za-z0-9_]*)
@@ -2480,7 +2480,7 @@ repository:
                 name: punctuation.accessor.gdscript
               "3":
                 name: entity.name.type.class.gdscript
-      - comment: "Generic type parameter"
+      - comment: Generic type parameter
         contentName: meta.type.parameters.gdscript
         begin: |-
           (?x)
@@ -2511,7 +2511,7 @@ repository:
 
   language-constants:
     patterns:
-      - comment: "Number constants"
+      - comment: Number constants
         match: |-
           (?x)
           \b(?:
@@ -2532,7 +2532,7 @@ repository:
             name: constant.language.number.inf.gdscript
           "4":
             name: constant.language.number.nan.gdscript
-      - comment: "Other constants"
+      - comment: Other constants
         match: |-
           (?x)
           \b(?:
@@ -2612,7 +2612,7 @@ repository:
 
   builtin-enum-constant-values:
     patterns:
-      - comment: "Builtin alignment-related enum constants"
+      - comment: Builtin alignment-related enum constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -2663,7 +2663,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin input-related enum constants"
+      - comment: Builtin input-related enum constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -2720,7 +2720,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin `Key` enum constants"
+      - comment: Builtin `Key` enum constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -2922,7 +2922,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin `Error` enum constants"
+      - comment: Builtin `Error` enum constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -2980,7 +2980,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin `Variant.*` enum constants"
+      - comment: Builtin `Variant.*` enum constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -3055,7 +3055,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin enum constants (other)"
+      - comment: Builtin enum constants (other)
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -3126,7 +3126,7 @@ repository:
             # @GlobalScope - const - END
           )\b
           # regex-end
-      - comment: "Builtin 'flags' constants"
+      - comment: Builtin 'flags' constants
         name: constant.other.builtin.enummember.gdscript
         match: |-
           (?x)
@@ -3203,7 +3203,7 @@ repository:
 
   builtin-types:
     patterns:
-      - comment: "Builtin primitive types"
+      - comment: Builtin primitive types
         match: |-
           (?x)
           \b(?:
@@ -3235,7 +3235,7 @@ repository:
           "7":
             name: support.type.primitive.void.gdscript
 
-      - comment: "Builtin container types"
+      - comment: Builtin container types
         match: |-
           (?x)
           \b(?:
@@ -3268,7 +3268,7 @@ repository:
           "5":
             name: support.type.container.signal.gdscript
 
-      - comment: "Builtin variant types"
+      - comment: Builtin variant types
         match: |-
           (?x)
           \b(?:
@@ -3291,7 +3291,7 @@ repository:
           "4":
             name: support.type.builtin.engine.rid.gdscript
 
-      - comment: "Builtin vector types"
+      - comment: Builtin vector types
         match: |-
           (?x)
           \b(?:
@@ -3328,7 +3328,7 @@ repository:
 
   builtin-classes:
     patterns:
-      - comment: "Builtin animation-related classes"
+      - comment: Builtin animation-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3369,7 +3369,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin audio-related classes"
+      - comment: Builtin audio-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3426,7 +3426,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin bone/skeleton-related classes"
+      - comment: Builtin bone/skeleton-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3469,7 +3469,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin camera-related classes"
+      - comment: Builtin camera-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3487,7 +3487,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin canvas-related classes"
+      - comment: Builtin canvas-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3504,7 +3504,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin code/editor/script-related classes"
+      - comment: Builtin code/editor/script-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3577,7 +3577,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin particle-related classes"
+      - comment: Builtin particle-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3602,7 +3602,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin image-related classes"
+      - comment: Builtin image-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3618,7 +3618,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin input-related classes"
+      - comment: Builtin input-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3648,7 +3648,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin light-related classes"
+      - comment: Builtin light-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3670,7 +3670,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin mesh-related classes"
+      - comment: Builtin mesh-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3703,7 +3703,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin navigation-related classes"
+      - comment: Builtin navigation-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3725,7 +3725,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin packet-peer-related classes"
+      - comment: Builtin packet-peer-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3740,7 +3740,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin physics-related classes"
+      - comment: Builtin physics-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3761,7 +3761,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin placeholder-related classes"
+      - comment: Builtin placeholder-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3778,7 +3778,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin RD-related classes"
+      - comment: Builtin RD-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3809,7 +3809,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin render-related classes"
+      - comment: Builtin render-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3834,7 +3834,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin resource-related classes"
+      - comment: Builtin resource-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3867,7 +3867,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin shader-related classes"
+      - comment: Builtin shader-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3888,7 +3888,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin stream-peer-related classes"
+      - comment: Builtin stream-peer-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3906,7 +3906,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin style-box-related classes"
+      - comment: Builtin style-box-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3921,7 +3921,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin text-related classes"
+      - comment: Builtin text-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3940,7 +3940,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin texture-related classes"
+      - comment: Builtin texture-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3969,7 +3969,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin XR-related classes"
+      - comment: Builtin XR-related classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -3999,7 +3999,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin special classes"
+      - comment: Builtin special classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -4009,7 +4009,7 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-      - comment: "Builtin remaining classes"
+      - comment: Builtin remaining classes
         name: entity.name.class.builtin.gdscript
         match: |-
           (?x)
@@ -4475,7 +4475,7 @@ repository:
 
   virtual-methods:
     patterns:
-      - comment: "Single word or unique first word"
+      - comment: Single word or unique first word
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4628,7 +4628,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'add_' prefix"
+      - comment: "`add_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4647,7 +4647,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'apply_' prefix"
+      - comment: "`apply_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4667,7 +4667,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'area_' prefix"
+      - comment: "`area_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4709,7 +4709,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'begin_' prefix"
+      - comment: "`begin_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4725,7 +4725,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'body_' prefix"
+      - comment: "`body_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4806,7 +4806,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'can_' prefix"
+      - comment: "`can_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4831,7 +4831,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'commit_' prefix"
+      - comment: "`commit_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4846,7 +4846,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'cone_' prefix"
+      - comment: "`cone_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4861,7 +4861,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'create_' prefix"
+      - comment: "`create_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4882,7 +4882,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'customize_' prefix"
+      - comment: "`customize_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4898,7 +4898,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'damped_' prefix"
+      - comment: "`damped_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4913,7 +4913,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'debug_' prefix"
+      - comment: "`debug_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4937,7 +4937,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'draw_' prefix"
+      - comment: "`draw_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4955,7 +4955,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'end_' prefix"
+      - comment: "`end_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4973,7 +4973,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'export_' prefix"
+      - comment: "`export_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -4994,7 +4994,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'filter_' prefix"
+      - comment: "`filter_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5009,7 +5009,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'font_' prefix"
+      - comment: "`font_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5153,7 +5153,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'forward_' prefix"
+      - comment: "`forward_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5172,7 +5172,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'generate_' prefix"
+      - comment: "`generate_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5187,7 +5187,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'generic_' prefix"
+      - comment: "`generic_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5206,7 +5206,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'get_' prefix"
+      - comment: "`get_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5457,7 +5457,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'handle_' prefix"
+      - comment: "`handle_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5472,7 +5472,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'handles_' prefix"
+      - comment: "`handles_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5488,7 +5488,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'has_' prefix"
+      - comment: "`has_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5518,7 +5518,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'hinge_' prefix"
+      - comment: "`hinge_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5535,7 +5535,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'instance_' prefix"
+      - comment: "`instance_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5550,7 +5550,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'intersect_' prefix"
+      - comment: "`intersect_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5566,7 +5566,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'is_' prefix"
+      - comment: "`is_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5608,7 +5608,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'iter_' prefix"
+      - comment: "`iter_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5624,7 +5624,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'joint_' prefix"
+      - comment: "`joint_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5654,7 +5654,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'load_' prefix"
+      - comment: "`load_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5670,7 +5670,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'log_' prefix"
+      - comment: "`log_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5685,7 +5685,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'make_' prefix"
+      - comment: "`make_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5703,7 +5703,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'mouse_' prefix"
+      - comment: "`mouse_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5720,7 +5720,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'object_' prefix"
+      - comment: "`object_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5735,7 +5735,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'parse_' prefix"
+      - comment: "`parse_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5756,7 +5756,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'pin_' prefix"
+      - comment: "`pin_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5777,7 +5777,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'placeholder_' prefix"
+      - comment: "`placeholder_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5792,7 +5792,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'post_' prefix"
+      - comment: "`post_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5809,7 +5809,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'pre_' prefix"
+      - comment: "`pre_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5825,7 +5825,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'process_' prefix"
+      - comment: "`process_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5843,7 +5843,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'profiling_' prefix"
+      - comment: "`profiling_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5861,7 +5861,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'property_' prefix"
+      - comment: "`property_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5876,7 +5876,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'put_' prefix"
+      - comment: "`put_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5893,7 +5893,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'reload_' prefix"
+      - comment: "`reload_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5909,7 +5909,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'remove_' prefix"
+      - comment: "`remove_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5925,7 +5925,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'save_' prefix"
+      - comment: "`save_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5941,7 +5941,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'set_' prefix"
+      - comment: "`set_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -5992,7 +5992,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'setup_' prefix"
+      - comment: "`setup_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6008,7 +6008,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'shape_' prefix"
+      - comment: "`shape_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6029,7 +6029,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'shaped_' prefix"
+      - comment: "`shaped_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6124,7 +6124,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'slider_' prefix"
+      - comment: "`slider_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6139,7 +6139,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'soft_' prefix"
+      - comment: "`soft_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6192,7 +6192,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'space_' prefix"
+      - comment: "`space_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6214,7 +6214,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'string_' prefix"
+      - comment: "`string_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6232,7 +6232,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'subgizmos_' prefix"
+      - comment: "`subgizmos_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6247,7 +6247,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'supports_' prefix"
+      - comment: "`supports_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6264,7 +6264,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'surface_' prefix"
+      - comment: "`surface_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6286,7 +6286,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'tag_' prefix"
+      - comment: "`tag_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6301,7 +6301,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'thread_' prefix"
+      - comment: "`thread_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6316,7 +6316,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'unhandled_' prefix"
+      - comment: "`unhandled_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6331,7 +6331,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'update_' prefix"
+      - comment: "`update_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6350,7 +6350,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'validate_' prefix"
+      - comment: "`validate_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
@@ -6366,7 +6366,7 @@ repository:
           # Classes - virtual - END
           \b
           # regex-end
-      - comment: "'write_' prefix"
+      - comment: "`write_` prefix"
         name: support.function.virtual.gdscript
         match: |-
           (?x)
