@@ -881,8 +881,8 @@ repository:
     patterns:
       - comment: Signal name
         patterns:
-          - include: "#_virtual-methods"
-          - include: "#_builtin-functions"
+          - include: "#virtual-methods"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
@@ -923,8 +923,8 @@ repository:
     patterns:
       - comment: Function name
         patterns:
-          - include: "#_virtual-methods"
-          - include: "#_builtin-functions"
+          - include: "#virtual-methods"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript
             match: |-
@@ -1082,7 +1082,7 @@ repository:
     patterns:
       - comment: Const name
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: variable.other.constant.gdscript
             match: |-
@@ -1166,7 +1166,7 @@ repository:
     patterns:
       - comment: Var name
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
@@ -1497,7 +1497,7 @@ repository:
     patterns:
       - comment: Function name
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: entity.name.function.call.gdscript
             match: |-
@@ -2075,7 +2075,7 @@ repository:
     patterns:
       - comment: Var name
         patterns:
-          - include: "#_builtin-functions"
+          - include: "#builtin-functions"
           - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
@@ -4279,7 +4279,7 @@ repository:
           # regex-end
 
 
-  _builtin-functions:
+  builtin-functions:
     patterns:
       - name: keyword.control.flow.gdscript
         match: |-
@@ -4469,7 +4469,7 @@ repository:
           )\b
           # regex-end
 
-  _virtual-methods:
+  virtual-methods:
     patterns:
       - comment: Single word or unique first word
         name: support.function.virtual.gdscript
