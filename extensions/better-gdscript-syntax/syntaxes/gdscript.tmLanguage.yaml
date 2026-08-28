@@ -63,8 +63,8 @@ repository:
             name: punctuation.definition.expression.end.gdscript
         patterns:
           - include: "#expression"
-      - include: "#comment"
       - include: "#comment-documentation"
+      - include: "#comment"
       - include: "#language-constants"
       - include: "#dict-literal"
       - include: "#array-literal"
