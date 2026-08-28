@@ -31,7 +31,7 @@ repository:
     name: comment.line.number-sign.gdscript
     begin: |-
       (?x)
-      [ \t]*([#])
+      ([#])
       # regex-end
     beginCaptures:
       "1":
@@ -45,7 +45,7 @@ repository:
     name: comment.block.documentation.gdscript comment.line.documentation.gdscript
     begin: |-
       (?x)
-      [ \t]*([#]{2})
+      ([#]{2})
       # regex-end
     beginCaptures:
       "1":
@@ -726,7 +726,6 @@ repository:
     contentName: entity.other.inherited-class.gdscript
     begin: |-
       (?x)
-      [ \t]*
       \b(extends)
       [ \t]+
       # regex-end
@@ -906,7 +905,6 @@ repository:
     name: meta.function.gdscript
     begin: |-
       (?x)
-      [ \t]*
       (?:
         \b(static)
         [ \t]+
