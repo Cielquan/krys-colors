@@ -711,10 +711,7 @@ repository:
       - comment: Class name
         patterns:
           - include: "#builtin-classes"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: entity.name.type.class.gdscript
             match: |-
               (?x)
@@ -774,10 +771,7 @@ repository:
       - comment: Class name
         patterns:
           - include: "#builtin-classes"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: entity.name.type.class.gdscript
             match: |-
               (?x)
@@ -889,10 +883,7 @@ repository:
         patterns:
           - include: "#virtual-methods"
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
               (?x)
@@ -934,10 +925,7 @@ repository:
         patterns:
           - include: "#virtual-methods"
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript
             match: |-
               (?x)
@@ -1095,10 +1083,7 @@ repository:
       - comment: Const name
         patterns:
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: variable.other.constant.gdscript
             match: |-
               (?x)
@@ -1182,10 +1167,7 @@ repository:
       - comment: Var name
         patterns:
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
               (?x)
@@ -1516,10 +1498,7 @@ repository:
       - comment: Function name
         patterns:
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: entity.name.function.call.gdscript
             match: |-
               (?x)
@@ -2097,10 +2076,7 @@ repository:
       - comment: Var name
         patterns:
           - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
+          - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
               (?x)
@@ -2467,10 +2443,7 @@ repository:
 
   _type-annotations:
     patterns:
-      - include: "#builtin-type-primitive"
-      - include: "#builtin-type-container"
-      - include: "#builtin-type-vector"
-      - include: "#builtin-type-variant"
+      - include: "#builtin-types"
       - include: "#builtin-enums"
       - include: "#builtin-classes"
       - comment: User-defined types
