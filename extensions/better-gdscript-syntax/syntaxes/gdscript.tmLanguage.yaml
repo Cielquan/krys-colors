@@ -9,6 +9,19 @@ fileTypes:
 patterns: []
 
 repository:
+  # ----------------------------------------------
+  # SECTIONS (marked with `NOTE:` comments)
+  #
+  # - Comments
+  # - Declaration & Definitions
+  # - Control flow
+  # - Calls
+  # - Literals
+  # - Operators & Keywords
+  # - Punctuation
+  # - Typing
+  # - Built-Ins
+  # ----------------------------------------------
 
   # ----------------------------------------------
   # NOTE: Comments
