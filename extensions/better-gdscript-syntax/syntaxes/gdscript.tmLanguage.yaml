@@ -2292,17 +2292,6 @@ repository:
           "3":
             name: keyword.operator.logical.not.gdscript
 
-  reserved-keywords:
-    name: invalid.illegal.word.gdscript
-    match: |-
-      (?x)
-      \b(
-        namespace
-        | trait
-        | yield
-      )\b
-      # regex-end
-
   flow-keywords:
     match: |-
       (?x)
@@ -2401,6 +2390,17 @@ repository:
         name: storage.type.function.gdscript
       "13":
         name: storage.type.function.gdscript storage.type.signal.gdscript
+
+  reserved-keywords:
+    name: invalid.illegal.word.gdscript
+    match: |-
+      (?x)
+      \b(
+        namespace
+        | trait
+        | yield
+      )\b
+      # regex-end
 
   # ----------------------------------------------
   # NOTE: Punctuation
