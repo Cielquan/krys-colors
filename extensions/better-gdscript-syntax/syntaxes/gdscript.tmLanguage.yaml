@@ -6,7 +6,15 @@ scopeName: source.gdscript
 fileTypes:
   - gd
 
-patterns: []
+patterns:
+      - include: "#comment-documentation-codeblock"
+      - include: "#comment-region-marker"
+      - include: "#class-declaration"
+      - include: "#class-name-declaration"
+      - include: "#extends-declaration"
+      - include: "#enum-declaration"
+      - include: "#statement"
+      - include: "#expression"
 
 repository:
   # ----------------------------------------------
@@ -22,6 +30,48 @@ repository:
   # - Typing
   # - Built-Ins
   # ----------------------------------------------
+
+  statement:
+    patterns:
+      - include: "#signal-declaration"
+      - include: "#function-and-lambda-declaration"
+      - include: "#const-definition"
+      - include: "#var-declaration-and-definition"
+      - include: "#var-setter-getter"
+      - include: "#if-statement"
+      - include: "#match-statement"
+      - include: "#while-loop"
+      - include: "#for-loop"
+      - include: "#annotation"
+      - include: "#function-call"
+
+  expression:
+    patterns:
+      - include: "#comment"
+      - include: "#comment-documentation"
+      - include: "#language-constants"
+      - include: "#dict-literal"
+      - include: "#array-literal"
+      - include: "#type-cast"
+      - include: "#builtin-constants"
+      - include: "#builtin-enums"
+      - include: "#builtin-enum-constant-values"
+      - include: "#builtin-types"
+      - include: "#builtin-classes"
+      - include: "#strings"
+      - include: "#numbers"
+      - include: "#operators"
+      - include: "#section-colon"
+      - include: "#accessor-dot"
+      - include: "#semicolon"
+      - include: "#line-continuation"
+      - include: "#_fallback-words"
+
+  _fallback-words:
+    patterns:
+      - include: "#keyword-names"
+      - include: "#builtin-functions"
+      - include: "#virtual-methods"
 
   # ----------------------------------------------
   # NOTE: Comments
