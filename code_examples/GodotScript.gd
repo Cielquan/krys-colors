@@ -1,29 +1,57 @@
-@tool
-@icon("res://icon.svg")
+@tool @icon("res://icon.svg")
 @static_unload
 class_name MyNode
 extends Node2D
 
 ## Script docu summary
 ##
-## Some longer details.[br]
+## Some longer [lb]details[rb].[br]
 ## Move the [Sprite2D].
 ## See [annotation @GDScript.@rpc].
 ## See [constant Color.RED].
+## See [enum Mesh.ArrayType].
+## Get [member Node2D.scale].
+## Call [method Node3D.hide].
+## Use [constructor Color.Color].
+## Use [operator Color.operator *].
+## Emit [signal Node.renamed].
+## See [theme_item Label.font].
+## Takes [param size] for the size.
 ##
 ## @tutorial:             https://example.com/tutorial_1
 ## @tutorial(Tutorial 2): https://example.c
-## @deprecated: Use [class Parent] insteadom/tutorial_2
+## @deprecated: Use [Parent] insteadom/tutorial_2
 ## @deprecated.
 ## @experimental
 ## @experimental: Take care
 ## @experimental : Invalid with space before : should not highlight
+## Tags following text are invalid: @experimental
+##
+## [b]bold[/b]
+## [i]italic[/i]
+## [u]underline[/u]
+## [s]strikethrough[/s]
+## [font=res://mono.ttf]
+##      [color=red]Error![/color]
+##      LICENSE
+## [/font]
+## [img width=32]res://icon.svg[/img]
+## [url]https://example.com[/url]
+## [url=https://example.com]Website[/url]
+## [center]2 + 2 = 4[/center]
+## Press [kbd]Ctrl + C[/kbd].
+## Returns [code]true[/code].
+## [codeblock lang=gdscript]
+## if true and 1:
+##     print("Hi")
+## [/codeblock]
+## [font][/font]
 
 # Normal comment
 
 #region RegionName
 signal ping() # Inline normal comment
-signal changed(value: int) ## Inline doc comment
+signal changed(value: int) ## @experimental Inline doc comment
 #endregion
 
 enum State {
@@ -36,9 +64,11 @@ enum { IDLE = 1, RUNNING }; # Unnamed & oneliner, Semicolon is generally optiona
 # fmt:on
 
 const MyScript = preload("res://my_script.gd")
+var MyScript2 := load("res://my_script2.gd")
 
-const PI2 := PI * 2.0
+const PI2: float = PI * 2.0
 const DATA := { "key": [1, 2, 3], 1: 2, &"name": null }
+const DEPRECATED := Color8(1, 1, 1)
 
 static var count: int = 0:
     get:
@@ -56,8 +86,8 @@ var hp: int = 100
 
 @export_group("Combat")
 @export var damage: float = 10.5
-
-var a: Array[Dictionary]
+var a
+var a1: Array[Dictionary]
 var a2: Array[MyNode]
 var a3: Array[MyNode.InnerClass]
 var d: Dictionary[String, Variant]
@@ -85,8 +115,11 @@ var warns_when_changed:
 var my_prop:
     get = get_my_prop, set = set_my_prop
 
+# fmt:off
 var my_prop2:
-    get = get_my_prop, set = set_my_prop
+    get = get_my_prop2,
+    set = set_my_prop2
+# fmt:on
 
 @onready var label: Label = %Label
 
@@ -113,6 +146,13 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("jump"):
         create()
+
+
+@abstract func abstr() -> void
+
+
+@abstract
+func abstr2() -> void
 
 
 func custom_overridden_func() -> void:
@@ -148,7 +188,7 @@ func _special_number_const() -> float:
     return constants + endless + no_num
 
 
-@abstract func _strings() -> void:
+func _strings() -> void:
     var single := 'Single "'
     var escapes := "Hello\nWorld \u0832 \U000832 \n \t \r \a \b \f \v \" \' \\"
     var raw := r"C:\path\to\file"
@@ -162,11 +202,7 @@ string starting on first row because of \\ \n
 "'
 """
 
-    print(
-        "\n".join(
-            [single, escapes, invalid_escape, string_name, raw, raw_special_escapes, multi_line]
-        )
-    )
+    print("\n".join([single, escapes, string_name, raw, raw_special_escapes, multi_line]))
 
 
 func _formatted_strings() -> void:
@@ -252,7 +288,7 @@ func _match() -> void:
             pass
         var new_var:
             print("Bind value into 'new_var'", new_var)
-        @warning_ignore("unreachable_pattern")
+        @warning_ignore(("unreachable_pattern"))
         _:
             print("Default/Fallback")
 
@@ -295,6 +331,9 @@ func _match() -> void:
 
 
 func _loops() -> void:
+    for item in values_non_static:
+        continue
+
     for item: String in values_non_static:
         continue
 
@@ -339,8 +378,33 @@ func _parameters(_normal, _default = 1, ... args) -> void:
     pass
 
 
-func _parameters_typed(_normal: String, _default: int = 1, ... args: Array[int]) -> void:
-    pass
+func _parameters_typed(_normal: String, _default: int = 1, ... args: Array) -> Array:
+    return args
+
+
+func _type_casts() -> void:
+    var d: Dictionary = { "foo": 1 as float, "bar": 2 as float }
+    var v = (d as Dictionary[String, Variant]).get("foo")
+
+    var n := (1.0 as int) * 2.0 as int * 2
+
+    var x: Variant = null
+    x = x as Node
+    x = x as Array[String]
+    x = x as Array[Dictionary[String, int]]
+    x = x as MyClass
+    x = (x as MyClass.SubType)
+
+
+func _primitives() -> String:
+    var str_: String = str("")
+    var string: String = String("")
+    var node_path: NodePath = NodePath("")
+    var int_: int = int(0)
+    var float_: float = float(0)
+    var bool_: bool = bool(0)
+
+    return str(str_, string, node_path, int_, float_, bool_)
 
 
 func _builtins() -> void:
@@ -371,7 +435,7 @@ func _punctuation() -> void:
     #fmt:off
     foo(
         bar,
-        baz
+        (baz)
     )
 
     foo({
@@ -396,7 +460,7 @@ func _arithemitic_operators_assigning() -> int:
 
 
 func _bitwise_operators() -> int:
-    return ~1 >> 1 << 1 & 1 ^ 1 | 1
+    return ~(1 >> 1 << 1 & 1 ^ 1 | 1)
 
 
 func _bitwise_operators_assigning() -> int:
@@ -411,6 +475,22 @@ func _bitwise_operators_assigning() -> int:
 
 func _comparison() -> bool:
     return 1 == 1.0 and 1 != 2 and 1 < 2 and 1 <= 2 and 2 >= 1 and 2 > 1
+
+
+func _builtin_const() -> int:
+    return (
+        SIDE_BOTTOM + MOUSE_BUTTON_LEFT + KEY_0 + FAILED + TYPE_AABB
+        + MIDI_MESSAGE_ACTIVE_SENSING + KEY_CODE_MASK + PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE
+    )
+
+
+func _builtin_enum() -> int:
+    var c := Side.SIDE_BOTTOM
+    return (
+        Side.SIDE_BOTTOM + MouseButton.MOUSE_BUTTON_LEFT + Key.KEY_0 + Error.FAILED
+        + Variant.Type.TYPE_AABB + MIDIMessage.MIDI_MESSAGE_ACTIVE_SENSING
+        + KeyModifierMask.KEY_CODE_MASK + PropertyHint.PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE
+    )
 
 
 class Parent:
@@ -437,7 +517,7 @@ class Child extends MyNode.Parent:
         super()
         super._ready()
         self.value = 1
-        self.do_that(2)
+        self.do_that()
         self.value.to_string()
 
 
@@ -457,31 +537,5 @@ class Foo3 extends "res://foo.gd":
     pass
 
 
-class Foo4 extends ("res://foo.gd").SomeClass: # asfasf
+class Foo4 extends "node_2d.gd".Node2D:
     pass
-
-
-class Foo5 extends "node_2d.gd".Node2D:
-    pass
-
-
-# ============================================================
-# Invalid / edge cases
-# ============================================================
-# fmt:off
-
-var invalid_escape := "\j"
-
-var nester_array: Array[Array[int]]
-var nested_dict: Dictionary[String, Array[Vector2]]
-
-@export : invalid
-@ export
-$
-%
-foo.
-1e
-0x
-0b
-0b_
-# fmt:on
