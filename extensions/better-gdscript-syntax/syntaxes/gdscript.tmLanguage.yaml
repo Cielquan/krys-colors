@@ -152,41 +152,6 @@ repository:
           - include: "#line-continuation"
       - include: "#line-continuation"
 
-  line-continuation:
-    patterns:
-      - match: |-
-          (?x)
-          (\\)([ \t]*\S.*)?$\n?
-          # regex-end
-        captures:
-          "1":
-            name: punctuation.separator.continuation.line.gdscript
-          "2":
-            name: invalid.illegal.line.continuation.gdscript
-
-  semicolon:
-    name: punctuation.terminator.statement.gdscript
-    match: |-
-      (?x)
-      ;
-      # regex-end
-
-  section-colon:
-    name: punctuation.section.begin.gdscript
-    match: |-
-      (?x)
-      (:|(?=[;#\n]))
-      # regex-end
-
-  accessor:
-    name: punctuation.accessor.gdscript
-    match: |-
-      (?x)
-      (?<=[A-Za-z0-9_ \t\]\)])
-      (\.)
-      (?=[A-Za-z0-9_])
-      # regex-end
-
   _reserved-keyword:
     name: invalid.illegal.word.gdscript
     match: |-
@@ -2491,6 +2456,45 @@ repository:
             name: keyword.operator.comparison.lt.gdscript
           "6":
             name: keyword.operator.comparison.gt.gdscript
+
+  # ----------------------------------------------
+  # NOTE: Punctuation
+  # ----------------------------------------------
+
+  line-continuation:
+    patterns:
+      - match: |-
+          (?x)
+          (\\)([ \t]*\S.*)?$\n?
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.separator.continuation.line.gdscript
+          "2":
+            name: invalid.illegal.line.continuation.gdscript
+
+  semicolon:
+    name: punctuation.terminator.statement.gdscript
+    match: |-
+      (?x)
+      ;
+      # regex-end
+
+  section-colon:
+    name: punctuation.section.begin.gdscript
+    match: |-
+      (?x)
+      (:|(?=[;#\n]))
+      # regex-end
+
+  accessor-dot:
+    name: punctuation.accessor.gdscript
+    match: |-
+      (?x)
+      (?<=[A-Za-z0-9_ \t\]\)])
+      (\.)
+      (?=[A-Za-z0-9_])
+      # regex-end
 
   # ----------------------------------------------
   # NOTE: Built-Ins
