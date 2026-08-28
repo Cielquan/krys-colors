@@ -2097,7 +2097,7 @@ repository:
               # regex-end
 
   # ----------------------------------------------
-  # NOTE: Operators / Keywords
+  # NOTE: Operators & Keywords
   # ----------------------------------------------
 
   operators-assignment-basic:
