@@ -47,6 +47,22 @@ repository:
 
   expression:
     patterns:
+      - begin: |-
+          (?x)
+          (\()
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.expression.begin.gdscript
+        end: |-
+          (?x)
+          (\))
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.expression.end.gdscript
+        patterns:
+          - include: "#expression"
       - include: "#comment"
       - include: "#comment-documentation"
       - include: "#language-constants"
