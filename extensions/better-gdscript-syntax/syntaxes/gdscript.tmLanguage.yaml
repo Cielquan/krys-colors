@@ -737,10 +737,10 @@ repository:
       $
       # regex-end
     patterns:
-      - include: "#_string-quoted-multi-line"
-      - include: "#_string-quoted-single-line"
-      - include: "#_string-raw-quoted-multi-line"
-      - include: "#_string-raw-quoted-single-line"
+      - include: "#string-quoted-multi-line"
+      - include: "#string-quoted-single-line"
+      - include: "#string-raw-quoted-multi-line"
+      - include: "#string-raw-quoted-single-line"
       - match: |-
           (?x)
           (\.)?
@@ -797,10 +797,10 @@ repository:
           (?=:)
           # regex-end
         patterns:
-          - include: "#_string-quoted-multi-line"
-          - include: "#_string-quoted-single-line"
-          - include: "#_string-raw-quoted-multi-line"
-          - include: "#_string-raw-quoted-single-line"
+          - include: "#string-quoted-multi-line"
+          - include: "#string-quoted-single-line"
+          - include: "#string-raw-quoted-multi-line"
+          - include: "#string-raw-quoted-single-line"
           - match: |-
               (?x)
               (\.)?
