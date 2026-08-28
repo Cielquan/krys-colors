@@ -9,99 +9,6 @@ fileTypes:
 patterns: []
 
 repository:
-
-  annotation:
-    patterns:
-      - comment: "Without arguments"
-        name: meta.annotation.gdscript
-        match: |-
-          (?x)
-          \B(@[A-Za-z_][A-Za-z0-9_]*)
-          \s+
-          # regex-end
-        captures:
-          "1":
-            name: storage.modifier.annotation.gdscript
-      - comment: "With arguments"
-        name: meta.annotation.gdscript
-        contentName: meta.annotation.arguments.gdscript
-        begin: |-
-          (?x)
-          [ \t]*
-          \B
-          (@[A-Za-z_][A-Za-z0-9_]*)
-          [ \t]*
-          (\()
-          # regex-end
-        beginCaptures:
-          "1":
-            name: storage.modifier.annotation.gdscript
-          "2":
-            name: punctuation.definition.arguments.begin.gdscript
-        end: |-
-          (?x)
-          (\))
-          # regex-end
-        endCaptures:
-          "1":
-            name: punctuation.definition.arguments.end.gdscript
-        patterns:
-          - name: punctuation.separator.arguments.gdscript
-            match: |-
-              (?x)
-              (,)
-              # regex-end
-          - include: "#expression"
-          - include: "#line-continuation"
-
-  function-call:
-    name: meta.function.call.gdscript
-    begin: |-
-      (?x)
-      \b
-      (?=
-        ([A-Za-z_][A-Za-z0-9_]*)
-        [ \t]*
-        (\()
-      )
-      # regex-end
-    end: |-
-      (?x)
-      (\))
-      # regex-end
-    endCaptures:
-      "1":
-        name: punctuation.definition.arguments.end.gdscript
-    patterns:
-      - comment: "Function name"
-        patterns:
-          - include: "#_builtin-functions"
-          - include: "#builtin-type-primitive"
-          - include: "#builtin-type-container"
-          - include: "#builtin-type-vector"
-          - include: "#builtin-type-variant"
-          - name: entity.name.function.call.gdscript
-            match: |-
-              (?x)
-              ([A-Za-z_][A-Za-z0-9_]*)
-              # regex-end
-      - contentName: meta.function.call.arguments.gdscript
-        begin: |-
-          (?x)
-          (\()
-          # regex-end
-        beginCaptures:
-          "1":
-            name: punctuation.definition.arguments.begin.gdscript
-        end: |-
-          (?x)
-          (?=\))
-          # regex-end
-        patterns:
-          - include: "#expression"
-          - include: "#line-continuation"
-      - include: "#line-continuation"
-
   _reserved-keyword:
     name: invalid.illegal.word.gdscript
     match: |-
@@ -1656,6 +1563,102 @@ repository:
           # regex-end
       - include: "#_type-annotations"
       - include: "#expression"
+
+  # ----------------------------------------------
+  # NOTE: Calls
+  # ----------------------------------------------
+
+  annotation:
+    patterns:
+      - comment: "Without arguments"
+        name: meta.annotation.gdscript
+        match: |-
+          (?x)
+          \B(@[A-Za-z_][A-Za-z0-9_]*)
+          \s+
+          # regex-end
+        captures:
+          "1":
+            name: storage.modifier.annotation.gdscript
+      - comment: "With arguments"
+        name: meta.annotation.gdscript
+        contentName: meta.annotation.arguments.gdscript
+        begin: |-
+          (?x)
+          [ \t]*
+          \B
+          (@[A-Za-z_][A-Za-z0-9_]*)
+          [ \t]*
+          (\()
+          # regex-end
+        beginCaptures:
+          "1":
+            name: storage.modifier.annotation.gdscript
+          "2":
+            name: punctuation.definition.arguments.begin.gdscript
+        end: |-
+          (?x)
+          (\))
+          # regex-end
+        endCaptures:
+          "1":
+            name: punctuation.definition.arguments.end.gdscript
+        patterns:
+          - name: punctuation.separator.arguments.gdscript
+            match: |-
+              (?x)
+              (,)
+              # regex-end
+          - include: "#expression"
+          - include: "#line-continuation"
+
+  function-call:
+    name: meta.function.call.gdscript
+    begin: |-
+      (?x)
+      \b
+      (?=
+        ([A-Za-z_][A-Za-z0-9_]*)
+        [ \t]*
+        (\()
+      )
+      # regex-end
+    end: |-
+      (?x)
+      (\))
+      # regex-end
+    endCaptures:
+      "1":
+        name: punctuation.definition.arguments.end.gdscript
+    patterns:
+      - comment: "Function name"
+        patterns:
+          - include: "#_builtin-functions"
+          - include: "#builtin-type-primitive"
+          - include: "#builtin-type-container"
+          - include: "#builtin-type-vector"
+          - include: "#builtin-type-variant"
+          - name: entity.name.function.call.gdscript
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+      - contentName: meta.function.call.arguments.gdscript
+        begin: |-
+          (?x)
+          (\()
+          # regex-end
+        beginCaptures:
+          "1":
+            name: punctuation.definition.arguments.begin.gdscript
+        end: |-
+          (?x)
+          (?=\))
+          # regex-end
+        patterns:
+          - include: "#expression"
+          - include: "#line-continuation"
+      - include: "#line-continuation"
 
   # ----------------------------------------------
   # NOTE: Literals
