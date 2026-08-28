@@ -385,7 +385,6 @@
       "name": "Library class/type",
       "scope": [
         "support.type",
-        "support.class",
         "entity.name.type.numeric",
         "entity.name.type.primitive",
         "entity.name.type.option",
@@ -411,6 +410,23 @@
       ],
       "settings": {
         "fontStyle": "underline",
+        "foreground": "#a6e22e",
+      },
+    },
+    {
+      "name": "Built-in Class/Enum",
+      "scope": [
+        "support.class",
+        "support.enum",
+        "entity.name.class.builtin",
+        "entity.name.type.class.builtin",
+        "entity.name.type.enum.builtin",
+        "entity.name.type.struct.builtin",
+        "entity.name.type.trait.builtin",
+        "entity.name.type.declaration.builtin",
+      ],
+      "settings": {
+        "fontStyle": "italic underline",
         "foreground": "#a6e22e",
       },
     },
