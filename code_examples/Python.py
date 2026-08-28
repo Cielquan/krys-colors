@@ -9,6 +9,15 @@ import typing as t
 
 breakpoint()
 
+
+def func_param(_pos: str, /, _foo: int, *, _bar: bool) -> None:
+    pass
+
+
+def func_param_catch_all(*args, **kwargs) -> None:
+    pass
+
+
 #: Doc comment supported by sphinx
 def decorator_ohne_param() -> None:
     pass
