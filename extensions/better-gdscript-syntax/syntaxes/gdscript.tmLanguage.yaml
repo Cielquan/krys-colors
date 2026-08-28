@@ -325,187 +325,6 @@ repository:
       )\b
       # regex-end
 
-  _operator-bitwise:
-    match: |-
-      (?x)
-      (?:
-        (~)
-        | (?![&])(&)(?![&"'])
-        | (\|)(?![|])
-        | (\^)(?!["'])
-        | (<<)
-        | (>>)
-      )(?![=])
-      # regex-end
-    captures:
-      "1":
-        name: keyword.operator.bitwise.not.gdscript
-      "2":
-        name: keyword.operator.bitwise.and.gdscript
-      "3":
-        name: keyword.operator.bitwise.or.gdscript
-      "4":
-        name: keyword.operator.bitwise.xor.gdscript
-      "5":
-        name: keyword.operator.bitwise.shift.left.gdscript
-      "6":
-        name: keyword.operator.bitwise.shift.right.gdscript
-
-  _operator-bitwise-assignment:
-    match: |-
-      (?x)
-      (?:
-        (&=)
-        | (\|=)
-        | (\^=)
-        | (<<=)
-        | (>>=)
-      )
-      # regex-end
-    captures:
-      "1":
-        name: keyword.operator.assignment.bitwise.and.gdscript
-      "2":
-        name: keyword.operator.assignment.bitwise.or.gdscript
-      "3":
-        name: keyword.operator.assignment.bitwise.xor.gdscript
-      "4":
-        name: keyword.operator.assignment.bitwise.shift.left.gdscript
-      "5":
-        name: keyword.operator.assignment.bitwise.shift.right.gdscript
-
-  _operator-arithmetic:
-    match: |-
-      (?x)
-      (?:
-        ([*]{2})
-        | ([*])
-        | (/)
-        | (%)
-        | ([+])
-        | (-)(?![>])
-      )(?![=])
-      # regex-end
-    captures:
-      "1":
-        name: keyword.operator.arithmetic.pow.gdscript
-      "2":
-        name: keyword.operator.arithmetic.mult.gdscript
-      "3":
-        name: keyword.operator.arithmetic.div.gdscript
-      "4":
-        name: keyword.operator.arithmetic.mod.gdscript
-      "5":
-        name: keyword.operator.arithmetic.add.gdscript
-      "6":
-        name: keyword.operator.arithmetic.sub.gdscript
-
-  _operator-arithmetic-assignment:
-    match: |-
-      (?x)
-      (?:
-        ([*]{2}=)
-        | ([*]=)
-        | (/=)
-        | (%=)
-        | ([+]=)
-        | (-=)
-      )
-      # regex-end
-    captures:
-      "1":
-        name: keyword.operator.assignment.arithmetic.pow.gdscript
-      "2":
-        name: keyword.operator.assignment.arithmetic.mult.gdscript
-      "3":
-        name: keyword.operator.assignment.arithmetic.div.gdscript
-      "4":
-        name: keyword.operator.assignment.arithmetic.mod.gdscript
-      "5":
-        name: keyword.operator.assignment.arithmetic.add.gdscript
-      "6":
-        name: keyword.operator.assignment.arithmetic.sub.gdscript
-
-  _operator-assignment-basic:
-    match: |-
-      (?x)
-      (?:
-        (:=)
-        | (?<![=<>!])(=)(?![=])
-      )
-      # regex-end
-    captures:
-      "1":
-        name: keyword.operator.assignment.infer.gdscript
-      "2":
-        name: keyword.operator.assignment.equal.gdscript
-
-  _operator-logical:
-    patterns:
-      - match: |-
-          (?x)
-          \b(?:
-            (and)
-            | (or)
-            | (not)
-            | (in)
-            | (is)
-          )\b
-          # regex-end
-        captures:
-          "1":
-            name: keyword.operator.wordlike.logical.and.gdscript
-          "2":
-            name: keyword.operator.wordlike.logical.or.gdscript
-          "3":
-            name: keyword.operator.wordlike.logical.not.gdscript
-          "4":
-            name: keyword.operator.wordlike.logical.in.gdscript
-          "5":
-            name: keyword.operator.wordlike.logical.is.gdscript
-      - match: |-
-          (?x)
-          (?:
-            (&&)
-            | (\|\|)
-            | (!)(?!=)
-          )
-          # regex-end
-        captures:
-          "1":
-            name: keyword.operator.logical.and.gdscript
-          "2":
-            name: keyword.operator.logical.or.gdscript
-          "3":
-            name: keyword.operator.logical.not.gdscript
-
-  _operator-comparison:
-    patterns:
-      - match: |-
-          (?x)
-          (?:
-            (==)
-            | (!=)
-            | (<=)
-            | (>=)
-            | (<)(?!-)
-            | (?<!-)(>)
-          )
-          # regex-end
-        captures:
-          "1":
-            name: keyword.operator.comparison.eq.gdscript
-          "2":
-            name: keyword.operator.comparison.neq.gdscript
-          "3":
-            name: keyword.operator.comparison.lte.gdscript
-          "4":
-            name: keyword.operator.comparison.gte.gdscript
-          "5":
-            name: keyword.operator.comparison.lt.gdscript
-          "6":
-            name: keyword.operator.comparison.gt.gdscript
-
   type-cast:
     name: meta.type.cast.gdscript
     begin: |-
@@ -2483,6 +2302,191 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
+
+  # ----------------------------------------------
+  # NOTE: Operators
+  # ----------------------------------------------
+
+  operators-assignment-basic:
+    match: |-
+      (?x)
+      (?:
+        (:=)
+        | (?<![=<>!])(=)(?![=])
+      )
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.assignment.infer.gdscript
+      "2":
+        name: keyword.operator.assignment.equal.gdscript
+
+  operators-arithmetic:
+    match: |-
+      (?x)
+      (?:
+        ([*]{2})
+        | ([*])
+        | (/)
+        | (%)
+        | ([+])
+        | (-)(?![>])
+      )(?![=])
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.arithmetic.pow.gdscript
+      "2":
+        name: keyword.operator.arithmetic.mult.gdscript
+      "3":
+        name: keyword.operator.arithmetic.div.gdscript
+      "4":
+        name: keyword.operator.arithmetic.mod.gdscript
+      "5":
+        name: keyword.operator.arithmetic.add.gdscript
+      "6":
+        name: keyword.operator.arithmetic.sub.gdscript
+
+  operators-arithmetic-assignment:
+    match: |-
+      (?x)
+      (?:
+        ([*]{2}=)
+        | ([*]=)
+        | (/=)
+        | (%=)
+        | ([+]=)
+        | (-=)
+      )
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.assignment.arithmetic.pow.gdscript
+      "2":
+        name: keyword.operator.assignment.arithmetic.mult.gdscript
+      "3":
+        name: keyword.operator.assignment.arithmetic.div.gdscript
+      "4":
+        name: keyword.operator.assignment.arithmetic.mod.gdscript
+      "5":
+        name: keyword.operator.assignment.arithmetic.add.gdscript
+      "6":
+        name: keyword.operator.assignment.arithmetic.sub.gdscript
+
+  operators-bitwise:
+    match: |-
+      (?x)
+      (?:
+        (~)
+        | (?![&])(&)(?![&"'])
+        | (\|)(?![|])
+        | (\^)(?!["'])
+        | (<<)
+        | (>>)
+      )(?![=])
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.bitwise.not.gdscript
+      "2":
+        name: keyword.operator.bitwise.and.gdscript
+      "3":
+        name: keyword.operator.bitwise.or.gdscript
+      "4":
+        name: keyword.operator.bitwise.xor.gdscript
+      "5":
+        name: keyword.operator.bitwise.shift.left.gdscript
+      "6":
+        name: keyword.operator.bitwise.shift.right.gdscript
+
+  operators-bitwise-assignment:
+    match: |-
+      (?x)
+      (?:
+        (&=)
+        | (\|=)
+        | (\^=)
+        | (<<=)
+        | (>>=)
+      )
+      # regex-end
+    captures:
+      "1":
+        name: keyword.operator.assignment.bitwise.and.gdscript
+      "2":
+        name: keyword.operator.assignment.bitwise.or.gdscript
+      "3":
+        name: keyword.operator.assignment.bitwise.xor.gdscript
+      "4":
+        name: keyword.operator.assignment.bitwise.shift.left.gdscript
+      "5":
+        name: keyword.operator.assignment.bitwise.shift.right.gdscript
+
+  operators-logical:
+    patterns:
+      - match: |-
+          (?x)
+          \b(?:
+            (and)
+            | (or)
+            | (not)
+            | (in)
+            | (is)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: keyword.operator.wordlike.logical.and.gdscript
+          "2":
+            name: keyword.operator.wordlike.logical.or.gdscript
+          "3":
+            name: keyword.operator.wordlike.logical.not.gdscript
+          "4":
+            name: keyword.operator.wordlike.logical.in.gdscript
+          "5":
+            name: keyword.operator.wordlike.logical.is.gdscript
+      - match: |-
+          (?x)
+          (?:
+            (&&)
+            | (\|\|)
+            | (!)(?!=)
+          )
+          # regex-end
+        captures:
+          "1":
+            name: keyword.operator.logical.and.gdscript
+          "2":
+            name: keyword.operator.logical.or.gdscript
+          "3":
+            name: keyword.operator.logical.not.gdscript
+
+  operators-comparison:
+    patterns:
+      - match: |-
+          (?x)
+          (?:
+            (==)
+            | (!=)
+            | (<=)
+            | (>=)
+            | (<)(?!-)
+            | (?<!-)(>)
+          )
+          # regex-end
+        captures:
+          "1":
+            name: keyword.operator.comparison.eq.gdscript
+          "2":
+            name: keyword.operator.comparison.neq.gdscript
+          "3":
+            name: keyword.operator.comparison.lte.gdscript
+          "4":
+            name: keyword.operator.comparison.gte.gdscript
+          "5":
+            name: keyword.operator.comparison.lt.gdscript
+          "6":
+            name: keyword.operator.comparison.gt.gdscript
 
   # ----------------------------------------------
   # NOTE: Built-Ins
