@@ -7,14 +7,14 @@ fileTypes:
   - gd
 
 patterns:
-      - include: "#comment-documentation-codeblock"
-      - include: "#comment-region-marker"
-      - include: "#class-declaration"
-      - include: "#class-name-declaration"
-      - include: "#extends-declaration"
-      - include: "#enum-declaration"
-      - include: "#statement"
-      - include: "#expression"
+  - include: "#comment-documentation-codeblock"
+  - include: "#comment-region-marker"
+  - include: "#class-declaration"
+  - include: "#class-name-declaration"
+  - include: "#extends-declaration"
+  - include: "#enum-declaration"
+  - include: "#statement"
+  - include: "#expression"
 
 repository:
   # ----------------------------------------------
@@ -4347,7 +4347,6 @@ repository:
             # Classes - class - END
           )\b
           # regex-end
-
 
   builtin-functions:
     patterns:
