@@ -881,7 +881,7 @@ repository:
     patterns:
       - comment: Signal name
         patterns:
-          - include: "#virtual-methods"
+          - include: "#_virtual-methods"
           - include: "#_builtin-functions"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
@@ -923,7 +923,7 @@ repository:
     patterns:
       - comment: Function name
         patterns:
-          - include: "#virtual-methods"
+          - include: "#_virtual-methods"
           - include: "#_builtin-functions"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript
@@ -4457,7 +4457,7 @@ repository:
           )\b
           # regex-end
 
-  virtual-methods:
+  _virtual-methods:
     patterns:
       - comment: Single word or unique first word
         name: support.function.virtual.gdscript
