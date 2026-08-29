@@ -812,7 +812,6 @@ repository:
 
   class-declaration:
     name: meta.class.declaration.gdscript
-    contentName: entity.other.inherited-class.gdscript
     begin: |-
       (?x)
       (?:^|\G)
@@ -840,7 +839,8 @@ repository:
               (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
-      - begin: |-
+      - contentName: entity.other.inherited-class.gdscript
+        begin: |-
           (?x)
           [ \t]+
           (extends)
