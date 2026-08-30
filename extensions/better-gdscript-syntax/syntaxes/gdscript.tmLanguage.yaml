@@ -627,14 +627,17 @@ repository:
           - name: meta.comment.documentation.link.class-reference.gdscript
             match: |-
               (?x)
-              \[
+              (\[)
               ([^\]]+)
-              \]
+              (\])
               # regex-end
             captures:
               "1":
+                name: punctuation.definition.tag.begin.gdscript
+              "2":
                 name: entity.name.type.class.gdscript
-
+              "3":
+                name: variable.parameter.function.language.gdscript
   comment-documentation-codeblock:
     patterns:
       - name: comment.block.documentation.gdscript comment.line.documentation.gdscript meta.comment.documentation.tag.codeblock.gdscript.gdscript
