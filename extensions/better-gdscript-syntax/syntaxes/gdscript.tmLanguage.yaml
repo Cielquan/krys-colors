@@ -2491,7 +2491,7 @@ repository:
     name: punctuation.section.begin.gdscript
     match: |-
       (?x)
-      (:|(?=[;#\n]))
+      (:)
       # regex-end
 
   accessor-dot:
