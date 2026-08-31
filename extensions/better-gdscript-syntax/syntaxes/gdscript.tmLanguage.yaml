@@ -72,11 +72,11 @@ repository:
       - include: "#operators"
       - include: "#type-cast"
       - include: "#function-call"
+      - include: "#builtin-classes"
+      - include: "#builtin-types"
       - include: "#builtin-constants"
       - include: "#builtin-enums"
       - include: "#builtin-enum-constant-values"
-      - include: "#builtin-types"
-      - include: "#builtin-classes"
       - include: "#section-colon"
       - include: "#accessor-dot"
       - include: "#semicolon"
@@ -86,8 +86,8 @@ repository:
   _fallback-words:
     patterns:
       - include: "#keyword-names"
-      - include: "#builtin-functions"
       - include: "#virtual-methods"
+      - include: "#builtin-functions"
 
   # ----------------------------------------------
   # NOTE: Comments
@@ -782,6 +782,8 @@ repository:
         patterns:
           - include: "#builtin-classes"
           - include: "#builtin-types"
+          - include: "#virtual-methods"
+          - include: "#builtin-functions"
           - name: entity.name.type.class.gdscript
             match: |-
               (?x)
@@ -838,6 +840,8 @@ repository:
         patterns:
           - include: "#builtin-classes"
           - include: "#builtin-types"
+          - include: "#virtual-methods"
+          - include: "#builtin-functions"
           - name: entity.name.type.class.gdscript
             match: |-
               (?x)
@@ -941,6 +945,7 @@ repository:
         patterns:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
@@ -983,6 +988,7 @@ repository:
         patterns:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: entity.name.function.definition.gdscript
             match: |-
@@ -1149,7 +1155,9 @@ repository:
           (?=[:=])
           # regex-end
         patterns:
+          - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: variable.other.constant.gdscript
             match: |-
@@ -1259,7 +1267,9 @@ repository:
           (?=[:=;#\n])
           # regex-end
         patterns:
+          - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
@@ -1595,7 +1605,9 @@ repository:
     patterns:
       - comment: Function name
         patterns:
+          - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: entity.name.function.call.gdscript
             match: |-
@@ -2183,7 +2195,9 @@ repository:
     patterns:
       - comment: Var name
         patterns:
+          - include: "#virtual-methods"
           - include: "#builtin-functions"
+          - include: "#builtin-classes"
           - include: "#builtin-types"
           - name: variable.other.readwrite.gdscript
             match: |-
@@ -2564,8 +2578,8 @@ repository:
   _type-annotations:
     patterns:
       - include: "#builtin-types"
-      - include: "#builtin-enums"
       - include: "#builtin-classes"
+      - include: "#builtin-enums"
       - comment: User-defined types
         patterns:
           - comment: Probably class (or enum)
