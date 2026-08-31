@@ -43,7 +43,6 @@ repository:
       - include: "#while-loop"
       - include: "#for-loop"
       - include: "#annotation"
-      - include: "#function-call"
 
   expression:
     patterns:
@@ -72,6 +71,7 @@ repository:
       - include: "#numbers"
       - include: "#operators"
       - include: "#type-cast"
+      - include: "#function-call"
       - include: "#builtin-constants"
       - include: "#builtin-enums"
       - include: "#builtin-enum-constant-values"
