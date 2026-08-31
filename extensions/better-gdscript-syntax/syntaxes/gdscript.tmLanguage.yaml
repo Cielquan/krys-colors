@@ -899,28 +899,22 @@ repository:
     patterns:
       - match: |-
           (?x)
-          [ \t]*
           ([A-Za-z_][A-Za-z0-9_]*)
           [ \t]*
-          (?:
-            (=)
-            [ \t]*
-            ([+-]?)
-            [ \t]*
-            ([0-9]*)
-          )?
-          (,)?
+          (=)?
           # regex-end
         captures:
           "1":
             name: variable.other.enummember.gdscript
           "2":
             name: punctuation.separator.key-value.enum.gdscript
-          "3":
-            name: keyword.operator.arithmetic.gdscript
-          "4":
-            name: constant.numeric.dec.gdscript
-          "5":
+      - include: "#expression"
+      - match: |-
+          (?x)
+          (,)
+          # regex-end
+        captures:
+          "1":
             name: punctuation.separator.comma.gdscript
 
   signal-declaration:
