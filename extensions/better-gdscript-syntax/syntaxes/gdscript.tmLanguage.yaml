@@ -1210,8 +1210,8 @@ repository:
         [ \t]+
       )?
       \b(var)
-      [ \t]+
       (?=
+        [ \t]+
         ([A-Za-z_][A-Za-z0-9_]*)
         [ \t]*
         ([:=])?
@@ -1232,6 +1232,15 @@ repository:
         name: punctuation.section.setter-getter.begin.gdscript
     patterns:
       - comment: Var name
+        begin: |-
+          (?x)
+          (?<=var)
+          [ \t]+
+          # regex-end
+        end: |-
+          (?x)
+          (?=[:=;#\n])
+          # regex-end
         patterns:
           - include: "#builtin-functions"
           - include: "#builtin-types"
