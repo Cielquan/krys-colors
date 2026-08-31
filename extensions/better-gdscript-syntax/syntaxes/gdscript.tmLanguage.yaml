@@ -1123,8 +1123,8 @@ repository:
     begin: |-
       (?x)
       \b(const)
-      [ \t]+
       (?=
+        [ \t]+
         ([A-Za-z_][A-Za-z0-9_]*)
         [ \t]*
         ([:=])
@@ -1139,6 +1139,15 @@ repository:
       # regex-end
     patterns:
       - comment: Const name
+        begin: |-
+          (?x)
+          (?<=const)
+          [ \t]+
+          # regex-end
+        end: |-
+          (?x)
+          (?=[:=])
+          # regex-end
         patterns:
           - include: "#builtin-functions"
           - include: "#builtin-types"
