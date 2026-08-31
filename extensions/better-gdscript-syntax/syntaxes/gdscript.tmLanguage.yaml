@@ -1190,15 +1190,32 @@ repository:
           (?=[;#\n])
           # regex-end
         patterns:
-          - include: "#_type-annotations"
-          - match: |-
+          - begin: |-
+              (?x)
+              (?<=[:])
+              # regex-end
+            beginCaptures:
+              "1":
+                name: keyword.operator.assignment.equal.gdscript
+            end: |-
+              (?x)
+              (?=[=])
+              # regex-end
+            patterns:
+              - include: "#_type-annotations"
+          - begin: |-
               (?x)
               (=)
               # regex-end
-            captures:
+            beginCaptures:
               "1":
                 name: keyword.operator.assignment.equal.gdscript
-          - include: "#expression"
+            end: |-
+              (?x)
+              (?=[;#\n])
+              # regex-end
+            patterns:
+              - include: "#expression"
       - include: "#line-continuation"
 
   var-declaration-and-definition:
@@ -1283,15 +1300,20 @@ repository:
           (?=[:;#\n])
           # regex-end
         patterns:
-          - include: "#_type-annotations"
-          - match: |-
+          - begin: |-
               (?x)
               (=)
               # regex-end
-            captures:
+            beginCaptures:
               "1":
                 name: keyword.operator.assignment.equal.gdscript
-          - include: "#expression"
+            end: |-
+              (?x)
+              (?=[;#\n])
+              # regex-end
+            patterns:
+              - include: "#expression"
+          - include: "#_type-annotations"
       - include: "#line-continuation"
 
   var-setter-getter:
