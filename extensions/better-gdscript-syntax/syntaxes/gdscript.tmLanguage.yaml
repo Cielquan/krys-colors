@@ -1070,7 +1070,7 @@ repository:
         begin: |-
           (?x)
           (?:
-            (:=)
+            (:[ \t]*=)
             | (?<!=)(=)(?!=)
           )
           # regex-end
@@ -1168,7 +1168,7 @@ repository:
         begin: |-
           (?x)
           (?:
-            (:=)
+            (:[ \t]*=)
             | (=)
           )
           # regex-end
@@ -1280,7 +1280,7 @@ repository:
         begin: |-
           (?x)
           (?:
-            (:=)
+            (:[ \t]*=)
             | (=)
           )
           # regex-end
@@ -2215,7 +2215,7 @@ repository:
         match: |-
           (?x)
           (?:
-            (:=)
+            (:[ \t]*=)
             | (?<![=<>!])(=)(?![=])
           )
           # regex-end
