@@ -74,6 +74,7 @@ repository:
       - include: "#function-call"
       - include: "#builtin-classes"
       - include: "#builtin-types"
+      - include: "#builtin-types-as-object"
       - include: "#builtin-constants"
       - include: "#builtin-enums"
       - include: "#builtin-enum-constant-values"
@@ -946,7 +947,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types-as-callable"
+          - include: "#builtin-types-as-object"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
               (?x)
@@ -989,7 +990,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types-as-callable"
+          - include: "#builtin-types-as-object"
           - name: entity.name.function.definition.gdscript
             match: |-
               (?x)
@@ -1606,7 +1607,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types-as-callable"
+          - include: "#builtin-types-as-object"
           - name: entity.name.function.call.gdscript
             match: |-
               (?x)
@@ -3318,7 +3319,7 @@ repository:
           # regex-end
 
   builtin-types:
-    # NOTE: Update `builtin-types-as-callable` as well
+    # NOTE: Update `builtin-types-as-object` as well
     patterns:
       - comment: Builtin primitive types
         match: |-
@@ -3334,7 +3335,7 @@ repository:
             | (void)
             # Classes - class - END
           )\b
-          (?![ \t]*\()
+          (?![ \t]*[(.])
           # regex-end
         captures:
           "1":
@@ -3371,7 +3372,7 @@ repository:
             | (Signal)
             # Classes - class - END
           )\b
-          (?![ \t]*\()
+          (?![ \t]*[(.])
           # regex-end
         captures:
           "1":
@@ -3396,7 +3397,7 @@ repository:
             | (RID)
             # Classes - class - END
           )\b
-          (?![ \t]*\()
+          (?![ \t]*[(.])
           # regex-end
         captures:
           "1":
@@ -3423,7 +3424,7 @@ repository:
             | (Vector[2-4]i?)
             # Classes - class - END
           )\b
-          (?![ \t]*\()
+          (?![ \t]*[(.])
           # regex-end
         captures:
           "1":
@@ -3443,7 +3444,7 @@ repository:
           "8":
             name: support.type.builtin.vector.gdscript
 
-  builtin-types-as-callable:
+  builtin-types-as-object:
     patterns:
       - comment: Builtin primitive types
         match: |-
