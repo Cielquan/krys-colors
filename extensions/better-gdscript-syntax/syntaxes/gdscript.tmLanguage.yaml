@@ -946,7 +946,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types"
+          - include: "#builtin-types-as-callable"
           - name: entity.name.function.definition.gdscript entity.name.signal.definition.gdscript
             match: |-
               (?x)
@@ -989,7 +989,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types"
+          - include: "#builtin-types-as-callable"
           - name: entity.name.function.definition.gdscript
             match: |-
               (?x)
@@ -1606,7 +1606,7 @@ repository:
           - include: "#virtual-methods"
           - include: "#builtin-functions"
           - include: "#builtin-classes"
-          - include: "#builtin-types"
+          - include: "#builtin-types-as-callable"
           - name: entity.name.function.call.gdscript
             match: |-
               (?x)
@@ -3318,6 +3318,7 @@ repository:
           # regex-end
 
   builtin-types:
+    # NOTE: Update `builtin-types-as-callable` as well
     patterns:
       - comment: Builtin primitive types
         match: |-
@@ -3441,6 +3442,118 @@ repository:
             name: support.type.builtin.vector.transform.gdscript
           "8":
             name: support.type.builtin.vector.gdscript
+
+  builtin-types-as-callable:
+    patterns:
+      - comment: Builtin primitive types
+        match: |-
+          (?x)
+          \b(?:
+            (int)
+            | (float)
+            | (bool)
+            | (String)
+            | (StringName)
+            | (NodePath)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: support.function.builtin.int.gdscript
+          "2":
+            name: support.function.builtin.float.gdscript
+          "3":
+            name: support.function.builtin.bool.gdscript
+          "4":
+            name: entity.name.type.class.builtin.string.gdscript
+          "5":
+            name: entity.name.type.class.builtin.string-name.gdscript
+          "6":
+            name: entity.name.type.class.builtin.node-path.gdscript
+          "7":
+            name: entity.name.type.class.builtin.void.gdscript
+
+      - comment: Builtin container types
+        match: |-
+          (?x)
+          \b(?:
+            (Array)
+            | (Callable)
+            | (Dictionary)
+            | (Packed(?:
+                Byte
+                | Color
+                | Float(?:32|64)
+                | Int(?:32|64)
+                | String
+                | Vector[2-4]
+              )Array)
+            | (Signal)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.class.builtin.array.gdscript
+          "2":
+            name: entity.name.type.class.builtin.callable.gdscript
+          "3":
+            name: entity.name.type.class.builtin.dictionary.gdscript
+          "4":
+            name: entity.name.type.class.builtin.array.packed.gdscript
+          "5":
+            name: entity.name.type.class.builtin.signal.gdscript
+
+      - comment: Builtin variant types
+        match: |-
+          (?x)
+          \b(?:
+            (Variant)
+            | (Color)
+            | (Object)
+            | (RID)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.class.builtin.variant.gdscript
+          "2":
+            name: entity.name.type.class.builtin.color.gdscript
+          "3":
+            name: entity.name.type.class.builtin.object.gdscript
+          "4":
+            name: entity.name.type.class.builtin.rid.gdscript
+
+      - comment: Builtin vector types
+        match: |-
+          (?x)
+          \b(?:
+            (AABB)
+            | (Basis)
+            | (Plane)
+            | (Projection)
+            | (Quaternion)
+            | (Rect[2]i?)
+            | (Transform[2-3]D)
+            | (Vector[2-4]i?)
+          )\b
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.class.builtin.aabb.gdscript
+          "2":
+            name: entity.name.type.class.builtin.basis.gdscript
+          "3":
+            name: entity.name.type.class.builtin.plane.gdscript
+          "4":
+            name: entity.name.type.class.builtin.projection.gdscript
+          "5":
+            name: entity.name.type.class.builtin.quaternion.gdscript
+          "6":
+            name: entity.name.type.class.builtin.rect.gdscript
+          "7":
+            name: entity.name.type.class.builtin.transform.gdscript
+          "8":
+            name: entity.name.type.class.builtin.gdscript
 
   builtin-classes:
     patterns:
