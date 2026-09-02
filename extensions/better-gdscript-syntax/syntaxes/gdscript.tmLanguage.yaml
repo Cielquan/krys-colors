@@ -1579,7 +1579,7 @@ repository:
             name: punctuation.section.if-block.begin.gdscript
 
   match-statement:
-    name: meta.statement.if.gdscript
+    name: meta.statement.match.gdscript
     begin: |-
       (?x)
       (?:^|\G)
@@ -1595,7 +1595,7 @@ repository:
       # regex-end
     endCaptures:
       "1":
-        name: punctuation.section.if-block.begin.gdscript
+        name: punctuation.section.match-block.begin.gdscript
     patterns:
       - include: "#expression"
 
