@@ -448,7 +448,7 @@
     },
     {
       "name": "Library function",
-      "scope": ["support.function"],
+      "scope": ["support.function", "entity.name.function.builtin"],
       "settings": {
         "fontStyle": "italic",
         "foreground": "#66d9ef",
