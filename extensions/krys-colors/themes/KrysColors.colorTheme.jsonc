@@ -572,21 +572,6 @@
       },
     },
     {
-      "name": "Class name",
-      "scope": [
-        "entity.name.class",
-        "entity.name.type.class",
-        "entity.name.type.enum",
-        "entity.name.type.struct",
-        "entity.name.type.trait",
-        "entity.name.type.declaration",
-      ],
-      "settings": {
-        "fontStyle": "underline",
-        "foreground": "#a6e22e",
-      },
-    },
-    {
       "name": "Built-in Class/Enum",
       "scope": [
         "support.class",
@@ -600,6 +585,22 @@
       ],
       "settings": {
         "fontStyle": "italic underline",
+        "foreground": "#a6e22e",
+      },
+    },
+    {
+      "name": "Class/Enum name",
+      "scope": [
+        "entity.name.class",
+        "entity.name.type.class",
+        "entity.name.type.enum",
+        "entity.name.type.struct",
+        "entity.name.type.trait",
+        "entity.name.type.declaration",
+        "entity.name.type",
+      ],
+      "settings": {
+        "fontStyle": "underline",
         "foreground": "#a6e22e",
       },
     },
