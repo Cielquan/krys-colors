@@ -1999,7 +1999,7 @@ repository:
             name: punctuation.definition.string.begin.multi.gdscript
         end: |-
           (?x)
-          (\3)
+          (\5)
           # regex-end
         endCaptures:
           "1":
