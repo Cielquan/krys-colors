@@ -45,7 +45,6 @@ extends Node2D
 ## if true and 1:
 ##     print("Hi")
 ## [/codeblock]
-## [font][/font]
 
 # Normal comment
 
@@ -55,7 +54,7 @@ signal changed(value: int) ## @experimental Inline doc comment
 #endregion
 
 enum State {
-    IDLE = 1,
+    IDLE = 1 << 2, # inline comment
     RUNNING,
 }
 
@@ -70,9 +69,9 @@ const PI2: float = PI * 2.0
 const DATA := { "key": [1, 2, 3], 1: 2, &"name": null }
 const DEPRECATED := Color8(1, 1, 1)
 
-static var count: int = 0:
+static var count: int = PI:
     get:
-        return count
+        return count * PI2
     set(v):
         count = clampi(v, 0, 100)
 
@@ -98,7 +97,7 @@ var Character = load("res://path/to/character.gd")
 
 var values_non_static: Array[String] = ["one", "two"]
 
-var velocity := Vector2.ZERO
+var velocity: Vector2 = Vector2(0, 0)
 
 var milliseconds: int = 0
 var seconds: int:
@@ -208,6 +207,7 @@ string starting on first row because of \\ \n
 func _formatted_strings() -> void:
     var formatted_percent := "Player: \
         %-+010d HP: %*.*d/%0*d (%.1f%%)" % [name, hp, 100, 99.9]
+    # Format specifiers in bracket syntax not supported, so no special scopes (v4.7)
     var formatted_brackets_num := "Player: {0} HP: {1}/{2} ({3:.1f}%)".format([name, hp, 100, 99.9])
     var formatted_brackets_name := "Player: {name} HP: {hp}/{max_hp} ({percent:.1f}%)".format(
         { "name": name, "hp": hp, "max_hp": 100, "percent": 99.9 }
@@ -429,7 +429,7 @@ func _punctuation() -> void:
     foo.bar
     foo.bar.baz
     foo().bar
-    foo[0].bar
+    foo[0].bar()
     foo()[0]
 
     #fmt:off
