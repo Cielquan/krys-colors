@@ -34,7 +34,6 @@ repository:
   statement:
     patterns:
       - include: "#signal-declaration"
-      - include: "#function-and-lambda-declaration"
       - include: "#const-definition"
       - include: "#var-declaration-and-definition"
       - include: "#var-setter-getter"
@@ -64,6 +63,7 @@ repository:
           - include: "#expression"
       - include: "#comment-documentation"
       - include: "#comment"
+      - include: "#function-and-lambda-declaration"
       - include: "#language-constants"
       - include: "#dict-literal"
       - include: "#array-literal"
