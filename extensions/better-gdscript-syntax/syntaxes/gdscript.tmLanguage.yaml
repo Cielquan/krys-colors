@@ -2692,21 +2692,34 @@ repository:
       - comment: User-defined types
         patterns:
           - comment: Probably class (or enum)
-            match: |-
+            begin: |-
               (?x)
               (_?[A-Z][A-Za-z0-9_]*)
-              (?:
-                (\.)
-                (_?[A-Z][A-Za-z0-9_]*)
-              )*
               # regex-end
-            captures:
+            beginCaptures:
               "1":
                 name: entity.name.type.class.gdscript
               "2":
                 name: punctuation.accessor.gdscript
               "3":
                 name: entity.name.type.class.gdscript
+            end: |-
+              (?x)
+              (?<=[A-Za-z0-9_])
+              (?![.])
+              \b
+              # regex-end
+            patterns:
+              - match: |-
+                  (?x)
+                  (\.)
+                  (_?[A-Z][A-Za-z0-9_]*)
+                  # regex-end
+                captures:
+                  "1":
+                    name: punctuation.accessor.gdscript
+                  "2":
+                    name: entity.name.type.class.gdscript
       - comment: Generic type parameter
         contentName: meta.type.parameters.gdscript
         begin: |-
