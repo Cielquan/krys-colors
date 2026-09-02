@@ -1186,7 +1186,6 @@ repository:
       - comment: Type annotated initializer
         begin: |-
           (?x)
-          \b
           [ \t]*
           (:)(?![=])
           # regex-end
@@ -1298,7 +1297,6 @@ repository:
       - comment: Type annotated initializer
         begin: |-
           (?x)
-          \b
           [ \t]*
           (:)(?![=])
           # regex-end
