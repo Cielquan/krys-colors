@@ -1014,13 +1014,19 @@ repository:
           (?x)
           ([A-Za-z_][A-Za-z0-9_]*)
           [ \t]*
-          (=)?
+          (?:
+            $
+            | (=)
+            | (,)
+          )
           # regex-end
         captures:
           "1":
             name: variable.other.enummember.gdscript
           "2":
             name: punctuation.separator.key-value.enum.gdscript
+          "3":
+            name: punctuation.separator.comma.gdscript
       - include: "#expression"
       - match: |-
           (?x)
