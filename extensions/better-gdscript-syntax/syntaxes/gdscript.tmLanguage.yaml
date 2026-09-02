@@ -78,17 +78,125 @@ repository:
       - include: "#builtin-constants"
       - include: "#builtin-enums"
       - include: "#builtin-enum-constant-values"
+      - include: "#fallback-words"
+      - include: "#lexical-identifiers"
       - include: "#section-colon"
       - include: "#accessor-dot"
       - include: "#semicolon"
       - include: "#line-continuation"
-      - include: "#_fallback-words"
 
-  _fallback-words:
+  fallback-words:
     patterns:
       - include: "#keyword-names"
       - include: "#virtual-methods"
       - include: "#builtin-functions"
+
+  lexical-identifiers:
+    patterns:
+      - comment: Probably class
+        match: |-
+          (?x)
+          \b(_?[A-Z][A-Za-z0-9_]*)
+          (?=
+            [ \t]*
+            (\.)
+            [ \t]*
+            (new)
+            [ \t]*
+            (\()
+          )
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.class.gdscript
+          "2":
+            name: punctuation.accessor.gdscript
+          "3":
+            name: keyword.operator.wordlike.new.gdscript
+      - comment: Probably class static property access
+        match: |-
+          (?x)
+          \b(_?[A-Z][A-Za-z0-9_]*)
+          (\.)
+          ([a-z_][a-z0-9_]*)\b
+          (?![(])
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.class.gdscript
+          "2":
+            name: punctuation.accessor.gdscript
+          "3":
+            name: variable.other.property.gdscript
+      - comment: Probably enum member access
+        match: |-
+          (?x)
+          (\.)
+          [ \t]*
+          ([A-Z_][A-Z0-9_]*)\b
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.accessor.gdscript
+          "2":
+            name: variable.other.enummember.gdscript
+      - comment: Probably user defined enum with member access
+        match: |-
+          (?x)
+          (_?[A-Z][A-Za-z0-9_]*)
+          [ \t]*
+          (\.)
+          [ \t]*
+          ([A-Z_][A-Z0-9_]*)
+          # regex-end
+        captures:
+          "1":
+            name: entity.name.type.enum.gdscript
+          "2":
+            name: punctuation.accessor.gdscript
+          "3":
+            name: variable.other.enummember.gdscript
+      - comment: Just underscore
+        match: |-
+          (?x)
+          \b(_)\b
+          # regex-end
+        captures:
+          "1":
+            name: variable.other.readwrite.ignore.gdscript
+      - comment: Probably constant
+        match: |-
+          (?x)
+          \b([A-Z_][A-Z0-9_]*)\b
+          # regex-end
+        captures:
+          "1":
+            name: variable.other.constant.gdscript
+      - comment: Probably property access
+        match: |-
+          (?x)
+          (\.)
+          ([a-z_][a-z0-9_]*)\b
+          (?![(])
+          # regex-end
+        captures:
+          "1":
+            name: punctuation.accessor.gdscript
+          "2":
+            name: variable.other.property.gdscript
+      - comment: Probably normal variable
+        match: |-
+          (?x)
+          \b([a-z_][a-z0-9_]*)\b
+          # regex-end
+        captures:
+          "1":
+            name: variable.other.readwrite.gdscript
+      - comment: Catch-all for identifiers
+        match: |-
+          (?x)
+          ([A-Za-z_][A-Za-z0-9_]*)
+          # regex-end
 
   # ----------------------------------------------
   # NOTE: Comments
