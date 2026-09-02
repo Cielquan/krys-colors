@@ -1531,7 +1531,7 @@ repository:
           (?x)
           (?:^|\G)
           [ \t]*
-          (if)
+          (if)\b
           # regex-end
         beginCaptures:
           "1":
@@ -1550,7 +1550,7 @@ repository:
           (?x)
           (?:^|\G)
           [ \t]*
-          (elif)
+          (elif)\b
           # regex-end
         beginCaptures:
           "1":
@@ -1569,7 +1569,7 @@ repository:
           (?x)
           (?:^|\G)
           [ \t]*
-          (else)
+          (else)\b
           (:)
           # regex-end
         captures:
@@ -1584,7 +1584,7 @@ repository:
       (?x)
       (?:^|\G)
       [ \t]*
-      (match)
+      (match)\b
       # regex-end
     beginCaptures:
       "1":
