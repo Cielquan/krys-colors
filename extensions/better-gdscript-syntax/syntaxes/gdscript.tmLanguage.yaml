@@ -2691,18 +2691,18 @@ repository:
       - include: "#builtin-enums"
       - comment: User-defined types
         patterns:
-          - comment: Probably class (or enum)
+          - comment: Probably class or enum or type
             begin: |-
               (?x)
               (_?[A-Z][A-Za-z0-9_]*)
               # regex-end
             beginCaptures:
               "1":
-                name: entity.name.type.class.gdscript
+                name: entity.name.type.gdscript
               "2":
                 name: punctuation.accessor.gdscript
               "3":
-                name: entity.name.type.class.gdscript
+                name: entity.name.type.gdscript
             end: |-
               (?x)
               (?<=[A-Za-z0-9_])
@@ -2719,7 +2719,7 @@ repository:
                   "1":
                     name: punctuation.accessor.gdscript
                   "2":
-                    name: entity.name.type.class.gdscript
+                    name: entity.name.type.gdscript
       - comment: Generic type parameter
         contentName: meta.type.parameters.gdscript
         begin: |-
