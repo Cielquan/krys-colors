@@ -1662,7 +1662,7 @@ repository:
         match: |-
           (?x)
           \B(@[A-Za-z_][A-Za-z0-9_]*)
-          \s+
+          (?:[ \t]+|$)
           # regex-end
         captures:
           "1":
