@@ -4531,6 +4531,11 @@ repository:
           (?x)
           \b(new)\b
           # regex-end
+      - name: support.function.static-constructor.gdscript
+        match: |-
+          (?x)
+          \b(_static_init)\b
+          # regex-end
       - name: support.function.builtin.gdscript
         match: |-
           (?x)
