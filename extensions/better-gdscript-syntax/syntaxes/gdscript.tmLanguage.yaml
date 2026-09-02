@@ -2689,8 +2689,10 @@ repository:
           # regex-end
 
   builtin-enums:
+    # NOTE: keep both lists in sync
     patterns:
-      - name: support.enum.builtin.gdscript
+      - comment: Just enum name e.g. as type
+        name: support.enum.builtin.gdscript
         match: |-
           (?x)
           \b
@@ -2724,8 +2726,65 @@ repository:
             )
             # @GlobalScope - enum - END
           )
-          (?=\.|\b)
+          \b
+          (?![.])
           # regex-end
+      - comment: Enum with member access
+        begin: |-
+          (?x)
+          \b
+          (?:
+            # @GlobalScope - enum - START
+            (
+              ClockDirection
+              | Corner
+              | Error
+              | EulerOrder
+              | HorizontalAlignment
+              | InlineAlignment
+              | JoyAxis
+              | JoyButton
+              | Key
+              | KeyLocation
+              | KeyModifierMask
+              | MIDIMessage
+              | MethodFlags
+              | MouseButton
+              | MouseButtonMask
+              | Orientation
+              | PropertyHint
+              | PropertyUsageFlags
+              | Side
+              | VerticalAlignment
+            )
+            | (?:
+                (?<=Variant\.)
+                (Operator|Type)
+            )
+            # @GlobalScope - enum - END
+          )
+          (\.)
+          # regex-end
+        beginCaptures:
+          "1":
+            name: support.enum.builtin.gdscript
+          "2":
+            name: punctuation.accessor.gdscript
+        end: |-
+          (?x)
+          (?<=[A-Za-z0-9_])
+          \b
+          # regex-end
+        patterns:
+          - include: "#builtin-enum-constant-values"
+          - comment: Catch all
+            match: |-
+              (?x)
+              ([A-Za-z_][A-Za-z0-9_]*)
+              # regex-end
+            captures:
+              "1":
+                name: variable.other.enummember.gdscript
 
   builtin-enum-constant-values:
     patterns:
