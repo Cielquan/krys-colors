@@ -249,7 +249,7 @@ repository:
             (@deprecated)
             | (@experimental)
           )\b
-          (?![ \t]+:)
+          (?![ \t]+[:])
           (:)?
           # regex-end
         captures:
@@ -964,7 +964,7 @@ repository:
             name: keyword.control.inheritance.gdscript
         end: |-
           (?x)
-          (?=:)
+          (?=[:])
           # regex-end
         patterns:
           - include: "#strings"
@@ -1185,7 +1185,7 @@ repository:
           (?x)
           (?:
             (:[ \t]*=)
-            | (?<!=)(=)(?!=)
+            | (?<![=])(=)(?![=])
           )
           # regex-end
         beginCaptures:
@@ -1231,7 +1231,7 @@ repository:
           - include: "#_type-annotations"
           - match: |-
               (?x)
-              (?<!=)(=)(?!=)
+              (?<![=])(=)(?![=])
               # regex-end
             captures:
               "1":
@@ -2102,9 +2102,9 @@ repository:
           (?x)
           (?!
             [ \t]*
-            /
+            [/]
             [ \t]*
-            %?
+            [%]?
             [ \t]*
             [A-Za-z_][A-Za-z0-9_]*
           )
@@ -2449,7 +2449,7 @@ repository:
                 | (<=)
                 | (>=)
                 | (<)
-                | (?<!-)(>)
+                | (?<![-])(>)
               )
               # regex-end
             captures:
@@ -2494,7 +2494,7 @@ repository:
               (?:
                 (&&)
                 | ([|]{2})
-                | (!)(?!=)
+                | (!)(?![=])
               )
               # regex-end
             captures:
