@@ -109,10 +109,6 @@ repository:
         captures:
           "1":
             name: entity.name.type.class.gdscript
-          "2":
-            name: punctuation.accessor.gdscript
-          "3":
-            name: keyword.operator.wordlike.new.gdscript
       - comment: Probably class static property access
         match: |-
           (?x)
@@ -3659,8 +3655,6 @@ repository:
             name: entity.name.type.class.builtin.string-name.gdscript
           "6":
             name: entity.name.type.class.builtin.node-path.gdscript
-          "7":
-            name: entity.name.type.class.builtin.void.gdscript
 
       - comment: Builtin container types
         match: |-
