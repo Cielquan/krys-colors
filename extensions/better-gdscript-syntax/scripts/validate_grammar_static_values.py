@@ -157,8 +157,8 @@ def extract_grammar_regexes(group_name: str) -> DataDict:
     for cat in CATEGORIES:
         data[cat] = set()
 
-        start_marker = f"# {group_name} - {cat} - START"
-        end_marker = f"# {group_name} - {cat} - END"
+        start_marker = f"(?# {group_name} - {cat} - START)"
+        end_marker = f"(?# {group_name} - {cat} - END)"
         start_marker_indexes = []
         end_marker_indexes = []
         for idx, line in enumerate(source_lines):
