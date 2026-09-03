@@ -47,14 +47,14 @@ repository:
     patterns:
       - begin: |-
           (?x)
-          (\()
+          ([(])
           # regex-end
         beginCaptures:
           "1":
             name: punctuation.definition.expression.begin.gdscript
         end: |-
           (?x)
-          (\))
+          ([)])
           # regex-end
         endCaptures:
           "1":
@@ -99,11 +99,11 @@ repository:
           \b(_?[A-Z][A-Za-z0-9_]*)
           (?=
             [ \t]*
-            (\.)
+            ([.])
             [ \t]*
             (new)
             [ \t]*
-            (\()
+            ([(])
           )
           # regex-end
         captures:
@@ -113,7 +113,7 @@ repository:
         match: |-
           (?x)
           \b(_?[A-Z][A-Za-z0-9_]*)
-          (\.)
+          ([.])
           ([a-z_][a-z0-9_]*)\b
           (?![(])
           # regex-end
@@ -127,7 +127,7 @@ repository:
       - comment: Probably enum member access
         match: |-
           (?x)
-          (\.)
+          ([.])
           [ \t]*
           ([A-Z_][A-Z0-9_]*)\b
           # regex-end
@@ -141,7 +141,7 @@ repository:
           (?x)
           (_?[A-Z][A-Za-z0-9_]*)
           [ \t]*
-          (\.)
+          ([.])
           [ \t]*
           ([A-Z_][A-Z0-9_]*)
           # regex-end
@@ -171,7 +171,7 @@ repository:
       - comment: Probably property access
         match: |-
           (?x)
-          (\.)
+          ([.])
           ([a-z_][a-z0-9_]*)\b
           (?![(])
           # regex-end
@@ -231,7 +231,7 @@ repository:
           (?<=[#])
           [ \t]*
           (@tutorial)
-          (\([^\)]*\))?
+          ([(][^\)]*[)])?
           (:)
           # regex-end
         captures:
@@ -914,7 +914,7 @@ repository:
       - include: "#strings"
       - match: |-
           (?x)
-          (\.)?
+          ([.])?
           ([A-Za-z_][A-Za-z0-9_]*)
           # regex-end
         captures:
@@ -970,7 +970,7 @@ repository:
           - include: "#strings"
           - match: |-
               (?x)
-              (\.)?
+              ([.])?
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
             captures:
@@ -989,7 +989,7 @@ repository:
         ([A-Za-z_][A-Za-z0-9_]*)
       )?
       [ \t]*
-      (\{)
+      ([{])
       # regex-end
     beginCaptures:
       "1":
@@ -1000,7 +1000,7 @@ repository:
         name: punctuation.definition.block.begin.gdscript
     end: |-
       (?x)
-      (\})
+      ([}])
       # regex-end
     endCaptures:
       "1":
@@ -1042,7 +1042,7 @@ repository:
       (?=
         ([A-Za-z_][A-Za-z0-9_]*)
         [ \t]*
-        \(
+        [(]
       )
       # regex-end
     beginCaptures:
@@ -1082,7 +1082,7 @@ repository:
           ([A-Za-z_][A-Za-z0-9_]*)
         )?
         [ \t]*
-        \(
+        [(]
       )
       # regex-end
     beginCaptures:
@@ -1130,14 +1130,14 @@ repository:
     name: meta.function.parameters.gdscript
     begin: |-
       (?x)
-      (\()
+      ([(])
       # regex-end
     beginCaptures:
       "1":
         name: punctuation.definition.parameters.begin.gdscript
     end: |-
       (?x)
-      (\))
+      ([)])
       # regex-end
     endCaptures:
       "1":
@@ -1146,7 +1146,7 @@ repository:
       - name: keyword.operator.unpacking.parameter.gdscript
         match: |-
           (?x)
-          (\.\.\.)
+          ([.]{3})
           # regex-end
       - include: "#function-and-lambda-declaration"
       - comment: "`self` parameter"
@@ -1497,11 +1497,11 @@ repository:
           (?x)
           \b(set)\b
           [ \t]*
-          (\()
+          ([(])
           [ \t]*
           ([A-Za-z_][A-Za-z0-9_]*)?
           [ \t]*
-          (\))
+          ([)])
           [ \t]*
           (:)?
           # regex-end
@@ -1673,7 +1673,7 @@ repository:
           \B
           (@[A-Za-z_][A-Za-z0-9_]*)
           [ \t]*
-          (\()
+          ([(])
           # regex-end
         beginCaptures:
           "1":
@@ -1682,7 +1682,7 @@ repository:
             name: punctuation.definition.arguments.begin.gdscript
         end: |-
           (?x)
-          (\))
+          ([)])
           # regex-end
         endCaptures:
           "1":
@@ -1704,12 +1704,12 @@ repository:
       (?=
         ([A-Za-z_][A-Za-z0-9_]*)
         [ \t]*
-        (\()
+        ([(])
       )
       # regex-end
     end: |-
       (?x)
-      (\))
+      ([)])
       # regex-end
     endCaptures:
       "1":
@@ -1729,14 +1729,14 @@ repository:
       - contentName: meta.function.call.arguments.gdscript
         begin: |-
           (?x)
-          (\()
+          ([(])
           # regex-end
         beginCaptures:
           "1":
             name: punctuation.definition.arguments.begin.gdscript
         end: |-
           (?x)
-          (?=\))
+          (?=[)])
           # regex-end
         patterns:
           - include: "#expression"
@@ -1772,8 +1772,8 @@ repository:
           (?x)
           (?:
             (?:
-              \b[0-9][0-9_]*\.(?!\.)(?:[0-9][0-9_]*)?
-              | (?:[0-9][0-9_]*)?\.(?!\.)[0-9][0-9_]*
+              \b[0-9][0-9_]*[.](?![.])(?:[0-9][0-9_]*)?
+              | (?:[0-9][0-9_]*)?[.](?![.])[0-9][0-9_]*
             )
             (?:([Ee][+-]?)[0-9][0-9_]*)?
           )
@@ -1983,9 +1983,9 @@ repository:
         begin: |-
           (?x)
           (?:
-            (\$)
+            ([$])
             | (%)
-            | (?:(\$)(%))
+            | (?:([$])(%))
           )
           ("""|''')
           # regex-end
@@ -2032,9 +2032,9 @@ repository:
         begin: |-
           (?x)
           (?:
-            (\$)
+            ([$])
             | (%)
-            | (?:(\$)(%))
+            | (?:([$])(%))
           )
           ("|')
           # regex-end
@@ -2080,7 +2080,7 @@ repository:
         name: string.unquoted.gdscript meta.literal.node-reference.bare.gdscript
         begin: |-
           (?x)
-          (?:(\$)|(%)|(?:(\$)(%)))
+          (?:([$])|(%)|(?:([$])(%)))
           [ \t]*
           (/)?
           [ \t]*
@@ -2151,7 +2151,7 @@ repository:
         match: |-
           (?x)
           \\(
-              N\{.*?\}
+              N[{].*?[}]
             )
           # regex-end
 
@@ -2193,7 +2193,7 @@ repository:
                 (%)
                 (
                   ([-+0 ]*)
-                  ([0-9]+|\*)? (\.([0-9]+|\*))?
+                  ([0-9]+|[*])? ([.]([0-9]+|[*]))?
                   ([Xcdfosvx])
                 )
               )
@@ -2251,7 +2251,7 @@ repository:
       - name: keyword.operator.unpacking.pattern.gdscript
         match: |-
           (?x)
-          (\.\.)
+          ([.]{2})
           # regex-end
       - include: "#_match-pattern-var-declarations"
       - include: "#expression"
@@ -2281,7 +2281,7 @@ repository:
       - name: keyword.operator.unpacking.pattern.gdscript
         match: |-
           (?x)
-          (\.\.)
+          ([.]{2}
           # regex-end
       - include: "#_match-pattern-var-declarations"
       - include: "#expression"
@@ -2395,7 +2395,7 @@ repository:
           (?:
             (~)
             | (?<![&])(&)(?![&"'])
-            | (\|)(?![|])
+            | ([|])(?![|])
             | (\^)(?!["'])
             | (<<)
             | (>>)
@@ -2420,7 +2420,7 @@ repository:
           (?x)
           (?:
             (&=)
-            | (\|=)
+            | ([|]=)
             | (\^=)
             | (<<=)
             | (>>=)
@@ -2492,7 +2492,7 @@ repository:
               (?x)
               (?:
                 (&&)
-                | (\|\|)
+                | ([|]{2})
                 | (!)(?!=)
               )
               # regex-end
@@ -2659,7 +2659,7 @@ repository:
     match: |-
       (?x)
       (?<=[A-Za-z0-9_ \t\]\)])
-      (\.)
+      ([.])
       (?=[A-Za-z0-9_])
       # regex-end
 
@@ -2715,7 +2715,7 @@ repository:
             patterns:
               - match: |-
                   (?x)
-                  (\.)
+                  ([.])
                   (_?[A-Z][A-Za-z0-9_]*)
                   # regex-end
                 captures:
@@ -2847,7 +2847,7 @@ repository:
               | VerticalAlignment
             )
             | (?:
-                (?<=Variant\.)
+                (?<=Variant[.])
                 (Operator|Type)
             )
             # @GlobalScope - enum - END
@@ -2884,12 +2884,12 @@ repository:
               | VerticalAlignment
             )
             | (?:
-                (?<=Variant\.)
+                (?<=Variant[.])
                 (Operator|Type)
             )
             # @GlobalScope - enum - END
           )
-          (\.)
+          ([.])
           # regex-end
         beginCaptures:
           "1":
