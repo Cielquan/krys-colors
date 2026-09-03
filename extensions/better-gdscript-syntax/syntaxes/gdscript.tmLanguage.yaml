@@ -1033,6 +1033,7 @@ repository:
             name: punctuation.separator.comma.gdscript
 
   signal-declaration:
+    # HACK: Double assignment of funciton and signal scopes for compatibility reasons.
     name: meta.signal.gdscript
     begin: |-
       (?x)
