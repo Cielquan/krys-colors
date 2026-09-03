@@ -1772,6 +1772,7 @@ repository:
           (?x)
           (?:
             (?:
+              (?# Don't match double dot syntax, should it be added in the future)
               \b[0-9][0-9_]*[.](?![.])(?:[0-9][0-9_]*)?
               | (?:[0-9][0-9_]*)?[.](?![.])[0-9][0-9_]*
             )
