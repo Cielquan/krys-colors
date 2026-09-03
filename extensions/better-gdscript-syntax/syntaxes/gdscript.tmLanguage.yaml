@@ -2612,7 +2612,7 @@ repository:
           "4":
             name: variable.language.special.super.gdscript
 
-      - comment: Reserved keywords
+      - comment: Reserved and deprecated keywords
         name: invalid.illegal.word.gdscript
         match: |-
           (?x)
