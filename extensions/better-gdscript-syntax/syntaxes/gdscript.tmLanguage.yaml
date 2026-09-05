@@ -18,7 +18,7 @@ patterns:
 
 repository:
   # ----------------------------------------------
-  # SECTIONS (marked with `NOTE:` comments)
+  # SECTIONS (marked with `SECTION:` comments)
   #
   # - Comments
   # - Declaration & Definitions
@@ -195,7 +195,7 @@ repository:
           # regex-end
 
   # ----------------------------------------------
-  # NOTE: Comments
+  # SECTION: Comments
   # ----------------------------------------------
 
   comment:
@@ -863,7 +863,7 @@ repository:
           # regex-end
 
   # ----------------------------------------------
-  # NOTE: Declaration & Definitions
+  # SECTION: Declaration & Definitions
   # ----------------------------------------------
 
   class-name-declaration:
@@ -1033,7 +1033,7 @@ repository:
             name: punctuation.separator.comma.gdscript
 
   signal-declaration:
-    # HACK: Double assignment of funciton and signal scopes for compatibility reasons.
+    # NOTE: Double assignment of function and signal scopes for compatibility reasons.
     name: meta.signal.gdscript
     begin: |-
       (?x)
@@ -1518,7 +1518,7 @@ repository:
             name: punctuation.section.function.begin.gdscript
 
   # ----------------------------------------------
-  # NOTE: Control flow
+  # SECTION: Control flow
   # ----------------------------------------------
 
   if-statement:
@@ -1649,7 +1649,7 @@ repository:
       - include: "#expression"
 
   # ----------------------------------------------
-  # NOTE: Calls
+  # SECTION: Calls
   # ----------------------------------------------
 
   annotation:
@@ -1744,7 +1744,7 @@ repository:
       - include: "#line-continuation"
 
   # ----------------------------------------------
-  # NOTE: Literals
+  # SECTION: Literals
   # ----------------------------------------------
 
   numbers:
@@ -2319,7 +2319,7 @@ repository:
               # regex-end
 
   # ----------------------------------------------
-  # NOTE: Operators & Keywords
+  # SECTION: Operators & Keywords
   # ----------------------------------------------
 
   operators:
@@ -2626,7 +2626,7 @@ repository:
           # regex-end
 
   # ----------------------------------------------
-  # NOTE: Punctuation
+  # SECTION: Punctuation
   # ----------------------------------------------
 
   line-continuation:
@@ -2665,7 +2665,7 @@ repository:
       # regex-end
 
   # ----------------------------------------------
-  # NOTE: Typing
+  # SECTION: Typing
   # ----------------------------------------------
 
   type-cast:
@@ -2750,7 +2750,7 @@ repository:
       - include: "#line-continuation"
 
   # ----------------------------------------------
-  # NOTE: Built-Ins
+  # SECTION: Built-Ins
   # ----------------------------------------------
 
   language-constants:

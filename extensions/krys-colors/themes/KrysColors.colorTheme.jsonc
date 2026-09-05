@@ -130,7 +130,7 @@
   //  ------------------------------------
   "tokenColors": [
     //  ------------------------------------
-    //   NOTE: Overrides / Special colored
+    //   SECTION: Overrides / Special colored
     //  ------------------------------------
     {
       // TESTING SCOPE
@@ -297,7 +297,7 @@
       },
     },
     //  ------------------------------------
-    //   NOTE: Global Defaults
+    //   SECTION: Global Defaults
     //  ------------------------------------
     {
       "scope": [
@@ -861,7 +861,7 @@
       },
     },
     //  ------------------------------------
-    //   NOTE: Config files
+    //   SECTION: Config files
     //  ------------------------------------
     {
       "name": "Config section",
@@ -960,7 +960,7 @@
       },
     },
     //  ------------------------------------
-    //   NOTE: Log files
+    //   SECTION: Log files
     //  ------------------------------------
     {
       "name": "Log Trace",
@@ -1026,7 +1026,7 @@
   "semanticHighlighting": true,
   "semanticTokenColors": {
     //  ------------------------------------
-    //   NOTE: Defaults
+    //   SECTION: Defaults
     //  ------------------------------------
     "*.documentation": {
       "foreground": "#629755",
@@ -1091,14 +1091,14 @@
       "foreground": "#ae81ff",
     },
     //  ------------------------------------
-    //   NOTE: JavaScript
+    //   SECTION: JavaScript
     //  ------------------------------------
     "class.defaultLibrary:javascript": {
       "foreground": "#268bd2",
       "fontStyle": "italic",
     },
     //  ------------------------------------
-    //   NOTE: Rust
+    //   SECTION: Rust
     //  ------------------------------------
     "*.attribute:rust": {
       "foreground": "#aa4926",
@@ -1126,7 +1126,7 @@
       "foreground": "#f92672",
     },
     //  ------------------------------------
-    //   NOTE: Python
+    //   SECTION: Python
     //  ------------------------------------
     // https://github.com/microsoft/pylance-release#semantic-highlighting
     "*.typeHint:python": {
@@ -1182,7 +1182,7 @@
       "fontStyle": "italic",
     },
     //  ------------------------------------
-    //   NOTE: TOML
+    //   SECTION: TOML
     //  ------------------------------------
     "tomlTableKey": {
       "foreground": "#268bd2",
