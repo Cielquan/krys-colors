@@ -959,7 +959,7 @@ repository:
         name: storage.type.class.gdscript
     end: |-
       (?x)
-      (:|(?=extends))
+      (:)
       # regex-end
     endCaptures:
       "1":
@@ -980,8 +980,7 @@ repository:
         begin: |-
           (?x)
           [ \t]+
-          (extends)
-          [ \t]+
+          (extends)\b
           # regex-end
         beginCaptures:
           "1":
