@@ -2053,6 +2053,16 @@ repository:
               :
               # regex-end
             name: punctuation.separator.property.gdscript
+          - match: |-
+              (?x)
+              ([.]{2})
+              # regex-end
+            name: punctuation.definition.path.parent.gdscript
+          - match: |-
+              (?x)
+              ([.])
+              # regex-end
+            name: punctuation.definition.path.current.gdscript
 
       - comment: Quoted node-reference string single line
         name: string.quoted.node-reference.single.gdscript
@@ -2102,6 +2112,16 @@ repository:
               :
               # regex-end
             name: punctuation.separator.property.gdscript
+          - match: |-
+              (?x)
+              ([.]{2})
+              # regex-end
+            name: punctuation.definition.path.parent.gdscript
+          - match: |-
+              (?x)
+              ([.])
+              # regex-end
+            name: punctuation.definition.path.current.gdscript
 
       - comment: Unquoted node-reference string (single line)
         name: string.unquoted.node-reference.gdscript
