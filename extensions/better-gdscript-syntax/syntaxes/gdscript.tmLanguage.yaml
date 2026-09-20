@@ -1344,9 +1344,6 @@ repository:
               (?x)
               (?<=[:])
               # regex-end
-            beginCaptures:
-              "1":
-                name: keyword.operator.assignment.equal.gdscript
             end: |-
               (?x)
               (?=[=])
