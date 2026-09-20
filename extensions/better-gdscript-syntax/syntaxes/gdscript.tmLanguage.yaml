@@ -2128,9 +2128,7 @@ repository:
         begin: |-
           (?x)
           (?:([$])|(%)|(?:([$])(%)))
-          [ \t]*
           (/)?
-          [ \t]*
           ([A-Za-z_][A-Za-z0-9_]*)
           # regex-end
         beginCaptures:
@@ -2147,11 +2145,8 @@ repository:
         end: |-
           (?x)
           (?!
-            [ \t]*
             [/]
-            [ \t]*
             [%]?
-            [ \t]*
             [A-Za-z_][A-Za-z0-9_]*
           )
           # regex-end
@@ -2159,11 +2154,8 @@ repository:
           - include: "#line-continuation"
           - match: |-
               (?x)
-              [ \t]*
               (/)
-              [ \t]*
               (%)?
-              [ \t]*
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
             captures:
