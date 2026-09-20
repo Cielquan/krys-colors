@@ -502,6 +502,13 @@
       },
     },
     {
+      "name": "Documentation keyword",
+      "scope": ["keyword.other.documentation"],
+      "settings": {
+        "foreground": "#66d9ef",
+      },
+    },
+    {
       "name": "Keyword",
       "scope": ["keyword.other"],
       "settings": {
@@ -852,12 +859,6 @@
       "scope": ["markup.list"],
       "settings": {
         "foreground": "#a6e22e",
-      },
-    },
-    {
-      "scope": ["markup.other.tag"],
-      "settings": {
-        "foreground": "#66d9ef",
       },
     },
     //  ------------------------------------

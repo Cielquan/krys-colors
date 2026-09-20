@@ -236,7 +236,7 @@ repository:
           # regex-end
         captures:
           "1":
-            name: markup.other.tag.tutorial.gdscript
+            name: keyword.other.documentation.tag.tutorial.gdscript
           "2":
             name: markup.heading.tag.tutorial.gdscript
           "3":
@@ -254,9 +254,9 @@ repository:
           # regex-end
         captures:
           "1":
-            name: markup.other.tag.deprecated.gdscript
+            name: keyword.other.documentation.tag.deprecated.gdscript
           "2":
-            name: markup.other.tag.experimental.gdscript
+            name: keyword.other.documentation.tag.experimental.gdscript
           "3":
             name: punctuation.separator.key-value.gdscript
       - match: |-
