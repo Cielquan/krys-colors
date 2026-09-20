@@ -318,6 +318,8 @@
         // "punctuation.accessor.ts", // .
         // "punctuation.accessor.optional.ts", // ?.
         "punctuation.definition.tag",
+        "punctuation.definition.path.parent", // ..
+        "punctuation.definition.path.current", // .
       ],
       "settings": {
         "foreground": "#f8f8f2",
