@@ -963,7 +963,7 @@ repository:
       # regex-end
     endCaptures:
       "1":
-        name: punctuation.section.class.begin.gdscript
+        name: punctuation.definition.class.begin.gdscript
     patterns:
       - comment: Class name
         patterns:
@@ -1119,7 +1119,7 @@ repository:
       # regex-end
     endCaptures:
       "1":
-        name: punctuation.section.function.begin.gdscript
+        name: punctuation.definition.function.begin.gdscript
     patterns:
       - comment: Function name
         patterns:
@@ -1494,7 +1494,7 @@ repository:
           "1":
             name: entity.name.function.definition.gdscript support.function.getter.gdscript
           "2":
-            name: punctuation.section.function.begin.gdscript
+            name: punctuation.definition.function.begin.gdscript
       - comment: Setter assignment
         match: |-
           (?x)
@@ -1538,7 +1538,7 @@ repository:
           "4":
             name: punctuation.definition.parameters.end.gdscript
           "5":
-            name: punctuation.section.function.begin.gdscript
+            name: punctuation.definition.function.begin.gdscript
 
   # ----------------------------------------------
   # SECTION: Control flow
