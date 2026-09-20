@@ -231,15 +231,23 @@ repository:
           (?<=[#])
           [ \t]*
           (@tutorial)
-          ([(][^\)]*[)])?
+          (?:
+            ([(])
+            ([^\)]*)
+            ([)])
+          )?
           (:)
           # regex-end
         captures:
           "1":
             name: keyword.other.documentation.tag.tutorial.gdscript
           "2":
-            name: markup.heading.tag.tutorial.gdscript
+            name: punctuation.definition.tag.begin.gdscript
           "3":
+            name: string.unquoted.gdscript
+          "4":
+            name: punctuation.definition.tag.end.gdscript
+          "5":
             name: punctuation.separator.key-value.gdscript
       - match: |-
           (?x)
