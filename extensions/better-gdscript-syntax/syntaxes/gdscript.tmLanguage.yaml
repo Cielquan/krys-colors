@@ -1960,7 +1960,7 @@ repository:
           - include: "#_string-formattings"
 
       - comment: Quoted node-path string multi line
-        name: string.node-path.quoted.multi.gdscript
+        name: string.quoted.node-path.multi.gdscript
         begin: |-
           (?x)
           (\^)('''|""")
@@ -1969,21 +1969,21 @@ repository:
           "1":
             name: storage.type.string.node-path.gdscript
           "2":
-            name: punctuation.definition.string.node-path.begin.multi.gdscript
+            name: punctuation.definition.string.begin.node-path.multi.gdscript
         end: |-
           (?x)
           (\2)
           # regex-end
         endCaptures:
           "1":
-            name: punctuation.definition.string.node-path.end.multi.gdscript
+            name: punctuation.definition.string.end.node-path.multi.gdscript
         patterns:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
           - include: "#_string-formattings"
 
       - comment: Quoted node-path string single line
-        name: string.node-path.quoted.single.gdscript
+        name: string.quoted.node-path.single.gdscript
         begin: |-
           (?x)
           (\^)('|")
@@ -1992,14 +1992,14 @@ repository:
           "1":
             name: storage.type.string.node-path.gdscript
           "2":
-            name: punctuation.definition.string.node-path.begin.gdscript
+            name: punctuation.definition.string.begin.node-path.gdscript
         end: |-
           (?x)
           (\2)
           # regex-end
         endCaptures:
           "1":
-            name: punctuation.definition.string.node-path.end.gdscript
+            name: punctuation.definition.string.end.node-path.gdscript
         patterns:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
