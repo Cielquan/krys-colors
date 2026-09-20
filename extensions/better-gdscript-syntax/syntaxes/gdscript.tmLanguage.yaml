@@ -2729,10 +2729,6 @@ repository:
             beginCaptures:
               "1":
                 name: entity.name.type.gdscript
-              "2":
-                name: punctuation.accessor.gdscript
-              "3":
-                name: entity.name.type.gdscript
             end: |-
               (?x)
               (?<=[A-Za-z0-9_])
