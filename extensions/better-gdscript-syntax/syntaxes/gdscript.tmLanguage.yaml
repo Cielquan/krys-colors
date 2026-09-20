@@ -2006,7 +2006,7 @@ repository:
           - include: "#_string-formattings"
 
       - comment: Quoted node-reference string multi line
-        name: string.quoted.multi.gdscript meta.literal.node-reference.gdscript
+        name: string.quoted.node-reference.multi.gdscript
         begin: |-
           (?x)
           (?:
@@ -2018,13 +2018,13 @@ repository:
           # regex-end
         beginCaptures:
           "1":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "2":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "3":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "4":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "5":
             name: punctuation.definition.string.begin.multi.gdscript
         end: |-
@@ -2042,7 +2042,7 @@ repository:
               (?x)
               %
               # regex-end
-            name: punctuation.definition.node-reference.unique.gdscript
+            name: punctuation.definition.node-reference.begin.unique.gdscript
           - match: |-
               (?x)
               /
@@ -2055,7 +2055,7 @@ repository:
             name: punctuation.separator.property.gdscript
 
       - comment: Quoted node-reference string single line
-        name: string.quoted.single.gdscript meta.literal.node-reference.gdscript
+        name: string.quoted.node-reference.single.gdscript
         begin: |-
           (?x)
           (?:
@@ -2067,13 +2067,13 @@ repository:
           # regex-end
         beginCaptures:
           "1":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "2":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "3":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "4":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "5":
             name: punctuation.definition.string.begin.gdscript
         end: |-
@@ -2091,7 +2091,7 @@ repository:
               (?x)
               %
               # regex-end
-            name: punctuation.definition.node-reference.unique.gdscript
+            name: punctuation.definition.node-reference.begin.unique.gdscript
           - match: |-
               (?x)
               /
@@ -2104,7 +2104,7 @@ repository:
             name: punctuation.separator.property.gdscript
 
       - comment: Unquoted node-reference string (single line)
-        name: string.unquoted.gdscript meta.literal.node-reference.bare.gdscript
+        name: string.unquoted.node-reference.gdscript
         begin: |-
           (?x)
           (?:([$])|(%)|(?:([$])(%)))
@@ -2115,13 +2115,13 @@ repository:
           # regex-end
         beginCaptures:
           "1":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "2":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "3":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.gdscript
           "4":
-            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.unique.gdscript
+            name: storage.type.string.node-reference.gdscript punctuation.definition.node-reference.begin.unique.gdscript
           "5":
             name: punctuation.separator.path.gdscript
         end: |-
@@ -2150,7 +2150,7 @@ repository:
               "1":
                 name: punctuation.separator.path.gdscript
               "2":
-                name: punctuation.definition.node-reference.unique.gdscript
+                name: punctuation.definition.node-reference.begin.unique.gdscript
 
   _string-escape-sequences-normal:
     patterns:

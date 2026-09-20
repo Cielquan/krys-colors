@@ -288,8 +288,9 @@
     },
     {
       "scope": [
-        "meta.literal.node-reference.gdscript",
-        "meta.literal.node-reference.bare.gdscript",
+        "string.quoted.node-reference.multi.gdscript",
+        "string.quoted.node-reference.single.gdscript",
+        "string.unquoted.node-reference.gdscript",
       ],
       "settings": {
         "fontStyle": "italic",
@@ -538,8 +539,8 @@
         "storage.modifier.string",
         "string.quoted.byte.raw.rust", // b and r in front of string or char
         "punctuation.definition.string.raw.rust", // # for raw strings
-        "punctuation.definition.node-reference.gdscript", // $ for node shorthand
-        "punctuation.definition.node-reference.unique.gdscript", // % for unique node shorthand
+        "punctuation.definition.node-reference.begin.gdscript", // $ for node shorthand
+        "punctuation.definition.node-reference.begin.unique.gdscript", // % for unique node shorthand
         "storage.type.number",
         "storage.type.imaginary.number",
       ],
