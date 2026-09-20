@@ -32,6 +32,20 @@ repository:
   # ----------------------------------------------
 
   # ----------------------------------------------
+  # NOTE: Key order
+  # - comment
+  # - name
+  # - contentName
+  # - match
+  # - captures
+  # - begin
+  # - beginCaptures
+  # - end
+  # - endCaptures
+  # - patterns
+  # ----------------------------------------------
+
+  # ----------------------------------------------
   # NOTE
   #  Sometimes two similar scopes are set together.
   # This is for theme compatibility reasons,
@@ -2038,31 +2052,31 @@ repository:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
           - include: "#_string-formattings"
-          - match: |-
+          - name: punctuation.definition.node-reference.begin.unique.gdscript
+            match: |-
               (?x)
               %
               # regex-end
-            name: punctuation.definition.node-reference.begin.unique.gdscript
-          - match: |-
+          - name: punctuation.separator.path.gdscript
+            match: |-
               (?x)
               /
               # regex-end
-            name: punctuation.separator.path.gdscript
-          - match: |-
+          - name: punctuation.separator.property.gdscript
+            match: |-
               (?x)
               :
               # regex-end
-            name: punctuation.separator.property.gdscript
-          - match: |-
+          - name: punctuation.definition.path.parent.gdscript
+            match: |-
               (?x)
               ([.]{2})
               # regex-end
-            name: punctuation.definition.path.parent.gdscript
-          - match: |-
+          - name: punctuation.definition.path.current.gdscript
+            match: |-
               (?x)
               ([.])
               # regex-end
-            name: punctuation.definition.path.current.gdscript
 
       - comment: Quoted node-reference string single line
         name: string.quoted.node-reference.single.gdscript
@@ -2097,31 +2111,31 @@ repository:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
           - include: "#_string-formattings"
-          - match: |-
+          - name: punctuation.definition.node-reference.begin.unique.gdscript
+            match: |-
               (?x)
               %
               # regex-end
-            name: punctuation.definition.node-reference.begin.unique.gdscript
-          - match: |-
+          - name: punctuation.separator.path.gdscript
+            match: |-
               (?x)
               /
               # regex-end
-            name: punctuation.separator.path.gdscript
-          - match: |-
+          - name: punctuation.separator.property.gdscript
+            match: |-
               (?x)
               :
               # regex-end
-            name: punctuation.separator.property.gdscript
-          - match: |-
+          - name: punctuation.definition.path.parent.gdscript
+            match: |-
               (?x)
               ([.]{2})
               # regex-end
-            name: punctuation.definition.path.parent.gdscript
-          - match: |-
+          - name: punctuation.definition.path.current.gdscript
+            match: |-
               (?x)
               ([.])
               # regex-end
-            name: punctuation.definition.path.current.gdscript
 
       - comment: Unquoted node-reference string (single line)
         name: string.unquoted.node-reference.gdscript
@@ -2155,16 +2169,16 @@ repository:
           # regex-end
         patterns:
           - include: "#line-continuation"
-          - match: |-
+          - name: punctuation.definition.node-reference.begin.unique.gdscript
+            match: |-
               (?x)
               %
               # regex-end
-            name: punctuation.definition.node-reference.begin.unique.gdscript
-          - match: |-
+          - name: punctuation.separator.path.gdscript
+            match: |-
               (?x)
               /
               # regex-end
-            name: punctuation.separator.path.gdscript
           - match: |-
               (?x)
               [A-Za-z_][A-Za-z0-9_]*
