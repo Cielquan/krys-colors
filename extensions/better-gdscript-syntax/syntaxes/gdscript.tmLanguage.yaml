@@ -2147,21 +2147,30 @@ repository:
           (?!
             [/]
             [%]?
-            [A-Za-z_][A-Za-z0-9_]*
+            (?:
+              [A-Za-z_][A-Za-z0-9_]*
+              | \\$
+            )
           )
           # regex-end
         patterns:
           - include: "#line-continuation"
           - match: |-
               (?x)
-              (/)
-              (%)?
+              %
+              # regex-end
+            name: punctuation.definition.node-reference.begin.unique.gdscript
+          - match: |-
+              (?x)
+              /
+              # regex-end
+            name: punctuation.separator.path.gdscript
+          - match: |-
+              (?x)
               ([A-Za-z_][A-Za-z0-9_]*)
               # regex-end
             captures:
               "1":
-                name: punctuation.separator.path.gdscript
-              "2":
                 name: punctuation.definition.node-reference.begin.unique.gdscript
 
   _string-escape-sequences-normal:
