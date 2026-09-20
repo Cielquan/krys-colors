@@ -514,7 +514,13 @@ repository:
         begin: |-
           (?x)
           (\[)
-            (code)
+            (code)\b
+            (?:
+              [ \t]+
+              ([lang]{0,4})
+              (=)?
+              ([a-z0-9]*)
+            )?
           (\])
           # regex-end
         beginCaptures:
@@ -523,6 +529,12 @@ repository:
           "2":
             name: entity.name.tag.code.gdscript
           "3":
+            name: entity.other.attribute-name.gdscript
+          "4":
+            name: punctuation.separator.key-value.gdscript
+          "5":
+            name: string.unquoted.gdscript
+          "6":
             name: punctuation.definition.tag.end.gdscript
         end: |-
           (?x)
