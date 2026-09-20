@@ -240,9 +240,9 @@ func _nodes_and_node_paths() -> void:
     ):
         print("Yay")
 
-    var node_stringified := $"../{prefix}Canvas\nLayer/\
+    var node_stringified := $"./{prefix}Canvas\nLayer/../\
         %Label\u1234/%Child%d:prop"
-    var node_bare := $CanvasLayer
+    var node_bare := $/CanvasLayer
     var node_bare_multi := $CanvasLayer/Label
     if (
         node_stringified.can_process()
@@ -395,7 +395,7 @@ func _type_casts() -> void:
     var x: Variant = null
     x = x as Node
     x = x as Array[String]
-    x = x as Array[Dictionary[String, int]]
+    x = x as Array[Dictionary]
     x = x as MyClass
     x = (x as MyClass.SubType)
 
