@@ -9,6 +9,8 @@ yield
 
 var invalid_escape := "\j"
 
+var invalid_quote_combination = """hello """" world"""
+
 var nester_array: Array[Array[int]]
 var nested_dict: Dictionary[String, Array[Vector2]]
 
@@ -21,4 +23,5 @@ foo.
 0x
 0b
 0b_
+123abc
 # fmt:on

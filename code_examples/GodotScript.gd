@@ -35,7 +35,7 @@ extends Node2D
 ##      [color=red]Error![/color]
 ##      LICENSE
 ## [/font]
-## [img width=32]res://icon.svg[/img]
+## [img width=32 heigth=32]res://icon.svg[/img]
 ## [url]https://example.com[/url]
 ## [url=https://example.com]Website[/url]
 ## [center]2 + 2 = 4[/center]
@@ -88,7 +88,7 @@ var hp: int = 100
 var a
 var a1: Array[Dictionary]
 var a2: Array[MyNode]
-var a3: Array[MyNode.InnerClass]
+var a3: Array[MyNode.SubClass.InnerClass]
 var d: Dictionary[String, Variant]
 
 var my_file_ref
@@ -200,8 +200,12 @@ line
 string starting on first row because of \\ \n
 "'
 """
+    var nested_quotes_in_multi = """hello "" world"""
+    var empty_multi = """"""
 
-    print("\n".join([single, escapes, string_name, raw, raw_special_escapes, multi_line]))
+    print(
+        "\n".join([single, escapes, string_name, raw, raw_special_escapes, multi_line, empty_multi])
+    )
 
 
 func _formatted_strings() -> void:
