@@ -1914,7 +1914,7 @@ repository:
           - include: "#_string-formattings"
 
       - comment: Quoted string-name multi line
-        name: string.string-name.quoted.multi.gdscript
+        name: string.quoted.string-name.multi.gdscript
         begin: |-
           (?x)
           (&)('''|""")
@@ -1923,21 +1923,21 @@ repository:
           "1":
             name: storage.type.string.string-name.gdscript
           "2":
-            name: punctuation.definition.string.string-name.begin.multi.gdscript
+            name: punctuation.definition.string.begin.string-name.multi.gdscript
         end: |-
           (?x)
           (\2)
           # regex-end
         endCaptures:
           "1":
-            name: punctuation.definition.string.string-name.end.multi.gdscript
+            name: punctuation.definition.string.end.string-name.multi.gdscript
         patterns:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
           - include: "#_string-formattings"
 
       - comment: Quoted string-name single line
-        name: string.string-name.quoted.single.gdscript
+        name: string.quoted.string-name.single.gdscript
         begin: |-
           (?x)
           (&)('|")
@@ -1946,14 +1946,14 @@ repository:
           "1":
             name: storage.type.string.string-name.gdscript
           "2":
-            name: punctuation.definition.string.string-name.begin.gdscript
+            name: punctuation.definition.string.begin.string-name.gdscript
         end: |-
           (?x)
           (\2)
           # regex-end
         endCaptures:
           "1":
-            name: punctuation.definition.string.string-name.end.gdscript
+            name: punctuation.definition.string.end.string-name.gdscript
         patterns:
           - include: "#_string-escape-sequences-normal"
           - include: "#_string-line-continuation"
