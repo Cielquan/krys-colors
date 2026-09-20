@@ -18,7 +18,7 @@ patterns:
 
 repository:
   # ----------------------------------------------
-  # SECTIONS (marked with `SECTION:` comments)
+  # NOTE: SECTIONS (marked with `SECTION:` comments)
   #
   # - Comments
   # - Declaration & Definitions
