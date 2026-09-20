@@ -240,7 +240,7 @@ repository:
           # regex-end
         captures:
           "1":
-            name: keyword.other.documentation.tag.tutorial.gdscript
+            name: entity.name.tag.tutorial.gdscript keyword.other.documentation.tag.tutorial.gdscript
           "2":
             name: punctuation.definition.tag.begin.gdscript
           "3":
@@ -262,9 +262,9 @@ repository:
           # regex-end
         captures:
           "1":
-            name: keyword.other.documentation.tag.deprecated.gdscript
+            name: entity.name.tag.deprecated.gdscript keyword.other.documentation.tag.deprecated.gdscript
           "2":
-            name: keyword.other.documentation.tag.experimental.gdscript
+            name: entity.name.tag.experimental.gdscript keyword.other.documentation.tag.experimental.gdscript
           "3":
             name: punctuation.separator.key-value.gdscript
       - match: |-
