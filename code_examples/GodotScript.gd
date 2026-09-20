@@ -244,10 +244,12 @@ func _nodes_and_node_paths() -> void:
         %Label\u1234/%Child%d:prop"
     var node_bare := $/CanvasLayer
     var node_bare_multi := $CanvasLayer/Label
+    var node_bare_complex := $Foo/%Label/Bar/%Baz
     if (
         node_stringified.can_process()
         and node_bare.can_process()
         and node_bare_multi.can_process()
+        and node_bare_complex.can_process()
     ):
         print("Yay")
 
