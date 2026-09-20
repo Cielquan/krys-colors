@@ -396,33 +396,22 @@ repository:
           "3":
             name: punctuation.definition.tag.end.gdscript
       - comment: Opening tags with optional attributes
-        match: |-
+        begin: |-
           (?x)
           (\[)
           (?:
-            (?:
-              (color)
-              | (font)
-              | (img)
-              | (url)
-              | (center)
-            )\b
-            (?:
-              (=)
-              ([^\]]*)
-            )?
-            (?:
-              [ \t]+
-              ([A-Za-z_-][A-Za-z0-9_-]*)
-              (?:
-                (=)
-                ([^\]]*)
-              )?
-            )*
-          )
-          (\])
+            (color)
+            | (font)
+            | (img)
+            | (url)
+            | (center)
+          )\b
+          (?:
+            (=)
+            ([^ \]]*)
+          )?
           # regex-end
-        captures:
+        beginCaptures:
           "1":
             name: punctuation.definition.tag.begin.gdscript
           "2":
@@ -439,14 +428,29 @@ repository:
             name: punctuation.separator.key-value.gdscript
           "8":
             name: string.unquoted.gdscript
-          "9":
-            name: entity.other.attribute-name.gdscript
-          "10":
-            name: punctuation.separator.key-value.gdscript
-          "11":
-            name: string.unquoted.gdscript
-          "12":
+        end: |-
+          (?x)
+          (\])
+          # regex-end
+        endCaptures:
+          "1":
             name: punctuation.definition.tag.end.gdscript
+        patterns:
+          - match: |-
+              (?x)
+              ([A-Za-z_-][A-Za-z0-9_-]*)
+              (?:
+                (=)
+                ([^ \]]*)
+              )?
+              # regex-end
+            captures:
+              "1":
+                name: entity.other.attribute-name.gdscript
+              "2":
+                name: punctuation.separator.key-value.gdscript
+              "3":
+                name: string.unquoted.gdscript
       - comment: Closing tags
         match: |-
           (?x)
