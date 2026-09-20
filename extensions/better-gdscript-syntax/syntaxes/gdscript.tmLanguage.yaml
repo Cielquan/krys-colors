@@ -2282,7 +2282,7 @@ repository:
       - name: keyword.operator.unpacking.pattern.gdscript
         match: |-
           (?x)
-          ([.]{2}
+          ([.]{2})
           # regex-end
       - include: "#_match-pattern-var-declarations"
       - include: "#expression"
