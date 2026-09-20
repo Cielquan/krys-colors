@@ -31,6 +31,13 @@ repository:
   # - Built-Ins
   # ----------------------------------------------
 
+  # ----------------------------------------------
+  # NOTE
+  #  Sometimes two similar scopes are set together.
+  # This is for theme compatibility reasons,
+  # as some scopes are kinda specific to gdscript.
+  # ----------------------------------------------
+
   statement:
     patterns:
       - include: "#signal-declaration"
@@ -1056,7 +1063,6 @@ repository:
             name: punctuation.separator.comma.gdscript
 
   signal-declaration:
-    # NOTE: Double assignment of function and signal scopes for compatibility reasons.
     name: meta.signal.gdscript
     begin: |-
       (?x)
