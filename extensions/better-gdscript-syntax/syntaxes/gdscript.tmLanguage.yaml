@@ -2158,11 +2158,12 @@ repository:
             name: punctuation.separator.path.gdscript
         end: |-
           (?x)
+          (?<=[A-Za-z0-9_])
           (?!
-            [/]
-            [%]?
+            /
+            %?
             (?:
-              [A-Za-z_][A-Za-z0-9_]*
+              [A-Za-z_]
               | \\$
             )
           )
