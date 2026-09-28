@@ -9,10 +9,7 @@ highlighted.
 
 ## Installation
 
-The extension is available from the following marketplaces:
-
-- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=cielquan.yaml-regex-highlighting)
-- [Open VSX Marketplace](https://open-vsx.org/extension/cielquan/yaml-regex-highlighting)
+The extension is not available from any registry and must be build and installed locally.
 
 ## Issues
 
