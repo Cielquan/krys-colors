@@ -27,6 +27,8 @@ NOTE: please use them in this order.
 ### Miscellaneous
 
 - Drop JSON version of theme file, now only gets build as artifact and not version controlled
+- Casefold hex color codes
+- Reorganize some sections for rule precedence
 
 ## v1.0.1 (2026-04-13)
 
