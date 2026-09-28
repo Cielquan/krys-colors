@@ -2,7 +2,7 @@
   "name": "better-gdscript-syntax",
   "displayName": "Better GDScript Syntax",
   "description": "Better GDScript Syntax for Visual Studio Code",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "publisher": "cielquan",
   "license": "MIT",
   "repository": {
