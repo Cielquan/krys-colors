@@ -3439,6 +3439,7 @@ repository:
             | MIDI_MESSAGE_TIMING_CLOCK                 (?# enum MIDIMessage)
             | MIDI_MESSAGE_TUNE_REQUEST                 (?# enum MIDIMessage)
             | PROPERTY_HINT_ARRAY_TYPE                  (?# enum PropertyHint)
+            | PROPERTY_HINT_AUDIO_BUS                   (?# enum PropertyHint)
             | PROPERTY_HINT_COLOR_NO_ALPHA              (?# enum PropertyHint)
             | PROPERTY_HINT_DICTIONARY_TYPE             (?# enum PropertyHint)
             | PROPERTY_HINT_DIR                         (?# enum PropertyHint)
@@ -3906,6 +3907,7 @@ repository:
                 2D
                 | Attachment3D
                 | Map
+                | SpaceAdjuster3D
                 | Spreader3D
                 | TwistDisperser3D
               )
@@ -4218,8 +4220,13 @@ repository:
             (?# Classes - class - START)
             Physics(?:
               Body[2-3]D
+              | CastMotionResult[2-3]D
+              | CollideShapeResult[2-3]D
               | DirectBodyState[2-3]D(?:Extension)?
               | DirectSpaceState[2-3]D(?:Extension)?
+              | GetRestInfoResult[2-3]D
+              | IntersectRayResult[2-3]D
+              | IntersectShapeResult[2-3]D
               | Material
               | RayQueryParameters[2-3]D
               | Server[2-3]D(?:Extension|Manager)?
