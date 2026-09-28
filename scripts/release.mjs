@@ -189,7 +189,7 @@ const main = async () => {
 
   await execFileAsync("git", ["tag", "--annotate", "--message", tagNewVersion, tagNewVersion]);
 
-  console.log(`Created release ${extensionName}/${newVersion}`);
+  console.log(`Created release ${extensionName}/${tagNewVersion}`);
 };
 
 await main();
