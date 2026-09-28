@@ -9,19 +9,25 @@ See the respective extentions for specifics:
 
 ## Development (in VSCode)
 
+Most npm scripts listed below also have a shorthand, see the root `package.json` for details.
+
 ### Builds
 
-To build the theme JSON artifact from the JSONC file run the `build` npm script via
-`pnpm --filter krys-colors build`.
+All extensions have a npm `build` script which can be called via `pnpm --filter <EXT> build`.
 
-You can also run the `watch` npm script via `pnpm watch` which uses
-[`watchexec`](https://github.com/watchexec/watchexec) to automatically rebuild the JSON artifact.
+You can also run the `watch` npm script via `pnpm --filter <EXT> watch` which uses
+[`watchexec`](https://github.com/watchexec/watchexec) to automatically rebuild the artifacts.
 You can install `watchexec` with `cargo install --locked watchexec-cli`.
 
-### Testing
+### Testing (manual)
 
 In VSCode press `F5` to launch a development window. The windows will run off the local versions
 of all extentions from this repo. The `code_examples/` directory is available for testing.
+
+### Verifying
+
+The `better-gdscript-syntax` extension also has a `verify` npm script callable via
+`pnpm --filter better-gdscript-syntax validate`.
 
 ### Tooling
 
