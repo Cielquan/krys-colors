@@ -16,6 +16,10 @@ NOTE: please use them in this order.
 
 ## [Unreleased]
 
-[diff 20daec7...main](https://github.com/Cielquan/krys-colors/compare/20daec7...main)
+[diff better-gdscript-syntax/v1.0.0...main](https://github.com/Cielquan/krys-colors/compare/better-gdscript-syntax/v1.0.0...main)
+
+## better-gdscript-syntax/v1.0.0 (2026-09-28)
+
+[diff 20daec7...better-gdscript-syntax/v1.0.0](https://github.com/Cielquan/krys-colors/compare/better-gdscript-syntax/20daec7...better-gdscript-syntax/v1.0.0)
 
 - Initial release
