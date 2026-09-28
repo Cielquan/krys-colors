@@ -16,7 +16,11 @@ NOTE: please use them in this order.
 
 ## [Unreleased]
 
-[diff krys-colors/v1.0.1...main](https://github.com/Cielquan/krys-colors/compare/krys-colors/v1.0.1...main)
+[diff krys-colors/v1.1.0...main](https://github.com/Cielquan/krys-colors/compare/krys-colors/v1.1.0...main)
+
+## krys-colors/v1.1.0 (2026-09-28)
+
+[diff krys-colors/v1.0.1...krys-colors/v1.1.0](https://github.com/Cielquan/krys-colors/compare/krys-colors/v1.0.1...krys-colors/v1.1.0)
 
 ### New features
 
