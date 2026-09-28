@@ -18,6 +18,10 @@ NOTE: please use them in this order.
 
 [diff gitignore-syntax-vsx/v1.0.3...main](https://github.com/Cielquan/krys-colors/compare/gitignore-syntax-vsx/v1.0.3...main)
 
+### Miscellaneous
+
+- Use extended mode for RegExes for syntax highlighting
+
 ## v1.0.3 (2026-08-09)
 
 [diff 0484884...gitignore-syntax-vsx/v1.0.3](https://github.com/Cielquan/krys-colors/compare/0484884...gitignore-syntax-vsx/v1.0.3)
