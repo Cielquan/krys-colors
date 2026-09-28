@@ -3550,12 +3550,12 @@ repository:
         match: |-
           (?x)
           \b(?:
-            # @GlobalScope - const-deprecated - START
+            (?# @GlobalScope - const-deprecated - START)
             PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE      (?# enum PropertyHint)
             | PROPERTY_HINT_INT_IS_OBJECTID             (?# enum PropertyHint)
             | PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE       (?# flags PropertyUsageFlags)
             | PROPERTY_USAGE_DEFERRED_SET_RESOURCE      (?# flags PropertyUsageFlags)
-            # @GlobalScope - const-deprecated - END
+            (?# @GlobalScope - const-deprecated - END)
           )\b
           # regex-end
 
