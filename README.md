@@ -24,9 +24,9 @@ You can install `watchexec` with `cargo install --locked watchexec-cli`.
 In VSCode press `F5` to launch a development window. The windows will run off the local versions
 of all extentions from this repo. The `code_examples/` directory is available for testing.
 
-### Verifying
+### Validation
 
-The `better-gdscript-syntax` extension also has a `verify` npm script callable via
+The `better-gdscript-syntax` extension also has a `validate` npm script callable via
 `pnpm --filter better-gdscript-syntax validate`.
 
 ### Tooling
