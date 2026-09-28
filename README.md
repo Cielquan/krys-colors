@@ -40,8 +40,8 @@ to run them.
 ### Release / VSIX Builds
 
 1. Run the `pnpm release <VERSION_TYPE> <EXT_DIR_PATH>` npm script to create a release for a given
-  extension.
+   extension.
 1. To create the VISX artifacts run the `package` npm script via `pnpm package`. This runs a custom
-  build script which builds and packages all extentions into the `dist/` directory.
+   build script which builds and packages all extentions into the `dist/` directory.
 1. The VISX artifacts can then be uploaded to the marketplaces.
-  See also: https://code.visualstudio.com/api/working-with-extensions/publishing-extension
+   See also: https://code.visualstudio.com/api/working-with-extensions/publishing-extension
