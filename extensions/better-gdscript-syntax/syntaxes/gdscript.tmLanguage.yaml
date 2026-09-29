@@ -4494,7 +4494,6 @@ repository:
             (?# Classes - class - START)
             AESContext
             | AStar[2-3]D
-            | AStarGrid2D
             | AcceptDialog
             | AccessibilityServer
             | AimModifier3D
