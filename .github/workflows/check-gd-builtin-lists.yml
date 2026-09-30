@@ -9,6 +9,8 @@ on: # yamllint disable-line rule:truthy
 jobs:
   check:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,17 +38,41 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           exit $exit_code
 
-      - name: Create issue on failure
+      - name: Report failure
         if: failure() && steps.validate.outcome == 'failure'
         uses: actions/github-script@v7
         env:
           VALIDATE_OUTPUT: ${{ steps.validate.outputs.output }}
         with:
           script: |
+            const title = "GDScript grammar file missing values";
             const output = process.env.VALIDATE_OUTPUT || "(no output captured)";
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "GDScript grammar file missing values",
-              body: "```\n" + output + "\n```"
-            });
+            const body = "```\n" + output + "\n```";
+
+            const openIssues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: "open",
+              }
+            );
+            const existing = openIssues.find(
+              (issue) => !issue.pull_request && issue.title === title
+            );
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+              });
+            }
