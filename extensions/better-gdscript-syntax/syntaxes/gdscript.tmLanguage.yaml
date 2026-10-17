@@ -164,7 +164,7 @@ repository:
           [ \t]*
           ([.])
           [ \t]*
-          ([A-Z_][A-Z0-9_]*)
+          ([A-Z_][A-Z0-9_]*)\b
           # regex-end
         captures:
           "1":

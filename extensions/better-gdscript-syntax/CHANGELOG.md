@@ -21,6 +21,7 @@ NOTE: please use them in this order.
 ### Bugfixes
 
 - Fix scope for colon after func declarations (punctuation.definition -> punctuation.section)
+- Fix words being cut in two after an accessor dot, when the word starts with a upper case letter
 
 ## better-gdscript-syntax/v1.0.0 (2026-09-28)
 
