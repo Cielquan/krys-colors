@@ -18,6 +18,10 @@ NOTE: please use them in this order.
 
 [diff better-gdscript-syntax/v1.0.0...main](https://github.com/Cielquan/krys-colors/compare/better-gdscript-syntax/v1.0.0...main)
 
+### Bugfixes
+
+- Fix scope for colon after func declarations (punctuation.definition -> punctuation.section)
+
 ## better-gdscript-syntax/v1.0.0 (2026-09-28)
 
 [diff 20daec7...better-gdscript-syntax/v1.0.0](https://github.com/Cielquan/krys-colors/compare/better-gdscript-syntax/20daec7...better-gdscript-syntax/v1.0.0)
