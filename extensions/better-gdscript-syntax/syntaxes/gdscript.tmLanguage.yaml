@@ -4602,6 +4602,7 @@ repository:
             | LabelSettings
             | LimitAngularVelocityModifier3D
             | Line[2-3]D
+            | LineBase3D
             | LineEdit
             | LinkButton
             | Logger
